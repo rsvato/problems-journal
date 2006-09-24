@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<project name="network-journal" default="touch" basedir=".">
+
+    <property name="domain.src.dir" value="domain/java/src"/>
+    <property name="service.src.dir" value="service/java/src"/>
+    <property name="test.dir" value="test/java"/>
+    <property name="test.class.dir" value="/tmp/tests"/>
+    <property name="report.dir" value="/tmp/reports"/>
+    <property name="war.dir" value="war"/>
+    <property name="class.dir" value="${war.dir}/WEB-INF/classes"/>
+    <property name="lib.dir" value="${war.dir}/WEB-INF/lib"/>
+    <property name="merge.dir" value="merge"/>
+    <property name="tomcat.dir" value="/home/ubuntu/tomcat"/>
+    <property name="webapp.dir" value="${tomcat.dir}/webapps/"/>
+    <property name="devel.lib.dir" value="lib"/>
+    <property name="xdoclet.dir" value="/home/ubuntu/share/dist/xdoclet-1.2.3"/>
+    <property name="app.location" value="file:///${war.dir}"/>
+    <property name="conf.dir" value="conf"/>
+
+    <property name="name" value="network-journal"/>
+    <property name="tomcat.manager.url" value="http://localhost:8080/manager"/>
+    <property name="tomcat.manager.username" value="both"/>
+    <property name="tomcat.manager.password" value="tomcat"/>
+
+    <path id="catalina.devel.libs">
+        <fileset dir="${tomcat.dir}/common/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="compile.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${devel.lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <dirset dir="${class.dir}"/>
+        <path refid="catalina.devel.libs"/>
+    </path>
+
+    <path id="test.classpath">
+        <dirset dir="${test.class.dir}"/>
+    </path>
+
+    <path id="xdoclet.path">
+        <path refid="compile.classpath"/>
+            <fileset dir="${xdoclet.dir}/lib">
+                <include name="*.jar"/>
+            </fileset>
+     </path>
+
+    <path id="catalina.libs">
+        <fileset dir="${tomcat.dir}/server/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+
+
+    <path id="compiled.classpath">
+        <pathelement path="${class.dir}"/>
+    </path>
+
+    <taskdef name="deploy"   classname="org.apache.catalina.ant.DeployTask" classpathref="catalina.libs"/>
+       <taskdef name="install"  classname="org.apache.catalina.ant.InstallTask" classpathref="catalina.libs"/>
+       <taskdef name="list"     classname="org.apache.catalina.ant.ListTask" classpathref="catalina.libs"/>
+       <taskdef name="reload"   classname="org.apache.catalina.ant.ReloadTask" classpathref="catalina.libs"/>
+       <taskdef name="remove"   classname="org.apache.catalina.ant.RemoveTask" classpathref="catalina.libs"/>
+       <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina.libs"/>
+       <taskdef name="start"    classname="org.apache.catalina.ant.StartTask" classpathref="catalina.libs"/>
+       <taskdef name="stop"     classname="org.apache.catalina.ant.StopTask" classpathref="catalina.libs"/>
+       <taskdef name="resources"
+                                classname="org.apache.catalina.ant.ResourcesTask" classpathref="catalina.libs"/>
+       <taskdef name="roles"    classname="org.apache.catalina.ant.RolesTask" classpathref="catalina.libs"/>
+
+
+    <target name="hib.generate" depends="init">
+
+        <taskdef name="hibernatedoclet"
+                 classname="xdoclet.modules.hibernate.HibernateDocletTask"
+                 classpathref="xdoclet.path"/>
+        <hibernatedoclet destDir="${war.dir}/WEB-INF/classes/mappings">
+            <fileset dir="${domain.src.dir}">
+                <include name="**/*.java"/>
+            </fileset>
+            <hibernate version="3.0"/>
+        </hibernatedoclet>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${class.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+        <mkdir dir="${test.class.dir}"/>
+        <mkdir dir="${report.dir}"/>
+        <mkdir dir="${report.dir}/html"/>
+    </target>
+
+    <target name="compile-domain" depends="hib.generate">
+        <javac srcdir="${domain.src.dir}" classpathref="compile.classpath"
+               destdir="${class.dir}" debug="true"
+                />
+        <copy todir="${war.dir}/WEB-INF">
+            <fileset dir="${domain.src.dir}">
+                <include name="**/mess*.properties"/>
+            </fileset>
+            <fileset dir="${conf.dir}">
+                <include name="*.xml"/>
+            </fileset>
+        </copy>
+       <native2ascii dest="${war.dir}/WEB-INF/classes" src="${domain.src.dir}" includes="**/*.properties"/>
+    </target>
+
+    <target name="compile-service" depends="compile-domain">
+        <javac srcdir="${service.src.dir}" classpathref="compile.classpath"
+               destdir="${class.dir}" debug="true"
+                />
+    </target>
+
+    <target name="touch" depends="init,compile-service"
+            description="Renews web application">
+        <copy todir="${war.dir}/WEB-INF">
+            <fileset dir="${conf.dir}">
+                <include name="*.xml"/>
+            </fileset>
+        </copy>
+        <touch file="${war.dir}/WEB-INF/web.xml"/>
+    </target>
+
+    <target name="compile.test" depends="touch">
+        <javac srcdir="${test.dir}"
+               classpathref="compile.classpath"
+               destdir="${test.class.dir}"/>
+    </target>
+
+    <target name="copy-libs">
+        <copy todir="${war.dir}/WEB-INF/lib">
+            <fileset dir="${devel.lib.dir}">
+                <include name="*.jar"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="test" depends="compile.test">
+        <junit printsummary="yes"
+               haltonerror="no"
+               fork="yes">
+            <formatter type="xml" usefile="true"/>
+            <classpath refid="compile.classpath"/>
+            <classpath refid="test.classpath"/>
+            <batchtest todir="${report.dir}">
+                <fileset dir="${test.class.dir}">
+                    <include name="**/*Test*"/>
+                </fileset>
+            </batchtest>
+        </junit>
+        <junitreport todir="${report.dir}">
+            <fileset dir="${report.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${report.dir}/html"/>
+        </junitreport>
+    </target>
+
+
+    <target name="clean" description="Erases contents of classes dir">
+        <delete>
+            <fileset dir="${class.dir}">
+                <include name="**/*.class"/>
+                <include name="**/*.hbm.xml"/>
+            </fileset>
+        </delete>
+        <delete dir="${test.class.dir}"/>
+        <!--delete dir="${webapp.dir}"/-->
+    </target>
+
+    <target name="deploy" depends="touch,copy-libs">
+        <copy todir="${webapp.dir}">
+            <fileset dir="${war.dir}"/>
+        </copy>
+    </target>
+
+    <target name="install.app" depends="touch">
+        <install username="both" password="tomcat" url="http://localhost:8080/manager" path="/network-journal" war="file://${basedir}/${war.dir}"/>
+    </target>
+
+     <target name="uninstall.app">
+        <undeploy username="both" password="tomcat" url="http://localhost:8080/manager" path="/network-journal"/>
+    </target>
+
+    <target name="start.app">
+        <start username="both" password="tomcat" url="http://localhost:8080/manager" path="/network-journal"/>
+    </target>
+
+    <target name="reload.app" depends="touch">
+        <reload username="both" password="tomcat" url="http://localhost:8080/manager" path="/network-journal"/>
+    </target>
+
+
+    <target name="list" description="List Tomcat applications">
+            <list url="${tomcat.manager.url}"
+                     username="${tomcat.manager.username}"
+                     password="${tomcat.manager.password}"/>
+        </target>
+
+    <target name="deploywar" depends="touch,copy-libs" description="Deploy application as a WAR file">
+        <war destfile="${name}.war"
+             webxml="${war.dir}/WEB-INF/web.xml">
+            <fileset dir="${war.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+        </war>
+        <copy todir="${webapp.dir}" preservelastmodified="true">
+            <fileset dir=".">
+                <include name="*.war"/>
+            </fileset>
+        </copy>
+    </target>
+
+</project>

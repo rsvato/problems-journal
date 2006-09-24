@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<project name="project-domain" default="compile" basedir=".">
+
+    <property name="src.dir" value="java/src"/>
+    <property name="test.dir" value="test/java"/>
+    <property name="test.class.dir" value="/tmp/tests"/>
+    <property name="report.dir" value="/tmp/reports"/>
+    <property name="war.dir" value="../war"/>
+    <property name="class.dir" value="${war.dir}/WEB-INF/classes"/>
+    <property name="lib.dir" value="${war.dir}/WEB-INF/lib"/>
+    <property name="merge.dir" value="merge"/>
+    <property name="tomcat.dir" value="/home/ubuntu/tomcat"/>
+    <property name="webapp.dir" value="${tomcat.dir}/webapps/bikestore"/>
+    <property name="devel.lib.dir" value="../lib"/>
+    <property name="xdoclet.dir" value="/home/ubuntu/share/dist/xdoclet-1.2.3"/>
+    <property name="app.location" value="file:///${war.dir}"/>
+
+
+    <path id="compile.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${devel.lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <dirset dir="${class.dir}"/>
+    </path>
+
+    <path id="test.classpath">
+        <dirset dir="${test.class.dir}"/>
+    </path>
+
+    <path id="xdoclet.path">
+        <path refid="compile.classpath"/>
+            <fileset dir="${xdoclet.dir}/lib">
+                <include name="*.jar"/>
+            </fileset>
+     </path>
+
+    <path id="catalina.libs">
+        <fileset dir="${tomcat.dir}/server/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <taskdef name="deploy"   classname="org.apache.catalina.ant.DeployTask" classpathref="catalina.libs"/>
+       <taskdef name="install"  classname="org.apache.catalina.ant.InstallTask" classpathref="catalina.libs"/>
+       <taskdef name="list"     classname="org.apache.catalina.ant.ListTask" classpathref="catalina.libs"/>
+       <taskdef name="reload"   classname="org.apache.catalina.ant.ReloadTask" classpathref="catalina.libs"/>
+       <taskdef name="remove"   classname="org.apache.catalina.ant.RemoveTask" classpathref="catalina.libs"/>
+       <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina.libs"/>
+       <taskdef name="start"    classname="org.apache.catalina.ant.StartTask" classpathref="catalina.libs"/>
+       <taskdef name="stop"     classname="org.apache.catalina.ant.StopTask" classpathref="catalina.libs"/>
+       <taskdef name="resources"
+                                classname="org.apache.catalina.ant.ResourcesTask" classpathref="catalina.libs"/>
+       <taskdef name="roles"    classname="org.apache.catalina.ant.RolesTask" classpathref="catalina.libs"/>
+
+
+    <target name="hib.generate" depends="init">
+
+        <taskdef name="hibernatedoclet"
+                 classname="xdoclet.modules.hibernate.HibernateDocletTask"
+                 classpathref="xdoclet.path"/>
+        <hibernatedoclet destDir="${war.dir}/WEB-INF/classes/mappings">
+            <fileset dir="${src.dir}">
+                <include name="**/*.java"/>
+            </fileset>
+            <hibernate version="3.0"/>
+        </hibernatedoclet>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${class.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+        <mkdir dir="${test.class.dir}"/>
+        <mkdir dir="${report.dir}"/>
+        <mkdir dir="${report.dir}/html"/>
+    </target>
+
+    <target name="compile" depends="init,hib.generate"
+            description="Compiles all source code">
+        <javac srcdir="${src.dir}" classpathref="compile.classpath"
+               destdir="${class.dir}" debug="true"
+                />
+
+        <copy todir="${war.dir}/WEB-INF">
+            <fileset dir="${src.dir}">
+                <include name="**/mess*.properties"/>
+                <include name="**/*-context.xml"/>
+            </fileset>
+
+        </copy>
+        <native2ascii dest="${war.dir}/WEB-INF/classes" src="${src.dir}" includes="**/*.properties"/>
+        <touch file="${war.dir}/WEB-INF/web.xml"/>
+    </target>
+
+    <target name="compile.test" depends="compile">
+        <javac srcdir="${test.dir}"
+               classpathref="compile.classpath"
+               destdir="${test.class.dir}"/>
+    </target>
+
+    <target name="test" depends="compile.test">
+        <junit printsummary="yes"
+               haltonerror="no"
+               fork="yes">
+            <formatter type="xml" usefile="true"/>
+            <classpath refid="compile.classpath"/>
+            <classpath refid="test.classpath"/>
+            <batchtest todir="${report.dir}">
+                <fileset dir="${test.class.dir}">
+                    <include name="**/*Test*"/>
+                </fileset>
+            </batchtest>
+        </junit>
+        <junitreport todir="${report.dir}">
+            <fileset dir="${report.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${report.dir}/html"/>
+        </junitreport>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="shell.RentABikeAssembler" classpathref="compile.classpath"/>
+    </target>
+
+    <target name="clean" description="Erases contents of classes dir">
+        <delete dir="${class.dir}"/>
+        <delete dir="${test.class.dir}"/>
+        <!--delete dir="${webapp.dir}"/-->
+    </target>
+
+    <target name="deploy" depends="compile">
+
+        <copy todir="${webapp.dir}">
+            <fileset dir="${war.dir}"/>
+        </copy>
+    </target>
+
+    <target name="install.app" depends="compile">
+        <install username="both" password="tomcat" url="http://localhost:8080/manager" path="/forum" war="file://${basedir}/${war.dir}"/>
+    </target>
+
+     <target name="uninstall.app">
+        <undeploy username="both" password="tomcat" url="http://localhost:8080/manager" path="/forum"/>
+    </target>
+
+    <target name="start.app">
+        <start username="both" password="tomcat" url="http://localhost:8080/manager" path="/forum"/>
+    </target>
+
+    <target name="reload.app" depends="compile">
+        <reload username="both" password="tomcat" url="http://localhost:8080/manager" path="/forum"/>
+    </target>
+
+</project>

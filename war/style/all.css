@@ -1,0 +1,14 @@
+html,body,tr,td,ul,li,p{
+    background-color:white;
+    font: 12px/1.2em Verdana,Arial,Helvetica,sans-serif;
+}
+#page{
+    width:100%
+}
+#sidebar-menu{
+    width:200px;
+    float:left;
+}
+#content{
+    float:left;
+}

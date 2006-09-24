@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<decorators defaultdir="/WEB-INF/decorators">
+	<!--decorator name="rootpage" page="root.jsp">
+		<url-pattern>/index.html</url-pattern>
+	</decorator>
+	<decorator name="service" page="service.jsp">
+		<url-pattern>/service*</url-pattern>
+	</decorator-->
+ 	<decorator name="allpages" page="decorator.jsp">
+ 		<url-pattern>/*.html</url-pattern>
+ 	</decorator>
+</decorators>
