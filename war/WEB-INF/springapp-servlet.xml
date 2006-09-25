@@ -14,6 +14,7 @@
     </bean>
 
     <bean id="removeComplaint" class="net.paguo.web.RemoveComplaintController" parent="listComplaints"/>
+    <bean id="removeProblem" class="net.paguo.web.RemoveProblemController" parent="listProblems"/>
 
     <bean name="addCrash" class="net.paguo.web.ManageFailureController">
         <property name="controller">
@@ -68,6 +69,7 @@
                 <prop key="/problems/addCrash.html">addCrash</prop>
                 <prop key="/problems/addComplaint.html">addComplaint</prop>
                 <prop key="/problems/removeComplaint.html">removeComplaint</prop>
+                <prop key="/problems/removeProblem.html">removeProblem</prop>
             </props>
         </property>
 

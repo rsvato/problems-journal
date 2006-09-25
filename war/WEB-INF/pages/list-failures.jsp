@@ -13,6 +13,7 @@
     <c:if test="${not empty requestScope.failures}">
         <table class="list">
             <tr>
+                <th/>
                 <th>
                     <fmt:message key="label.date"/>
                 </th>
@@ -36,6 +37,16 @@
                     </c:choose>
                 </c:set>
                 <tr class="${style}">
+                    <td>
+                        <c:set var="rlink">
+                            <c:url value="/problems/removeProblem.html">
+                                <c:param name="problemId">
+                                    ${failure.id}
+                                </c:param>
+                            </c:url>
+                        </c:set>
+                        <a href="${rlink}" class="cmd"><img src="<c:url value="/img/remove.png"/>" alt="remove"/></a>
+                    </td>
                     <td>
                         <fmt:formatDate value="${failure.failureTime}" type="date"/>
                     </td>

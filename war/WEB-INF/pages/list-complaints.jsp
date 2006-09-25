@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head><title>
-    <fmt:message key="list.failures.title"/>
+    <fmt:message key="list.complaints.title"/>
 </title></head>
 <body>
 <div id="pageContent">
