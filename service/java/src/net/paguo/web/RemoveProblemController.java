@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.paguo.domain.problems.ClientComplaint;
 import net.paguo.domain.problems.NetworkProblem;
 
 /**
