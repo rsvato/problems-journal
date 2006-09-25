@@ -42,8 +42,7 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
     public PK create(T o) {
         Session session = getSession();
         try{
-            PK pk = (PK) session.save(o);
-            return pk;
+            return (PK) session.save(o);
         }finally{
             releaseSession(session);
         }
@@ -61,11 +60,22 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
     }
 
     public void update(T o) {
-        getSession().update(o);
+        Session session = getSession();
+        try{
+            session.update(o);
+        }finally{
+            releaseSession(session);
+        }
     }
 
     public void delete(T o) {
-        getSession().delete(o);
+        Session session = getSession();
+        try{
+            session.delete(o);
+        }finally{
+            releaseSession(session);
+        }
+
     }
 
     @SuppressWarnings("unchecked")

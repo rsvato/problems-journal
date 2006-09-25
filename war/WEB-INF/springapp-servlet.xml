@@ -13,6 +13,8 @@
         </property>
     </bean>
 
+    <bean id="removeComplaint" class="net.paguo.web.RemoveComplaintController" parent="listComplaints"/>
+
     <bean name="addCrash" class="net.paguo.web.ManageFailureController">
         <property name="controller">
             <ref bean="failureController"/>
@@ -52,6 +54,7 @@
         </property>
     </bean>
 
+
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="interceptors">
              <list>
@@ -64,6 +67,7 @@
                 <prop key="/problems/clients-journal.html">listComplaints</prop>
                 <prop key="/problems/addCrash.html">addCrash</prop>
                 <prop key="/problems/addComplaint.html">addComplaint</prop>
+                <prop key="/problems/removeComplaint.html">removeComplaint</prop>
             </props>
         </property>
 
