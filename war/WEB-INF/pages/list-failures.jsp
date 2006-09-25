@@ -11,7 +11,7 @@
         <fmt:message key="list.failures.title"/>
     </h1>
     <c:if test="${not empty requestScope.failures}">
-        <table>
+        <table class="list">
             <tr>
                 <th>
                     <fmt:message key="label.date"/>
@@ -24,8 +24,18 @@
                 </th>
                 <th></th>
             </tr>
-            <c:forEach var="failure" items="${requestScope.failures}">
-                <tr>
+             <c:forEach var="failure" items="${requestScope.failures}" varStatus="index">
+                <c:set var="style">
+                    <c:choose>
+                        <c:when test="${index.index mod 2 eq 0}">
+                            odd
+                        </c:when>
+                        <c:otherwise>
+                            even
+                        </c:otherwise>
+                    </c:choose>
+                </c:set>
+                <tr class="${style}">
                     <td>
                         <fmt:formatDate value="${failure.failureTime}" type="date"/>
                     </td>

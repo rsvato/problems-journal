@@ -1,14 +1,52 @@
-html,body,tr,td,ul,li,p{
-    background-color:white;
-    font: 12px/1.2em Verdana,Arial,Helvetica,sans-serif;
+html, body, tr, td, ul, li, p {
+    background-color: white;
+    font: 12px / 1.2em Verdana, Arial, Helvetica, sans-serif;
 }
-#page{
-    width:100%
+
+#page {
+    width: 100%
 }
-#sidebar-menu{
-    width:200px;
-    float:left;
+
+#sidebar-menu {
+    width: 200px;
+    float: left;
 }
-#content{
-    float:left;
+
+#content {
+    float: left;
+}
+
+table.list tr td, table.list tr th {
+    vertical-align: top;
+}
+
+table.list {
+    border-collapse: collapse;
+}
+
+table.list tr.even td {
+    background-color: #ccf;
+}
+
+table.list tr.odd td {
+    background-color: #fee;
+}
+
+table.list tr th {
+    text-align: left;
+    background-color: #aaa;
+}
+
+table.list a.up {
+    background: url( "../img/up.png" ) left center;
+    text-decoration: none;
+}
+
+table.list a.down {
+    background: url( "../img/down.png" ) left center;
+    text-decoration: none;
+}
+
+a img {
+    border: none;
 }

@@ -23,7 +23,7 @@
         <spring:bind path="problem.failureTime">
             <label for="ftime"><fmt:message key="problem.time"/></label>
             <input type="text" id="ftime" name="failureTime" value="${status.value}"/>
-            <a href="javascript:NewCal('failureTime','yyymmdd',true,24)"><img src="<c:url value="/img/cal.gif"/>" width="16" height="16" border="0" alt="Pick a date"></a>
+            <a href="javascript:NewCal('ftime','yyymmdd',true,24)"><img src="<c:url value="/img/cal.gif"/>" width="16" height="16" border="0" alt="Pick a date"></a>
             <span class="errorspan">
                 ${status.errorMessage}
             </span>
