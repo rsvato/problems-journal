@@ -52,6 +52,7 @@ table.list tr td, table.list tr th {
 
 table.list {
     border-collapse: collapse;
+    width:80%;
 }
 
 table.list td{
@@ -83,4 +84,29 @@ table.list a.down {
 
 a img {
     border: none;
+}
+
+.clear{
+clear:both;
+}
+label{
+display:block;
+float:left;
+width:120px;
+text-align:right;
+padding-right: 10px;
+}
+textarea{
+width:300px;
+height:150px;
+border: #ccc solid 1px;
+}
+.inputText, input[type="text"]{
+width:150px;
+border: #ccc solid thin;
+}
+.submit,input[type="submit"]{
+font-weight: bold;
+border: #ccc solid thin;
+padding: 2px 15px;
 }
