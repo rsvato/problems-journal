@@ -7,6 +7,7 @@
 </title></head>
 <body>
 <div id="pageContent">
+    <h1><fmt:message key="list.complaints.title"/></h1>
     <c:if test="${not empty requestScope.failures}">
         <table class="list">
             <caption>
