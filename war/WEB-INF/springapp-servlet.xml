@@ -57,11 +57,11 @@
 
 
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="interceptors">
+        <!--property name="interceptors">
              <list>
                  <ref bean="openSessionInViewInterceptor"/>
              </list>
-        </property>
+        </property-->
         <property name="mappings">
             <props>
                 <prop key="/problems/journal.html">listProblems</prop>

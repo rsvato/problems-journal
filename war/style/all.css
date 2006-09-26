@@ -4,6 +4,10 @@ html, body, tr, td, ul, li, p {
     font: 11px / 1.2em Verdana, Arial, Helvetica, sans-serif;
 }
 
+body{
+  margin:0;
+}
+
 #page {
     width: 100%;
 }
@@ -53,23 +57,48 @@ table.list tr td, table.list tr th {
 table.list {
     border-collapse: collapse;
     width:80%;
+    border:none;
 }
 
 table.list td{
     padding: 5px;
+    border-bottom:#153 solid 1px;
 }
 
-table.list tr.even td {
-    background-color: #ccf;
+.even td {
+    background-color: rgb(231,242,247);
 }
 
-table.list tr.odd td {
-    background-color: #fee;
+.odd td {
+    background-color: #fff;
 }
 
-table.list tr th {
-    text-align: left;
-    background-color: #aaa;
+table.list caption{
+	background-color:#8ab1c2;
+	color:black;
+	font-weight:bold;
+	font-size:14px;
+	text-align: left;
+	border: #153 solid 1px;
+	background-image: url(../img/table_titlebar_gradient.jpg);
+	background-repeat: repeat-x;
+	margin-left: -1px;
+	padding-top: 3px;
+    	padding-right: 10px;
+    	padding-bottom: 5px;
+    	padding-left: 7px;
+}
+
+table.list th {
+    background-color: rgb(231,242,247);
+    background-image: url(../img/column_hdr_gradient.gif);
+    background-repeat: repeat-x;
+    font-weight: bold;
+    padding-top: 4px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    text-align:left;
 }
 
 table.list a.up {
