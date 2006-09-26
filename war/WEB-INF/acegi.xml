@@ -103,7 +103,7 @@
         <bean id="daoAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
             <property name="userDetailsService" ref="userDetailsService"/>
             <property name="userCache">
-                <bean class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
+                <bean class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache" >
                     <property name="cache">
                         <bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
                             <property name="cacheManager">
@@ -114,8 +114,11 @@
                     </property>
                 </bean>
             </property>
+            <property name="passwordEncoder" ref="passwordEncoder"/> 
         </bean>
 
+
+        <bean id="passwordEncoder" class="org.acegisecurity.providers.encoding.ShaPasswordEncoder"/>
         <!-- UserDetailsService is the most commonly frequently Acegi Security interface implemented by end users -->
         <bean id="userDetailsService" class="net.paguo.web.security.RadionetUserDaoImpl">
             <property name="dao">

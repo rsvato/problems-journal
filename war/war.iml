@@ -47,15 +47,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="spring-framework-1.2.7" level="application" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../lib/acegi-security-1.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="acegi-security-1.0.1" level="application" />
     <orderEntryProperties />
   </component>
   <component name="WebModuleBuildComponent">
@@ -76,11 +68,6 @@
     </containerElement>
     <containerElement type="library" level="module">
       <attribute name="method" value="1" />
-      <attribute name="URI" value="/WEB-INF/lib/acegi-security-1.0.1.jar" />
-      <url>jar://$MODULE_DIR$/../lib/acegi-security-1.0.1.jar!/</url>
-    </containerElement>
-    <containerElement type="library" level="module">
-      <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib/jstl-1.1.0.jar" />
       <url>jar://$MODULE_DIR$/../lib/jstl-1.1.0.jar!/</url>
     </containerElement>
@@ -93,6 +80,10 @@
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib/sitemesh-2.2.1.jar" />
       <url>jar://$MODULE_DIR$/WEB-INF/lib/sitemesh-2.2.1.jar!/</url>
+    </containerElement>
+    <containerElement type="library" name="acegi-security-1.0.1" level="application">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
     <containerElement type="library" name="Spring-1.2.7" level="application">
       <attribute name="method" value="0" />
