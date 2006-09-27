@@ -4,7 +4,9 @@
 <html>
 <head><title>
     <fmt:message key="list.complaints.title"/>
-</title></head>
+</title>
+    <script type="text/javascript" src="<c:url value="/script/application.js"/>"></script>
+</head>
 <body>
 <div id="pageContent">
     <h1><fmt:message key="list.complaints.title"/></h1>
@@ -45,7 +47,7 @@
                     <tr class="${style}">
                         <td>
                             <c:set var="rlink">
-                                <c:url value="/cd problems/removeComplaint.html">
+                                <c:url value="/problems/removeComplaint.html">
                                     <c:param name="complaintId">
                                         ${failure.id}
                                     </c:param>
@@ -53,6 +55,7 @@
                             </c:set>
                             <a href="${rlink}" class="cmd"><img src="<c:url value="/img/remove.png"/>"
                                                                 alt="remove"/></a>
+                            <a href="javascript:showResolutionForm(${failure.id})"><fmt:message key="add.resolution"/></a>
                         </td>
                         <td>
                             <fmt:formatDate value="${failure.failureTime}" type="date"/>
@@ -70,6 +73,8 @@
                 </c:forEach>
             </tbody>
         </table>
+
+        <c:import url="/WEB-INF/pages/fragments/createRestoreAction.jsp"/>
     </c:if>
 </div>
 </body>

@@ -31,7 +31,7 @@ ul.menu {
 
 ul.menu li {
     font: 10px / 1.2em Verdana, sans-serif;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 ul.menu * a:link, ul.menu * a:visited {
@@ -50,19 +50,21 @@ ul.menu ul {
     list-style: none;
 }
 
-table.list tr td, table.list tr th {
+table.list td, table.list th {
     vertical-align: top;
+    border-right:#153 solid 1px;
 }
 
 table.list {
     border-collapse: collapse;
     width:80%;
     border:none;
+    border-left:#153 solid 1px;
 }
 
 table.list td{
     padding: 5px;
-    border-bottom:#153 solid 1px;
+    border-right:#153 solid 1px;
 }
 
 .even td {
@@ -129,13 +131,22 @@ textarea{
 width:300px;
 height:150px;
 border: #ccc solid 1px;
+    float:left;
 }
 .inputText, input[type="text"]{
 width:150px;
 border: #ccc solid thin;
+    float:left;
 }
 .submit,input[type="submit"]{
 font-weight: bold;
-border: #ccc solid thin;
-padding: 2px 15px;
+    background-color:#ccc;
+    border-left: #999 outset 1px;
+    border-bottom: #999 outset 1px;
+    border-right: none;
+    border-top:none;
+    color: #999;
+    text-align:center;
+    padding: 2px 12px;
+    clear:both;
 }

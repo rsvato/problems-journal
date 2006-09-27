@@ -74,9 +74,14 @@
                 <value>
                     CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
                     PATTERN_TYPE_APACHE_ANT
-                    /problems/*journal*=ROLE_ANY
-                    /problems/add*=ROLE_SALES
-                    /**=IS_AUTHENTICATED_ANONYMOUSLY
+                    /login.jsp=IS_AUTHENTICATED_ANONYMOUSLY
+                    /style/*=IS_AUTHENTICATED_ANONYMOUSLY
+                    /img/*=IS_AUTHENTICATED_ANONYMOUSLY
+                    /script/*=IS_AUTHENTICATED_ANONYMOUSLY
+                    /index.jsp=ROLE_ANY
+                    /problems/*=ROLE_ANY
+                    /problems/add/*=ROLE_SUPERVISOR
+                    /problems/append/*=ROLE_TECH
                 </value>
             </property>
         </bean>

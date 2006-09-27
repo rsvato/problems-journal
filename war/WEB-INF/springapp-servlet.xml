@@ -66,8 +66,8 @@
             <props>
                 <prop key="/problems/journal.html">listProblems</prop>
                 <prop key="/problems/clients-journal.html">listComplaints</prop>
-                <prop key="/problems/addCrash.html">addCrash</prop>
-                <prop key="/problems/addComplaint.html">addComplaint</prop>
+                <prop key="/problems/add/addCrash.html">addCrash</prop>
+                <prop key="/problems/add/addComplaint.html">addComplaint</prop>
                 <prop key="/problems/removeComplaint.html">removeComplaint</prop>
                 <prop key="/problems/removeProblem.html">removeProblem</prop>
             </props>

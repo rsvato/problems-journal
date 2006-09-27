@@ -94,7 +94,7 @@
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
     <webroots>
-      <root url="file://$MODULE_DIR$/WEB-INF" relative="/WEB-INF" />
+      <root url="file://$MODULE_DIR$" relative="/" />
     </webroots>
   </component>
   <component name="WeblogicWebModuleProperties" />

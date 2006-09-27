@@ -3,6 +3,7 @@ package net.paguo.controller;
 import net.paguo.domain.problems.NetworkFailure;
 import net.paguo.domain.problems.ClientComplaint;
 import net.paguo.domain.problems.NetworkProblem;
+import net.paguo.domain.problems.FailureRestore;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.dao.NetworkFailureDao;
 import net.paguo.dao.ClientComplaintDao;
@@ -40,6 +41,11 @@ public class NetworkFailureController {
         f.setFailureTime(failureTime);
         f.setClient(ci);
         getComplaintDao().create(f);
+    }
+
+    public void assignResolution(NetworkFailure failure, FailureRestore issue){
+        failure.setRestoreAction(issue);
+        getFailureDao().update(failure);
     }
 
     public List<NetworkFailure> findAllFailures(){

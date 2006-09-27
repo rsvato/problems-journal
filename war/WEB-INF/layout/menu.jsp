@@ -5,6 +5,7 @@
     <li>
         <fmt:message key="menu.problems.label"/>
     </li>
+    <li>
     <ul>
         <li>
             <c:url var="clientjournal" value="/problems/clients-journal.html"/>
@@ -18,11 +19,13 @@
                 <fmt:message key="journal.network"/>
             </a>
         </li>
-        <li><a href="<c:url value="/problems/addComplaint.html"/>">
+        <li><a href="<c:url value="/problems/add/addComplaint.html"/>">
             <fmt:message key="new.complain"/>
         </a></li>
-        <li><a href="<c:url value="/problems/addCrash.html"/>">
+        <li><a href="<c:url value="/problems/add/addCrash.html"/>">
             <fmt:message key="new.problem"/>
         </a></li>
     </ul>
+    </li>
+    <li><a href="<c:url value="/j_acegi_logout"/>"><fmt:message key="logout.title"/></a>
 </ul>

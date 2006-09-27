@@ -12,6 +12,7 @@
     <meta content="no-cache" http-equiv="Cache-control"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/style/all.css"/>">
     <script type="text/javascript" src="<c:url value="/script/datetimepicker.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/script/application.js"/>"></script>
 </head>
 <body>
 <div id="page">

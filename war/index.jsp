@@ -4,8 +4,6 @@
 <html>
   <head><title><fmt:message key="welcome.title"/></title></head>
   <body>
-    <div id="sidebar-menu">
-        <c:import url="/WEB-INF/layout/menu.jsp"/>
-    </div>
+    &nbsp;
   </body>
 </html>
