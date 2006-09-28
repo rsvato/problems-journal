@@ -1,17 +1,7 @@
-html, body, tr, td, ul, li, p {
-    background-color: white;
-    color: black;
-    font: 11px / 1.2em Verdana, Arial, Helvetica, sans-serif;
+#topbar-menu{
+    width:100%;
+    clear:both;
 }
-
-body{
-  margin:0;
-}
-
-#page {
-    width: 100%;
-}
-
 #sidebar-menu {
     float: left;
     width: 150px;
@@ -22,131 +12,272 @@ body{
     width: auto;
 }
 
-ul.menu {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    font: 10px / 1.2em bold;
+body {
+    background: #ffffff;
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 80%;
+    margin: 10px;
+    padding: 0px;
 }
 
-ul.menu li {
-    font: 10px / 1.2em Verdana, sans-serif;
-    font-weight: normal;
+p {
+	text-align: 	justify;
+	padding: 		5px 30px 5px 30px;
+	color: 			#786A47;
+	line-height: 	1.5em;
 }
 
-ul.menu * a:link, ul.menu * a:visited {
-    text-decoration: none;
-    color: #333;
+li {
+	text-align: 	justify;
+	padding: 		0px 30px 5px 30px;
+	color: 			#786A47;
+	line-height: 	1.5em;
 }
 
-ul.menu * a:hover {
-    color: red;
-    background: #aaa;
+a {
+	text-decoration: none;
+	background: 	transparent url(../img/dot.gif) repeat-x left bottom;
 }
 
-ul.menu ul {
-    padding: 0;
-    margin: 5px;
-    list-style: none;
+a:link ,a:visited {
+	color: 			#5785A4;
 }
 
-table.list td, table.list th {
-    vertical-align: top;
-    border-right:#153 solid 1px;
+a:hover {
+	color: 			#1D8FDB;
 }
+
+input {
+	background: #EEEEFF;
+}
+
+/* Main table */
 
 table.list {
+    text-align: left;
+    border: 1px solid #808080;
     border-collapse: collapse;
-    width:80%;
-    border:none;
-    border-left:#153 solid 1px;
+    margin-top: 10px;
+    width: 100%;
+    background: white;
 }
 
-table.list td{
-    padding: 5px;
-    border-right:#153 solid 1px;
-}
-
-.even td {
-    background-color: rgb(231,242,247);
-}
-
-.odd td {
-    background-color: #fff;
-}
-
-table.list caption{
-	background-color:#8ab1c2;
-	color:black;
-	font-weight:bold;
-	font-size:14px;
-	text-align: left;
-	border: #153 solid 1px;
-	background-image: url(../img/table_titlebar_gradient.jpg);
-	background-repeat: repeat-x;
-	margin-left: -1px;
-	padding-top: 3px;
-    	padding-right: 10px;
-    	padding-bottom: 5px;
-    	padding-left: 7px;
+table.list td {
+    padding-left: 3px;
 }
 
 table.list th {
-    background-color: rgb(231,242,247);
-    background-image: url(../img/column_hdr_gradient.gif);
-    background-repeat: repeat-x;
-    font-weight: bold;
-    padding-top: 4px;
-    padding-right: 5px;
-    padding-bottom: 3px;
-    padding-left: 5px;
-    text-align:left;
+    background-color: #8080FF;
+    padding: 2px;
+    padding-left: 3px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    color: black;
 }
 
-table.list a.up {
-    background: url( "../img/up.png" ) left center;
+table.list thead tr {
+    background-color: #FFCC00;
+}
+
+table.list tr.even {
+    background: #EEEEEE;
+    border-top: 1px solid #C0C0C0;
+    color: #000000;
+}
+
+table.list tr.odd {
+    background: #FFFFFF;
+    border-top: 1px solid #C0C0C0;
+    color: #000000;
+}
+
+table.list th.sortable {
+	cursor: pointer;
+	background-image: url(../img/arrow_off.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+table.list th.sorted {
+	cursor: pointer;
+	background-image: url(../img/arrow_down.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+table.list th.sorted_asc {
+	cursor: pointer;
+	background-image: url(../img/arrow_up.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+/* DHTML box for add/edit forms */
+
+.box, .box_body, .box_head, .box_head h2 {
+	background: transparent url(../img/box.png) no-repeat bottom right;
+}
+
+.box {
+	width: 600px;
+	padding-right: 15px; /* the gap on the right edge of the image (not content padding) */
+	margin: 20px auto; /* use to position the box */
+	z-index: 10;
+	position: absolute;
+	top: 100px;
+	left: 230px;
+}
+
+.box_head {
+	background-position: top right;
+	margin-right: -15px; /* pull the right image over on top of border */
+	padding-right: 40px; /* right-image-gap + right-inside padding */
+}
+
+.box_head h2 {
+	background-position: top left;
+	margin: 0; /* reset main site styles*/
+	border: 0; /* ditto */
+	padding: 25px 0 15px 40px; /* padding-left = image gap + interior padding ... no padding-right */
+	height: auto !important; height: 1%; /* IE Holly Hack */
+}
+
+.box_body {
+	background-position: bottom left;
+	margin-right: 25px; /* interior-padding right */
+	padding: 15px 0 15px 40px; /* mirror .cssbox_head right/left */
+}
+
+/* specific elements */
+.odd {
+	background : transparent;
+}
+
+.even {
+	background : #C3C3C3;
+}
+#page {
+    width: 95%;
+}
+
+#title {
+    font-size: 12px;
+}
+
+#username {
+    font-size: 12px;
+    text-align: right;
+}
+
+#content {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    width: 95%;
+    border-top: 0;
+    clear: both;
+    margin: 0px;
+    padding: 15px;
+}
+
+#sourceforge {
+}
+
+#bug {
+    font-size: 10px;
+    text-align: right;
+}
+
+.error {
+    color: #FF0000;
+}
+
+.success {
+	color: #FF0000;
+}
+
+.completed {
+	font-style: italic;
+	font-size: 80%;
+}
+
+.menu {
+    border-bottom: 1px solid #cccccc;
+    margin: 0;
+    padding-bottom: 19px;
+    padding-left: 10px;
+}
+
+.menu a:link, #menuList a:visited	{
+    background: #e8ebf0;
+    border: 1px solid #cccccc;
+    color: #666666;
+    float: left;
+    font-size: small;
+    font-weight: normal;
+    line-height: 14px;
+    margin-right: 8px;
+    padding: 2px 10px 2px 10px;
     text-decoration: none;
 }
 
-table.list a.down {
-    background: url( "../img/down.png" ) left center;
-    text-decoration: none;
+.menu a:link.active, #menuList a:visited.active	{
+    background: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    color: #000000;
 }
 
-a img {
+.menu a:hover	{
+    color: #ff0000;
+}
+
+.menu li.selected a {
+    background: #ffffff !important;
+    border-bottom: 1px solid #ffffff !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+.menu li.selected ul.submenu {
+    display: inline;
+    left: 10px;
+    position: absolute;
+    top: 35px;
+}
+
+.menu li.selected ul.submenu a {
+    background: #ffffff;
     border: none;
+    border-left: 1px solid #cccccc;
+    color: #999999 !important;
+    font-size: .98em;
+    font-weight: bold;
+    line-height: 12px;
+    margin-right: 4px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
 }
 
-.clear{
-clear:both;
+.menu li.selected ul.submenu a.selected {
+    background: transparent;
+    color: #000 !important;
 }
-label{
-display:block;
-float:left;
-width:120px;
-text-align:right;
-padding-right: 10px;
+
+.menu ul a:hover, #menuList ul.submenu a:hover {
+    color: #ff0000 !important;
 }
-textarea{
-width:300px;
-height:150px;
-border: #ccc solid 1px;
-    float:left;
+
+.menu ul, #menuList li	{
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
-.inputText, input[type="text"]{
-width:150px;
-border: #ccc solid thin;
-    float:left;
+
+.menu ul.submenu {
+    display: none;
+    width: 90%;
 }
-.submit,input[type="submit"]{
-font-weight: bold;
-    background-color:#ccc;
-    border-left: #999 outset 1px;
-    border-bottom: #999 outset 1px;
-    border-right: none;
-    border-top:none;
-    color: #999;
-    text-align:center;
-    padding: 2px 12px;
-    clear:both;
-}
+
+a img { border: none; }
+
+

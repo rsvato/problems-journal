@@ -171,4 +171,12 @@
             <value>true</value>
         </property>
     </bean>
+
+    <!--menu setup -->
+    <bean id="menu" class="net.sf.navigator.menu.MenuLoader">
+        <property name="menuConfig">
+            <value>/WEB-INF/menu-config.xml</value>
+        </property>
+    </bean>
+    <!--end menu setup -->
 </beans>

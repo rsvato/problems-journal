@@ -64,12 +64,12 @@
         </property-->
         <property name="mappings">
             <props>
-                <prop key="/problems/journal.html">listProblems</prop>
-                <prop key="/problems/clients-journal.html">listComplaints</prop>
-                <prop key="/problems/add/addCrash.html">addCrash</prop>
-                <prop key="/problems/add/addComplaint.html">addComplaint</prop>
-                <prop key="/problems/removeComplaint.html">removeComplaint</prop>
-                <prop key="/problems/removeProblem.html">removeProblem</prop>
+                <prop key="/crashes/index.html">listProblems</prop>
+                <prop key="/complaints/index.html">listComplaints</prop>
+                <prop key="/crashes/add/addCrash.html">addCrash</prop>
+                <prop key="/complaints/add/addComplaint.html">addComplaint</prop>
+                <prop key="/complaints/removeComplaint.html">removeComplaint</prop>
+                <prop key="/crashes/removeCrash.html">removeProblem</prop>
             </props>
         </property>
 

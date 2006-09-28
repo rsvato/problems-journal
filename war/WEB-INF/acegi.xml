@@ -79,9 +79,10 @@
                     /img/*=IS_AUTHENTICATED_ANONYMOUSLY
                     /script/*=IS_AUTHENTICATED_ANONYMOUSLY
                     /index.jsp=ROLE_ANY
-                    /problems/*=ROLE_ANY
-                    /problems/add/*=ROLE_SUPERVISOR
-                    /problems/append/*=ROLE_TECH
+                    /crashes/*=ROLE_ANY
+                    /complaints/*=ROLE_ANY
+                    /crashes/add/*=ROLE_ANY
+                    /complaints/add/*=ROLE_ANY
                 </value>
             </property>
         </bean>

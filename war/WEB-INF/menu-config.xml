@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer 	name="TabbedMenu"
+  					type="net.sf.navigator.displayer.TabbedMenuDisplayer"/>
+        <Displayer name="SimpleMenu"
+            type="net.sf.navigator.displayer.SimpleMenuDisplayer"/>
+    </Displayers>
+    <Menus>
+        <Menu 	name="crashes"
+				title="list.failures.title"
+				description="Crashes menu"
+				page="/crashes/index.html"/>
+        <Menu 	name="addCrash"
+				title="new.problem"
+				description="New crash"
+				page="/crashes/add/addCrash.html"/>
+        <Menu 	name="complaints"
+				title="list.complaints.title"
+				description="Complaints menu"
+				page="/complaints/index.html"/>
+        <Menu name="addComplaint"
+                title="new.complain"
+                description="New complaint"
+                page="/complaints/add/addComplaint.html"/>
+     </Menus>
+</MenuConfig>
