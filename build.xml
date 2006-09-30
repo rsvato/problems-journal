@@ -104,9 +104,9 @@
             <fileset dir="${domain.src.dir}">
                 <include name="**/mess*.properties"/>
             </fileset>
-            <fileset dir="${conf.dir}">
+            <!--fileset dir="${conf.dir}">
                 <include name="*.xml"/>
-            </fileset>
+            </fileset-->
         </copy>
        <native2ascii dest="${war.dir}/WEB-INF/classes" src="${domain.src.dir}" includes="**/*.properties"/>
     </target>
@@ -119,11 +119,11 @@
 
     <target name="touch" depends="init,compile-service"
             description="Renews web application">
-        <copy todir="${war.dir}/WEB-INF">
+        <!--copy todir="${war.dir}/WEB-INF">
             <fileset dir="${conf.dir}">
                 <include name="*.xml"/>
             </fileset>
-        </copy>
+        </copy-->
         <touch file="${war.dir}/WEB-INF/web.xml"/>
     </target>
 

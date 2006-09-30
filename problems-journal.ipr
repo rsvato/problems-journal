@@ -2,13 +2,6 @@
 <project version="4" relativePaths="false">
   <component name="AntConfiguration">
     <defaultAnt bundledAnt="true" />
-    <buildFile url="file://$PROJECT_DIR$/build.xml">
-      <additionalClassPath />
-      <antReference projectDefault="true" />
-      <customJdkName value="" />
-      <maximumHeapSize value="128" />
-      <properties />
-    </buildFile>
   </component>
   <component name="BuildJarProjectSettings">
     <option name="BUILD_JARS_ON_MAKE" value="false" />
@@ -51,7 +44,22 @@
       <entry name="?*.jpg" />
     </wildcardResourcePatterns>
   </component>
-  <component name="DataSourceManagerImpl" />
+  <component name="DataSourceManagerImpl">
+    <DataSource DataSourceSourceName="LOCAL">
+      <option name="DRIVER_CLASS" value="org.postgresql.Driver" />
+      <option name="DATABASE_URL" value="jdbc://" />
+      <option name="DRIVER_PATH" />
+      <option name="DATBASE_USERNAME" value="" />
+      <option name="ENCODED_DATABASE_PASSWORD" value="" />
+      <option name="DEFAULT_SCHEMA_NAME" value="" />
+      <option name="NAME" value="Datasource" />
+      <libraries>
+        <library>
+          <url>jar://$PROJECT_DIR$/lib/postgresql-8.1-407.jdbc3.jar!/</url>
+        </library>
+      </libraries>
+    </DataSource>
+  </component>
   <component name="DependenciesAnalyzeManager">
     <option name="myForwardDirection" value="false" />
   </component>

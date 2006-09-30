@@ -29,7 +29,7 @@
         <menu:displayMenu name="complaints"/>
     </menu:useMenuDisplayer>
     <div id="sidebar-menu">
-        <menu:useMenuDisplayer name="SimpleMenu">
+        <menu:useMenuDisplayer name="CoolMenu">
             <menu:displayMenu name="addComplaint"/>
         </menu:useMenuDisplayer>
     </div>

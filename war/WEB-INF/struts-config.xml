@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+    <form-beans>
+        <form-bean name="crashForm" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="failureId" type="int"/>
+            <form-property name="failureTime" type="java.lang.String"/>
+            <form-property name="failureDescription" type="java.lang.String"/>
+        </form-bean>
+        <form-bean name="complaintForm" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="failureId" type="int"/>
+            <form-property name="failureTime" type="java.lang.String"/>
+            <form-property name="failureDescription" type="java.lang.String"/>
+            <form-property name="failrureClient" type="java.lang.String"/>
+        </form-bean>
+    </form-beans>
+
+    <action-mappings>
+        <action path="listCrashes"
+                className="org.springframework.web.struts.DelegatingActionProxy">
+            <forward name="list" path="/WEB-INF/pages/list-complaints.jsp"/>
+        </action>
+    </action-mappings>
+
+    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+        <set-property property="contextConfigLocation" value="/WEB-INF/ds-context.xml,/WEB-INF/acegi.xml,/WEB-INF/action-context.xml"/>
+    </plug-in>
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>

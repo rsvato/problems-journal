@@ -47,7 +47,7 @@
                     <tr class="${style}">
                         <td>
                             <c:set var="rlink">
-                                <c:url value="/problems/removeComplaint.html">
+                                <c:url value="/complaints/removeComplaint.html">
                                     <c:param name="complaintId">
                                         ${failure.id}
                                     </c:param>

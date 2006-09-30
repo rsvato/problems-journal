@@ -3,8 +3,8 @@
     <Displayers>
         <Displayer 	name="TabbedMenu"
   					type="net.sf.navigator.displayer.TabbedMenuDisplayer"/>
-        <Displayer name="SimpleMenu"
-            type="net.sf.navigator.displayer.SimpleMenuDisplayer"/>
+        <Displayer name="CoolMenu"
+            type="net.sf.navigator.displayer.CoolMenuDisplayer4"/>
     </Displayers>
     <Menus>
         <Menu 	name="crashes"

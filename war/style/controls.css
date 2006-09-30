@@ -1,0 +1,16 @@
+label{
+    width:150px;
+    display:block;
+    float:left;
+}
+.control{
+    float:left;
+    display:block;
+}
+.clear{
+    clear:both;
+}
+
+.input{
+    width:150px;
+}

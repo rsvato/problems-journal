@@ -13,7 +13,7 @@
     <fmt:message key="problem.create.new"/>
 </h1>
 
-<form action="<c:url value="/problems/addCrash.html"/>" method="post">
+<form action="<c:url value="/crashes/add/addCrash.html"/>" method="post">
     <spring:bind path="problem.id">
         <c:if test="${not empty status.value}">
             <input type="hidden" name="id" value="${status.value}"/>
