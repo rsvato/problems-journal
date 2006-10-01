@@ -87,6 +87,8 @@ public class EditComplaintAction extends BaseFailureAndClientAction {
             problemDao.update(problem);
         }
 
+        form.reset(mapping, request);
+
         return mapping.findForward("success");
 
     }

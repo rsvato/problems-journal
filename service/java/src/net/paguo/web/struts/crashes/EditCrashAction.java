@@ -66,7 +66,7 @@ public class EditCrashAction extends BaseFailureAction {
         }else{
             problemDao.update(problem);
         }
-
+        form.reset(mapping, request);
         return mapping.findForward("success");
 
     }

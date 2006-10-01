@@ -29,13 +29,12 @@
         </label>
         <span class="control">
             <html:select styleClass="input" styleId="failureClient" property="failureClient">
-                <c:forEach var="item" items="${requestScope.clients}">
-                    <option value="${item.id}">${item.clientName}</option>
-                </c:forEach>
+                <html:options collection="clients" property="id" labelProperty="clientName"/>
             </html:select>
         </span>
     </div>
     <br class="clear"/>
     <fmt:message key="save.button" var="slabel"/>
-    <html:submit value="${slabel}"/>
+    <fmt:message key="clear.button" var="clear"/>
+    <html:submit value="${slabel}"/> <html:reset value="${clear}"/>
 </html:form>

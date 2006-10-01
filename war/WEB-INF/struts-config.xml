@@ -2,20 +2,9 @@
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
 <struts-config>
     <form-beans>
-        <form-bean name="selectFailureForm" type="org.apache.struts.validator.DynaValidatorForm">
-            <form-property name="failureId" type="java.lang.Integer"/>
-        </form-bean>
-        <form-bean name="crashForm" type="org.apache.struts.validator.DynaValidatorForm" dynamic="true">
-            <form-property name="failureId" type="java.lang.Integer"/>
-            <form-property name="failureTime" type="java.lang.String"/>
-            <form-property name="failureDescription" type="java.lang.String"/>
-        </form-bean>
-        <form-bean name="complaintForm" type="org.apache.struts.validator.DynaValidatorForm">
-            <form-property name="failureId" type="java.lang.Integer"/>
-            <form-property name="failureTime" type="java.lang.String"/>
-            <form-property name="failureDescription" type="java.lang.String"/>
-            <form-property name="failureClient" type="java.lang.Integer"/>
-        </form-bean>
+        <form-bean name="selectFailureForm" type="net.paguo.web.struts.forms.SelectFailureForm"/>
+        <form-bean name="crashForm" type="net.paguo.web.struts.forms.ProblemForm"/>
+        <form-bean name="complaintForm" type="net.paguo.web.struts.forms.ClientComplaintForm"/>
     </form-beans>
 
     <action-mappings>
