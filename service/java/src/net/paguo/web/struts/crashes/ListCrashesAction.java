@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.domain.problems.NetworkProblem;
+import net.paguo.web.struts.BaseFailureAction;
+import net.paguo.utils.NetworkFailureComparator;
 
 import java.util.List;
+import java.util.Collections;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,20 +23,12 @@ import java.util.List;
  * Time: 2:21:53
  * To change this template use File | Settings | File Templates.
  */
-public class ListCrashesAction extends Action {
-    private NetworkFailureController controller;
+public class ListCrashesAction extends BaseFailureAction {
     private static final String FAILURES_KEY = "failures";
-
-    public NetworkFailureController getController() {
-        return controller;
-    }
-
-    public void setController(NetworkFailureController controller) {
-        this.controller = controller;
-    }
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         List<NetworkProblem> problems = getController().findAllProblems();
+        Collections.sort(problems, new NetworkFailureComparator());
         request.setAttribute(FAILURES_KEY, problems);
         return mapping.findForward("list");
     }

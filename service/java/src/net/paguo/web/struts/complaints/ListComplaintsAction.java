@@ -6,10 +6,13 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForm;
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.domain.problems.ClientComplaint;
+import net.paguo.web.struts.BaseFailureAction;
+import net.paguo.utils.NetworkFailureComparator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Collections;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,20 +21,12 @@ import java.util.List;
  * Time: 3:07:18
  * To change this template use File | Settings | File Templates.
  */
-public class ListComplaintsAction extends Action{
-    private NetworkFailureController controller;
+public class ListComplaintsAction extends BaseFailureAction {
     private static final String FAILURES_KEY = "failures";
-
-    public NetworkFailureController getController() {
-        return controller;
-    }
-
-    public void setController(NetworkFailureController controller) {
-        this.controller = controller;
-    }
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         List<ClientComplaint> problems = getController().findAllComplaints();
+        Collections.sort(problems, new NetworkFailureComparator());
         request.setAttribute(FAILURES_KEY, problems);
         return mapping.findForward("list");
     }

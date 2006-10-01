@@ -23,10 +23,12 @@
                 type="net.paguo.web.struts.crashes.ListCrashesAction">
             <forward name="list" path=".crashes.list"/>
         </action>
+
         <action path="/listComplaints"
                 type="net.paguo.web.struts.complaints.ListComplaintsAction">
             <forward name="list" path=".complaints.list"/>
         </action>
+
         <action path="/prepareCrashEdit" type="net.paguo.web.struts.crashes.PrepareEditCrashAction"
                 name="crashForm"
                 validate="false"
@@ -35,11 +37,42 @@
         </action>
 
         <action path="/doCrashEdit" type="net.paguo.web.struts.crashes.EditCrashAction"
-                input=".crash.edit"
+                input="/prepareCrashEdit.action"
                 name="crashForm"
                 unknown="false"
                 validate="true">
               <forward name="success" path="/listCrashes.action"/>
+        </action>
+
+        <action path="/dropCrash" type="net.paguo.web.struts.DropFailureAction"
+            input="/listCrashes.action"
+            name="selectFailureForm"
+            validate="true"
+            parameter="crash">
+            <forward name="success" path="/listCrashes.action"/>
+        </action>
+
+        <action path="/dropComplaint" type="net.paguo.web.struts.DropFailureAction"
+            input="/listComplaints.action"
+            name="selectFailureForm"
+            validate="true"
+            parameter="complaint">
+            <forward name="success" path="/listComplaints.action"/>
+        </action>
+
+        <action path="/prepareComplaintEdit" type="net.paguo.web.struts.complaints.PrepareEditComplaintAction"
+                name="complaintForm"
+                validate="false"
+                input="/listComplaints.action">
+            <forward name="next" path=".complaints.edit"/>
+        </action>
+
+        <action path="/doComplaintEdit" type="net.paguo.web.struts.complaints.EditComplaintAction"
+                input="/prepareComplaintEdit.action"
+                name="complaintForm"
+                unknown="false"
+                validate="true">
+              <forward name="success" path="/listComplaints.action"/>
         </action>
     </action-mappings>
 

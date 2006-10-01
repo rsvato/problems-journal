@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-    <bean name="/listCrashes" class="net.paguo.web.struts.crashes.ListCrashesAction">
-       <property name="controller" ref="failureController"/>
+    <bean id="baseFailureAction" abstract="true" class="net.paguo.web.struts.BaseFailureAction">
+        <property name="controller" ref="failureController"/>
     </bean>
-    <bean name="/listComplaints" class="net.paguo.web.struts.complaints.ListComplaintsAction">
-       <property name="controller" ref="failureController"/>
+
+    <bean id="baseFailureAndClientAction" abstract="true" class="net.paguo.web.struts.BaseFailureAndClientAction" parent="baseFailureAction">
+        <property name="clientController" ref="clientController"/>
     </bean>
-    <bean name="/prepareCrashEdit" class="net.paguo.web.struts.crashes.PrepareEditCrashAction">
-       <property name="controller" ref="failureController"/>
-    </bean>
-    <bean name="/doCrashEdit" class="net.paguo.web.struts.crashes.EditCrashAction">
-       <property name="controller" ref="failureController"/>
-    </bean>
+
+    <bean name="/dropCrash" class="net.paguo.web.struts.DropFailureAction" parent="baseFailureAction"/>
+    <bean name="/dropComplaint" class="net.paguo.web.struts.DropFailureAction" parent="baseFailureAction"/>
+    <bean name="/listCrashes" class="net.paguo.web.struts.crashes.ListCrashesAction" parent="baseFailureAction"/>
+    <bean name="/listComplaints" class="net.paguo.web.struts.complaints.ListComplaintsAction"  parent="baseFailureAction"/>
+    <bean name="/prepareCrashEdit" class="net.paguo.web.struts.crashes.PrepareEditCrashAction"  parent="baseFailureAction"/>
+    <bean name="/doCrashEdit" class="net.paguo.web.struts.crashes.EditCrashAction"  parent="baseFailureAction"/>
+    <bean name="/prepareComplaintEdit" class="net.paguo.web.struts.complaints.PrepareEditComplaintAction" parent="baseFailureAndClientAction"/>
+    <bean name="/doComplaintEdit" class="net.paguo.web.struts.complaints.EditComplaintAction"  parent="baseFailureAndClientAction"/>
 </beans>

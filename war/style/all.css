@@ -280,4 +280,12 @@ table.list th.sorted_asc {
 
 a img { border: none; }
 
+#errors{
+    color:#ff3333;
+}
+#errors h4{
+    color:white;
+    background-color:#ff3333;
+}
+
 

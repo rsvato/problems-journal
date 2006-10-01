@@ -1,15 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: slava
-  Date: 01.10.2006
-  Time: 2:01:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles-el" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html-el" %>
+<%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic-el" %>
 <tiles:importAttribute scope="request"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -20,6 +14,7 @@
     <meta content="no-cache" http-equiv="Cache-control"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/style/all.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/style/tabs.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/style/controls.css"/>"/>
     <script type="text/javascript" src="<c:url value="/script/datetimepicker.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/script/application.js"/>"></script>
 </head>
@@ -30,12 +25,21 @@
        </div>
 
        <div id="content">
+           <logic:messagesPresent>
            <div id="errors">
-               <html:errors/>
+               <h4><fmt:message key="errors.occured"/></h4>
+               <ul>
+                   <html:messages id="error">
+                       <li>${error}</li>
+                   </html:messages>
+               </ul>
            </div>
            <div id="messages">
-               <html:messages id="message"/>
+               <html:messages message="true" id="msg">
+                   ${msg}<br/>
+               </html:messages>
            </div>
+           </logic:messagesPresent>
            <tiles:insert attribute="content"/>
        </div>
    </div>

@@ -4,7 +4,7 @@
         <Displayer 	name="TabbedMenu"
   					type="net.sf.navigator.displayer.TabbedMenuDisplayer"/>
         <Displayer name="CoolMenu"
-            type="net.sf.navigator.displayer.CoolMenuDisplayer4"/>
+            type="net.sf.navigator.displayer.ListMenuDisplayer"/>
     </Displayers>
     <Menus>
         <Menu 	name="crashes"
@@ -14,7 +14,7 @@
         <Menu 	name="addCrash"
 				title="new.problem"
 				description="New crash"
-				page="/crashes/add/addCrash.html"/>
+				page="/prepareCrashEdit.action"/>
         <Menu 	name="complaints"
 				title="list.complaints.title"
 				description="Complaints menu"
@@ -22,6 +22,6 @@
         <Menu name="addComplaint"
                 title="new.complain"
                 description="New complaint"
-                page="/complaints/add/addComplaint.html"/>
+                page="/prepareComplaintEdit.action"/>
      </Menus>
 </MenuConfig>

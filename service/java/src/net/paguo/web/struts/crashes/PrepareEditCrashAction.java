@@ -7,29 +7,17 @@ import org.apache.struts.action.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.paguo.controller.NetworkFailureController;
 import net.paguo.domain.problems.NetworkProblem;
+import net.paguo.web.struts.BaseFailureAction;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+public class PrepareEditCrashAction extends BaseFailureAction {
 
-public class PrepareEditCrashAction extends Action {
-    private NetworkFailureController controller;
-    private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-    public NetworkFailureController getController() {
-        return controller;
-    }
-
-    public void setController(NetworkFailureController controller) {
-        this.controller = controller;
-    }
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.err.println(form);
         Integer id = (Integer) getSimpleProperty(form, "failureId");
         if (id != null){
-           NetworkProblem problem = controller.getProblemDao().read(id);
+           NetworkProblem problem = getController().getProblemDao().read(id);
             if (problem != null){
                 setSimpleProperty(form, "failureId", problem.getId());
                 setSimpleProperty(form, "failureDescription", problem.getFailureDescription());

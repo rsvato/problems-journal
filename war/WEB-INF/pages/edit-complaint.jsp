@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html-el" %>
-<html:form action="/doCrashEdit">
+<html:form action="/doComplaintEdit">
     <html:hidden property="failureId"/>
     <div class="inputDiv">
         <label for="ftime"><fmt:message key="problem.time"/></label>
@@ -20,6 +20,19 @@
         </label>
         <span class="control">
             <html:textarea property="failureDescription" styleClass="input area" styleId="failureDescription"/>
+        </span>
+    </div>
+    <br class="clear"/>
+    <div class="inputDiv">
+        <label for="failureClient">
+            <fmt:message key="problem.client"/>
+        </label>
+        <span class="control">
+            <html:select styleClass="input" styleId="failureClient" property="failureClient">
+                <c:forEach var="item" items="${requestScope.clients}">
+                    <option value="${item.id}">${item.clientName}</option>
+                </c:forEach>
+            </html:select>
         </span>
     </div>
     <br class="clear"/>

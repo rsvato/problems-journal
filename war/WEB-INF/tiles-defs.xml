@@ -22,4 +22,8 @@
         <put name="content" value="/WEB-INF/pages/edit-crash.jsp"/>
         <put name="title" value="new.problem"/>
     </definition>
+    <definition name=".complaints.edit" extends=".default.layout">
+        <put name="content" value="/WEB-INF/pages/edit-complaint.jsp"/>
+        <put name="title" value="new.complaint"/>
+    </definition>
 </tiles-definitions>

@@ -1,15 +1,18 @@
-package net.paguo.web.struts.crashes;
+package net.paguo.web.struts.complaints;
 
 import static org.apache.commons.beanutils.PropertyUtils.getSimpleProperty;
 import org.apache.struts.action.*;
+import net.paguo.controller.NetworkFailureController;
+import net.paguo.controller.ClientItemController;
+import net.paguo.domain.problems.ClientComplaint;
+import net.paguo.domain.clients.ClientItem;
+import net.paguo.dao.ClientComplaintDao;
+import net.paguo.web.struts.BaseFailureAndClientAction;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.paguo.domain.problems.NetworkProblem;
-import net.paguo.dao.NetworkProblemDao;
-import net.paguo.web.struts.BaseFailureAction;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -20,18 +23,18 @@ import java.util.Date;
  * Time: 3:25:12
  * To change this template use File | Settings | File Templates.
  */
-public class EditCrashAction extends BaseFailureAction {
-
+public class EditComplaintAction extends BaseFailureAndClientAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         Integer id = (Integer) getSimpleProperty(form, "failureId");
         String description = (String) getSimpleProperty(form, "failureDescription");
         String failureTime = (String) getSimpleProperty(form, "failureTime");
-        boolean newCrash = id == null || id == 0;
+        Integer clientId = (Integer) getSimpleProperty(form, "failureClient");
+        boolean newComplaint = id == null || id == 0;
         ActionMessages messages = new ActionMessages();
-        NetworkProblem problem;
-        NetworkProblemDao problemDao = getController().getProblemDao();
-        if (newCrash){
-           problem = new NetworkProblem();
+        ClientComplaint problem;
+        ClientComplaintDao problemDao = getController().getComplaintDao();
+        if (newComplaint){
+           problem = new ClientComplaint();
         } else {
             try{
                 problem = problemDao.read(id);
@@ -47,10 +50,26 @@ public class EditCrashAction extends BaseFailureAction {
             return mapping.getInputForward();
         }
 
+        if (clientId == null){
+           messages.add(ActionErrors.GLOBAL_MESSAGE, new ActionMessage("error.invalid.id"));
+           addErrors(request, messages);
+           saveErrors(request, messages);
+           return mapping.getInputForward();
+        }
+
+        ClientItem item = getClientController().getClientDao().read(clientId);
+
+        if (item == null){
+           messages.add(ActionErrors.GLOBAL_MESSAGE, new ActionMessage("error.invalid.id"));
+           addErrors(request, messages);
+           saveErrors(request, messages);
+           return mapping.getInputForward();
+        }
+
         Date failTime;
 
         try{
-           failTime = df.parse(failureTime);
+           failTime = EditComplaintAction.df.parse(failureTime);
         }catch(ParseException e){
             messages.add(ActionErrors.GLOBAL_MESSAGE, new ActionMessage("error.invalid.time"));
             addErrors(request, messages);
@@ -60,8 +79,9 @@ public class EditCrashAction extends BaseFailureAction {
 
         problem.setFailureTime(failTime);
         problem.setFailureDescription(description);
+        problem.setClient(item);
 
-        if (newCrash){
+        if (newComplaint){
             problemDao.create(problem);
         }else{
             problemDao.update(problem);
