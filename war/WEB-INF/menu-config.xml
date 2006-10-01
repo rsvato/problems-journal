@@ -10,7 +10,7 @@
         <Menu 	name="crashes"
 				title="list.failures.title"
 				description="Crashes menu"
-				page="/crashes/index.html"/>
+				page="/listCrashes.action"/>
         <Menu 	name="addCrash"
 				title="new.problem"
 				description="New crash"
@@ -18,7 +18,7 @@
         <Menu 	name="complaints"
 				title="list.complaints.title"
 				description="Complaints menu"
-				page="/complaints/index.html"/>
+				page="/listComplaints.action"/>
         <Menu name="addComplaint"
                 title="new.complain"
                 description="New complaint"

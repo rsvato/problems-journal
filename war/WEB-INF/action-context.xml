@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
+    <bean name="/listCrashes" class="net.paguo.web.struts.crashes.ListCrashesAction">
+       <property name="controller" ref="failureController"/>
+    </bean>
+    <bean name="/listComplaints" class="net.paguo.web.struts.complaints.ListComplaintsAction">
+       <property name="controller" ref="failureController"/>
+    </bean>
+    <bean name="/prepareCrashEdit" class="net.paguo.web.struts.crashes.PrepareEditCrashAction">
+       <property name="controller" ref="failureController"/>
+    </bean>
+    <bean name="/doCrashEdit" class="net.paguo.web.struts.crashes.EditCrashAction">
+       <property name="controller" ref="failureController"/>
+    </bean>
 </beans>

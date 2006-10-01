@@ -2,30 +2,57 @@
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
 <struts-config>
     <form-beans>
-        <form-bean name="crashForm" type="org.apache.struts.validator.DynaValidatorForm">
-            <form-property name="failureId" type="int"/>
+        <form-bean name="selectFailureForm" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="failureId" type="java.lang.Integer"/>
+        </form-bean>
+        <form-bean name="crashForm" type="org.apache.struts.validator.DynaValidatorForm" dynamic="true">
+            <form-property name="failureId" type="java.lang.Integer"/>
             <form-property name="failureTime" type="java.lang.String"/>
             <form-property name="failureDescription" type="java.lang.String"/>
         </form-bean>
         <form-bean name="complaintForm" type="org.apache.struts.validator.DynaValidatorForm">
-            <form-property name="failureId" type="int"/>
+            <form-property name="failureId" type="java.lang.Integer"/>
             <form-property name="failureTime" type="java.lang.String"/>
             <form-property name="failureDescription" type="java.lang.String"/>
-            <form-property name="failrureClient" type="java.lang.String"/>
+            <form-property name="failureClient" type="java.lang.Integer"/>
         </form-bean>
     </form-beans>
 
     <action-mappings>
-        <action path="listCrashes"
-                className="org.springframework.web.struts.DelegatingActionProxy">
-            <forward name="list" path="/WEB-INF/pages/list-complaints.jsp"/>
+        <action path="/listCrashes"
+                type="net.paguo.web.struts.crashes.ListCrashesAction">
+            <forward name="list" path=".crashes.list"/>
+        </action>
+        <action path="/listComplaints"
+                type="net.paguo.web.struts.complaints.ListComplaintsAction">
+            <forward name="list" path=".complaints.list"/>
+        </action>
+        <action path="/prepareCrashEdit" type="net.paguo.web.struts.crashes.PrepareEditCrashAction"
+                name="crashForm"
+                validate="false"
+                input="/listCrashes.action">
+            <forward name="next" path=".crash.edit"/>
+        </action>
+
+        <action path="/doCrashEdit" type="net.paguo.web.struts.crashes.EditCrashAction"
+                input=".crash.edit"
+                name="crashForm"
+                unknown="false"
+                validate="true">
+              <forward name="success" path="/listCrashes.action"/>
         </action>
     </action-mappings>
 
-    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
-        <set-property property="contextConfigLocation" value="/WEB-INF/ds-context.xml,/WEB-INF/acegi.xml,/WEB-INF/action-context.xml"/>
-    </plug-in>
+    <controller>
+        <set-property property="processorClass" value="org.springframework.web.struts.DelegatingTilesRequestProcessor"/>
+    </controller>
+
+    <message-resources parameter="messages"/>
+
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
         <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
     </plug-in>
 </struts-config>

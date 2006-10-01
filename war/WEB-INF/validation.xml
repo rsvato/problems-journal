@@ -7,6 +7,12 @@
     <formset>
         <form name="crashForm">
             <field property="failureTime" depends="required"/>
+            <field property="failureDescription" depends="required"/>
+        </form>
+        <form name="complaintForm">
+            <field property="failureTime" depends="required"/>
+            <field property="failureDescription" depends="required"/>
+            <field property="failureClient" depends="required,integer"/>
         </form>
     </formset>
 </form-validation>

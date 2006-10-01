@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4" relativePaths="true" type="JAVA_MODULE">
   <component name="ModuleRootManager" />
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+  <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/../classes/production/service" />
     <exclude-output />
     <output-test url="file://$MODULE_DIR$/../classes/test/service" />
@@ -291,6 +291,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="acegi-security-1.0.1" level="application" />
+    <orderEntry type="library" name="Struts-1.2.9" level="application" />
     <orderEntryProperties />
   </component>
   <component name="Struts Module Component" />

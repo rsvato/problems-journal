@@ -1,2 +1,15 @@
 <graph version="1.0">
+<cell id="0" x="360.0" y="140.0" doc="" el="/doCrashEdit" cap="/doCrashEdit" type="action"/>
+<cell id="1" x="510.0" y="140.0" doc="" el="/listCrashes" cap="/listCrashes" type="action"/>
+<cell id="2" x="200.0" y="290.0" el=".complaints.list" cap=".complaints.list" type="page" mod="tile;"/>
+<cell id="3" x="210.0" y="140.0" el=".crash.edit" cap=".crash.edit" type="page" mod="tile;"/>
+<cell id="4" x="660.0" y="140.0" el=".crashes.list" cap=".crashes.list" type="page" mod="tile;"/>
+<cell id="5" x="50.0" y="290.0" doc="" el="/listComplaints" cap="/listComplaints" type="action"/>
+<cell id="6" x="60.0" y="140.0" doc="" el="/prepareCrashEdit" cap="/prepareCrashEdit" type="action"/>
+<cell id="7" x="20.0" y="50.0" el="/WEB-INF/pages/list-complaints.jsp" cap="/WEB-INF/pages/list-complaints.jsp" type="page"/>
+<edge id="8" src="1" tgt="4" doc="" el="list" cap="list" type="forward"/>
+<edge id="9" src="5" tgt="2" doc="" el="list" cap="list" type="forward"/>
+<edge id="10" src="0" tgt="1" path="100.5;455.5;95.5;1785.5" labx="500" laby="-10" doc="" el="success" cap="success" type="forward"/>
+<edge id="11" src="6" tgt="3" doc="" el="next" cap="next" type="forward"/>
+<edge id="12" src="3" tgt="0" el=".crash.edit" cap="input" type="action-input"/>
 </graph>

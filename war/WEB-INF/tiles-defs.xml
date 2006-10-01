@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+    <definition name=".default.layout" page="/WEB-INF/tiles/mainLayout.jsp">
+        <put name="header" value="/WEB-INF/tiles/header.jsp"/>
+        <put name="content"/>
+        <put name="title"/>
+    </definition>
+    <definition name=".crashes.list" extends=".default.layout">
+        <put name="content" value="/WEB-INF/pages/list-failures.jsp"/>
+        <put name="title" value="journal.network"/>
+    </definition>
+    <definition name=".complaints.list" extends=".default.layout">
+        <put name="content" value="/WEB-INF/pages/list-complaints.jsp"/>
+        <put name="title" value="journal.network"/>
+    </definition>
+    <definition name=".crash.edit" extends=".default.layout">
+        <put name="content" value="/WEB-INF/pages/edit-crash.jsp"/>
+        <put name="title" value="new.problem"/>
+    </definition>
+</tiles-definitions>
