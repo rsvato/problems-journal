@@ -4,7 +4,7 @@
         <Displayer 	name="TabbedMenu"
   					type="net.sf.navigator.displayer.TabbedMenuDisplayer"/>
         <Displayer name="CoolMenu"
-            type="net.sf.navigator.displayer.ListMenuDisplayer"/>
+            type="net.sf.navigator.displayer.SimpleMenuDisplayer"/>
     </Displayers>
     <Menus>
         <Menu 	name="crashes"

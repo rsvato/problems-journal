@@ -42,6 +42,7 @@
                 unknown="false"
                 validate="true">
               <forward name="success" path="/listCrashes.action"/>
+              <forward name="error" path="/prepareCrashEdit.action"/>
         </action>
 
         <action path="/dropCrash" type="net.paguo.web.struts.DropFailureAction"
@@ -72,7 +73,8 @@
                 name="complaintForm"
                 unknown="false"
                 validate="true">
-              <forward name="success" path="/listComplaints.action"/>
+            <forward name="success" path="/listComplaints.action"/>
+            <forward name="error" path="/prepareComplaintEdit.action"/>
         </action>
     </action-mappings>
 

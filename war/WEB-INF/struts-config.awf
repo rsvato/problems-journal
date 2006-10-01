@@ -12,9 +12,9 @@
 <cell id="10" x="600.0" y="40.0" el=".complaints.edit" cap=".complaints.edit" type="page" mod="tile;"/>
 <cell id="11" x="330.0" y="30.0" doc="" el="/doComplaintEdit" cap="/doComplaintEdit" type="action" mod="form;"/>
 <cell id="12" x="500.0" y="340.0" doc="" el="/doComplaintEdit" cap="/doComplaintEdit" type="action" mod="form;"/>
-<edge id="13" src="1" tgt="4" doc="" el="list" cap="list" type="forward"/>
-<edge id="14" src="5" tgt="2" doc="" el="list" cap="list" type="forward"/>
-<edge id="15" src="0" tgt="1" path="100.5;455.5;95.5;1785.5" labx="500" laby="-10" doc="" el="success" cap="success" type="forward"/>
+<cell id="13" x="40.0" y="660.0" el="/listCrashes.action" cap="/listCrashes.action" type="page"/>
+<edge id="14" src="1" tgt="4" doc="" el="list" cap="list" type="forward"/>
+<edge id="15" src="5" tgt="2" doc="" el="list" cap="list" type="forward"/>
 <edge id="16" src="6" tgt="3" doc="" el="next" cap="next" type="forward"/>
 <edge id="17" src="3" tgt="0" el=".crash.edit" cap="input" type="action-input"/>
 <edge id="18" src="1" tgt="8" el="/listCrashes.action" cap="input" type="action-input"/>
@@ -25,4 +25,7 @@
 <edge id="23" src="9" tgt="5" doc="" el="success" cap="success" type="forward"/>
 <edge id="24" src="11" tgt="10" doc="" el="next" cap="next" type="forward"/>
 <edge id="25" src="12" tgt="5" doc="" el="success" cap="success" type="forward"/>
+<edge id="26" src="0" tgt="13" doc="" el="success" cap="success" type="forward"/>
+<edge id="27" src="0" tgt="6" doc="" el="error" cap="error" type="forward"/>
+<edge id="28" src="12" tgt="11" doc="" el="error" cap="error" type="forward"/>
 </graph>
