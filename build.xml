@@ -13,7 +13,7 @@
     <property name="tomcat.dir" value="/home/ubuntu/tomcat"/>
     <property name="webapp.dir" value="${tomcat.dir}/webapps/"/>
     <property name="devel.lib.dir" value="lib"/>
-    <property name="xdoclet.dir" value="/home/ubuntu/share/dist/xdoclet-1.2.3"/>
+    <property name="xdoclet.dir" value="tools/lib/xdoclet"/>
     <property name="app.location" value="file:///${war.dir}"/>
     <property name="conf.dir" value="conf"/>
 
