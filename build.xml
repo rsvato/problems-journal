@@ -10,7 +10,7 @@
     <property name="class.dir" value="${war.dir}/WEB-INF/classes"/>
     <property name="lib.dir" value="${war.dir}/WEB-INF/lib"/>
     <property name="merge.dir" value="merge"/>
-    <property name="tomcat.dir" value="/home/ubuntu/tomcat"/>
+    <property name="tomcat.dir" value="/usr/share/tomcat5"/>
     <property name="webapp.dir" value="${tomcat.dir}/webapps/"/>
     <property name="devel.lib.dir" value="lib"/>
     <property name="xdoclet.dir" value="tools/lib/xdoclet"/>
@@ -45,7 +45,7 @@
 
     <path id="xdoclet.path">
         <path refid="compile.classpath"/>
-            <fileset dir="${xdoclet.dir}/lib">
+            <fileset dir="${xdoclet.dir}">
                 <include name="*.jar"/>
             </fileset>
      </path>
@@ -202,14 +202,15 @@
                      username="${tomcat.manager.username}"
                      password="${tomcat.manager.password}"/>
         </target>
-
-    <target name="deploywar" depends="touch,copy-libs" description="Deploy application as a WAR file">
+    <target name="dist" depends="touch,copy-libs">
         <war destfile="${name}.war"
              webxml="${war.dir}/WEB-INF/web.xml">
             <fileset dir="${war.dir}">
                 <include name="**/*.*"/>
             </fileset>
         </war>
+    </target>
+    <target name="deploywar" depends="dist" description="Deploy application as a WAR file">
         <copy todir="${webapp.dir}" preservelastmodified="true">
             <fileset dir=".">
                 <include name="*.war"/>

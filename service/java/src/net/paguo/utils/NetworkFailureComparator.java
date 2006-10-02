@@ -3,6 +3,7 @@ package net.paguo.utils;
 import net.paguo.domain.problems.NetworkFailure;
 
 import java.util.Comparator;
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,6 +15,6 @@ import java.util.Comparator;
 public class NetworkFailureComparator implements Comparator<NetworkFailure> {
 
     public int compare(NetworkFailure o1, NetworkFailure o2) {
-        return o2.getFailureTime().compareTo(o1.getFailureTime());
+        return new Long(o2.getFailureTime().getTime()).compareTo(new Long(o1.getFailureTime().getTime()));
     }
 }
