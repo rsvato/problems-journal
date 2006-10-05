@@ -80,6 +80,12 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>app</servlet-name>
+        <servlet-class>org.apache.tapestry.ApplicationServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
     <!--<servlet-mapping>
         <servlet-name>springapp</servlet-name>
         <url-pattern>*.html</url-pattern>
@@ -88,6 +94,11 @@
     <servlet-mapping>
         <servlet-name>struts</servlet-name>
         <url-pattern>*.action</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>app</servlet-name>
+        <url-pattern>/app</url-pattern>
     </servlet-mapping>
 
     <!--<error-page>

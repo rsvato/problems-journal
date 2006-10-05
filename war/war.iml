@@ -2,7 +2,7 @@
 <module version="4" relativePaths="true" type="J2EE_WEB_MODULE">
   <component name="AppServerSpecificValidatorsManager" />
   <component name="ModuleRootManager" />
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/../classes/production/war" />
     <exclude-output />
     <exclude-exploded />
@@ -76,6 +76,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Tapestry-4.0.2" level="application" />
     <orderEntryProperties />
   </component>
   <component name="Struts Module Component" />
@@ -85,7 +86,8 @@
     <setting name="JAR_URL" value="file://" />
     <setting name="JAR_ENABLED" value="false" />
     <setting name="SYNC_EXPLODED_DIR" value="true" />
-    <setting name="BUILD_ON_FRAME_DEACTIVATION" value="false" />
+    <setting name="BUILD_MODULE_ON_FRAME_DEACTIVATION" value="false" />
+    <setting name="BUILD_EXTERNAL_DEPENDENCIES" value="false" />
     <setting name="RUN_JASPER_VALIDATION" value="true" />
   </component>
   <component name="WebModuleProperties">
@@ -124,17 +126,24 @@
       <attribute name="URI" value="/WEB-INF/lib/sitemesh-2.2.1.jar" />
       <url>jar://$MODULE_DIR$/WEB-INF/lib/sitemesh-2.2.1.jar!/</url>
     </containerElement>
-    <containerElement type="library" level="application" name="spring-framework-1.2.7">
+    <containerElement type="library" name="acegi-security-1.0.1" level="application">
+      <attribute name="method" value="0" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="spring-framework-1.2.7" level="application">
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
+    <containerElement type="library" name="Tapestry-4.0.2" level="application">
+      <attribute name="method" value="0" />
+      <attribute name="URI" value="&lt;N/A&gt;" />
+    </containerElement>
     <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WEB-INF/web.xml" optional="false" version="2.3" />
+    <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/WEB-INF/classes/META-INF/persistence.xml" optional="false" version="1.0" />
     <webroots>
       <root url="file://$MODULE_DIR$" relative="/" />
     </webroots>
   </component>
-  <component name="WeblogicWebModuleProperties">
-    <option name="IS_RUN_APPC" value="false" />
-  </component>
+  <component name="WeblogicWebModuleProperties" />
 </module>
 
