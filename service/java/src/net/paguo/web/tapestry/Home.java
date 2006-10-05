@@ -8,7 +8,7 @@ import org.apache.tapestry.annotations.InjectPage;
  * User: slava
  * Date: 06.10.2006
  * Time: 0:49:07
- * Version: $Id $
+ * Version: $Id$
  */
 public abstract class Home extends BasePage {
     @InjectPage("Result")
