@@ -64,6 +64,7 @@ table.list {
 
 table.list td {
     padding-left: 3px;
+    border-left: 1px solid #C0C0C0;
 }
 
 table.list th {

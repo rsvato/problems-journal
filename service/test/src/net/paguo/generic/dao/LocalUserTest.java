@@ -6,6 +6,7 @@ import net.paguo.dao.LocalRoleDao;
 import net.paguo.domain.users.LocalRole;
 import net.paguo.domain.users.UserPermission;
 import net.paguo.domain.users.LocalUser;
+import net.paguo.domain.common.PersonalData;
 
 import java.util.Set;
 import java.util.HashSet;
@@ -34,8 +35,10 @@ public class LocalUserTest extends AbstractDAOTest {
         UserPermission permission = getPermissionDao().read(permId);
         assertNotNull(permission);
         LocalUser user = new LocalUser();
-        user.setName("Svyatoslav");
-        user.setFamilyName("Reyentenko");
+        PersonalData pd = new PersonalData();
+        pd.setName("Svyatoslav");
+        pd.setFamilyName("Reyentenko");
+        user.setPersonalData(pd);
         user.setPermissionEntry(permission);
         user.setRoles(roles);
         getUserDao().create(user);

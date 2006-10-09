@@ -1,6 +1,5 @@
 package net.paguo.domain.clients;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.io.Serializable;
 
@@ -54,7 +53,4 @@ public class ClientItem implements Serializable {
         this.deleted = deleted;
     }
 
-    public String toString(){
-        return ToStringBuilder.reflectionToString(this);
-    }
 }

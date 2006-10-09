@@ -14,5 +14,10 @@
             <field property="failureDescription" depends="required"/>
             <field property="failureClient" depends="required,integer"/>
         </form>
+        <form name="causeForm">
+            <field property="discoveredCause" depends="required"/>
+            <field property="failureId" depends="required"/>
+            <field property="kind" depends="required"/>
+        </form>
     </formset>
 </form-validation>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class SelectFailureForm extends ValidatorForm {
     private Integer failureId;
+    private String submit;
 
     public Integer getFailureId() {
         return failureId;
@@ -19,5 +20,14 @@ public class SelectFailureForm extends ValidatorForm {
     public void reset(ActionMapping actionMapping, HttpServletRequest httpServletRequest) {
         this.failureId = null;
         super.reset(actionMapping, httpServletRequest);
+    }
+
+
+    public String getSubmit() {
+        return submit;
+    }
+
+    public void setSubmit(String submit) {
+        this.submit = submit;
     }
 }

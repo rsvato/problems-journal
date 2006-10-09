@@ -57,15 +57,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/../../../../slava/wrk/problems-journal/war/WEB-INF/classes" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="spring-framework-1.2.7" level="application" />
     <orderEntry type="module-library">
       <library>
@@ -77,6 +68,17 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Tapestry-4.0.2" level="application" />
+    <orderEntry type="module" module-name="domain" />
+    <orderEntry type="module" module-name="service" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/WEB-INF/classes" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntryProperties />
   </component>
   <component name="Struts Module Component" />
@@ -91,10 +93,13 @@
     <setting name="RUN_JASPER_VALIDATION" value="true" />
   </component>
   <component name="WebModuleProperties">
-    <containerElement type="library" level="module">
+    <containerElement type="module" name="domain">
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/classes" />
-      <url>file://$MODULE_DIR$/../../../../slava/wrk/problems-journal/war/WEB-INF/classes</url>
+    </containerElement>
+    <containerElement type="module" name="service">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/classes" />
     </containerElement>
     <containerElement type="library" level="module">
       <attribute name="method" value="1" />
@@ -103,8 +108,138 @@
     </containerElement>
     <containerElement type="library" level="module">
       <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/acegi-security-tiger-1.0.1.jar" />
+      <url>jar://$MODULE_DIR$/../lib/acegi-security-tiger-1.0.1.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/antlr.jar" />
+      <url>jar://$MODULE_DIR$/../lib/antlr.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/aopalliance.jar" />
+      <url>jar://$MODULE_DIR$/../lib/aopalliance.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/c3p0-0.9.0.4.jar" />
+      <url>jar://$MODULE_DIR$/../lib/c3p0-0.9.0.4.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/cglib-nodep-2.1_3.jar" />
+      <url>jar://$MODULE_DIR$/../lib/cglib-nodep-2.1_3.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-beanutils-1.7.0.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-beanutils-1.7.0.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-codec-1.3.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-codec-1.3.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-collections-3.1.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-collections-3.1.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-dbcp.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-dbcp.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-digester-1.6.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-digester-1.6.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-el-1.0.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-el-1.0.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-fileupload.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-fileupload.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-lang-2.1.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-lang-2.1.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-logging.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-logging.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-pool.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-pool.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/commons-validator.jar" />
+      <url>jar://$MODULE_DIR$/../lib/commons-validator.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/dom4j-1.6.jar" />
+      <url>jar://$MODULE_DIR$/../lib/dom4j-1.6.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/ehcache-1.2.2.jar" />
+      <url>jar://$MODULE_DIR$/../lib/ehcache-1.2.2.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/jakarta-oro.jar" />
+      <url>jar://$MODULE_DIR$/../lib/jakarta-oro.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib/jstl-1.1.0.jar" />
       <url>jar://$MODULE_DIR$/../lib/jstl-1.1.0.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/jta.jar" />
+      <url>jar://$MODULE_DIR$/../lib/jta.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/log4j-1.2.8.jar" />
+      <url>jar://$MODULE_DIR$/../lib/log4j-1.2.8.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/odmg-3.0.jar" />
+      <url>jar://$MODULE_DIR$/../lib/odmg-3.0.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/oscache-2.0.jar" />
+      <url>jar://$MODULE_DIR$/../lib/oscache-2.0.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/portal-common-lib.jar" />
+      <url>jar://$MODULE_DIR$/../lib/portal-common-lib.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/portal-format-lib.jar" />
+      <url>jar://$MODULE_DIR$/../lib/portal-format-lib.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/postgresql-8.1-407.jdbc3.jar" />
+      <url>jar://$MODULE_DIR$/../lib/postgresql-8.1-407.jdbc3.jar!/</url>
     </containerElement>
     <containerElement type="library" level="module">
       <attribute name="method" value="1" />
@@ -123,6 +258,21 @@
     </containerElement>
     <containerElement type="library" level="module">
       <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/velocity-dep.jar" />
+      <url>jar://$MODULE_DIR$/../lib/velocity-dep.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/classes" />
+      <url>file://$MODULE_DIR$/WEB-INF/classes</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib/domain.jar" />
+      <url>jar://$MODULE_DIR$/WEB-INF/lib/domain.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib/sitemesh-2.2.1.jar" />
       <url>jar://$MODULE_DIR$/WEB-INF/lib/sitemesh-2.2.1.jar!/</url>
     </containerElement>
@@ -130,16 +280,48 @@
       <attribute name="method" value="0" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
+    <containerElement type="library" name="hibernate-3.2" level="application">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="hibernate-annotations-3.2" level="application">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="hibernate-em-3.2" level="application">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="Junit" level="application">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="mappings" level="project">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/classes" />
+    </containerElement>
+    <containerElement type="library" name="Servlet" level="application">
+      <attribute name="method" value="0" />
+      <attribute name="URI" value="&lt;N/A&gt;" />
+    </containerElement>
     <containerElement type="library" name="spring-framework-1.2.7" level="application">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="Struts-1.2.9" level="application">
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
     <containerElement type="library" name="Tapestry-4.0.2" level="application">
       <attribute name="method" value="0" />
-      <attribute name="URI" value="&lt;N/A&gt;" />
+      <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
     <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WEB-INF/web.xml" optional="false" version="2.3" />
-    <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/WEB-INF/classes/META-INF/persistence.xml" optional="false" version="1.0" />
+    <deploymentDescriptor name="" url="file://$MODULE_DIR$/WEB-INF/classes/META-INF/persistence.xml" optional="false">
+      <option name="DEFAULT_DIR" value="WEB-INF" />
+      <option name="NAME" value="" />
+      <option name="DESCRIPTION" value="" />
+    </deploymentDescriptor>
     <webroots>
       <root url="file://$MODULE_DIR$" relative="/" />
     </webroots>

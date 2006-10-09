@@ -4,6 +4,7 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForm;
+import org.acegisecurity.annotation.Secured;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,12 +18,12 @@ import java.util.List;
 import java.util.Collections;
 
 /**
- * Created by IntelliJ IDEA.
  * User: slava
  * Date: 01.10.2006
  * Time: 2:21:53
- * To change this template use File | Settings | File Templates.
+ * Version: $Id$
  */
+@Secured("ROLE_ALL")
 public class ListCrashesAction extends BaseFailureAction {
     private static final String FAILURES_KEY = "failures";
 

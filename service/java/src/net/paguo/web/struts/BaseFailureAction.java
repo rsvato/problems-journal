@@ -7,11 +7,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
- * Created by IntelliJ IDEA.
  * User: slava
  * Date: 02.10.2006
  * Time: 0:00:46
- * To change this template use File | Settings | File Templates.
+ * Version: $Id$
  */
 public abstract class BaseFailureAction extends Action {
     private NetworkFailureController controller;
@@ -24,4 +23,7 @@ public abstract class BaseFailureAction extends Action {
     public void setController(NetworkFailureController controller) {
         this.controller = controller;
     }
+
+    protected static final String NEXT = "next";
+    protected static final String ERROR = "error";
 }

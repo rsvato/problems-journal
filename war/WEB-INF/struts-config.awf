@@ -1,2 +1,38 @@
 <graph version="1.0">
+<cell id="0" x="60.0" y="140.0" doc="" el="/listCrashes" cap="/listCrashes" type="action"/>
+<cell id="1" x="50.0" y="740.0" doc="" el="/listComplaints" cap="/listComplaints" type="action"/>
+<cell id="2" x="240.0" y="440.0" doc="" el="/prepareCrashEdit" cap="/prepareCrashEdit" type="action" mod="form;"/>
+<cell id="3" x="460.0" y="590.0" doc="" el="/doCrashEdit" cap="/doCrashEdit" type="action" mod="form;"/>
+<cell id="4" x="260.0" y="140.0" doc="" el="/dropCrash" cap="/dropCrash" type="action" mod="form;"/>
+<cell id="5" x="250.0" y="890.0" doc="" el="/dropComplaint" cap="/dropComplaint" type="action" mod="form;"/>
+<cell id="6" x="230.0" y="1040.0" doc="" el="/prepareComplaintEdit" cap="/prepareComplaintEdit" type="action" mod="form;"/>
+<cell id="7" x="450.0" y="1040.0" doc="" el="/doComplaintEdit" cap="/doComplaintEdit" type="action" mod="form;"/>
+<cell id="8" x="240.0" y="70.0" doc="" el="/addRestoreAction" cap="/addRestoreAction" type="action" mod="form;"/>
+<cell id="9" x="60.0" y="70.0" el=".add.cause" cap=".add.cause" type="page" mod="tile;"/>
+<cell id="10" x="60.0" y="1340.0" doc="" el="/showCause" cap="/showCause" type="forward"/>
+<cell id="11" x="260.0" y="290.0" el=".crashes.list" cap=".crashes.list" type="page" mod="tile;"/>
+<cell id="12" x="250.0" y="740.0" el=".complaints.list" cap=".complaints.list" type="page" mod="tile;"/>
+<cell id="13" x="470.0" y="440.0" el=".crash.edit" cap=".crash.edit" type="page" mod="tile;"/>
+<cell id="14" x="450.0" y="1190.0" el=".complaints.edit" cap=".complaints.edit" type="page" mod="tile;"/>
+<edge id="15" src="0" tgt="2" el="/listCrashes.action" cap="input" type="action-input"/>
+<edge id="16" src="2" tgt="3" el="/prepareCrashEdit.action" cap="input" type="action-input"/>
+<edge id="17" src="0" tgt="4" el="/listCrashes.action" cap="input" type="action-input"/>
+<edge id="18" src="1" tgt="5" el="/listComplaints.action" cap="input" type="action-input"/>
+<edge id="19" src="1" tgt="6" el="/listComplaints.action" cap="input" type="action-input"/>
+<edge id="20" src="6" tgt="7" el="/prepareComplaintEdit.action" cap="input" type="action-input"/>
+<edge id="21" src="9" tgt="8" el=".add.cause" cap="input" type="action-input"/>
+<edge id="22" src="10" tgt="9" doc="" el="/showCause" cap="/showCause" type="forward"/>
+<edge id="23" src="0" tgt="11" doc="" el="list" cap="list" type="forward"/>
+<edge id="24" src="1" tgt="12" doc="" el="list" cap="list" type="forward"/>
+<edge id="25" src="2" tgt="13" doc="" el="next" cap="next" type="forward"/>
+<edge id="26" src="3" tgt="0" doc="" el="success" cap="success" type="forward"/>
+<edge id="27" src="3" tgt="2" doc="" el="error" cap="error" type="forward"/>
+<edge id="28" src="4" tgt="0" doc="" el="success" cap="success" type="forward"/>
+<edge id="29" src="5" tgt="1" doc="" el="success" cap="success" type="forward"/>
+<edge id="30" src="6" tgt="14" doc="" el="next" cap="next" type="forward"/>
+<edge id="31" src="7" tgt="1" doc="" el="success" cap="success" type="forward"/>
+<edge id="32" src="7" tgt="6" doc="" el="error" cap="error" type="forward"/>
+<edge id="33" src="8" tgt="0" doc="" el="next" cap="next" type="forward"/>
+<edge id="34" src="8" tgt="1" doc="" el="xnext" cap="xnext" type="forward"/>
+<edge id="35" src="8" tgt="9" doc="" el="error" cap="error" type="forward"/>
 </graph>
