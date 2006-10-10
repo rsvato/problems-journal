@@ -11,6 +11,7 @@ import net.paguo.web.struts.forms.MultiactionForm;
  */
 public class DiscoveredCauseForm extends MultiactionForm {
     private String discoveredCause;
+    private boolean closeFlag;
 
     public String getDiscoveredCause() {
         return discoveredCause;
@@ -18,5 +19,14 @@ public class DiscoveredCauseForm extends MultiactionForm {
 
     public void setDiscoveredCause(String discoveredCause) {
         this.discoveredCause = discoveredCause;
+    }
+
+
+    public boolean isCloseFlag() {
+        return closeFlag;
+    }
+
+    public void setCloseFlag(boolean closeFlag) {
+        this.closeFlag = closeFlag;
     }
 }

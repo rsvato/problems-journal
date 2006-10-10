@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @version $Id $
  * @hibernate.joined-subclass table="network_problems"
  * @hibernate.joined-subclass-key column="p_id"
- * @hibernate.query name="NetworkProblem.findAll" query="from NetworkProblem order by failureTime"
+ * @hibernate.query name="NetworkProblem.findByStatus" query="from NetworkProblem where restoreAction.completed = ? order by failureTime"
  * @hibernate.cache usage="read-write"
  */
 public class NetworkProblem extends NetworkFailure {

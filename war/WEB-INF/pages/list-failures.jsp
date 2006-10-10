@@ -47,6 +47,7 @@
                 </c:set>
                 <tr class="${style}">
                     <td>
+                        <c:if test="${empty failure.restoreAction or not failure.restoreAction.completed}">
                         <c:set var="rlink">
                             <c:url value="/dropCrash.action">
                                 <c:param name="failureId">
@@ -77,6 +78,7 @@
                         </c:set>
                             <a href="${apcause}" class="cmd"><fmt:message key="add.cause"/></a>
                         </nobr>
+                        </c:if>
                     </td>
                     <td>
                         <fmt:formatDate value="${failure.failureTime}" type="date"/>
@@ -89,7 +91,7 @@
                     </td>
                     <td>
                         <c:if test="${not empty failure.restoreAction}">
-                            ${failure.restoreAction.discoveredCause}
+                            ${failure.restoreAction.failureCause}
                         </c:if>
                     </td>
                     <td>

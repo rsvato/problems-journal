@@ -8,12 +8,6 @@
             <fmt:message key="restore.action"/>
         </label>
         <textarea id="action" rows="10" cols="20" name="restoreAction"></textarea>
-        <br class="clear"/>
-        <label for="cause">
-            <fmt:message key="restore.cause"/>
-        </label>
-        <textarea rows="10" cols="20" id="cause" name="restoreCause"></textarea>
-        <br class="clear"/>
         <label for="ftime">
             <fmt:message key="restore.time"/>
         </label>

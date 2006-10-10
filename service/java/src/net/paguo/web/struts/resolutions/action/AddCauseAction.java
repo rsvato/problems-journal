@@ -25,19 +25,21 @@ public class AddCauseAction extends BaseFailureAction {
         Integer failureId = frm.getFailureId();
         NetworkFailure failure = getController().getFailureDao().read(failureId);
         if (failure != null) {
-            if (failure.getRestoreAction().getCompleted()) {
+            FailureRestore fr = failure.getRestoreAction();
+            if (fr != null && fr.getCompleted()) {
                 messages.add(ActionErrors.GLOBAL_MESSAGE, new ActionMessage("error.failure.resolved"));
                 addErrors(request, messages);
                 return mapping.findForward(ERROR);
             }
-            FailureRestore fr = failure.getRestoreAction();
             if (fr == null) {
                 fr = new FailureRestore();
             }
             fr.setFailureCause(frm.getDiscoveredCause());
             fr.setRestoreAction(null);
             fr.setRestoreTime(null);
+            fr.setCompleted(frm.isCloseFlag()); 
             failure.setRestoreAction(fr);
+
             getController().getFailureDao().update(failure);
             if (CrashKind.CRASH.equals(frm.getCrashKind())){
                 return mapping.findForward(NEXT);
