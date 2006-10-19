@@ -5,11 +5,10 @@ import org.apache.struts.action.ActionMapping;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by IntelliJ IDEA.
  * User: slava
  * Date: 02.10.2006
  * Time: 1:36:12
- * To change this template use File | Settings | File Templates.
+ * Version: $Id$
  */
 public class ProblemForm extends SelectFailureForm{
     private String failureTime;

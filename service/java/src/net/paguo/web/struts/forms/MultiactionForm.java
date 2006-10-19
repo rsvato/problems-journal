@@ -1,6 +1,9 @@
 package net.paguo.web.struts.forms;
 
 import net.paguo.web.struts.CrashKind;
+import org.apache.struts.action.ActionMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * User: slava
@@ -20,6 +23,12 @@ public class MultiactionForm extends SelectFailureForm{
     }
 
     public CrashKind getCrashKind(){
+        if (kind == null) return null;
        return CrashKind.valueOf(kind.toUpperCase());
+    }
+
+    public void reset(ActionMapping actionMapping, HttpServletRequest httpServletRequest) {
+       this.kind = null;
+       super.reset(actionMapping, httpServletRequest);
     }
 }

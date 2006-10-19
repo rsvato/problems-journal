@@ -27,12 +27,23 @@
        <div id="content">
            <logic:messagesPresent>
            <div id="errors">
-               <h4><fmt:message key="errors.occured"/></h4>
-               <ul>
-                   <html:messages id="error">
-                       <li>${error}</li>
-                   </html:messages>
-               </ul>
+               <table border="1" width="100%" align="center">
+                   <tr>
+                       <td valign="top">
+                           <img src="<c:url value="/img/icon-warning.gif"/>" border="0"
+                                vspace="2" hspace="10" align="middle"/>
+                       </td>
+                       <td>
+                           <fmt:message key="errors.occured"/>
+                           <ul>
+                               <html:messages id="error">
+                                   <li>${error}</li>
+                               </html:messages>
+                           </ul>
+                       </td>
+
+                   </tr>
+               </table>
            </div>
            <div id="messages">
                <html:messages message="true" id="msg">

@@ -68,15 +68,7 @@
                         <a href="${editlink}" class="cmd">
                             <img src="<c:url value="/img/edit.gif"/>" alt="edit"/>
                         </a>
-                        <c:set var="apcause">
-                            <c:url value="/showAddCause.action">
-                               <c:param name="failureId">
-                                   ${failure.id}
-                               </c:param>
-                                <c:param name="kind">crash</c:param>
-                            </c:url>
-                        </c:set>
-                            <a href="${apcause}" class="cmd"><fmt:message key="add.cause"/></a>
+
                         </nobr>
                         </c:if>
                     </td>
@@ -90,14 +82,50 @@
                             ${failure.failureDescription}
                     </td>
                     <td>
-                        <c:if test="${not empty failure.restoreAction}">
-                            ${failure.restoreAction.failureCause}
-                        </c:if>
+                        <c:set var="apcause">
+                            <c:url value="/showAddCause.action">
+                                <c:param name="failureId">
+                                    ${failure.id}
+                                </c:param>
+                                <c:param name="kind">crash</c:param>
+                            </c:url>
+                        </c:set>
+                        <c:choose>
+                            <c:when test="${not empty failure.restoreAction}">
+                                ${failure.restoreAction.failureCause}
+                                <br/>
+                                <c:if test="${not failure.restoreAction.completed}">
+                                    <a href="${apcause}" class="cmd">
+                                        <fmt:message key="change.cause"/>
+                                    </a>
+                                </c:if>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${apcause}" class="cmd">
+                                    <fmt:message key="add.cause"/>
+                                </a>
+                            </c:otherwise>
+                        </c:choose>
+
                     </td>
                     <td>
+                        <c:set var="resaction">
+                            <c:url value="/showAddRestoreAction.action">
+                                <c:param name="failureId">
+                                    ${failure.id}
+                                </c:param>
+                                <c:param name="kind">crash</c:param>
+                            </c:url>
+                        </c:set>
                         <c:if test="${not empty failure.restoreAction}">
-                            ${failure.restoreAction.restoreAction}
-                        </c:if>
+                                ${failure.restoreAction.restoreAction}
+                                <br/>
+                                <c:if test="${not failure.restoreAction.completed}">
+                                    <a href="${resaction}" class="cmd">
+                                        <img src="<c:url value="/img/edit.gif"/>" alt="edit"/>
+                                    </a>
+                                </c:if>
+                         </c:if>
                     </td>
                     <td>
                         <c:if test="${not empty failure.restoreAction and not empty failure.restoreAction.restoreTime}">

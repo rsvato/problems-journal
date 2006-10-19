@@ -30,4 +30,12 @@
         <put name="content" value="/WEB-INF/pages/addCrashCause.jsp"/>
         <put name="title" value="restore.cause"/>
     </definition>
+    <definition name=".add.action" extends=".default.layout">
+        <put name="content" value="/WEB-INF/pages/fragments/createRestoreAction.jsp"/>
+        <put name="title"  value="restore.action"/>
+    </definition>
+    <definition name=".default.error" extends=".default.layout">
+        <put name="content" value="/WEB-INF/pages/fragments/error-page.jsp"/>
+        <put name="title" value="general.error"/>
+    </definition>
 </tiles-definitions>

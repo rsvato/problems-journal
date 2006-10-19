@@ -8,11 +8,6 @@
     </context-param>
 
     <context-param>
-        <param-name>javax.servlet.jsp.jstl.i18n.basename</param-name>
-        <param-value>messages</param-value>
-    </context-param>
-
-    <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
         <param-value>messages</param-value>
     </context-param>

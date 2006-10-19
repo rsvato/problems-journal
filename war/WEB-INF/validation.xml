@@ -19,5 +19,11 @@
             <field property="failureId" depends="required"/>
             <field property="kind" depends="required"/>
         </form>
+        <form name="restoreActionForm">
+            <field property="actionDescription" depends="required"/>
+            <field property="actionTime" depends="required"/>
+            <field property="failureId" depends="required"/>
+            <field property="kind" depends="required"/>
+        </form>
     </formset>
 </form-validation>

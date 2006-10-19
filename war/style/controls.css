@@ -13,7 +13,14 @@ label{
 
 .input{
     width:300px;
+    background: #ccc;
+    border:#777 solid thin;
 }
-area{
+.area{
     height:400px;
+}
+
+.button{
+    font-weight:bold;
+    background:#ccc;
 }

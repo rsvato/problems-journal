@@ -2,6 +2,9 @@ package net.paguo.web.struts.resolutions.form;
 
 import net.paguo.web.struts.forms.SelectFailureForm;
 import net.paguo.web.struts.forms.MultiactionForm;
+import org.apache.struts.action.ActionMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * User: slava
@@ -28,5 +31,11 @@ public class DiscoveredCauseForm extends MultiactionForm {
 
     public void setCloseFlag(boolean closeFlag) {
         this.closeFlag = closeFlag;
+    }
+
+    public void reset(ActionMapping actionMapping, HttpServletRequest httpServletRequest) {
+        this.discoveredCause = null;
+        this.closeFlag = false;
+        super.reset(actionMapping, httpServletRequest);
     }
 }

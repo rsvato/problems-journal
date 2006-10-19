@@ -14,11 +14,10 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * Created by IntelliJ IDEA.
  * User: slava
  * Date: 01.10.2006
  * Time: 3:25:12
- * To change this template use File | Settings | File Templates.
+ * Version: $Id$
  */
 public class EditCrashAction extends BaseFailureAction {
 

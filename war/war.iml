@@ -70,15 +70,7 @@
     <orderEntry type="library" name="Tapestry-4.0.2" level="application" />
     <orderEntry type="module" module-name="domain" />
     <orderEntry type="module" module-name="service" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/WEB-INF/classes" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="classes" level="project" />
     <orderEntryProperties />
   </component>
   <component name="Struts Module Component" />
@@ -279,6 +271,10 @@
     <containerElement type="library" name="acegi-security-1.0.1" level="application">
       <attribute name="method" value="0" />
       <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="classes" level="project">
+      <attribute name="method" value="0" />
+      <attribute name="URI" value="/WEB-INF/classes" />
     </containerElement>
     <containerElement type="library" name="hibernate-3.2" level="application">
       <attribute name="method" value="1" />
