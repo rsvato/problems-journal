@@ -2,6 +2,7 @@
 <project name="network-journal" default="touch" basedir=".">
 
     <property name="domain.src.dir" value="domain/java/src"/>
+    <property name="domain.dir" value="domain"/>
     <property name="service.src.dir" value="service/java/src"/>
     <property name="test.dir" value="test/java"/>
     <property name="test.class.dir" value="/tmp/tests"/>
@@ -10,7 +11,7 @@
     <property name="class.dir" value="${war.dir}/WEB-INF/classes"/>
     <property name="lib.dir" value="${war.dir}/WEB-INF/lib"/>
     <property name="merge.dir" value="merge"/>
-    <property name="tomcat.dir" value="/usr/share/tomcat5"/>
+    <property name="tomcat.dir" value="/home/ubuntu/tomcat"/>
     <property name="webapp.dir" value="${tomcat.dir}/webapps/"/>
     <property name="devel.lib.dir" value="lib"/>
     <property name="xdoclet.dir" value="tools/lib/xdoclet"/>
@@ -21,7 +22,7 @@
     <property name="tomcat.manager.url" value="http://localhost:8080/manager"/>
     <property name="tomcat.manager.username" value="both"/>
     <property name="tomcat.manager.password" value="tomcat"/>
-
+    <loadproperties srcfile="build.properties"/>
     <path id="catalina.devel.libs">
         <fileset dir="${tomcat.dir}/common/lib">
             <include name="*.jar"/>
@@ -97,18 +98,7 @@
     </target>
 
     <target name="compile-domain" depends="hib.generate">
-        <javac srcdir="${domain.src.dir}" classpathref="compile.classpath"
-               destdir="${class.dir}" debug="true"
-                />
-        <copy todir="${war.dir}/WEB-INF">
-            <fileset dir="${domain.src.dir}">
-                <include name="**/mess*.properties"/>
-            </fileset>
-            <!--fileset dir="${conf.dir}">
-                <include name="*.xml"/>
-            </fileset-->
-        </copy>
-       <native2ascii dest="${war.dir}/WEB-INF/classes" src="${domain.src.dir}" includes="**/*.properties"/>
+        <ant antfile="domain-build.xml" dir="${domain.dir}" inheritall="false" inheritrefs="false"/>
     </target>
 
     <target name="compile-service" depends="compile-domain">
