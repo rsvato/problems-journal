@@ -1,4 +1,4 @@
-package net.paguo.domain.problems;
+package net.paguo.domain.events;
 
 import java.io.Serializable;
 import java.util.Date;

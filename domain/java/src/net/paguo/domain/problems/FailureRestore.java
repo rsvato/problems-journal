@@ -1,5 +1,6 @@
 package net.paguo.domain.problems;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -8,6 +9,7 @@ import java.io.Serializable;
  * @version $Id$
  *          created 26.08.2006 0:40:06
  */
+@Embeddable
 public class FailureRestore implements Serializable {
     private String failureCause;
     private String restoreAction;
@@ -18,6 +20,7 @@ public class FailureRestore implements Serializable {
      * @hibernate.property type="text"
      * @return
      */
+    @Column @Lob
     public String getFailureCause() {
         return failureCause;
     }
@@ -30,6 +33,7 @@ public class FailureRestore implements Serializable {
      * @hibernate.property type="text"
      * @return
      */
+    @Column @Lob
     public String getRestoreAction() {
         return restoreAction;
     }
@@ -42,6 +46,7 @@ public class FailureRestore implements Serializable {
      * @hibernate.property
      * @return
      */
+    @Column
     public Date getRestoreTime() {
         return restoreTime;
     }
@@ -54,6 +59,7 @@ public class FailureRestore implements Serializable {
      * @hibernate.property
      * @return
      */
+    @Column
     public boolean getCompleted() {
         return completed;
     }

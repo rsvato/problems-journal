@@ -3,5 +3,8 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
    version="1.0">
     <persistence-unit name="manager-role">
+        <properties>
+            <property name="com.intellij.javaee.persistence.datasource" value="traffic-database"/>
+        </properties>
     </persistence-unit>
 </persistence>

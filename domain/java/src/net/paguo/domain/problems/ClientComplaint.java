@@ -2,6 +2,10 @@ package net.paguo.domain.problems;
 
 import net.paguo.domain.clients.ClientItem;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
 
 /**
  * @author Svyatoslav Reyentenko mailto:rsvato@gmail.com
@@ -13,6 +17,10 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @hibernate.query name="ClientComplaint.findAll" query="from ClientComplaint order by failureTime"
  * @hibernate.cache usage="read-write"
  */
+@Entity
+@Table(name="complaints")
+@PrimaryKeyJoinColumn(name="c_id")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class ClientComplaint extends NetworkFailure {
     private ClientItem client;
 

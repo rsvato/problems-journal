@@ -1,19 +1,27 @@
 package net.paguo.domain.common;
 
+import org.hibernate.validator.NotNull;
+
+import javax.persistence.Embeddable;
+import javax.persistence.Column;
 import java.io.Serializable;
 
 /**
  * @version $Id $
  */
+@Embeddable
 public class PersonalData implements Serializable {
     private String name;
     private String familyName;
     private String parentName;
+
     
     /**
      * @hibernate.property not-null="true"
      * @return
      */
+    @NotNull
+    @Column
     public String getName() {
         return name;
     }
@@ -26,6 +34,8 @@ public class PersonalData implements Serializable {
      * @hibernate.property not-null="true"
      * @return
      */
+    @NotNull
+    @Column
     public String getFamilyName() {
         return familyName;
     }
@@ -38,6 +48,7 @@ public class PersonalData implements Serializable {
      * @hibernate.property
      * @return
      */
+    @Column
     public String getParentName() {
         return parentName;
     }

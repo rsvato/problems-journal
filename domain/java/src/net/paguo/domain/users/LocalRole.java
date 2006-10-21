@@ -2,7 +2,6 @@ package net.paguo.domain.users;
 
 
 
-import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
