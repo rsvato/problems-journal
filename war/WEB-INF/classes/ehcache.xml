@@ -362,7 +362,7 @@
     persistent between cache and VM restarts. The disk expiry thread interval is set to 10
     minutes, overriding the default of 2 minutes.
     -->
-    <cache name="sampleCache3"
+   <!-- <cache name="sampleCache3"
            maxElementsInMemory="500"
            eternal="false"
            overflowToDisk="true"
@@ -371,7 +371,7 @@
            diskPersistent="true"
            diskExpiryThreadIntervalSeconds="1"
            memoryStoreEvictionPolicy="LFU"
-            />
+            />-->
 
 
     <!--
