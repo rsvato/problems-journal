@@ -52,25 +52,10 @@ public class AddRestoreAction extends BaseFailureAction {
             restore.setRestoreTime(closeTime);
             restore.setRestoreAction(actionDescription);
             restore.setCompleted(true);
-            if (CrashKind.CRASH.equals(outcomeId)){
-                System.err.println("This is crash");
-                NetworkProblem problem = getController().getProblemDao().read(failure.getId());
-                List<ClientComplaint> complaints = problem.getDependedComplaints();
-                if (complaints != null){
-                   for(ClientComplaint complaint : complaints){
-                       System.err.println("Closing " + complaint.getId());
-                       FailureRestore action = new FailureRestore();
-                       action.setRestoreTime(closeTime);
-                       action.setRestoreAction("RESOLVED BY PARENT");
-                       action.setCompleted(true);
-                       complaint.setRestoreAction(action);
-                       getController().getComplaintDao().update(complaint);
-                       System.err.println("Closed " + complaint.getId());
-                   }
-                }
-            }
-            getController().getFailureDao().update(failure);
 
+            getController().getFailureDao().update(failure);
+            getController().closeDependedComplaints(restore, failure);
+            
             if (CrashKind.CRASH.equals(outcomeId)){
                 return mapping.findForward(NEXT);
             }else{

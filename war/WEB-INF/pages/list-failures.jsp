@@ -16,6 +16,9 @@
             <tr>
                 <th/>
                 <th>
+                    #
+                </th>
+                <th>
                     <fmt:message key="label.date"/>
                 </th>
                 <th>
@@ -71,9 +74,11 @@
                         <a href="${editlink}" class="cmd">
                             <img src="<c:url value="/img/edit.gif"/>" alt="edit"/>
                         </a>
-                        ${failure.id}
                         </nobr>
                         </c:if>
+                   </td>
+                    <td>
+                        ${failure.id}
                     </td>
                     <td>
                         <fmt:formatDate value="${failure.failureTime}" type="date"/>

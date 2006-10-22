@@ -6,24 +6,48 @@
 <form-validation>
     <formset>
         <form name="crashForm">
-            <field property="failureTime" depends="required"/>
-            <field property="failureDescription" depends="required"/>
+            <field property="failureTime" depends="required">
+                <arg key="errors.time.missing"/>
+             </field>
+            <field property="failureDescription" depends="required">
+                <arg key="errors.description.missing"/>
+            </field>
         </form>
         <form name="complaintForm">
-            <field property="failureTime" depends="required"/>
-            <field property="failureDescription" depends="required"/>
-            <field property="failureClient" depends="required,integer"/>
+            <field property="failureTime" depends="required">
+                <arg key="errors.time.missing"/>
+            </field>
+            <field property="failureDescription" depends="required">
+                <arg key="errors.description.missing"/>
+            </field>
+            <field property="failureClient" depends="required,integer">
+                <arg key="errors.clientId.missing"/>
+            </field>
         </form>
         <form name="causeForm">
-            <field property="discoveredCause" depends="required"/>
-            <field property="failureId" depends="required"/>
-            <field property="kind" depends="required"/>
+            <field property="discoveredCause" depends="required">
+                <arg key="errors.cause.missing"/>
+            </field>
+            <field property="kind" depends="required">
+                <arg key="errors.failureId.missing"/>
+            </field>
+            <field property="failureId" depends="required,integer">
+                <arg key="errors.failureId.missing"/>
+            </field>
         </form>
         <form name="restoreActionForm">
-            <field property="actionDescription" depends="required"/>
-            <field property="actionTime" depends="required"/>
-            <field property="failureId" depends="required"/>
-            <field property="kind" depends="required"/>
+            <field property="actionDescription" depends="required">
+                <arg key="errors.description.missing"/>
+            </field>
+            <field property="actionTime" depends="required">
+                <arg key="errors.time.missing"/>
+            </field>
+            <field property="failureId" depends="required,integer">
+                <arg key="errors.failureId.missing"/>
+            </field>
+            <field property="kind" depends="required">
+                <arg key="errors.failureId.missing"/>
+            </field>
         </form>
     </formset>
 </form-validation>

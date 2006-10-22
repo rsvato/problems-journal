@@ -5,16 +5,17 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic-el" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <logic:messagesPresent>
-    <table border="1" width="100%" align="center">
+    <table class="error">
         <tr>
             <td valign="top">
-                    <img src="<c:url value="/img/icon-warning.gif"/>" border="0"
-                         vspace="2" hspace="10" align="middle"/>
+                    <img src="<c:url value="/img/icon-warning.gif"/>" alt="warning"/>
             </td>
             <td>
                 <fmt:message key="errors.heading"/>
                 <ul>
-                    <html:errors/>
+                    <html:messages id="error">
+                        <li>${error}</li>
+                    </html:messages>
                 </ul>
             </td>
 

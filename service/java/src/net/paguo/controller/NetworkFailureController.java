@@ -50,7 +50,12 @@ public class NetworkFailureController {
 
     public void assignResolution(NetworkProblem problem, FailureRestore issue){
         problem.setRestoreAction(issue);
-        if (issue.getCompleted()){
+        closeDependedComplaints(issue, problem);
+    }
+
+    public void closeDependedComplaints(FailureRestore issue, NetworkFailure failure) {
+        NetworkProblem problem = getProblemDao().read(failure.getId());
+        if (problem != null && issue.getCompleted()){
             List<ClientComplaint> complaints = problem.getDependedComplaints();
             for(ClientComplaint complaint : complaints){
                FailureRestore p = new FailureRestore();

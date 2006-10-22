@@ -18,7 +18,7 @@ public class PrepareEditComplaintAction  extends BaseFailureAndClientAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.err.println(form);
         Integer id = (Integer) getSimpleProperty(form, "failureId");
-        if (id != null){
+        if (id != null && id > 0){
            ClientComplaint problem = getController().getComplaintDao().read(id);
             if (problem != null){
                 setSimpleProperty(form, "failureId", problem.getId());

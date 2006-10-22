@@ -1,6 +1,7 @@
 package net.paguo.web.struts.forms;
 
 import org.apache.struts.action.ActionMapping;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,5 +34,9 @@ public class ClientComplaintForm extends ProblemForm{
 
     public void setParentProblem(Integer parentProblem) {
         this.parentProblem = parentProblem;
+    }
+
+    public String toString(){
+        return ToStringBuilder.reflectionToString(this);
     }
 }

@@ -1,9 +1,9 @@
 package net.paguo.web.struts.complaints;
 
 import static org.apache.commons.beanutils.PropertyUtils.getSimpleProperty;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.*;
-import net.paguo.controller.NetworkFailureController;
-import net.paguo.controller.ClientItemController;
 import net.paguo.domain.problems.ClientComplaint;
 import net.paguo.domain.problems.NetworkProblem;
 import net.paguo.domain.clients.ClientItem;
@@ -12,8 +12,6 @@ import net.paguo.web.struts.BaseFailureAndClientAction;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -24,7 +22,11 @@ import java.util.Date;
  * Version: $Id$
  */
 public class EditComplaintAction extends BaseFailureAndClientAction {
+    private static final Log log = LogFactory.getLog(EditComplaintAction.class);
+
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        log.info("execute(): <<<");
+        log.info(form);
         Integer id = (Integer) getSimpleProperty(form, "failureId");
         String description = (String) getSimpleProperty(form, "failureDescription");
         String failureTime = (String) getSimpleProperty(form, "failureTime");
