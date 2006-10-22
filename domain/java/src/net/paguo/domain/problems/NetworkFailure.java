@@ -9,6 +9,7 @@ import java.io.Serializable;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.NotNull;
 
 /**
  * @author Svyatoslav Reyentenko mailto:rsvato@gmail.com
@@ -49,7 +50,7 @@ public class NetworkFailure implements Serializable {
      * @hibernate.property not-null="true"
      * @return
      */
-    @Column
+    @Column @NotNull
     public Date getFailureTime() {
         return failureTime;
     }
@@ -62,7 +63,7 @@ public class NetworkFailure implements Serializable {
      * @hibernate.property not-null="true" type="text"
      * @return
      */
-    @Column
+    @Column @NotNull @Lob
     public String getFailureDescription() {
         return failureDescription;
     }

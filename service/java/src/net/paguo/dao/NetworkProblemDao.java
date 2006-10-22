@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface NetworkProblemDao extends GenericDao<NetworkProblem, Integer> {
     List<NetworkProblem> findAll();
+
+    List<NetworkProblem> findOpen();
 }

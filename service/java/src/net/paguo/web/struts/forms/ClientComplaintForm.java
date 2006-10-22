@@ -5,14 +5,14 @@ import org.apache.struts.action.ActionMapping;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by IntelliJ IDEA.
  * User: slava
  * Date: 02.10.2006
  * Time: 1:38:55
- * To change this template use File | Settings | File Templates.
+ * Version: $Id$
  */
 public class ClientComplaintForm extends ProblemForm{
     private Integer failureClient;
+    private Integer parentProblem;
 
     public Integer getFailureClient() {
         return failureClient;
@@ -25,5 +25,13 @@ public class ClientComplaintForm extends ProblemForm{
     public void reset(ActionMapping actionMapping, HttpServletRequest httpServletRequest) {
         this.failureClient = null;
         super.reset(actionMapping, httpServletRequest); 
+    }
+
+    public Integer getParentProblem() {
+        return parentProblem;
+    }
+
+    public void setParentProblem(Integer parentProblem) {
+        this.parentProblem = parentProblem;
     }
 }

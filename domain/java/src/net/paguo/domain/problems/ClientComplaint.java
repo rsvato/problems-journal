@@ -4,6 +4,7 @@ import net.paguo.domain.clients.ClientItem;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.NotNull;
 
 import javax.persistence.*;
 
@@ -23,17 +24,29 @@ import javax.persistence.*;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class ClientComplaint extends NetworkFailure {
     private ClientItem client;
+    private NetworkProblem parent;
 
     /**
      * @hibernate.many-to-one class="net.paguo.domain.clients.ClientItem" not-null="true"
      * @return client
      */
+    @ManyToOne
+    @NotNull
     public ClientItem getClient() {
         return client;
     }
 
     public void setClient(ClientItem client) {
         this.client = client;
+    }
+
+    @ManyToOne
+    public NetworkProblem getParent() {
+        return parent;
+    }
+
+    public void setParent(NetworkProblem parent) {
+        this.parent = parent;
     }
 
     public String toString(){

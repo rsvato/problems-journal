@@ -33,6 +33,9 @@
                 <th>
                     <fmt:message key="restore.time"/>
                 </th>
+                <th>
+                    <fmt:message key="failure.depended"/>
+                </th>
             </tr>
             <c:forEach var="failure" items="${requestScope.failures}" varStatus="index">
                 <c:set var="style">
@@ -68,7 +71,7 @@
                         <a href="${editlink}" class="cmd">
                             <img src="<c:url value="/img/edit.gif"/>" alt="edit"/>
                         </a>
-
+                        ${failure.id}
                         </nobr>
                         </c:if>
                     </td>
@@ -102,7 +105,7 @@
                             </c:when>
                             <c:otherwise>
                                 <a href="${apcause}" class="cmd">
-                                    <fmt:message key="add.cause"/>
+                                    <img src="<c:url value="/img/edit.gif"/>" alt="set"/>
                                 </a>
                             </c:otherwise>
                         </c:choose>
@@ -122,7 +125,7 @@
                                 <br/>
                                 <c:if test="${not failure.restoreAction.completed}">
                                     <a href="${resaction}" class="cmd">
-                                        <img src="<c:url value="/img/edit.gif"/>" alt="edit"/>
+                                        <img src="<c:url value="/img/edit.gif"/>" alt="set"/>
                                     </a>
                                 </c:if>
                          </c:if>
@@ -132,6 +135,11 @@
                             <fmt:formatDate value="${failure.restoreAction.restoreTime}" type="date"/>
                             <fmt:formatDate value="${failure.restoreAction.restoreTime}" type="time"/>
                         </c:if>
+                    </td>
+                    <td>
+                        <c:forEach items="${failure.dependedComplaints}" var="item">
+                            <span>${item.id} </span>
+                        </c:forEach>
                     </td>
                 </tr>
             </c:forEach>

@@ -8,6 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @version $Id $
@@ -25,6 +26,16 @@ public class LocalRole implements Serializable {
     protected Integer id;
     protected String role;
     protected String roleDescription;
+    private List<LocalUser> localUsers;
+
+    @ManyToMany(mappedBy = "roles")
+    public List<LocalUser> getLocalUsers() {
+        return localUsers;
+    }
+
+    public void setLocalUsers(List<LocalUser> localUsers) {
+        this.localUsers = localUsers;
+    }
 
     /**
      * @hibernate.id generator-class ="increment"

@@ -65,6 +65,7 @@ table.list {
 table.list td {
     padding-left: 3px;
     border-left: 1px solid #C0C0C0;
+    vertical-align:top;
 }
 
 table.list th {
@@ -74,6 +75,7 @@ table.list th {
     border-bottom: 1px solid black;
     text-align: center;
     color: black;
+    vertical-align:top;
 }
 
 table.list thead tr {

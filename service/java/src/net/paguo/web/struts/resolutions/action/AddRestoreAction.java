@@ -9,6 +9,8 @@ import net.paguo.web.struts.exceptions.InvalidDateException;
 import net.paguo.web.struts.resolutions.form.RestoreActionForm;
 import net.paguo.domain.problems.NetworkFailure;
 import net.paguo.domain.problems.FailureRestore;
+import net.paguo.domain.problems.NetworkProblem;
+import net.paguo.domain.problems.ClientComplaint;
 import org.apache.struts.action.*;
 import org.apache.commons.beanutils.PropertyUtils;
 
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: slava
@@ -49,7 +52,25 @@ public class AddRestoreAction extends BaseFailureAction {
             restore.setRestoreTime(closeTime);
             restore.setRestoreAction(actionDescription);
             restore.setCompleted(true);
+            if (CrashKind.CRASH.equals(outcomeId)){
+                System.err.println("This is crash");
+                NetworkProblem problem = getController().getProblemDao().read(failure.getId());
+                List<ClientComplaint> complaints = problem.getDependedComplaints();
+                if (complaints != null){
+                   for(ClientComplaint complaint : complaints){
+                       System.err.println("Closing " + complaint.getId());
+                       FailureRestore action = new FailureRestore();
+                       action.setRestoreTime(closeTime);
+                       action.setRestoreAction("RESOLVED BY PARENT");
+                       action.setCompleted(true);
+                       complaint.setRestoreAction(action);
+                       getController().getComplaintDao().update(complaint);
+                       System.err.println("Closed " + complaint.getId());
+                   }
+                }
+            }
             getController().getFailureDao().update(failure);
+
             if (CrashKind.CRASH.equals(outcomeId)){
                 return mapping.findForward(NEXT);
             }else{

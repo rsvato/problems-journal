@@ -5,6 +5,7 @@ import org.apache.struts.action.*;
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.controller.ClientItemController;
 import net.paguo.domain.problems.ClientComplaint;
+import net.paguo.domain.problems.NetworkProblem;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.dao.ClientComplaintDao;
 import net.paguo.web.struts.BaseFailureAndClientAction;
@@ -17,11 +18,10 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * Created by IntelliJ IDEA.
  * User: slava
  * Date: 01.10.2006
  * Time: 3:25:12
- * To change this template use File | Settings | File Templates.
+ * Version: $Id$
  */
 public class EditComplaintAction extends BaseFailureAndClientAction {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -29,6 +29,7 @@ public class EditComplaintAction extends BaseFailureAndClientAction {
         String description = (String) getSimpleProperty(form, "failureDescription");
         String failureTime = (String) getSimpleProperty(form, "failureTime");
         Integer clientId = (Integer) getSimpleProperty(form, "failureClient");
+        Integer parentProblem = (Integer) getSimpleProperty(form, "parentProblem");
         boolean newComplaint = id == null || id == 0;
         ActionMessages messages = new ActionMessages();
         ClientComplaint problem;
@@ -84,6 +85,12 @@ public class EditComplaintAction extends BaseFailureAndClientAction {
         if (newComplaint){
             problemDao.create(problem);
         }else{
+
+            if (parentProblem != null){
+                NetworkProblem parent = getController().getProblemDao().read(parentProblem);
+                problem.setParent(parent);
+            }
+
             problemDao.update(problem);
         }
 

@@ -44,7 +44,7 @@ public class ClientItem implements Serializable {
      * @hibernate.property column="client" not-null="true"
      * @return
      */
-    @NotNull  @Column
+    @NotNull  @Column(name="client")
     public String getClientName() {
         return clientName;
     }

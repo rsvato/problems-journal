@@ -33,6 +33,20 @@
             </html:select>
         </span>
     </div>
+    <c:if test="${not empty openProblems}">
+    <br class="clear"/>
+    <div class="inputDiv">
+        <label for="parentProblem">
+            <fmt:message key="parent.problem"/>
+        </label>
+        <span class="control">
+            <html:select styleClass="input" styleId="parentProblem" property="parentProblem">
+                <option value=""></option>
+                <html:options collection="openProblems" property="id" labelProperty="id"/>
+            </html:select>
+        </span>
+    </div>
+    </c:if>
     <br class="clear"/>
     <fmt:message key="save.button" var="slabel"/>
     <fmt:message key="clear.button" var="clear"/>

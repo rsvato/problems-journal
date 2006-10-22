@@ -48,6 +48,21 @@ public class NetworkFailureController {
         getFailureDao().update(failure);
     }
 
+    public void assignResolution(NetworkProblem problem, FailureRestore issue){
+        problem.setRestoreAction(issue);
+        if (issue.getCompleted()){
+            List<ClientComplaint> complaints = problem.getDependedComplaints();
+            for(ClientComplaint complaint : complaints){
+               FailureRestore p = new FailureRestore();
+                p.setRestoreTime(issue.getRestoreTime());
+                p.setRestoreAction("CLOSED BY PARENT");
+                p.setCompleted(true);
+                complaint.setRestoreAction(p);
+                getComplaintDao().update(complaint);
+            }
+        }
+    }
+
     public List<NetworkFailure> findAllFailures(){
         return getFailureDao().readAll();
     }
@@ -96,5 +111,9 @@ public class NetworkFailureController {
 
     public List<NetworkFailure> findOpen() {
         return getFailureDao().findOpen();
+    }
+
+    public List<NetworkProblem> findOpenProblems(){
+       return getProblemDao().findOpen(); 
     }
 }

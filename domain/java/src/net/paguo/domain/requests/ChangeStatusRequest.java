@@ -1,4 +1,4 @@
-package net.paguo.domain.problems;
+package net.paguo.domain.requests;
 
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.domain.users.LocalUser;

@@ -2,11 +2,9 @@ package net.paguo.domain.problems;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.JoinColumn;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @version $Id $
@@ -18,7 +16,19 @@ import java.io.Serializable;
 @Entity
 @Table(name = "network_problems")
 @PrimaryKeyJoinColumn(name="p_id")
+@org.hibernate.annotations.NamedQuery(name="NetworkProblem.findOpen",query="from NetworkProblem where restoreAction is null or restoreAction.completed = false order by failureTime")
 public class NetworkProblem extends NetworkFailure {
+    private List<ClientComplaint> dependedComplaints;
+
+    @OneToMany(mappedBy = "parent")
+    public List<ClientComplaint> getDependedComplaints() {
+        return dependedComplaints;
+    }
+
+    public void setDependedComplaints(List<ClientComplaint> dependedComplaints) {
+        this.dependedComplaints = dependedComplaints;
+    }
+
     public String toString(){
         return ToStringBuilder.reflectionToString(this);
     }

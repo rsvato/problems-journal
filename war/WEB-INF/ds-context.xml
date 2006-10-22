@@ -20,11 +20,22 @@
         <property name="password"><value>test12~</value></property>
     </bean>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="mappingDirectoryLocations">
-            <list>
-                <value>classpath:/mappings</value>
-            </list>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="annotatedClasses">
+             <list>
+                 <value>net.paguo.domain.clients.ClientItem</value>
+                 <value>net.paguo.domain.common.ContactData</value>
+                 <value>net.paguo.domain.common.PersonalData</value>
+                 <value>net.paguo.domain.events.ScheduleEvent</value>
+                 <value>net.paguo.domain.problems.ClientComplaint</value>
+                 <value>net.paguo.domain.problems.FailureRestore</value>
+                 <value>net.paguo.domain.problems.NetworkFailure</value>
+                 <value>net.paguo.domain.problems.NetworkProblem</value>
+                 <value>net.paguo.domain.requests.ChangeStatusRequest</value>
+                 <value>net.paguo.domain.users.LocalRole</value>
+                 <value>net.paguo.domain.users.LocalUser</value>
+                 <value>net.paguo.domain.users.UserPermission</value>
+             </list>
         </property>
         <property name="hibernateProperties">
             <props>
