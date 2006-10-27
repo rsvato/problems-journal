@@ -16,7 +16,7 @@
         <property name="hibernate.c3p0.max_statements">50</property>
         <property name="hibernate.cache.use_query_cache">true</property>
         <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
-        <mapping class="net.paguo.domain.users.LocalRole"/>
+        <mapping class="net.paguo.domain.users.UserPermission"/>
         <!--
         hibernate.c3p0.min_size=5
 hibernate.c3p0.max_size=20
