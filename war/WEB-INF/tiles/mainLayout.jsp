@@ -4,12 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html-el" %>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic-el" %>
+<%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean-el" %>
 <tiles:importAttribute scope="request"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <title>
-         <tiles:getAsString name="title"/>
+        <c:set var="titlekey">
+            <tiles:getAsString name="title"/>
+        </c:set>
+        <c:catch var="error">
+            <bean:message key="${titlekey}"/>
+        </c:catch>
     </title>
     <meta content="no-cache" http-equiv="Cache-control"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/style/all.css"/>"/>
@@ -19,9 +25,29 @@
     <script type="text/javascript" src="<c:url value="/script/application.js"/>"></script>
 </head>
 <body>
+   Active: ${active}
    <div id="page">
        <div id="top">
            <tiles:insert attribute="header"/>
+           <div id="menuDiv">
+               <ul id="menuList">
+                   <c:forEach var="item" items="${menu}">
+                       <li>
+                           <c:set var="style">
+                               <c:choose>
+                                   <c:when test="${active eq item.key}">
+                                       current
+                                   </c:when>
+                                   <c:otherwise>
+                                       inactive
+                                   </c:otherwise>
+                               </c:choose>
+                           </c:set>
+                           <html:link action="${item.link}" styleClass="${style}">${item.value} (${item.key})</html:link>
+                       </li>
+                   </c:forEach>
+               </ul>
+           </div>
        </div>
 
        <div id="content">

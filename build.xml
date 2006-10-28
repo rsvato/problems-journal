@@ -97,7 +97,7 @@
         <mkdir dir="${report.dir}/html"/>
     </target>
 
-    <target name="compile-domain" depends="hib.generate">
+    <target name="compile-domain">
         <ant antfile="domain-build.xml" dir="${domain.dir}" inheritall="false" inheritrefs="false"/>
     </target>
 

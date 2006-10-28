@@ -2,15 +2,28 @@
 <project version="4" relativePaths="false">
   <component name="AntConfiguration">
     <defaultAnt bundledAnt="true" />
+    <buildFile url="file://$PROJECT_DIR$/build.xml">
+      <additionalClassPath />
+      <antReference projectDefault="true" />
+      <customJdkName value="" />
+      <maximumHeapSize value="128" />
+      <properties />
+    </buildFile>
+    <buildFile url="file://$PROJECT_DIR$/domain/domain-build.xml">
+      <additionalClassPath />
+      <antReference projectDefault="true" />
+      <customJdkName value="" />
+      <maximumHeapSize value="128" />
+      <properties />
+      <executeOn event="beforeRun" target="package" runConfigurationType="JUnit" runConfigurationName="TestEm" />
+    </buildFile>
   </component>
   <component name="BuildJarProjectSettings">
-    <option name="BUILD_JARS_ON_MAKE" value="false" />
+    <option name="BUILD_JARS_ON_MAKE" value="true" />
   </component>
   <component name="CodeStyleProjectProfileManger">
     <option name="PROJECT_PROFILE" />
     <option name="USE_PROJECT_LEVEL_SETTINGS" value="false" />
-    <scopes />
-    <profiles />
   </component>
   <component name="CodeStyleSettingsManager">
     <option name="PER_PROJECT_SETTINGS" />
@@ -47,16 +60,1575 @@
   <component name="DataSourceManagerImpl">
     <DataSource DataSourceSourceName="LOCAL">
       <option name="DRIVER_CLASS" value="org.postgresql.Driver" />
-      <option name="DATABASE_URL" value="jdbc://" />
+      <option name="DATABASE_URL" value="jdbc:postgresql://localhost/traffic" />
       <option name="DRIVER_PATH" />
-      <option name="DATBASE_USERNAME" value="" />
-      <option name="ENCODED_DATABASE_PASSWORD" value="" />
-      <option name="DEFAULT_SCHEMA_NAME" value="" />
-      <option name="NAME" value="Datasource" />
+      <option name="DATBASE_USERNAME" value="root" />
+      <option name="ENCODED_DATABASE_PASSWORD" value="dfdedfcfdfd9dfdedf9bdf98dfd4" />
+      <option name="DEFAULT_SCHEMA_NAME" value="public" />
+      <option name="NAME" value="traffic-database" />
+      <TABLE_DATA>
+        <option name="NAME" value="addresses" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="city" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="street" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="128" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="country" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="128" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="zip" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="16" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="house" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="32" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="corr_name" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="128" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="post_box" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="16" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="aprtmt" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="32" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="aggreg" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="a_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="iface" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="t_in" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="t_out" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="cisco_iface" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="interface" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="cl" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="interface" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="summarizing" />
+          <option name="TYPE" value="java.lang.Object" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="deleted" />
+          <option name="TYPE" value="java.lang.Object" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="cl_deleted" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="interface" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="summarizing" />
+          <option name="TYPE" value="java.lang.Object" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="deleted" />
+          <option name="TYPE" value="java.lang.Object" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="date_deleted" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="client" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="interface" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="client1" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="interface" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="client_group" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="innername" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="userflag" />
+          <option name="TYPE" value="java.lang.Object" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="client_ntraffic" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="incoming" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="outcoming" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client" />
+          <option name="CASCADE_REMOVE" value="true" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="clients_groups" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="group_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="group_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="group_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="complaints" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="c_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="failures" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="c_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="contact_info" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="contact_name" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="128" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="contact_phone" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="24" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="contact_work" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="contact_mail" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="128" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="contact_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="failures" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="failuretime" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="failuredescription" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="-1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="failurecause" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="-1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="restoreaction" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="-1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="restoretime" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="completed" />
+          <option name="TYPE" value="java.lang.Object" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="groups_groups" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="parent_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="child_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="child_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="parent_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="child_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="parent_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="local_role" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="role" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="roledescription" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="local_user" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="description" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="name" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="parentname" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="familyname" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="prm" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="user_perm" />
+          <option name="TARGET_COLUMN" value="username" />
+          <option name="SOURCE_COLUMN" value="prm" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="local_users" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="description" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="name" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="parentname" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="familyname" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="prm" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="user_perm" />
+          <option name="TARGET_COLUMN" value="username" />
+          <option name="SOURCE_COLUMN" value="prm" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="netflow" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="host" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="24" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="input" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="output" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="netflow_details" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="host" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="network_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="input" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="output" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="netflow_networks" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="network_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="input" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="output" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="networks" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="network_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="netflow_networks_details" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="network_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="input" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="output" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="network_problems" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="p_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="failures" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="p_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="networks" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="net" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="32" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="mask" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="32" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="nat_addr" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="32" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="client" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="notifications" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="notif_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="2" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="last_event" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="email" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="roles_users" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="local_user_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="local_role_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="local_role" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="local_role_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="local_users" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="local_user_id" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="schedule_events" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="eventdate" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="completed" />
+          <option name="TYPE" value="java.lang.Object" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="seam_users" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="username" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="15" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="name" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="password" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="15" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="snmp_addresses" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="address" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="32" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="is_active" />
+          <option name="TYPE" value="java.lang.Object" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="1" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="community" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="summary_mail" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="mailaddress" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="128" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="temp_ids" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="tr" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dt" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="interface" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="inoctets" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="outoctets" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="uptime" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dt" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="uptime" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="user_perm" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="username" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="password" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="role" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="client" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="grp" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="grp" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+        <RELATIONSHIP_ELEMENT>
+          <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_COLUMN" value="id" />
+          <option name="SOURCE_COLUMN" value="grp" />
+          <option name="CASCADE_REMOVE" value="false" />
+          <option name="CASCADE_UPDATE" value="false" />
+        </RELATIONSHIP_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="c_i" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="cisco" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="64" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="interface" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="255" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="netflow_day_summary" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="network_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="input" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="65535" />
+          <option name="PRECISION" value="65531" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="output" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="65535" />
+          <option name="PRECISION" value="65531" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="network_traffview" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="net" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="32" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="input" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="output" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="nn_day_summ" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="network_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="input" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="65535" />
+          <option name="PRECISION" value="65531" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="output" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="65535" />
+          <option name="PRECISION" value="65531" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="nn_summ" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="dat" />
+          <option name="TYPE" value="java.util.Date" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="8" />
+          <option name="PRECISION" value="6" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="network_id" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="4" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="input" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="65535" />
+          <option name="PRECISION" value="65531" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="output" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="65535" />
+          <option name="PRECISION" value="65531" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
       <libraries>
-        <library>
-          <url>jar://$PROJECT_DIR$/lib/postgresql-8.1-407.jdbc3.jar!/</url>
-        </library>
+        <library name="Postgresql JDBC" level="application" />
       </libraries>
     </DataSource>
   </component>
@@ -283,9 +1855,7 @@
       <module fileurl="file://$PROJECT_DIR$/war/war.iml" filepath="$PROJECT_DIR$/war/war.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/classes" />
-  </component>
+  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" />
   <component name="ProjectRunConfigurationManager" />
   <component name="RmicSettings">
     <option name="IS_EANABLED" value="false" />
@@ -296,15 +1866,29 @@
   </component>
   <component name="StarteamVcsAdapter" />
   <component name="VssVcs" />
+  <component name="com.intellij.jsf.UserDefinedFacesConfigs">
+    <option name="USER_DEFINED_CONFIGS">
+      <value>
+        <list size="0" />
+      </value>
+    </option>
+  </component>
   <component name="libraryTable">
     <library name="mappings">
       <CLASSES>
-        <root url="file://$PROJECT_DIR$/war/WEB-INF/mappings" />
+        <root url="file://$PROJECT_DIR$/war/WEB-INF/classes/mappings" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>
+    <library name="classes">
+      <CLASSES />
+      <JAVADOC />
+      <SOURCES />
+    </library>
   </component>
+  <component name="tapidea.ComponentsTreeModel" />
+  <component name="tapidea.palette" />
   <component name="uidesigner-configuration">
     <option name="INSTRUMENT_CLASSES" value="true" />
     <option name="COPY_FORMS_RUNTIME_TO_OUTPUT" value="true" />

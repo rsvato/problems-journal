@@ -9,22 +9,42 @@
         <put name="header" value="/WEB-INF/tiles/header.jsp"/>
         <put name="content"/>
         <put name="title"/>
+        <put name="active"/>
+        <putList name="menu">
+            <bean classtype="net.paguo.web.Menu" >
+                <set-property property="value" value="list.failures.title"/>
+                <set-property property="link" value="/listCrashes"/>
+            </bean>
+            <bean classtype="net.paguo.web.Menu">
+                <set-property property="value" value="list.complaints.title"/>
+                <set-property property="link" value="/listComplaints"/>
+            </bean>
+            <bean classtype="net.paguo.web.Menu">
+                <set-property property="value" value="list.calendar.title"/>
+            </bean>
+        </putList>
     </definition>
-    <definition name=".crashes.list" extends=".default.layout">
+    <definition name=".crashes.list.layout" extends=".default.layout">
+        <put name="active" value="list.failures.title" type="string"/>
+    </definition>
+    <definition name=".crashes.list" extends=".crashes.list.layout">
         <put name="content" value="/WEB-INF/pages/list-failures.jsp"/>
         <put name="title" value="journal.network"/>
     </definition>
-    <definition name=".complaints.list" extends=".default.layout">
+    <definition name=".complaints.list.layout" extends=".default.layout">
+        <put name="active" value="list.complaints.title" type="string"/>
+    </definition>
+    <definition name=".complaints.list" extends=".complaints.list.layout">
         <put name="content" value="/WEB-INF/pages/list-complaints.jsp"/>
         <put name="title" value="journal.network"/>
     </definition>
-    <definition name=".crash.edit" extends=".default.layout">
+    <definition name=".complaints.edit" extends=".complaints.list.layout">
+        <put name="content" value="/WEB-INF/pages/edit-complaint.jsp"/>
+        <put name="title" value="new.complain"/>
+    </definition>
+    <definition name=".crash.edit" extends=".crashes.list.layout">
         <put name="content" value="/WEB-INF/pages/edit-crash.jsp"/>
         <put name="title" value="new.problem"/>
-    </definition>
-    <definition name=".complaints.edit" extends=".default.layout">
-        <put name="content" value="/WEB-INF/pages/edit-complaint.jsp"/>
-        <put name="title" value="new.complaint"/>
     </definition>
     <definition name=".add.cause" extends=".default.layout">
         <put name="content" value="/WEB-INF/pages/addCrashCause.jsp"/>

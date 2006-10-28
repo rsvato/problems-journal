@@ -4,7 +4,3 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 [<a href="<c:url value="/j_acegi_logout"/>"><fmt:message key="logout.title"/></a>]
-    <menu:useMenuDisplayer name="TabbedMenu">
-        <menu:displayMenu name="crashes"/>
-        <menu:displayMenu name="complaints"/>
-    </menu:useMenuDisplayer>
