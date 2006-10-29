@@ -12,15 +12,24 @@ label{
 }
 
 .input{
+    border: 1px solid  #C3BBB6;
+	padding: 4px;
+	margin: 5px 0;
+	background: #fff url(../img/input.bg.gif) 0 0 repeat-x;
     width:300px;
-    background: #ccc;
-    border:#777 solid thin;
 }
 .area{
     height:400px;
 }
 
 .button{
-    font-weight:bold;
-    background:#ccc;
+    font-weight: bold;
+	color: #fff;
+	border: 1px solid #5D1414;
+	height: 26px;
+	background: #fff url(../img/btn.bg.gif) 0 0 repeat-x;
+	border-style: none;
+}
+.float-right{
+    float: right;
 }

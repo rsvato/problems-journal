@@ -75,17 +75,30 @@
             <forward name="error" path="/prepareComplaintEdit.action"/>
         </action>
 
-        <action path="/showAddCause" type="org.apache.struts.actions.ForwardAction"
-            name="causeForm" parameter=".add.cause" input=".crashes.list" validate="false"/>
+        <action path="/showAddCrashCause" type="org.apache.struts.actions.ForwardAction"
+            name="causeForm" parameter=".add.crash.cause" input=".crashes.list" validate="false"/>
 
+        <action path="/showAddComplaintCause" type="org.apache.struts.actions.ForwardAction"
+            name="causeForm" parameter=".add.complaint.cause" input=".crashes.list" validate="false"/>
 
-        <action path="/addCause" type="net.paguo.web.struts.resolutions.action.AddCauseAction"
+        <action path="/addCrashCause" type="net.paguo.web.struts.resolutions.action.AddCauseAction"
                 name="causeForm"
                 validate="true"
-                input=".add.cause">
+                parameter="crash"
+                input=".add.crash.cause">
             <forward name="next" path="/listCrashes.action"/>
             <forward name="xnext" path="/listComplaints.action"/>
-            <forward name="error" path=".add.cause"/>
+            <forward name="error" path=".add.crash.cause"/>
+        </action>
+
+        <action path="/addComplaintCause" type="net.paguo.web.struts.resolutions.action.AddCauseAction"
+                name="causeForm"
+                validate="true"
+                parameter="complaint"
+                input=".add.complaint.cause">
+            <forward name="next" path="/listCrashes.action"/>
+            <forward name="xnext" path="/listComplaints.action"/>
+            <forward name="error" path=".add.complaint.cause"/>
         </action>
 
         <action path="/showAddRestoreAction" type="org.apache.struts.actions.ForwardAction"

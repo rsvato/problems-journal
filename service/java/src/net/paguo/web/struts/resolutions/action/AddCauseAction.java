@@ -48,7 +48,7 @@ public class AddCauseAction extends BaseFailureAction {
     }
 
     private ActionForward findForward(DiscoveredCauseForm frm, ActionMapping mapping) {
-        if (CrashKind.CRASH.equals(frm.getCrashKind())){
+        if (mapping.getParameter().equals("crash")){
             return mapping.findForward(NEXT);
         }else{
             return mapping.findForward("xnext");

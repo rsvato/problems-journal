@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html-el" %>
-<html:form action="/addCrashCause">
+<html:form action="/addComplaintCause">
     <html:hidden property="failureId"/>
     <html:hidden property="kind"/>
     <div class="inputDiv">

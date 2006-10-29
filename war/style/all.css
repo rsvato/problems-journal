@@ -47,8 +47,8 @@ a:hover {
 	color: 			#1D8FDB;
 }
 
-input {
-	background: #EEEEFF;
+img{
+    border: none;
 }
 
 /* Main table */
@@ -160,7 +160,7 @@ table.list th.sorted_asc {
 	background : #C3C3C3;
 }
 #page {
-    width: 95%;
+    width:95%;
 }
 
 #title {
@@ -175,14 +175,11 @@ table.list th.sorted_asc {
 #content {
     background: #ffffff;
     border: 1px solid #cccccc;
-    width: 95%;
+    width: 100%;
     border-top: 0;
     clear: both;
     margin: 0px;
     padding: 15px;
-}
-
-#sourceforge {
 }
 
 #bug {
@@ -195,100 +192,12 @@ table.list th.sorted_asc {
 }
 
 .success {
-	color: #FF0000;
+	color: #0000FF;
 }
 
 .completed {
 	font-style: italic;
 	font-size: 80%;
-}
-
-.menu {
-    border-bottom: 1px solid #cccccc;
-    margin: 0;
-    padding-bottom: 19px;
-    padding-left: 10px;
-}
-
-.menu a:link, #menuList a:visited	{
-    background: #e8ebf0;
-    border: 1px solid #cccccc;
-    color: #666666;
-    float: left;
-    font-size: small;
-    font-weight: normal;
-    line-height: 14px;
-    margin-right: 8px;
-    padding: 2px 10px 2px 10px;
-    text-decoration: none;
-}
-
-.menu a:link.active, #menuList a:visited.active	{
-    background: #ffffff;
-    border-bottom: 1px solid #ffffff;
-    color: #000000;
-}
-
-.menu a:hover	{
-    color: #ff0000;
-}
-
-.menu li.selected a {
-    background: #ffffff !important;
-    border-bottom: 1px solid #ffffff !important;
-    color: #000000 !important;
-    font-weight: bold !important;
-}
-
-.menu li.selected ul.submenu {
-    display: inline;
-    left: 10px;
-    position: absolute;
-    top: 35px;
-}
-
-.menu li.selected ul.submenu a {
-    background: #ffffff;
-    border: none;
-    border-left: 1px solid #cccccc;
-    color: #999999 !important;
-    font-size: .98em;
-    font-weight: bold;
-    line-height: 12px;
-    margin-right: 4px;
-    padding: 2px 10px 2px 10px;
-    text-decoration: none;
-}
-
-.menu li.selected ul.submenu a.selected {
-    background: transparent;
-    color: #000 !important;
-}
-
-.menu ul a:hover, #menuList ul.submenu a:hover {
-    color: #ff0000 !important;
-}
-
-.menu ul, #menuList li	{
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu ul.submenu {
-    display: none;
-    width: 90%;
-}
-
-a img { border: none; }
-
-#errors{
-    color:#ff3333;
-}
-#errors h4{
-    color:white;
-    background-color:#ff3333;
 }
 
 

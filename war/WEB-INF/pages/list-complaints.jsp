@@ -95,7 +95,7 @@
                     </td>
                     <td>
                         <c:set var="apcause">
-                            <c:url value="/showAddCause.action">
+                            <c:url value="/showAddComplaintCause.action">
                                 <c:param name="failureId">
                                     ${failure.id}
                                 </c:param>
@@ -155,7 +155,4 @@
         </tbody>
     </table>
 </c:if>
-<menu:useMenuDisplayer name="CoolMenu">
-    <menu:displayMenu name="addComplaint"/>
-</menu:useMenuDisplayer>
 

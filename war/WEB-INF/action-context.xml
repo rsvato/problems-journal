@@ -17,6 +17,7 @@
     <bean name="/doCrashEdit" class="net.paguo.web.struts.crashes.EditCrashAction"  parent="baseFailureAction"/>
     <bean name="/prepareComplaintEdit" class="net.paguo.web.struts.complaints.PrepareEditComplaintAction" parent="baseFailureAndClientAction"/>
     <bean name="/doComplaintEdit" class="net.paguo.web.struts.complaints.EditComplaintAction"  parent="baseFailureAndClientAction"/>
-    <bean name="/addCause"  class="net.paguo.web.struts.resolutions.action.AddCauseAction" parent="baseFailureAction"/>
+    <bean name="/addCrashCause"  class="net.paguo.web.struts.resolutions.action.AddCauseAction" parent="baseFailureAction"/>
+    <bean name="/addComplaintCause"  class="net.paguo.web.struts.resolutions.action.AddCauseAction" parent="baseFailureAction"/>
     <bean name="/doAddRestoreAction"  class="net.paguo.web.struts.resolutions.action.AddRestoreAction" parent="baseFailureAction"/>
 </beans>

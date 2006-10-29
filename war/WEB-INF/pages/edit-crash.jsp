@@ -23,6 +23,6 @@
         </span>
     </div>
     <br class="clear"/>
-    <fmt:message key="clear.button" var="clear"/>
-    <html:submit value="${slabel}"/> <html:reset value="${clear}"/>
+    <fmt:message key="save.button" var="slabel"/>
+    <html:submit value="${slabel}" styleClass="button"/>
 </html:form>

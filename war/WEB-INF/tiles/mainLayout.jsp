@@ -25,36 +25,43 @@
     <script type="text/javascript" src="<c:url value="/script/application.js"/>"></script>
 </head>
 <body>
-   Active: ${active}
+   <c:set var="topActiveLink">
+       <tiles:getAsString name="active"/>
+   </c:set>
    <div id="page">
-       <div id="top">
+       <div id="topbar-menu">
            <tiles:insert attribute="header"/>
            <div id="menuDiv">
                <ul id="menuList">
                    <c:forEach var="item" items="${menu}">
-                       <li>
-                           <c:set var="style">
-                               <c:choose>
-                                   <c:when test="${active eq item.key}">
-                                       current
-                                   </c:when>
-                                   <c:otherwise>
-                                       inactive
-                                   </c:otherwise>
-                               </c:choose>
-                           </c:set>
-                           <html:link action="${item.link}" styleClass="${style}">${item.value} (${item.key})</html:link>
+                       <c:set var="style">
+                           <c:choose>
+                               <c:when test="${topActiveLink eq item.key}">
+                                   selected
+                               </c:when>
+                               <c:otherwise>
+                                   inactive
+                               </c:otherwise>
+                           </c:choose>
+                       </c:set>
+                       <li class="${style}">
+                           <html:link action="${item.link}" styleClass="${style}">${item.value}</html:link>
                        </li>
                    </c:forEach>
                </ul>
+           </div>
+           <div id="localmenu">
+               <c:forEach var="subitem" items="${localmenu}">
+                   <html:link action="${subitem.link}">${subitem.value}</html:link>
+               </c:forEach>
            </div>
        </div>
 
        <div id="content">
            <logic:messagesPresent>
            <div id="errors">
-               <table border="1" width="100%" align="center">
-                   <tr>
+               <table border="0" width="100%" align="center">
+                   <tr>                       
                        <td valign="top">
                            <img src="<c:url value="/img/icon-warning.gif"/>" border="0"
                                 vspace="2" hspace="10" align="middle"/>
