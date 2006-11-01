@@ -76,6 +76,14 @@ public class NetworkFailureController {
         return getProblemDao().readAll();
     }
 
+    public ClientComplaint getClientComplaint(Integer id){
+        return getComplaintDao().read(id);
+    }
+
+    public NetworkProblem getNetworkProblem(Integer id){
+        return getProblemDao().read(id);
+    }
+
     public ClientComplaintDao getComplaintDao() {
         return complaintDao;
     }

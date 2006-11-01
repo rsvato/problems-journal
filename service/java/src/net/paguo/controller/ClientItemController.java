@@ -22,7 +22,7 @@ public class ClientItemController {
         this.clientDao = clientDao;
     }
 
-    public Collection<ClientItem> getAllClients(){
+    public Collection<ClientItem> getClients(){
         List<ClientItem> lst = getClientDao().readAll();
         Collections.sort(lst, new Comparator<ClientItem>(){
             public int compare(ClientItem o1, ClientItem o2) {
@@ -30,5 +30,9 @@ public class ClientItemController {
             }
         });
         return lst;
+    }
+
+    public Collection<ClientItem> getAllClients(){
+        return getClientDao().findActive();
     }
 }

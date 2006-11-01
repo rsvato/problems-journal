@@ -21,6 +21,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "cl")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@NamedQuery(name = "ClientItem.findActive",
+        query="select cl from ClientItem cl where cl.deleted = false order by cl.clientName")
 public class ClientItem implements Serializable {
     private Integer id;
     private String clientName;

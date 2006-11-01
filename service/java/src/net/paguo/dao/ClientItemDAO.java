@@ -4,6 +4,7 @@ import net.paguo.domain.clients.ClientItem;
 import net.paguo.generic.dao.GenericDao;
 
 import java.util.List;
+import java.util.Collection;
 
 /**
  * @author Svyatoslav Reyentenko mailto:rsvato@gmail.com
@@ -12,4 +13,6 @@ import java.util.List;
  */
 public interface ClientItemDAO extends GenericDao<ClientItem, Integer> {
     List<ClientItem> findByName(String name);
+
+    Collection<ClientItem> findActive();
 }
