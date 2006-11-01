@@ -8,6 +8,8 @@ import org.apache.tapestry.annotations.InitialValue;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.util.Date;
+
 /**
  * User: slava
  * Date: 06.10.2006
@@ -23,8 +25,11 @@ public abstract class Home extends BasePage {
     @InitialValue("literal:MSFT")
     public abstract String getStockId();
 
+    public abstract Date getInputDate();
+
     public IPage onOk(IRequestCycle cycle) {
         log.info("Form submitted. Stock id is " + getStockId());
+        log.info("Date is " + getInputDate());
         Result resultPage = (Result) getResultPage();
         resultPage.setStockValue(getStockId().hashCode());
         return resultPage;

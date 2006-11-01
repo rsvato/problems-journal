@@ -6,10 +6,4 @@
     <component id="subject" type="Insert">
         <binding name="value" value="ognl:subjectName"/>
     </component>
-    <component id="stockQuoteForm" type="Form">
-        <binding name="listener" value="listener:onOk"/>
-    </component>
-    <component id="stockId" type="TextField">
-        <binding name="value"  value="ognl:stockId"/>
-    </component>
 </page-specification>
