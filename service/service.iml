@@ -285,6 +285,15 @@
     <orderEntry type="library" name="hibernate-3.2" level="application" />
     <orderEntry type="library" name="hibernate-annotations-3.2" level="application" />
     <orderEntry type="library" name="hibernate-em-3.2" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/tapestry-spring-0.1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntryProperties />
   </component>
   <component name="Struts Module Component" />

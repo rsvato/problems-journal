@@ -14,12 +14,10 @@ import java.io.Serializable;
  * @hibernate.query name="findAll" query="from UserPermission order by userName"
  */
 @Entity
-@Table(name = "user_perm")
+@Table(name = "auth_data")
 public class UserPermission implements Serializable {
     private String userName;
     private String digest;
-    private String role;
-    private Integer group;
 
     /**
      * @hibernate.id generator-class="assigned"
@@ -45,31 +43,5 @@ public class UserPermission implements Serializable {
 
     public void setDigest(String digest) {
         this.digest = digest;
-    }
-
-    /**
-     * @hibernate.property column="role" not-null="true"
-     * @return
-     */
-    @Column(name="role", nullable = false)
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    /**
-     * @hibernate.property column="grp"
-     * @return
-     */
-    @Column(name="grp", nullable = false)
-    public Integer getGroup() {
-        return group;
-    }
-
-    public void setGroup(Integer group) {
-        this.group = group;
     }
 }

@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.NotNull;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -68,4 +69,7 @@ public class ClientItem implements Serializable {
         this.deleted = deleted;
     }
 
+    public String toString(){
+        return ToStringBuilder.reflectionToString(this);
+    }
 }

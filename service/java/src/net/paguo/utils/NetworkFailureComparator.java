@@ -6,11 +6,10 @@ import java.util.Comparator;
 import java.util.Date;
 
 /**
- * Created by IntelliJ IDEA.
  * User: slava
  * Date: 02.10.2006
  * Time: 1:09:34
- * To change this template use File | Settings | File Templates.
+ * Version: $Id$
  */
 public class NetworkFailureComparator implements Comparator<NetworkFailure> {
 

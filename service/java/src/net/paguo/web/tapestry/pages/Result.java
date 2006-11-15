@@ -1,4 +1,4 @@
-package net.paguo.web.tapestry;
+package net.paguo.web.tapestry.pages;
 
 import org.apache.tapestry.html.BasePage;
 

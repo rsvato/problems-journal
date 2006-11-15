@@ -2,8 +2,12 @@
 <!DOCTYPE page-specification PUBLIC
 "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
 "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
-<page-specification class="net.paguo.web.tapestry.Home">
+<page-specification>
     <component id="subject" type="Insert">
         <binding name="value" value="ognl:subjectName"/>
+    </component>
+    <component id="clientId" type="PropertySelection">
+        <binding name="model" value="ognl:clientList"/>
+        <binding name="value"  value="ognl:clientId"/>
     </component>
 </page-specification>

@@ -32,7 +32,7 @@ public class LocalUser implements Serializable {
 
     /**
      * @hibernate.id generator-class="increment"
-     * @return
+     * @return id 
      */
     @Id
     @GeneratedValue(generator = "increment")
@@ -47,7 +47,7 @@ public class LocalUser implements Serializable {
 
     /**
      * @hibernate.component class="net.paguo.domain.common.PersonalData"
-     * @return
+     * @return  personal data
      */
     @Embedded
     public PersonalData getPersonalData() {
@@ -60,7 +60,7 @@ public class LocalUser implements Serializable {
 
     /**
      * @hibernate.property
-     * @return
+     * @return  description
      */
     public String getDescription() {
         return description;
@@ -74,7 +74,7 @@ public class LocalUser implements Serializable {
      * @hibernate.set table="roles_users" cascade="save-update"
      * @hibernate.collection-key column="local_user_id"
      * @hibernate.collection-many-to-many class="net.paguo.domain.users.LocalRole" column="local_role_id"
-     * @return
+     * @return roles set
      */
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
         targetEntity = LocalRole.class)
@@ -92,7 +92,7 @@ public class LocalUser implements Serializable {
     /**
      * @hibernate.many-to-one class="net.paguo.domain.users.UserPermission" cascade="save-update"
      *  column="prm" not-null="true"
-     * @return
+     * @return permission entry
      */
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "prm")
@@ -107,7 +107,7 @@ public class LocalUser implements Serializable {
 
     /**
      * @hibernate.component class="net.paguo.domain.common.ContactData"
-     * @return
+     * @return contact data
      */
     @Embedded
     public ContactData getContactData() {
@@ -116,5 +116,9 @@ public class LocalUser implements Serializable {
 
     public void setContactData(ContactData contactData) {
         this.contactData = contactData;
+    }
+
+    public void addRole(LocalRole role){
+        roles.add(role);
     }
 }

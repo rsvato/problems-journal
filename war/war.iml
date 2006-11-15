@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module version="4" relativePaths="true" type="J2EE_WEB_MODULE">
+<module version="4" relativePaths="true" TAPESTRY_MODULE="true" type="J2EE_WEB_MODULE">
   <component name="AppServerSpecificValidatorsManager" />
   <component name="ModuleRootManager" />
   <component name="NewModuleRootManager" inherit-compiler-output="false">
@@ -70,6 +70,7 @@
     <orderEntry type="library" name="Tapestry-4.0.2" level="application" />
     <orderEntry type="module" module-name="domain" />
     <orderEntry type="module" module-name="service" />
+    <orderEntry type="library" name="tapestry" level="project" />
     <orderEntryProperties />
   </component>
   <component name="Struts Module Component" />
@@ -301,6 +302,10 @@
     </containerElement>
     <containerElement type="library" name="Tapestry-4.0.2" level="application">
       <attribute name="method" value="0" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="tapestry" level="project">
+      <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
     <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WEB-INF/web.xml" optional="false" version="2.3" />
