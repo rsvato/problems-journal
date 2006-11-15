@@ -45,7 +45,7 @@ public abstract class Clients extends BasePage implements PageBeginRenderListene
             if (! getRequestCycle().isRewinding()){
                 setOldClient(getClientController().readClient(getClientId()));
             }else{
-                if (! getOldClient().equals(getClient())){
+                if (! getOldClient().equals(item)){
                     throw new PageRedirectException("Home");
                 }
             }

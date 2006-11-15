@@ -72,4 +72,26 @@ public class ClientItem implements Serializable {
     public String toString(){
         return ToStringBuilder.reflectionToString(this);
     }
+
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ClientItem item = (ClientItem) o;
+
+        if (!clientName.equals(item.clientName)) return false;
+        if (deleted != null ? !deleted.equals(item.deleted) : item.deleted != null) return false;
+        if (!id.equals(item.id)) return false;
+
+        return true;
+    }
+
+    public int hashCode() {
+        int result;
+        result = id.hashCode();
+        result = 31 * result + clientName.hashCode();
+        result = 31 * result + (deleted != null ? deleted.hashCode() : 0);
+        return result;
+    }
 }
