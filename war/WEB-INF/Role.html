@@ -6,13 +6,13 @@
 
   <body jwcid="@Body">
     <span jwcid="errors"/>
-    <form jwcid="@Form" listener="listener:onSave">
+    <form jwcid="edit">
       <input jwcid="roleId" type="hidden"/>
       <label><span key="role-key">Role key</span></label>
-      <input jwcid="roleKey" type="text" class="inputText" validators="validators:required[%value-required]"/>
+      <input jwcid="roleKey" type="text" class="inputText"/>
       <br>
       <label><span key="role-name">Role name</span></label>
-      <input jwcid="roleDescription" type="text" class="inputText" validators="validators:required[%value-required]"/>
+      <input jwcid="roleDescription" type="text" class="inputText"/>
       <br>
       <input type="submit" value="   Ok   " class="buttonSubmit">
     </form>
