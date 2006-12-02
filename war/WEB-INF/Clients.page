@@ -5,11 +5,16 @@
 <page-specification>
     <component id="edit" type="Form">
        <binding name="listener" value="listener:onOk"/> 
+        <binding name="delegate" value="beans.delegate"/>
     </component>
     <component id="clientId" type="Hidden">
         <binding name="value" value="client.id"/>
     </component>
     <component id="clientName" type="TextField">
         <binding name="value" value="client.clientName"/>
+        <binding name="validators" value="validators:required[%value-required]"/>
+    </component>
+    <component id="errors" type="Delegator">
+        <binding name="delegate" value="beans.delegate.firstError"/>
     </component>
 </page-specification>

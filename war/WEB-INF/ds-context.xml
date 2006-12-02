@@ -169,6 +169,11 @@
         <property name="clientDao" ref="clientItemDao"/>
     </bean>
 
+    <bean id="usersController" class="net.paguo.controller.UsersController">
+        <property name="rolesDao" ref="roleDao"/>
+        <property name="usersDao" ref="userDao"/>
+    </bean>
+
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
         <property name="sessionFactory">
             <ref bean="sessionFactory"/>

@@ -3,10 +3,13 @@ package net.paguo.web.tapestry.pages;
 import org.apache.tapestry.html.BasePage;
 import org.apache.tapestry.annotations.Persist;
 import org.apache.tapestry.annotations.InjectPage;
+import org.apache.tapestry.annotations.Bean;
 import org.apache.tapestry.event.PageEvent;
 import org.apache.tapestry.event.PageBeginRenderListener;
 import org.apache.tapestry.IPage;
 import org.apache.tapestry.PageRedirectException;
+import org.apache.tapestry.valid.ValidationDelegate;
+import org.apache.tapestry.valid.ValidatorException;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.controller.ClientItemController;
 import net.paguo.controller.exception.ControllerException;
@@ -36,6 +39,9 @@ public abstract class Clients extends BasePage implements PageBeginRenderListene
     @InjectPage("Home")
     public abstract IPage getHomePage();
 
+    @Bean
+    public abstract ValidationDelegate getDelegate();
+
     public void pageBeginRender(PageEvent event) {
         ClientItem item;
         if (getClientId() == null){
@@ -54,11 +60,16 @@ public abstract class Clients extends BasePage implements PageBeginRenderListene
     }
 
     public IPage onOk(){
+        ValidationDelegate delegate = getDelegate();
+        if (delegate.getHasErrors()){
+            return null;
+        }
         ClientItem item = getClient();
         item.setDeleted(Boolean.FALSE);
         try {
             getClientController().save(item);
         } catch (ControllerException e) {
+            delegate.record(new ValidatorException(e.getMessage()));
             throw new PageRedirectException(getPageName());
         }
         return getHomePage();

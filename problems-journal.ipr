@@ -68,8 +68,11 @@
       <option name="NAME" value="traffic-database" />
       <TABLE_DATA>
         <option name="NAME" value="addresses" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -78,6 +81,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -86,6 +90,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="city" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -94,6 +99,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="street" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="128" />
@@ -102,6 +108,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="country" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="128" />
@@ -110,6 +117,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="zip" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="16" />
@@ -118,6 +126,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="house" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="32" />
@@ -126,6 +135,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="corr_name" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="128" />
@@ -134,6 +144,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="post_box" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="16" />
@@ -142,6 +153,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="aprtmt" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="32" />
@@ -150,6 +162,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -157,6 +171,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -165,8 +181,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="aggreg" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="a_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -175,6 +194,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -183,6 +203,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -191,6 +212,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="iface" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -199,6 +221,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="t_in" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -207,6 +230,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="t_out" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -216,8 +240,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="cisco_iface" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -226,6 +253,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -234,6 +262,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="interface" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -243,8 +272,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="cl" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -253,6 +285,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="interface" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -261,6 +294,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -269,6 +303,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -277,6 +312,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="summarizing" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Object" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="1" />
@@ -285,6 +321,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="deleted" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Object" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="1" />
@@ -294,8 +331,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="cl_deleted" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -304,6 +344,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="interface" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -312,6 +353,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -320,6 +362,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -328,6 +371,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="summarizing" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Object" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="1" />
@@ -336,6 +380,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="deleted" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Object" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="1" />
@@ -344,6 +389,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="date_deleted" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -353,8 +399,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="client" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -363,6 +412,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="interface" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -371,6 +421,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -380,8 +431,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="client1" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -390,6 +444,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="interface" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -398,6 +453,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -407,8 +463,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="client_group" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -417,6 +476,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="innername" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -425,6 +485,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="userflag" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Object" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="1" />
@@ -434,8 +495,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="client_ntraffic" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -444,6 +508,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -452,6 +517,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -460,6 +526,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="incoming" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -468,6 +535,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="outcoming" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -476,6 +544,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client" />
           <option name="CASCADE_REMOVE" value="true" />
@@ -484,8 +554,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="clients_groups" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="group_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -494,6 +567,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -502,6 +576,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -509,6 +585,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="group_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -516,6 +594,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="group_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -524,8 +604,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="complaints" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="c_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -534,6 +617,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -542,6 +626,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -549,6 +635,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="failures" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="c_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -557,8 +645,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="contact_info" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="contact_name" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="128" />
@@ -567,6 +658,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="contact_phone" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="24" />
@@ -575,6 +667,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="contact_work" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -583,6 +676,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="contact_mail" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="128" />
@@ -591,6 +685,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="contact_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -599,6 +694,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -607,6 +703,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -614,6 +712,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -622,8 +722,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="failures" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -632,6 +735,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="failuretime" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -640,6 +744,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="failuredescription" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="-1" />
@@ -648,6 +753,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="failurecause" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="-1" />
@@ -656,6 +762,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="restoreaction" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="-1" />
@@ -664,6 +771,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="restoretime" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -672,6 +780,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="completed" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Object" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="1" />
@@ -681,8 +790,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="groups_groups" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="parent_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -691,6 +803,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="child_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -699,6 +812,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="child_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -706,6 +821,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="parent_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -713,6 +830,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="child_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -720,6 +839,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="parent_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -728,8 +849,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="local_role" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -738,6 +862,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="role" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -746,6 +871,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="roledescription" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -755,8 +881,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="local_user" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -765,6 +894,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="description" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -773,6 +903,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="name" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -781,6 +912,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="parentname" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -789,6 +921,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="familyname" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -797,6 +930,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="prm" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -805,6 +939,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="user_perm" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="username" />
           <option name="SOURCE_COLUMN" value="prm" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -813,8 +949,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="local_users" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -823,6 +962,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="description" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -831,6 +971,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="name" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -839,6 +980,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="parentname" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -847,6 +989,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="familyname" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -855,6 +998,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="prm" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -863,6 +1007,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="user_perm" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="username" />
           <option name="SOURCE_COLUMN" value="prm" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -871,8 +1017,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="netflow" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -881,6 +1030,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -889,6 +1039,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="host" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="24" />
@@ -897,6 +1048,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="input" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -905,6 +1057,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="output" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -914,8 +1067,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="netflow_details" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -924,6 +1080,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -932,6 +1089,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="host" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -940,6 +1098,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="network_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -948,6 +1107,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="input" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -956,6 +1116,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="output" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -965,8 +1126,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="netflow_networks" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -975,6 +1139,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -983,6 +1148,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="network_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -991,6 +1157,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="input" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -999,6 +1166,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="output" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1007,6 +1175,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="networks" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="network_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1015,8 +1185,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="netflow_networks_details" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1025,6 +1198,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="network_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1033,6 +1207,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1041,6 +1216,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="input" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1049,6 +1225,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="output" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1058,8 +1235,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="network_problems" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="p_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1068,6 +1248,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="failures" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="p_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1076,8 +1258,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="networks" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1086,6 +1271,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="net" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="32" />
@@ -1094,6 +1280,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="mask" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="32" />
@@ -1102,6 +1289,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1110,6 +1298,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="nat_addr" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="32" />
@@ -1118,6 +1307,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1125,6 +1316,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1132,6 +1325,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="cl" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="client" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1140,8 +1335,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="notifications" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="client_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1150,6 +1348,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="notif_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="2" />
@@ -1158,6 +1357,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="last_event" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1166,6 +1366,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="email" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -1175,8 +1376,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="roles_users" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="local_user_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1185,6 +1389,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="local_role_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1193,6 +1398,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="local_role" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="local_role_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1200,6 +1407,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="local_users" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="local_user_id" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1208,8 +1417,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="schedule_events" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1218,6 +1430,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="eventdate" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1226,6 +1439,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="completed" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Object" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="1" />
@@ -1235,8 +1449,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="seam_users" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="username" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="15" />
@@ -1245,6 +1462,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="name" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -1253,6 +1471,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="password" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="15" />
@@ -1262,8 +1481,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="snmp_addresses" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1272,6 +1494,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="address" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="32" />
@@ -1280,6 +1503,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="is_active" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Object" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="1" />
@@ -1288,6 +1512,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="community" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -1297,8 +1522,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="summary_mail" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1307,6 +1535,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="mailaddress" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="128" />
@@ -1316,8 +1545,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="temp_ids" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1327,8 +1559,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="tr" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="dt" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1337,6 +1572,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="interface" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -1345,6 +1581,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="inoctets" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1353,6 +1590,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="outoctets" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1361,6 +1599,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -1369,6 +1608,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1378,8 +1618,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="uptime" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="dt" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1388,6 +1631,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="uptime" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1396,6 +1640,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -1404,6 +1649,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="4" />
@@ -1413,8 +1659,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="user_perm" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="username" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="true" />
           <option name="LENGTH" value="64" />
@@ -1423,6 +1672,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="password" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -1431,6 +1681,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="role" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -1439,6 +1690,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="client" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -1447,6 +1699,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="grp" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1455,6 +1708,8 @@
         </FIELD_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="grp" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1462,6 +1717,8 @@
         </RELATIONSHIP_ELEMENT>
         <RELATIONSHIP_ELEMENT>
           <option name="TARGET_TABLE" value="client_group" />
+          <option name="TARGET_SCHEMA" />
+          <option name="TARGET_CATALOG" />
           <option name="TARGET_COLUMN" value="id" />
           <option name="SOURCE_COLUMN" value="grp" />
           <option name="CASCADE_REMOVE" value="false" />
@@ -1470,8 +1727,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="c_i" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="cisco" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="64" />
@@ -1480,6 +1740,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="interface" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="255" />
@@ -1489,8 +1750,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="netflow_day_summary" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1499,6 +1763,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="network_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1507,6 +1772,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="input" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="65535" />
@@ -1515,6 +1781,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="output" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="65535" />
@@ -1524,8 +1791,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="network_traffview" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1534,6 +1804,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="net" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.String" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="32" />
@@ -1542,6 +1813,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="input" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1550,6 +1822,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="output" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1559,8 +1832,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="nn_day_summ" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1569,6 +1845,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="network_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1577,6 +1854,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="input" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="65535" />
@@ -1585,6 +1863,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="output" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="65535" />
@@ -1594,8 +1873,11 @@
       </TABLE_DATA>
       <TABLE_DATA>
         <option name="NAME" value="nn_summ" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" />
         <FIELD_ELEMENT>
           <option name="NAME" value="dat" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.util.Date" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="8" />
@@ -1604,6 +1886,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="network_id" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="4" />
@@ -1612,6 +1895,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="input" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="65535" />
@@ -1620,6 +1904,7 @@
         </FIELD_ELEMENT>
         <FIELD_ELEMENT>
           <option name="NAME" value="output" />
+          <option name="JDBC_TYPE" value="1111" />
           <option name="TYPE" value="java.lang.Integer" />
           <option name="PRIMARY" value="false" />
           <option name="LENGTH" value="65535" />
@@ -1883,6 +2168,13 @@
     </library>
     <library name="classes">
       <CLASSES />
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="tapestry">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/ognl-2.6.7.jar!/" />
+      </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>

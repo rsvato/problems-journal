@@ -3,6 +3,8 @@ package net.paguo.controller;
 import net.paguo.dao.LocalUserDao;
 import net.paguo.dao.LocalRoleDao;
 import net.paguo.domain.users.LocalUser;
+import net.paguo.domain.users.LocalRole;
+import net.paguo.controller.exception.ControllerException;
 
 import java.util.Collection;
 
@@ -34,5 +36,25 @@ public class UsersController implements Controller<LocalUser>{
 
     public Collection<LocalUser> getAll(){
         return getUsersDao().readAll();
+    }
+
+    public Collection<LocalRole> getAllRoles(){
+        return  getRolesDao().readAll();
+    }
+
+    public void saveRole(LocalRole role) throws ControllerException {
+        try{
+            if (role.getId() == null){
+                getRolesDao().create(role);
+            }else{
+                getRolesDao().update(role);
+            }
+        }catch(Throwable t){
+            throw new ControllerException(t);
+        }
+    }
+
+    public LocalRole readRole(Integer roleId){
+        return getRolesDao().read(roleId);
     }
 }
