@@ -14,6 +14,8 @@ import org.apache.tapestry.event.PageEvent;
 import org.apache.tapestry.html.BasePage;
 import org.apache.tapestry.valid.ValidationDelegate;
 import org.apache.tapestry.valid.ValidatorException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * User: slava
@@ -22,20 +24,24 @@ import org.apache.tapestry.valid.ValidatorException;
  * Version: $Id$
  */
 public abstract class User extends BasePage implements PageBeginRenderListener {
+    public static final Log log = LogFactory.getLog(User.class);
 
     public abstract LocalUser getSelectedUser();
+
     public abstract void setSelectedUser(LocalUser user);
 
-    @Persist("user")
+    @Persist("session")
     public abstract Integer getCurrentUserId();
+
     public abstract void setCurrentUserId(Integer userId);
 
 
-    @Persist("user")
+    @Persist("session")
     public abstract LocalUser getOldUser();
+
     public abstract void setOldUser(LocalUser oldUser);
 
-    @InjectSpring(value="usersController")
+    @InjectSpring(value = "usersController")
     public abstract UsersController getController();
 
     @Bean
@@ -43,30 +49,34 @@ public abstract class User extends BasePage implements PageBeginRenderListener {
 
     public void pageBeginRender(PageEvent event) {
         LocalUser user;
-        if (getCurrentUserId() == null){
+        boolean newUser = getCurrentUserId() == null;
+        if (newUser) {
             user = new LocalUser();
-        }else{
+            setOldUser(user);
+        } else {
             user = getController().readUser(getCurrentUserId());
-            if (! event.getRequestCycle().isRewinding()){
-                setOldUser(getController().readUser(getCurrentUserId()));
-            }else{
-                if (! getOldUser().equals(user)){
+            if (!event.getRequestCycle().isRewinding()) {
+               setOldUser(getController().readUser(getCurrentUserId()));
+            } else {
+                if (!getOldUser().equals(user)) {
                     throw new PageRedirectException("Home");
                 }
             }
         }
         setSelectedUser(user);
+        log.info("Current object is " + user);
     }
 
-    public IPage onSave(){
-       ValidationDelegate delegate = getDelegate();
-        if (delegate.getHasErrors()){
+    public IPage onSave() {
+        ValidationDelegate delegate = getDelegate();
+        if (delegate.getHasErrors()) {
             return null;
         }
         LocalUser user = getSelectedUser();
-        try{
+        try {
+            log.info("Saving object " + user);
             getController().saveUser(user);
-        }catch(ControllerException e){
+        } catch (ControllerException e) {
             delegate.record(new ValidatorException(e.getMessage()));
             throw new PageRedirectException(getPageName());
         }

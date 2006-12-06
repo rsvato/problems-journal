@@ -1,10 +1,7 @@
 package net.paguo.domain.users;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -13,8 +10,7 @@ import java.io.Serializable;
  * @hibernate.cache usage="read-write"
  * @hibernate.query name="findAll" query="from UserPermission order by userName"
  */
-@Entity
-@Table(name = "auth_data")
+@Embeddable
 public class UserPermission implements Serializable {
     private String userName;
     private String digest;
@@ -23,7 +19,7 @@ public class UserPermission implements Serializable {
      * @hibernate.id generator-class="assigned"
      * @return
      */
-    @Id
+    @Column(name="username",unique = true)
     public String getUserName() {
         return userName;
     }

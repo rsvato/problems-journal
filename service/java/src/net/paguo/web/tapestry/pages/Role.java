@@ -23,14 +23,14 @@ import com.javaforge.tapestry.spring.annotations.InjectSpring;
  */
 public abstract class Role extends BasePage implements PageBeginRenderListener {
 
-    @Persist("role")
+    @Persist("request")
     public abstract Integer getRoleId();
     public abstract void setRoleId(Integer id);
 
     public abstract LocalRole getSelectedRole();
     public abstract void setSelectedRole(LocalRole role);
 
-    @Persist("role")
+    @Persist("request")
     public abstract LocalRole getOldRole();
     public abstract void setOldRole(LocalRole role);
 

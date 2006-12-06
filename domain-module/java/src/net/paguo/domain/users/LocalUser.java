@@ -11,6 +11,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.NotNull;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
  * @version $Id $
@@ -95,14 +96,8 @@ public class LocalUser implements Serializable {
         this.roles = roles;
     }
 
-    /**
-     * @hibernate.many-to-one class="net.paguo.domain.users.UserPermission" cascade="save-update"
-     *  column="prm" not-null="true"
-     * @return permission entry
-     */
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "prm")
-    @NotNull
+    
+    @Embedded
     public UserPermission getPermissionEntry() {
         return permissionEntry;
     }
@@ -126,5 +121,9 @@ public class LocalUser implements Serializable {
 
     public void addRole(LocalRole role){
         roles.add(role);
+    }
+
+    public String toString(){
+        return ToStringBuilder.reflectionToString(this);
     }
 }

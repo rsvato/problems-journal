@@ -10,6 +10,8 @@ import net.paguo.controller.exception.ControllerException;
 import java.util.Collection;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * User: slava
@@ -18,6 +20,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  * Version: $Id$
  */
 public class UsersController implements Controller<LocalUser>{
+    public static final Log log = LogFactory.getLog(UsersController.class);
     private LocalUserDao usersDao;
     private LocalRoleDao rolesDao;
 
@@ -66,12 +69,15 @@ public class UsersController implements Controller<LocalUser>{
     }
 
     public void saveUser(LocalUser user) throws ControllerException{
+        log.info("About to save " + user);
         try{
             if (user.getId() == null){
+                log.info("New object");
                 UserPermission permissionEntry = user.getPermissionEntry();
                 user.getPermissionEntry().setDigest(DigestUtils.shaHex(permissionEntry.getDigest()));
                 getUsersDao().create(user);
             }else{
+                log.info("Updating object");
                 LocalUser oldUser = getUsersDao().read(user.getId());
                 String oldDigest = oldUser.getPermissionEntry().getDigest();
                 String newPassword = user.getPermissionEntry().getDigest();
