@@ -1,0 +1,10 @@
+<body jwcid="@Body">
+<form jwcid="@bf:BeanForm"
+      bean="ognl:problem"
+      delegate="bean:delegate"
+        exclude="literal:id"
+      properties="literal:failureDescription=TextArea{required},failureTime=DatePicker{required}"
+      clientValidationEnabled="ognl:true"
+      focus="ognl:true"
+      save="listener:save"/>
+</body>

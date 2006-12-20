@@ -1,9 +1,11 @@
 <html>
+<span jwcid="@Shell" title="Network journal"/>
 <body jwcid="@Body">
 Hello <span jwcid="subject">replaced text</span>
 <form jwcid="@Form" listener="listener:onOk">
     <input type="text" jwcid="stockId@TextField" value="ognl:stockId"/> on
-    <input jwcid="inputDate@DatePicker" type="text" value="ognl:inputDate" translator="translator:date,pattern=yyyy-MM-dd HH:mm"/>
+    <input jwcid="inputDate@DropdownDatePicker" value="ognl:inputDate" translator="translator:date,pattern=yyyy-MM-dd"/>
+    <input jwcid="inputTime@DropdownTimePicker" value="ognl:inputTime" translator="translator:date,pattern=HH:mm"/>
     <br/>
     <select jwcid="clientId"></select>
     <input type="submit" value=" OK "/>

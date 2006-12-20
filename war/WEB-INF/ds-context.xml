@@ -159,6 +159,19 @@
         </property>
     </bean>
 
+    <bean id="changeStatusRequestDao" parent="abstractDao">
+        <property name="proxyInterfaces">
+            <value>net.paguo.dao.ChangeStatusRequestDao</value>
+        </property>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg>
+                    <value>net.paguo.domain.requests.ChangeStatusRequest</value>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
+
     <bean id="failureController" class="net.paguo.controller.NetworkFailureController">
         <property name="failureDao" ref="networkFailureDao"/>
         <property name="complaintDao" ref="clientComplaintDao"/>
@@ -173,12 +186,17 @@
         <property name="rolesDao" ref="roleDao"/>
         <property name="usersDao" ref="userDao"/>
     </bean>
+    
+    <bean id="changeStatusRequestController" class="net.paguo.controller.ChangeStatusRequestController">
+        <property name="requestDao" ref="changeStatusRequestDao"/>
+    </bean>
 
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
         <property name="sessionFactory">
             <ref bean="sessionFactory"/>
         </property>
     </bean>
+
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource">

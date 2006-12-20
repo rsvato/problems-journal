@@ -8,6 +8,6 @@
     </component>
     <component id="clientId" type="PropertySelection">
         <binding name="model" value="ognl:clientList"/>
-        <binding name="value"  value="ognl:clientId"/>
+        <binding name="value"  value="ognl:selectedClientId"/>
     </component>
 </page-specification>

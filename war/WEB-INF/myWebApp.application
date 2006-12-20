@@ -4,4 +4,5 @@
 <application name="myWebApp">
      <meta key="org.apache.tapestry.page-class-packages" value="net.paguo.web.tapestry.pages"/>
     <library id="contrib" specification-path="/org/apache/tapestry/contrib/Contrib.library"/>
+    <library id="bf" specification-path="/net/sf/beanform/BeanForm.library"/>
 </application>

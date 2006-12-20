@@ -7,6 +7,7 @@ import net.paguo.domain.problems.FailureRestore;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.dao.NetworkFailureDao;
 import net.paguo.dao.ClientComplaintDao;
+import net.paguo.controller.exception.ControllerException;
 
 import java.util.Date;
 import java.util.List;
@@ -19,10 +20,11 @@ import java.util.List;
 public class NetworkFailureController {
     /**
      * Creates a new networkProblem
+     *
      * @param failureDescr Cause of a failure
-     * @param failureTime Time of a failure discovery
+     * @param failureTime  Time of a failure discovery
      */
-    public void createFailure(String failureDescr, Date failureTime){
+    public void createFailure(String failureDescr, Date failureTime) {
         NetworkProblem f = new NetworkProblem();
         f.setFailureDescription(failureDescr);
         f.setFailureTime(failureTime);
@@ -31,11 +33,12 @@ public class NetworkFailureController {
 
     /**
      * Creates a client complaint
+     *
      * @param failureDescr Cause of a complaint
      * @param failureTime  Time of a complaint receive
-     * @param ci client
+     * @param ci           client
      */
-    public void createComplaint(String failureDescr, Date failureTime, ClientItem ci){
+    public void createComplaint(String failureDescr, Date failureTime, ClientItem ci) {
         ClientComplaint f = new ClientComplaint();
         f.setFailureDescription(failureDescr);
         f.setFailureTime(failureTime);
@@ -43,22 +46,22 @@ public class NetworkFailureController {
         getComplaintDao().create(f);
     }
 
-    public void assignResolution(NetworkFailure failure, FailureRestore issue){
+    public void assignResolution(NetworkFailure failure, FailureRestore issue) {
         failure.setRestoreAction(issue);
         getFailureDao().update(failure);
     }
 
-    public void assignResolution(NetworkProblem problem, FailureRestore issue){
+    public void assignResolution(NetworkProblem problem, FailureRestore issue) {
         problem.setRestoreAction(issue);
         closeDependedComplaints(issue, problem);
     }
 
     public void closeDependedComplaints(FailureRestore issue, NetworkFailure failure) {
         NetworkProblem problem = getProblemDao().read(failure.getId());
-        if (problem != null && issue.getCompleted()){
+        if (problem != null && issue.getCompleted()) {
             List<ClientComplaint> complaints = problem.getDependedComplaints();
-            for(ClientComplaint complaint : complaints){
-               FailureRestore p = new FailureRestore();
+            for (ClientComplaint complaint : complaints) {
+                FailureRestore p = new FailureRestore();
                 p.setRestoreTime(issue.getRestoreTime());
                 p.setRestoreAction("CLOSED BY PARENT");
                 p.setCompleted(true);
@@ -68,19 +71,19 @@ public class NetworkFailureController {
         }
     }
 
-    public List<NetworkFailure> findAllFailures(){
+    public List<NetworkFailure> findAllFailures() {
         return getFailureDao().readAll();
     }
 
-    public List<NetworkProblem> findAllProblems(){
+    public List<NetworkProblem> findAllProblems() {
         return getProblemDao().readAll();
     }
 
-    public ClientComplaint getClientComplaint(Integer id){
+    public ClientComplaint getClientComplaint(Integer id) {
         return getComplaintDao().read(id);
     }
 
-    public NetworkProblem getNetworkProblem(Integer id){
+    public NetworkProblem getNetworkProblem(Integer id) {
         return getProblemDao().read(id);
     }
 
@@ -88,15 +91,15 @@ public class NetworkFailureController {
         return complaintDao;
     }
 
-    public void setComplaintDao(ClientComplaintDao ccd){
+    public void setComplaintDao(ClientComplaintDao ccd) {
         this.complaintDao = ccd;
     }
 
-    public List<ClientComplaint> findByClient(ClientItem ci){
+    public List<ClientComplaint> findByClient(ClientItem ci) {
         return getComplaintDao().findByClient(ci);
     }
 
-    public List<ClientComplaint> findAllComplaints(){
+    public List<ClientComplaint> findAllComplaints() {
         return getComplaintDao().readAll();
     }
 
@@ -126,7 +129,19 @@ public class NetworkFailureController {
         return getFailureDao().findOpen();
     }
 
-    public List<NetworkProblem> findOpenProblems(){
-       return getProblemDao().findOpen(); 
+    public List<NetworkProblem> findOpenProblems() {
+        return getProblemDao().findOpen();
+    }
+
+    public void saveCrash(NetworkProblem crash) throws ControllerException {
+        try {
+            if (crash.getId() == null) {
+                getProblemDao().create(crash);
+            } else {
+                getProblemDao().update(crash);
+            }
+        } catch (Throwable t) {
+            throw new ControllerException(t);
+        }
     }
 }

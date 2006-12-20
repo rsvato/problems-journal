@@ -5,11 +5,14 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.type.Type;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
 import org.apache.commons.logging.Log;
@@ -56,7 +59,30 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
     @SuppressWarnings("unchecked")
     public List<T> readAll(){
        Criteria c = getSession().createCriteria(type);
+       return c.list();
+    }
+    @SuppressWarnings("unchecked")
+    public List<T> readPart(Integer count, Integer from) {
+       Criteria c = getSession().createCriteria(type);
+        c.setFetchSize(count);
+        c.setFirstResult(from);
         return c.list();
+    }
+
+    public Integer count(){
+        String name = type.getName();
+        StringTokenizer st = new StringTokenizer(name, ".");
+        String n = null;
+        while (st.hasMoreElements()) {
+            n = (String) st.nextElement();
+        }
+        if (n != null) {
+            String s = "select count(*) from " + n;
+            return (Integer) getSession().createQuery(s).uniqueResult();
+        } else {
+            return 0;
+        }
+
     }
 
     public void update(T o) {

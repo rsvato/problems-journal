@@ -12,14 +12,30 @@
         <param-value>messages</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+        <param-value>.xhtml</param-value>
+    </context-param>
+
+    <!-- Special Debug Output for Development -->
+    <context-param>
+        <param-name>facelets.DEVELOPMENT</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <!-- Optional JSF-RI Parameters to Help Debug -->
+    <context-param>
+        <param-name>com.sun.faces.validateXml</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.sun.faces.verifyObjects</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
     <filter>
         <filter-name>LocaleFilter</filter-name>
         <filter-class>net.paguo.web.filters.LocaleFilter</filter-class>
-    </filter>
-
-    <filter>
-        <filter-name>sitemesh</filter-name>
-        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
     </filter>
 
     <filter>
@@ -35,14 +51,14 @@
         <filter-name>hibernateFilter</filter-name>
         <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
     </filter>
-    <filter>
+    <!--<filter>
         <filter-name>redirect</filter-name>
         <filter-class>org.apache.tapestry.RedirectFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>redirect</filter-name>
         <url-pattern>/</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
     <filter-mapping>
         <filter-name>hibernateFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -72,12 +88,16 @@
         <listener-class>net.paguo.web.lifecycle.RedeployListener</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
+    </listener>
+
     <!--<servlet>-->
     <!--<servlet-name>springapp</servlet-name>-->
     <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
     <!--</servlet>-->
 
-    <servlet>
+   <!-- <servlet>
         <servlet-name>struts</servlet-name>
         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
         <init-param>
@@ -85,22 +105,47 @@
             <param-value>/WEB-INF/struts-config.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-    </servlet>
+    </servlet>-->
 
 
-
-    <servlet>
+    <!--servlet>
         <servlet-name>myWebApp</servlet-name>
         <servlet-class>org.apache.tapestry.ApplicationServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
+    </servlet-->
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet-mapping>
+    <!--<servlet-mapping>
         <servlet-name>myWebApp</servlet-name>
         <url-pattern>/app</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>myWebApp</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>myWebApp</servlet-name>
+        <url-pattern>/assets/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>myWebApp</servlet-name>
+        <url-pattern>*.svc</url-pattern>
+    </servlet-mapping>-->
+
+    <!--<servlet-mapping>
         <servlet-name>struts</servlet-name>
         <url-pattern>*.action</url-pattern>
+    </servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
 
 

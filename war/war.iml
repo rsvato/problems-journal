@@ -71,6 +71,8 @@
     <orderEntry type="module" module-name="domain" />
     <orderEntry type="module" module-name="service" />
     <orderEntry type="library" name="tapestry" level="project" />
+    <orderEntry type="library" name="Facelets" level="application" />
+    <orderEntry type="library" name="Apache MyFaces 1.1.2" level="application" />
     <orderEntryProperties />
   </component>
   <component name="Struts Module Component" />
@@ -249,6 +251,11 @@
       <url>jar://$MODULE_DIR$/../lib/struts-menu-2.3.jar!/</url>
     </containerElement>
     <containerElement type="library" level="module">
+      <attribute name="method" value="0" />
+      <attribute name="URI" value="/WEB-INF/lib/tapestry-spring-0.1.2.jar" />
+      <url>jar://$MODULE_DIR$/../lib/tapestry-spring-0.1.2.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib/velocity-dep.jar" />
       <url>jar://$MODULE_DIR$/../lib/velocity-dep.jar!/</url>
@@ -270,6 +277,14 @@
     </containerElement>
     <containerElement type="library" name="acegi-security-1.0.1" level="application">
       <attribute name="method" value="0" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="Apache MyFaces 1.1.2" level="application">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="Facelets" level="application">
+      <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
     <containerElement type="library" name="hibernate-3.2" level="application">
@@ -300,12 +315,16 @@
       <attribute name="method" value="1" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
-    <containerElement type="library" name="Tapestry-4.0.2" level="application">
+    <containerElement type="library" name="tapestry" level="project">
+      <attribute name="method" value="1" />
+      <attribute name="URI" value="/WEB-INF/lib" />
+    </containerElement>
+    <containerElement type="library" name="Tapestry 4.1" level="application">
       <attribute name="method" value="0" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
-    <containerElement type="library" name="tapestry" level="project">
-      <attribute name="method" value="1" />
+    <containerElement type="library" name="Tapestry-4.0.2" level="application">
+      <attribute name="method" value="0" />
       <attribute name="URI" value="/WEB-INF/lib" />
     </containerElement>
     <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WEB-INF/web.xml" optional="false" version="2.3" />

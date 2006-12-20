@@ -9,4 +9,6 @@ public interface GenericDao<T, ID extends Serializable> {
     void update(T transientObject);
     void delete(T persistentObject);
     List<T> readAll();
+    public List<T> readPart(Integer count, Integer from);
+    public Integer count();
 }

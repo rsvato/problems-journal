@@ -1,0 +1,52 @@
+<span jwcid="@Shell" title="%status-changes"/>
+<body jwcid="@Body">
+<table class="table">
+	<thead>
+		<tr>
+			<th><span key="commercial-department" colspan="5"/></th>
+			<th><span key="techical-department" colspan="3"/></th> 
+		</tr>
+		<tr>
+		<!-- commercial department headers -->
+			<th>
+				<span key="row-id"/>
+			</th>
+			<th>
+				<span key="label-date"/>
+			</th>
+			<th>
+				<span key="label-time"/>
+			</th>
+			<th>
+				<span key="request-description"/>
+			</th>
+			<th>
+				<span key="request-author"/>
+			</th>
+		<!-- end of commercial department headers -->
+		<!-- technical depatment headers -->
+			<th>
+				<span key="label-date">
+			</th>
+			<th>
+				<span key="label-time">
+			</th>
+			<th>
+				<span key="label-executor">
+			</th>
+		<!-- end of technical department headers -->
+		</tr>
+		<tr jwcid="@For" source="ognl:requestList" keyExpression="id"
+			value="ognl:selectedRequest" element="tr">
+			<td><span jwcid="@Insert" value="ognl:selectedRequest.id"/></td>
+			<td><span jwcid="@Insert" value="ognl:selectedRequest.date"/></td>
+			<td><span jwcid="@Insert" value="ognl:selectedRequest.date"/></td>
+			<td><span jwcid="@Insert" value="ognl:selectedRequest.description"/></td>
+			<td><span jwcid="@Insert" value="ognl:selectedRequest.author"/></td>
+			<td><span jwcid="@Insert" value="ognl:selectedRequest.execDate"/></td>
+			<td><span jwcid="@Insert" value="ognl:selectedRequest.execDate"/></td>
+			<td><span jwcid="@Insert" value="ognl:selectedRequest.executor"/></td>
+		</tr>
+	</thead>
+</table>
+</body>

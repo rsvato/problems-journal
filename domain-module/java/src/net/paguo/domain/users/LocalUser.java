@@ -12,6 +12,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.NotNull;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * @version $Id $
@@ -124,6 +125,10 @@ public class LocalUser implements Serializable {
     }
 
     public String toString(){
-        return ToStringBuilder.reflectionToString(this);
+        if (personalData != null && StringUtils.isNotEmpty(personalData.toString())){
+           return personalData.toString();    
+        }else{
+            return getPermissionEntry().getUserName();
+        }
     }
 }

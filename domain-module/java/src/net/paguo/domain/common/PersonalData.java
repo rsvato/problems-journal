@@ -56,4 +56,18 @@ public class PersonalData implements Serializable {
     public void setParentName(String parentName) {
         this.parentName = parentName;
     }
+
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        if (familyName != null){
+            result.append(familyName).append(" ");
+        }
+        if (name != null){
+            result.append(name).append(" ");
+        }
+        if (parentName != null){
+            result.append(parentName).append(" ");
+        }
+        return result.toString();
+    }
 }

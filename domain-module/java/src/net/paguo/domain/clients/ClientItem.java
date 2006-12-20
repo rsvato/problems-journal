@@ -89,8 +89,8 @@ public class ClientItem implements Serializable {
 
     public int hashCode() {
         int result;
-        result = id.hashCode();
-        result = 31 * result + clientName.hashCode();
+        result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (clientName != null ? clientName.hashCode() : 0);
         result = 31 * result + (deleted != null ? deleted.hashCode() : 0);
         return result;
     }
