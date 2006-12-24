@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+THIS TEXT WILL BE REMOVED
+<ui:composition>
+    <c:if test="${empty label}">
+        <c:set var="label" value="${fieldName}" />
+    </c:if>
+
+    <c:if test="${empty sort}">
+        <c:set var="sort" value="${true}"/>
+    </c:if>
+
+    <h:column>
+        <f:facet name="header">
+            <h:panelGroup>
+                ${label}
+                <c:if test="${sort}">
+                [
+                <h:commandLink styleClass="smalllink"
+                        action="#{backingBean.sort}">
+                     <h:outputText value="asc"/>
+                    <f:param value="${fieldName}" name="by"/>
+                    <f:param value="asc" name="order"/>
+                </h:commandLink>
+                ,
+                <h:commandLink styleClass="smalllink"
+                        action="#{backingBean.sort}">
+                     <h:outputText value="desc"/>
+                    <f:param value="${fieldName}" name="by"/>
+                    <f:param value="desc" name="order"/>
+                </h:commandLink>
+                ]</c:if>
+            </h:panelGroup>
+        </f:facet>
+        <h:outputText value="${entity[fieldName]}"/>
+    </h:column>
+
+</ui:composition>
+</html>

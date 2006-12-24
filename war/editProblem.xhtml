@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core">
+<body>
+
+This text above will not be displayed.
+
+<ui:composition template="/template.xhtml">
+
+This text will not be displayed.
+
+  <ui:define name="title">
+      Concrete crash
+  </ui:define>
+
+This text will also not be displayed.
+
+  <ui:define name="body">
+      <h:form id="crashForm">
+
+          <h:outputLabel value="Time" styleClass="label" for="crashTime"/>
+          <h:inputText id="crashTime" value="#{editCrash.problem.failureTime}" styleClass="input" disabled="#{! editCrash.canDefine}">
+              <f:convertDateTime type="both" pattern="yyyy-MM-dd HH:mm"/>
+          </h:inputText>
+          <h:message for="crashTime"/>
+          <br/>
+          <h:outputLabel styleClass="label" value="Description" for="crashd"/>
+          <h:inputTextarea id="crashd" styleClass="input area" value="#{editCrash.problem.failureDescription}" disabled="#{! editCrash.canDefine}"/>
+          <h:message for="crashd"/>
+          <br/>
+          <h:outputLabel for="cause" styleClass="label" value="Cause"/>
+          <h:inputTextarea id="cause" value="#{editCrash.problem.restoreAction.failureCause}" styleClass="input area" disabled="#{empty editCrash.problem.failureTime}"/>
+          <h:message for="cause" />
+          <br/>
+          <h:outputLabel for="rtime" styleClass="label" value="Restore time"/>
+          <h:inputText id="rtime" value="#{editCrash.problem.restoreAction.restoreTime}" disabled="#{editCrash.canDefine}">
+              <f:convertDateTime type="both" pattern="yyyy-MM-dd HH:mm"/>
+          </h:inputText>
+          <h:message for="rtime"/>
+          <br/>
+          <h:outputLabel for="cl" styleClass="label" value="Close?"/>
+          <h:selectBooleanCheckbox id="cl" value="#{editCrash.problem.restoreAction.completed}" disabled="#{editCrash.canDefine}"/>
+          <br/>
+          <h:commandButton action="#{editCrash.save}" value="Save"/>
+          <br/>
+          <h:commandButton action="#{editCrash.cancel}" value="Cancel"/>
+      </h:form>
+  </ui:define>
+</ui:composition>
+</body>
+</html>

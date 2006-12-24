@@ -84,4 +84,8 @@ public class NetworkFailure implements Serializable {
     public void setRestoreAction(FailureRestore restoreAction) {
         this.restoreAction = restoreAction;
     }
+
+    public NetworkFailure(){
+        this.restoreAction = new FailureRestore();
+    }
 }

@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core">
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:rdnet="http://www.rdnet.ru/jsf">
 <body>
 
 This text above will not be displayed.
@@ -19,6 +20,8 @@ This text will also not be displayed.
 
   <ui:define name="body">
     <h:form>
+        <h:commandLink value="New" action="#{crashList.createNew}"/>
+        <br/>
         <h:dataTable var="failure" value="#{crashList.failures}" rows="#{crashList.pageSize}"
                 binding="#{crashList.itemsTable}">
             <h:column>
@@ -39,6 +42,8 @@ This text will also not be displayed.
                 </f:facet>
                 <h:outputText value="#{failure.failureTime}"/>
             </h:column>
+            <rdnet:crud-column entity="${failure.restoreAction}" label="Restore cause" fieldName="failureCause" backingBean="${crashList}" sort="${false}"/>
+            <rdnet:crud-column entity="${failure.restoreAction}" label="Restore time" fieldName="restoreTime" backingBean="${crashList}"/>
             <h:column>
                 <h:commandLink action="#{crashList.prepareEdit}"><h:outputText value="Select"/></h:commandLink> 
             </h:column>

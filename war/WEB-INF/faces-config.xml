@@ -29,4 +29,30 @@
             <value>#{failureController}</value>
         </managed-property>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>
+            editCrash
+        </managed-bean-name>
+        <managed-bean-class>net.paguo.web.faces.beans.EditProblemBean</managed-bean-class>
+        <managed-bean-scope>
+            session
+        </managed-bean-scope>
+        <managed-property>
+            <property-name>controller</property-name>
+            <value>#{failureController}</value>
+        </managed-property>
+    </managed-bean>
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>listcrashes</from-outcome>
+            <to-view-id>/listCrashes.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editCrash</from-outcome>
+            <to-view-id>/editProblem.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
 </faces-config>

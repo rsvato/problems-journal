@@ -23,6 +23,11 @@
         <param-value>true</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>facelets.LIBRARIES</param-name>
+        <param-value>/WEB-INF/facelets/tags/rdnet-taglib.xml</param-value>
+    </context-param>
+
     <!-- Optional JSF-RI Parameters to Help Debug -->
     <context-param>
         <param-name>com.sun.faces.validateXml</param-name>
