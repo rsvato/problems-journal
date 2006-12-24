@@ -33,3 +33,11 @@ label{
 .float-right{
     float: right;
 }
+
+table.form {
+    border-collapse: collapse;
+    border: 1px solid  #C3BBB6;
+}
+table.form td{
+   vertical-align: top;
+}

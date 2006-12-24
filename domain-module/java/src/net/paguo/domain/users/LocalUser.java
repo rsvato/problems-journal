@@ -24,6 +24,7 @@ import org.apache.commons.lang.StringUtils;
 @Entity
 @Table(name="local_users")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@NamedQuery(name = "LocalUser.findByPermission", query = "select lu from LocalUser lu where lu.permissionEntry.userName = :uname")
 public class LocalUser implements Serializable {
     private Integer id;
     private PersonalData personalData;

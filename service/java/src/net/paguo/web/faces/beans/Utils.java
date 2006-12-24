@@ -11,8 +11,8 @@ import javax.faces.context.FacesContext;
  * Version: $Id$
  */
 public class Utils {
-    public static void bindObjectToVar(String binding, NetworkProblem failure) {
+    public static void createValueBinding(String name, Object value) {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.getApplication().createValueBinding(binding).setValue(context, failure);
+        context.getApplication().createValueBinding(name).setValue(context, value);
     }
 }

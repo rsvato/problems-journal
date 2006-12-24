@@ -45,7 +45,8 @@ public class EditProblemBean implements NavigationConstants{
         try {
             getController().saveCrash(problem);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Operation successful", "Operation successful"));
-            Utils.bindObjectToVar(EDIT_CRASH_PROBLEM, new NetworkProblem());
+            Utils.createValueBinding(EDIT_CRASH_PROBLEM, new NetworkProblem());
+            CrashListBean.refresh();
         } catch (ControllerException e) {
             log.error(e);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));

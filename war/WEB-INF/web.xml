@@ -71,7 +71,16 @@
 
     <filter-mapping>
         <filter-name>Acegi Filter Chain Proxy</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>*.xthml</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>Acegi Filter Chain Proxy</filter-name>
+        <url-pattern>*.jsf</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
 

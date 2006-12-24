@@ -19,7 +19,8 @@ THIS TEXT WILL BE REMOVED
     <h:column>
         <f:facet name="header">
             <h:panelGroup>
-                ${label}
+                <h:outputText value="${label}"/>
+                <br/>
                 <c:if test="${sort}">
                 [
                 <h:commandLink styleClass="smalllink"

@@ -10,5 +10,5 @@ import java.util.List;
  * @version $Id $
  */
 public interface LocalUserDao extends GenericDao<LocalUser, Integer> {
-    public List<LocalUser> findByPermission(UserPermission username);
+    public List<LocalUser> findByPermission(String username);
 }

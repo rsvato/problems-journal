@@ -18,7 +18,7 @@ public class ChangeStatusRequest {
     private Date date;
     private Date execDate;
     private LocalUser executor;
-    private Type type;
+    private ChangeStatusRequestType type;
     private String description;
 
     /**
@@ -80,11 +80,12 @@ public class ChangeStatusRequest {
         this.executor = executor;
     }
 
-    public Type getType() {
+    @ManyToOne
+    public ChangeStatusRequestType getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(ChangeStatusRequestType type) {
         this.type = type;
     }
 
@@ -94,9 +95,5 @@ public class ChangeStatusRequest {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public static enum Type{
-        PERMANENT, TEMPORARY
     }
 }

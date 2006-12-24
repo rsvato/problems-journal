@@ -47,13 +47,15 @@ public class CrashListBean extends PaginableBean implements NavigationConstants{
 
 
     public Collection getFailures() {
-        failures = getFailureController().findAllProblems();
-        Collections.sort((List<NetworkProblem>) failures, new Comparator<NetworkProblem>(){
-            public int compare(NetworkProblem o1, NetworkProblem o2) {
-                return o1.getFailureTime().compareTo(o2.getFailureTime());
+        if (failures == null) {
+            failures = getFailureController().findAllProblems();
+            Collections.sort((List<NetworkProblem>) failures, new Comparator<NetworkProblem>(){
+                public int compare(NetworkProblem o1, NetworkProblem o2) {
+                    return o2.getFailureTime().compareTo(o1.getFailureTime());
+                }
             }
-        }
-        );
+            );
+        } 
         return failures;
     }
 
@@ -67,17 +69,21 @@ public class CrashListBean extends PaginableBean implements NavigationConstants{
         //reload (session was lost)
         failure = getFailureController().getProblemDao().read(failure.getId());
         System.err.println(failure.toString());
-        Utils.bindObjectToVar(NavigationConstants.EDIT_CRASH_PROBLEM, failure);
+        Utils.createValueBinding(NavigationConstants.EDIT_CRASH_PROBLEM, failure);
         return NavigationConstants.EDITCRASH_OUTCOME;
     }
 
     public String createNew(){
-        Utils.bindObjectToVar(EDIT_CRASH_PROBLEM, new NetworkProblem());
+        Utils.createValueBinding(EDIT_CRASH_PROBLEM, new NetworkProblem());
         return EDITCRASH_OUTCOME;
     }
 
     public void sort(){
 
+    }
+
+    public static void refresh() {
+        Utils.createValueBinding("#{crashList.failures}", null);
     }
 
 

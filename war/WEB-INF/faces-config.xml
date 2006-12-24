@@ -43,6 +43,16 @@
         </managed-property>
     </managed-bean>
 
+    <managed-bean>
+        <managed-bean-name>authentication</managed-bean-name>
+        <managed-bean-class>net.paguo.web.faces.beans.AuthenticationBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>manager</property-name>
+            <value>#{authenticationManager}</value>
+        </managed-property>
+    </managed-bean>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
@@ -52,6 +62,17 @@
         <navigation-case>
             <from-outcome>editCrash</from-outcome>
             <to-view-id>/editProblem.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/listCrashes.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 

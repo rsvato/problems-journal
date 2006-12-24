@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rdnet="http://www.rdnet.ru/jsf">
+<body>
+
+This text above will not be displayed.
+
+<ui:composition template="/template.xhtml">
+
+This text will not be displayed.
+
+  <ui:define name="title">
+    Login page
+  </ui:define>
+  <ui:define name="body">
+    <h:form>
+        <h:outputLabel for="username" value="#{messages.username}" styleClass="label"/>
+        <h:inputText id="username" value="#{authentication.username}" styleClass="input"/>
+        <br/>
+        <h:outputLabel for="password" value="#{messages.password}" styleClass="label"/>
+        <h:inputSecret id="password" value="#{authentication.password}" styleClass="input"/>
+        <br/>
+        <h:commandButton value="#{messages.authenticate}" action="#{authentication.authenticate}" styleClass="button"/>
+    </h:form></ui:define>
+</ui:composition>
+</body>
+</html>

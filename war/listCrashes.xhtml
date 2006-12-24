@@ -23,7 +23,7 @@ This text will also not be displayed.
         <h:commandLink value="New" action="#{crashList.createNew}"/>
         <br/>
         <h:dataTable var="failure" value="#{crashList.failures}" rows="#{crashList.pageSize}"
-                binding="#{crashList.itemsTable}">
+                binding="#{crashList.itemsTable}" styleClass="list" rowClasses="even,odd">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Id"/>
@@ -48,13 +48,12 @@ This text will also not be displayed.
                 <h:commandLink action="#{crashList.prepareEdit}"><h:outputText value="Select"/></h:commandLink> 
             </h:column>
         </h:dataTable>
+        <h:panelGroup>
         <h:commandLink action="#{crashList.firstPage}" rendered="#{crashList.hasPrevious}"><span>first page </span></h:commandLink>
-        <br/>
         <h:commandLink action="#{crashList.previousPage}" rendered="#{crashList.hasPrevious}"><span>previous page </span></h:commandLink>
-        <br/>
         <h:commandLink action="#{crashList.turnPage}" rendered="#{crashList.hasNext}"><span>next page </span></h:commandLink>
-        <br/>
         <h:commandLink action="#{crashList.lastPage}" rendered="#{crashList.hasNext}"><span>last page </span></h:commandLink>
+        </h:panelGroup>
     </h:form>
   </ui:define>
 
