@@ -5,15 +5,22 @@
 
 <faces-config>
     <application>
-        <view-handler>
+        <!--<view-handler>
             com.sun.facelets.FaceletViewHandler
-        </view-handler>
+        </view-handler>-->
+        <default-render-kit-id>
+            org.apache.myfaces.trinidad.core
+        </default-render-kit-id>
         <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
         <locale-config>
-            <supported-locale>ru</supported-locale>
+            <supported-locale>ru_RU</supported-locale>
             <supported-locale>en</supported-locale>
         </locale-config>
+        <message-bundle>
+           messages 
+        </message-bundle>
     </application>
+
     <managed-bean>
         <managed-bean-name>
             crashList
@@ -53,6 +60,16 @@
         </managed-property>
     </managed-bean>
 
+    <managed-bean>
+        <managed-bean-name>permissionList</managed-bean-name>
+        <managed-bean-class>net.paguo.web.faces.beans.PermissionsListBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>controller</property-name>
+            <value>#{usersController}</value>
+        </managed-property>
+    </managed-bean>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
@@ -60,10 +77,23 @@
             <to-view-id>/listCrashes.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>root</from-outcome>
+            <to-view-id>/listCrashes.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/listCrashes.xhtml</from-view-id>
+        <navigation-case>
             <from-outcome>editCrash</from-outcome>
             <to-view-id>/editProblem.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
