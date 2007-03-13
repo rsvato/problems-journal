@@ -13,7 +13,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Junit" level="application" />
     <orderEntry type="library" name="Servlet" level="application" />
-    <orderEntry type="library" name="spring-framework-1.2.7" level="application" />
     <orderEntry type="module" module-name="domain" />
     <orderEntry type="module-library">
       <library>
@@ -293,10 +292,40 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Tapestry 4.1" level="application" />
     <orderEntry type="library" name="Apache MyFaces 1.1.2" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/trinidad-impl-incubator-m1-SNAPSHOT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/trinidad-api-incubator-m1-SNAPSHOT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/spring.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntryProperties />
   </component>
   <component name="Struts Module Component" />
+  <component name="tapidea.moduleConfiguration">
+    <setting name="newTemplatesSourceDirectory" value="" />
+    <setting name="newClassesSourceDirectory" value="" />
+  </component>
 </module>
 

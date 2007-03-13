@@ -15,7 +15,7 @@ import javax.faces.FactoryFinder;
  * Time: 1:30:30
  * Version: $Id$
  */
-public abstract class BaseBean {
+public abstract class BaseBean implements NavigationConstants{
     private Application application;
 
     protected HttpServletRequest getRequest() {

@@ -8,18 +8,29 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.myfaces.trinidad.component.core.data.CoreTable;
+
 /**
  * User: slava
  * Date: 20.12.2006
  * Time: 0:00:07
  * Version: $Id$
  */
-public class CrashListBean extends PaginableBean implements NavigationConstants{
+public class CrashListBean implements NavigationConstants{
     private NetworkFailureController failureController;
     private Collection<NetworkProblem> failures;
     private NetworkProblem selectedFailure;
     private Integer currentPosition = 0;
+    private CoreTable itemsTable;
 
+
+    public CoreTable getItemsTable() {
+        return itemsTable;
+    }
+
+    public void setItemsTable(CoreTable itemList) {
+        this.itemsTable = itemList;
+    }
 
     public NetworkProblem getSelectedFailure() {
         return selectedFailure;

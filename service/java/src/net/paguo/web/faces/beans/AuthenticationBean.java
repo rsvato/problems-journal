@@ -100,25 +100,50 @@ public class AuthenticationBean extends BaseBean{
             log.debug("placing SecurityContext from holder into session");
             session.setAttribute(HttpSessionContextIntegrationFilter.ACEGI_SECURITY_CONTEXT_KEY, secCtx);
 
-            String urlKey = AbstractProcessingFilter.ACEGI_SAVED_REQUEST_KEY;
-            String targetUrl = ((SavedRequest) session.getAttribute(urlKey)).getRequestURL();
-            session.removeAttribute(urlKey);
-
-            String ctxPath = request.getContextPath();
-            int idx = targetUrl.indexOf(ctxPath);
-            String target = targetUrl.substring(idx + ctxPath.length());
-            log.debug("authentication successful, forwarding to " + target + " obtained from " + targetUrl);
             Utils.createValueBinding("#{authentication.auth}", auth);
-            forward(target);
+
+            String urlKey = AbstractProcessingFilter.ACEGI_SAVED_REQUEST_KEY;
+            if (urlKey != null) {
+                log.error("urlKey found");
+                SavedRequest savedRequest = ((SavedRequest) session.getAttribute(urlKey));
+                if (savedRequest != null) {
+                    String targetUrl = savedRequest.getRequestURL();
+                    session.removeAttribute(urlKey);
+
+                    String ctxPath = request.getContextPath();
+                    int idx = targetUrl.indexOf(ctxPath);
+                    String target = targetUrl.substring(idx + ctxPath.length());
+                    log.error("authentication successful, forwarding to " + target + " obtained from " + targetUrl);
+
+
+                    //forward(target);
+                }
+            } else {
+                outcome = "root";
+            }
         }
         catch (AuthenticationException e) {
             outcome = FAILURE;
             log.error(e);
-            e.printStackTrace(System.err);
-            getFacesContext().addMessage(null, new FacesMessage(e.getMessage()));
+            getFacesContext().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
         }
-
+        log.error("And finally outcome is " + outcome);
         return outcome;
+    }
+
+    public String logout() {
+        log.debug("Logout requested");
+        Utils.createValueBinding("#{authentication.auth}", null);
+        SecurityContext secCtx = SecurityContextHolder.getContext();
+        if (secCtx != null && secCtx.getAuthentication() != null) {
+            log.debug("Emptying security context");
+            secCtx.setAuthentication(null);
+            HttpSession session = getRequest().getSession();
+            if (session != null)
+                session.removeAttribute(HttpSessionContextIntegrationFilter.ACEGI_SECURITY_CONTEXT_KEY);
+        }
+        log.debug("Finished logout procedure");
+        return OUTCOME_LOGOUT;
     }
 
 
