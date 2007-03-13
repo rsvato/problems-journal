@@ -6,11 +6,13 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:tr="http://myfaces.apache.org/trinidad"
+      xmlns:trh="http://myfaces.apache.org/trinidad/html"
       xmlns:rdnet="http://www.rdnet.ru/jsf">
 <body>
 
 This text above will not be displayed.
-
+<f:loadBundle basename="messages" var="messages"/>
 <ui:composition template="/template.xhtml">
 
 This text will not be displayed.
@@ -19,15 +21,11 @@ This text will not be displayed.
     Login page
   </ui:define>
   <ui:define name="body">
-    <h:form>
-        <h:outputLabel for="username" value="#{messages.username}" styleClass="label"/>
-        <h:inputText id="username" value="#{authentication.username}" styleClass="input"/>
-        <br/>
-        <h:outputLabel for="password" value="#{messages.password}" styleClass="label"/>
-        <h:inputSecret id="password" value="#{authentication.password}" styleClass="input"/>
-        <br/>
-        <h:commandButton value="#{messages.authenticate}" action="#{authentication.authenticate}" styleClass="button"/>
-    </h:form></ui:define>
+    <tr:form id="login">
+        <tr:inputText id="otherUsername" value="#{authentication.username}" label="Just check"/>
+        <tr:inputText secret="true" contentStyle="input" id="password" value="#{authentication.password}" label="password"/>
+        <tr:commandButton action="#{authentication.authenticate}" text="Log in"/>
+    </tr:form></ui:define>
 </ui:composition>
 </body>
 </html>

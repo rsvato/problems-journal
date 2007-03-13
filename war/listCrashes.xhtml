@@ -3,7 +3,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
         xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:rdnet="http://www.rdnet.ru/jsf">
+        xmlns:rdnet="http://www.rdnet.ru/jsf"
+        xmlns:tr="http://myfaces.apache.org/trinidad">
 <body>
 
 This text above will not be displayed.
@@ -19,42 +20,47 @@ This text will not be displayed.
 This text will also not be displayed.
 
   <ui:define name="body">
-    <h:form>
+    <tr:form>
         <h:commandLink value="New" action="#{crashList.createNew}"/>
         <br/>
-        <h:dataTable var="failure" value="#{crashList.failures}" rows="#{crashList.pageSize}"
-                binding="#{crashList.itemsTable}" styleClass="list" rowClasses="even,odd">
-            <h:column>
+        <tr:table var="failure" value="#{crashList.failures}" rows="10"
+                binding="#{crashList.itemsTable}" inlineStyle="padding: 2px 5px">
+            <tr:column>
                 <f:facet name="header">
-                    <h:outputText value="Id"/>
+                    <tr:outputText value="Id"/>
                 </f:facet>
-                <h:outputText value="#{failure.id}"/>
-            </h:column>
-            <h:column>
+                <tr:outputText value="#{failure.id}"/>
+            </tr:column>
+            <tr:column>
                 <f:facet name="header">
-                    <h:outputText value="Description"/>
+                    <tr:outputText value="Description"/>
                 </f:facet>
-                <h:outputText value="#{failure.failureDescription}"/>
-            </h:column>
-            <h:column>
+                <tr:outputText value="#{failure.failureDescription}"/>
+            </tr:column>
+            <tr:column>
                 <f:facet name="header">
-                    <span  jsfc="h:outputText">Date</span>
+                    <span  jsfc="tr:outputText">Date</span>
                 </f:facet>
-                <h:outputText value="#{failure.failureTime}"/>
-            </h:column>
-            <rdnet:crud-column entity="${failure.restoreAction}" label="Restore cause" fieldName="failureCause" backingBean="${crashList}" sort="${false}"/>
-            <rdnet:crud-column entity="${failure.restoreAction}" label="Restore time" fieldName="restoreTime" backingBean="${crashList}"/>
-            <h:column>
-                <h:commandLink action="#{crashList.prepareEdit}"><h:outputText value="Select"/></h:commandLink> 
-            </h:column>
-        </h:dataTable>
-        <h:panelGroup>
-        <h:commandLink action="#{crashList.firstPage}" rendered="#{crashList.hasPrevious}"><span>first page </span></h:commandLink>
-        <h:commandLink action="#{crashList.previousPage}" rendered="#{crashList.hasPrevious}"><span>previous page </span></h:commandLink>
-        <h:commandLink action="#{crashList.turnPage}" rendered="#{crashList.hasNext}"><span>next page </span></h:commandLink>
-        <h:commandLink action="#{crashList.lastPage}" rendered="#{crashList.hasNext}"><span>last page </span></h:commandLink>
-        </h:panelGroup>
-    </h:form>
+                <tr:outputText value="#{failure.failureTime}"/>
+            </tr:column>
+	    <tr:column>
+	    	<f:facet name="header">
+			<tr:outputText value="Restore cause"/>
+		</f:facet>
+		<tr:outputText value="#{failure.restoreAction.failureCause}"/>
+	    </tr:column>
+	    <tr:column>
+	    	<f:facet name="header">
+			<tr:outputText value="Restore time"/>
+		</f:facet>
+		<tr:outputText value="#{failure.restoreAction.restoreTime}"/>
+	    </tr:column>
+            <tr:column>
+                <tr:commandLink action="#{crashList.prepareEdit}"><tr:outputText value="Select"/></tr:commandLink> 
+            </tr:column>
+        </tr:table>
+
+    </tr:form>
   </ui:define>
 
 This text will not be displayed.
