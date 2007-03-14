@@ -14,7 +14,6 @@
     <property name="tomcat.dir" value="/home/ubuntu/tomcat"/>
     <property name="webapp.dir" value="${tomcat.dir}/webapps/"/>
     <property name="devel.lib.dir" value="lib"/>
-    <property name="xdoclet.dir" value="tools/lib/xdoclet"/>
     <property name="app.location" value="file:///${war.dir}"/>
     <property name="conf.dir" value="conf"/>
 
@@ -44,13 +43,6 @@
         <dirset dir="${test.class.dir}"/>
     </path>
 
-    <path id="xdoclet.path">
-        <path refid="compile.classpath"/>
-            <fileset dir="${xdoclet.dir}">
-                <include name="*.jar"/>
-            </fileset>
-     </path>
-
     <path id="catalina.libs">
         <fileset dir="${tomcat.dir}/server/lib">
             <include name="*.jar"/>
@@ -74,20 +66,6 @@
        <taskdef name="resources"
                                 classname="org.apache.catalina.ant.ResourcesTask" classpathref="catalina.libs"/>
        <taskdef name="roles"    classname="org.apache.catalina.ant.RolesTask" classpathref="catalina.libs"/>
-
-
-    <target name="hib.generate" depends="init">
-
-        <taskdef name="hibernatedoclet"
-                 classname="xdoclet.modules.hibernate.HibernateDocletTask"
-                 classpathref="xdoclet.path"/>
-        <hibernatedoclet destDir="${war.dir}/WEB-INF/classes/mappings">
-            <fileset dir="${domain.src.dir}">
-                <include name="**/*.java"/>
-            </fileset>
-            <hibernate version="3.0"/>
-        </hibernatedoclet>
-    </target>
 
     <target name="init">
         <mkdir dir="${class.dir}"/>
