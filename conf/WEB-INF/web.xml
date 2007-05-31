@@ -173,6 +173,11 @@
     <servlet>
         <servlet-name>WicketServlet</servlet-name>
         <servlet-class>wicket.protocol.http.WicketServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>net.paguo.web.wicket.JournalApplication</param-value>
+        </init-param>
     </servlet>
 
     <servlet-mapping>

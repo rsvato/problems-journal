@@ -80,6 +80,12 @@
         <javac srcdir="${service.src.dir}" classpathref="compile.classpath"
                destdir="${class.dir}" debug="true"
                 />
+        <copy todir="${class.dir}">
+            <fileset dir="${service.src.dir}">
+                <include name="**/*.properties"/>
+                <include name="**/*.html"/>
+            </fileset>
+        </copy>
     </target>
 
     <target name="touch" depends="init,compile-service"
@@ -154,6 +160,8 @@
              webxml="${conf.dir}/WEB-INF/web.xml">
             <fileset dir="${war.dir}">
                 <include name="**/*"/>
+                <exclude name="**/web.xml"/>
+                <exclude name="**/*.iml"/>
             </fileset>
         </war>
     </target>

@@ -8,6 +8,13 @@ import wicket.markup.html.WebPage;
  * Time: 0:44:20
  */
 public class ApplicationWebPage extends WebPage {
+    private String userName;
 
+    public String getUserName() {
+        return userName;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

@@ -28,28 +28,13 @@
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems-journal.iws" afterPath="$PROJECT_DIR$/problems-journal.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/listCrashes.xhtml" afterPath="$PROJECT_DIR$/war/listCrashes.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/WEB-INF/classes/messages_ru.properties" afterPath="$PROJECT_DIR$/conf/WEB-INF/classes/messages_ru.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/template.xhtml" afterPath="$PROJECT_DIR$/war/template.xhtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/myfaces-impl-1.1.5.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/WEB-INF/acegi.xml" afterPath="$PROJECT_DIR$/conf/WEB-INF/acegi.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build-lib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain-module/java/src/net/paguo/domain/clients/ClientItem.java" afterPath="$PROJECT_DIR$/domain-module/java/src/net/paguo/domain/clients/ClientItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/war.iml" afterPath="$PROJECT_DIR$/war/war.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/service.iml" afterPath="$PROJECT_DIR$/service/service.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems-journal.ipr" afterPath="$PROJECT_DIR$/problems-journal.ipr" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Dashboard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/myfaces-api-1.1.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/ApplicationWebPage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login_ru.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/ApplicationWebPage.java" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/ApplicationWebPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.html" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/conf/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/WEB-INF/classes/messages.properties" afterPath="$PROJECT_DIR$/conf/WEB-INF/classes/messages.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain-module/build.properties" afterPath="$PROJECT_DIR$/domain-module/build.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain-module/domain.iml" afterPath="$PROJECT_DIR$/domain-module/domain.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/JournalApplication.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java" />
     </list>
     <list name="" comment="" />
     <list name="Failed commit: Default" comment="Small update" />
@@ -192,8 +177,16 @@
   </component>
   <component name="ErrorOptionsConfigurable.UI">
     <option name="proportions">
-      <SplitterProportionsDataImpl />
+      <SplitterProportionsDataImpl>
+        <option name="proportions">
+          <collection>
+            <option value="0.11111111" />
+            <option value="0.60142857" />
+          </collection>
+        </option>
+      </SplitterProportionsDataImpl>
     </option>
+    <option name="lastEditedConfigurable" value="Default" />
   </component>
   <component name="ErrorTreeViewConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -227,31 +220,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="JournalApplication.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/JournalApplication.java">
+      <file leaf-file-name="Login.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="59" selection-start="439" selection-end="439" vertical-scroll-proportion="0.45735028">
+            <state line="27" column="35" selection-start="861" selection-end="861" vertical-scroll-proportion="0.20149253">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.properties">
+          <provider selected="true" editor-type-id="ResourceBundle">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state line="2" column="52" selection-start="89" selection-end="89" vertical-scroll-proportion="0.071287125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dashboard.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Dashboard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="13" selection-start="145" selection-end="145" vertical-scroll-proportion="0.22867514">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dashboard.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Dashboard.html">
-          <provider editor-type-id="HtmlPreview">
+      <file leaf-file-name="Login_ru.properties" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login_ru.properties">
+          <provider editor-type-id="ResourceBundle">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="26" selection-start="100" selection-end="100" vertical-scroll-proportion="0.14373717">
+            <state line="3" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.106930695">
               <folding />
             </state>
           </provider>
@@ -260,16 +258,7 @@
       <file leaf-file-name="ApplicationWebPage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/ApplicationWebPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="39" selection-start="171" selection-end="171" vertical-scroll-proportion="0.22867514">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="38" selection-start="419" selection-end="419" vertical-scroll-proportion="0.23507462">
+            <state line="12" column="33" selection-start="245" selection-end="245" vertical-scroll-proportion="0.39201453">
               <folding />
             </state>
           </provider>
@@ -281,43 +270,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="30" selection-start="254" selection-end="254" vertical-scroll-proportion="0.28747433">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="38" selection-start="1447" selection-end="1447" vertical-scroll-proportion="0.027027028">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="domain-build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain-module/domain-build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="35" selection-start="685" selection-end="685" vertical-scroll-proportion="0.5135135">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/domain-module/build.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="40" selection-start="50" selection-end="50" vertical-scroll-proportion="0.025408348">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/conf/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="27" selection-start="6036" selection-end="6036" vertical-scroll-proportion="0.5135135">
+            <state line="10" column="61" selection-start="255" selection-end="255" vertical-scroll-proportion="0.3726708">
               <folding />
             </state>
           </provider>
@@ -710,6 +663,44 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/service/java/src/net/paguo/web" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="com.intellij.openapi.project.impl.ProjectImpl@916aab" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Module:service" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/service" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/service/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/service/java/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/service/java/src/net/paguo" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/service/java/src/net/paguo/web" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/service/java/src/net/paguo/web/wicket" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="com.intellij.lang.properties.ResourceBundleImpl@1a49be6b" />
+          <option name="myItemType" value="com.intellij.lang.properties.projectView.ResourceBundleNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -1609,20 +1600,6 @@
     <option name="myLastEditedConfigurable" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/domain-module/java/src/net/paguo/domain/common/ContactData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain-module/java/src/net/paguo/domain/users/LocalUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="56" selection-start="1774" selection-end="1774" vertical-scroll-proportion="0.7835821">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/domain-module/java/src/net/paguo/domain/common/PersonalData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="21" selection-start="1109" selection-end="1109" vertical-scroll-proportion="0.49183303">
@@ -1643,13 +1620,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="38" selection-start="1447" selection-end="1447" vertical-scroll-proportion="0.027027028">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1674,33 +1644,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="38" selection-start="419" selection-end="419" vertical-scroll-proportion="0.23507462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.html">
-      <provider editor-type-id="HtmlPreview">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="30" selection-start="254" selection-end="254" vertical-scroll-proportion="0.28747433">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Dashboard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="13" selection-start="145" selection-end="145" vertical-scroll-proportion="0.22867514">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/ApplicationWebPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="39" selection-start="171" selection-end="171" vertical-scroll-proportion="0.22867514">
           <folding />
         </state>
       </provider>
@@ -1717,7 +1663,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="27" selection-start="6036" selection-end="6036" vertical-scroll-proportion="0.5135135">
+        <state line="178" column="64" selection-start="6108" selection-end="6108" vertical-scroll-proportion="0.4864865">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="42" selection-start="5602" selection-end="5602" vertical-scroll-proportion="0.5945946">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/ApplicationWebPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="33" selection-start="245" selection-end="245" vertical-scroll-proportion="0.39201453">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.html">
+      <provider editor-type-id="HtmlPreview">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="61" selection-start="255" selection-end="255" vertical-scroll-proportion="0.3726708">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="35" selection-start="861" selection-end="861" vertical-scroll-proportion="0.20149253">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.properties">
+      <provider selected="true" editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="2" column="52" selection-start="89" selection-end="89" vertical-scroll-proportion="0.071287125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login_ru.properties">
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.106930695">
           <folding />
         </state>
       </provider>
