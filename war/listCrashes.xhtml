@@ -6,7 +6,7 @@
         xmlns:rdnet="http://www.rdnet.ru/jsf"
         xmlns:tr="http://myfaces.apache.org/trinidad">
 <body>
-
+<f:loadBundle basename="messages" var="messages"/>
 This text above will not be displayed.
 
 <ui:composition template="/template.xhtml">
@@ -14,7 +14,7 @@ This text above will not be displayed.
 This text will not be displayed.
 
   <ui:define name="title">
-    Crash list
+    <h:outputText value="#{messages['list.failures.title']}"/>
   </ui:define>
 
 This text will also not be displayed.
@@ -33,25 +33,25 @@ This text will also not be displayed.
             </tr:column>
             <tr:column>
                 <f:facet name="header">
-                    <tr:outputText value="Description"/>
+                    <tr:outputText value="#{messages['label.description']}"/>
                 </f:facet>
                 <tr:outputText value="#{failure.failureDescription}"/>
             </tr:column>
             <tr:column>
                 <f:facet name="header">
-                    <span  jsfc="tr:outputText">Date</span>
+                    <tr:outputText value="#{messages['label.date']}"/>
                 </f:facet>
                 <tr:outputText value="#{failure.failureTime}"/>
             </tr:column>
 	    <tr:column>
 	    	<f:facet name="header">
-			<tr:outputText value="Restore cause"/>
+			<tr:outputText value="#{messages['restore.cause']}"/>
 		</f:facet>
 		<tr:outputText value="#{failure.restoreAction.failureCause}"/>
 	    </tr:column>
 	    <tr:column>
 	    	<f:facet name="header">
-			<tr:outputText value="Restore time"/>
+			<tr:outputText value="#{messages['restore.time']}"/>
 		</f:facet>
 		<tr:outputText value="#{failure.restoreAction.restoreTime}"/>
 	    </tr:column>

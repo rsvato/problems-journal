@@ -170,6 +170,16 @@
         <servlet-class>org.apache.myfaces.trinidad.webapp.ResourceServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>WicketServlet</servlet-name>
+        <servlet-class>wicket.protocol.http.WicketServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WicketServlet</servlet-name>
+        <url-pattern>/app/*</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>resources</servlet-name>
         <url-pattern>/adf/*</url-pattern>

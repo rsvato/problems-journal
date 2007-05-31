@@ -82,9 +82,8 @@ public class ClientItem implements Serializable {
 
         if (!clientName.equals(item.clientName)) return false;
         if (deleted != null ? !deleted.equals(item.deleted) : item.deleted != null) return false;
-        if (!id.equals(item.id)) return false;
+        return id.equals(item.id);
 
-        return true;
     }
 
     public int hashCode() {

@@ -1,29 +1,33 @@
 <?xml version="1.0"?>
 <project name="network-journal" default="touch" basedir=".">
-
-    <property name="domain.src.dir" value="domain/java/src"/>
-    <property name="domain.dir" value="domain"/>
+    <loadproperties srcfile="build.properties"/>
+    <property name="domain.dir" value="domain-module"/>
+    <property name="domain.src.dir" value="${domain.dir}/java/src"/>
     <property name="service.src.dir" value="service/java/src"/>
     <property name="test.dir" value="test/java"/>
     <property name="test.class.dir" value="/tmp/tests"/>
     <property name="report.dir" value="/tmp/reports"/>
-    <property name="war.dir" value="war"/>
+    <property name="war.dir" value="web-exploded"/>
     <property name="class.dir" value="${war.dir}/WEB-INF/classes"/>
     <property name="lib.dir" value="${war.dir}/WEB-INF/lib"/>
+    <property name="build.lib.dir" value="build-lib"/>
     <property name="merge.dir" value="merge"/>
     <property name="tomcat.dir" value="/home/ubuntu/tomcat"/>
-    <property name="webapp.dir" value="${tomcat.dir}/webapps/"/>
+    <property name="webapp.dir" value="${deploy.home}/problems-journal.war"/>
     <property name="devel.lib.dir" value="lib"/>
     <property name="app.location" value="file:///${war.dir}"/>
     <property name="conf.dir" value="conf"/>
+    <property name="web.src" value="war"/>
+    
 
     <property name="name" value="network-journal"/>
     <property name="tomcat.manager.url" value="http://localhost:8080/manager"/>
     <property name="tomcat.manager.username" value="both"/>
     <property name="tomcat.manager.password" value="tomcat"/>
-    <loadproperties srcfile="build.properties"/>
+    
+
     <path id="catalina.devel.libs">
-        <fileset dir="${tomcat.dir}/common/lib">
+        <fileset dir="${build.lib.dir}">
             <include name="*.jar"/>
         </fileset>
     </path>
@@ -55,24 +59,17 @@
         <pathelement path="${class.dir}"/>
     </path>
 
-    <taskdef name="deploy"   classname="org.apache.catalina.ant.DeployTask" classpathref="catalina.libs"/>
-       <taskdef name="install"  classname="org.apache.catalina.ant.InstallTask" classpathref="catalina.libs"/>
-       <taskdef name="list"     classname="org.apache.catalina.ant.ListTask" classpathref="catalina.libs"/>
-       <taskdef name="reload"   classname="org.apache.catalina.ant.ReloadTask" classpathref="catalina.libs"/>
-       <taskdef name="remove"   classname="org.apache.catalina.ant.RemoveTask" classpathref="catalina.libs"/>
-       <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina.libs"/>
-       <taskdef name="start"    classname="org.apache.catalina.ant.StartTask" classpathref="catalina.libs"/>
-       <taskdef name="stop"     classname="org.apache.catalina.ant.StopTask" classpathref="catalina.libs"/>
-       <taskdef name="resources"
-                                classname="org.apache.catalina.ant.ResourcesTask" classpathref="catalina.libs"/>
-       <taskdef name="roles"    classname="org.apache.catalina.ant.RolesTask" classpathref="catalina.libs"/>
 
     <target name="init">
+        <mkdir dir="${war.dir}"/>
+        <mkdir dir="${war.dir}/WEB-INF"/>
+        <mkdir dir="${war.dir}/WEB-INF/classes"/>
         <mkdir dir="${class.dir}"/>
         <mkdir dir="${lib.dir}"/>
         <mkdir dir="${test.class.dir}"/>
         <mkdir dir="${report.dir}"/>
         <mkdir dir="${report.dir}/html"/>
+        <mkdir dir="${webapp.dir}"/>
     </target>
 
     <target name="compile-domain">
@@ -87,11 +84,15 @@
 
     <target name="touch" depends="init,compile-service"
             description="Renews web application">
-        <!--copy todir="${war.dir}/WEB-INF">
+        <copy todir="${war.dir}">
             <fileset dir="${conf.dir}">
-                <include name="*.xml"/>
+                <include name="**/*"/>
             </fileset>
-        </copy-->
+            <fileset dir="${web.src}">
+                <include name="**/*"/>
+                <exclude name="*.iml"/>
+            </fileset>
+        </copy>
         <touch file="${war.dir}/WEB-INF/web.xml"/>
     </target>
 
@@ -148,36 +149,15 @@
         </copy>
     </target>
 
-    <target name="install.app" depends="touch">
-        <install username="both" password="tomcat" url="http://localhost:8080/manager" path="/network-journal" war="file://${basedir}/${war.dir}"/>
-    </target>
-
-     <target name="uninstall.app">
-        <undeploy username="both" password="tomcat" url="http://localhost:8080/manager" path="/network-journal"/>
-    </target>
-
-    <target name="start.app">
-        <start username="both" password="tomcat" url="http://localhost:8080/manager" path="/network-journal"/>
-    </target>
-
-    <target name="reload.app" depends="touch">
-        <reload username="both" password="tomcat" url="http://localhost:8080/manager" path="/network-journal"/>
-    </target>
-
-
-    <target name="list" description="List Tomcat applications">
-            <list url="${tomcat.manager.url}"
-                     username="${tomcat.manager.username}"
-                     password="${tomcat.manager.password}"/>
-        </target>
     <target name="dist" depends="touch,copy-libs">
         <war destfile="${name}.war"
-             webxml="${war.dir}/WEB-INF/web.xml">
+             webxml="${conf.dir}/WEB-INF/web.xml">
             <fileset dir="${war.dir}">
-                <include name="**/*.*"/>
+                <include name="**/*"/>
             </fileset>
         </war>
     </target>
+    
     <target name="deploywar" depends="dist" description="Deploy application as a WAR file">
         <copy todir="${webapp.dir}" preservelastmodified="true">
             <fileset dir=".">

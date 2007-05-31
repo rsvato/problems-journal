@@ -46,7 +46,7 @@
         <bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
             <property name="authenticationEntryPoint">
                 <bean class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
-                    <property name="loginFormUrl" value="/login.jsf"/>
+                    <property name="loginFormUrl" value="/login.faces"/>
                     <property name="forceHttps" value="false"/>
                 </bean>
             </property>
@@ -75,7 +75,7 @@
                     CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
                     PATTERN_TYPE_APACHE_ANT
                     /login.jsp=IS_AUTHENTICATED_ANONYMOUSLY
-                    /login.jsf=IS_AUTHENTICATED_ANONYMOUSLY
+                    /login.faces=IS_AUTHENTICATED_ANONYMOUSLY
                     /style/*=IS_AUTHENTICATED_ANONYMOUSLY
                     /img/*=IS_AUTHENTICATED_ANONYMOUSLY
                     /script/*=IS_AUTHENTICATED_ANONYMOUSLY
