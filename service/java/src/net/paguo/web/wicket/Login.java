@@ -1,13 +1,16 @@
 package net.paguo.web.wicket;
 
+import net.paguo.controller.UsersController;
+import net.paguo.controller.exception.JournalAuthenticationException;
+import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import wicket.Localizer;
 import wicket.markup.html.form.Form;
 import wicket.markup.html.form.PasswordTextField;
 import wicket.markup.html.form.TextField;
 import wicket.markup.html.panel.FeedbackPanel;
 import wicket.model.PropertyModel;
+import wicket.spring.injection.annot.SpringBean;
 
 /**
  * User: sreentenko
@@ -17,9 +20,11 @@ import wicket.model.PropertyModel;
 public class Login extends ApplicationWebPage{
     public static final Log log = LogFactory.getLog(Login.class);
 
+    @SpringBean
+    private UsersController usersController;
+
     private TextField userId;
     private PasswordTextField password;
-
 
     public Login(){
         userId = new TextField("userId", new PropertyModel(this, "userId"));
@@ -42,8 +47,15 @@ public class Login extends ApplicationWebPage{
         return password.getInput();
     }
 
-    final class LoginForm extends Form{
+    public UsersController getUsersController() {
+        return usersController;
+    }
 
+    public void setUsersController(UsersController usersController) {
+        this.usersController = usersController;
+    }
+
+    final class LoginForm extends Form{
 
         public LoginForm(String s) {
             super(s);
@@ -51,20 +63,26 @@ public class Login extends ApplicationWebPage{
 
         @Override
         protected void onSubmit() {
-             log.debug("Login attempt: " + getUserId() + " " + getPassword());
-             log.debug("Unsuccessful...");
-            if (false){
-                ApplicationWebPage next = new Dashboard();
-                next.setUserName(getUserId());
-                setResponsePage(next);
-            }else{
+            log.debug("Login attempt: " + getUserId() + " " + getPassword());
+            try {
+                UserView authenticated = getUsersController().authenticate(getUserId(), getPassword());
+                JournalWebSession session = (JournalWebSession) getSession();
+                session.setAuthenticatedUser(authenticated);
+                if (! continueToOriginalDestination()){
+                    ApplicationWebPage next = new Dashboard();
+                    next.setUserName(getUserId());
+                    setResponsePage(next);
+                }
+            } catch (JournalAuthenticationException e) {
+                log.error(e);
                 String errorMessage = getLocalizer()
                         .getString("error.invalid.credentials", Login.this,
-                        "Unable to log on");
+                                "Unable to log on");
                 error(errorMessage);
-
             }
         }
+
     }
+
 
 }

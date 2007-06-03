@@ -1,6 +1,9 @@
 package net.paguo.web.wicket;
 
+import wicket.ISessionFactory;
+import wicket.Session;
 import wicket.protocol.http.WebApplication;
+import wicket.spring.injection.annot.SpringComponentInjector;
 
 /**
  * User: sreentenko
@@ -15,7 +18,17 @@ public class JournalApplication extends WebApplication {
 
     @Override
     protected void init() {
+        addComponentInstantiationListener(new SpringComponentInjector(this));
         mountBookmarkablePage("/login", Login.class);
         mountBookmarkablePage("/dashboard", Dashboard.class);
+    }
+
+    @Override
+    protected ISessionFactory getSessionFactory() {
+        return new ISessionFactory() {
+            public Session newSession() {
+                return new JournalWebSession(JournalApplication.this);
+            }
+        };
     }
 }
