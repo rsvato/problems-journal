@@ -27,21 +27,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems-journal.iws" afterPath="$PROJECT_DIR$/problems-journal.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/JournalApplication.java" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/JournalApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/java/src/net/paguo/controller/UsersController.java" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/controller/UsersController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/JournalWebSession.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/auth/UserView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/controller/exception/JournalAuthenticationException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/auth/Authority.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/wicket-spring-annot-1.2.6.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/SecuredWebPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/auth" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/service.iml" afterPath="$PROJECT_DIR$/service/service.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.html" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/Login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/AllowedRole.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/NetworkProblemListProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/AllowedRole.java" afterPath="$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/AllowedRole.java" />
     </list>
     <list name="" comment="" />
     <list name="Failed commit: Default" comment="Small update" />
@@ -230,7 +216,7 @@
       <file leaf-file-name="SecuredWebPage.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/SecuredWebPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="27" selection-start="839" selection-end="839" vertical-scroll-proportion="0.6406534">
+            <state line="9" column="13" selection-start="165" selection-end="165" vertical-scroll-proportion="0.29401088">
               <folding />
             </state>
           </provider>
@@ -266,8 +252,10 @@
       <file leaf-file-name="AllowedRole.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/AllowedRole.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="18" selection-start="146" selection-end="146" vertical-scroll-proportion="0.261343">
-              <folding />
+            <state line="13" column="24" selection-start="318" selection-end="318" vertical-scroll-proportion="0.4246824">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -809,150 +797,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Module:domain" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.intellij.openapi.project.impl.ProjectImpl@ceb87f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Module:domain" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.intellij.openapi.project.impl.ProjectImpl@ceb87f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Module:domain" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.intellij.openapi.project.impl.ProjectImpl@ceb87f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Module:domain" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src/net/paguo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src/net/paguo/domain" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.intellij.openapi.project.impl.ProjectImpl@ceb87f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Module:domain" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src/net/paguo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src/net/paguo/domain" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src/net/paguo/domain/problems" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.intellij.openapi.project.impl.ProjectImpl@ceb87f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Module:domain" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java/src/net/paguo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.intellij.openapi.project.impl.ProjectImpl@ceb87f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Module:domain" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/domain-module/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
     </subPane>
@@ -1706,13 +1550,13 @@
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wicket experiments" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
     <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
     <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-    <option name="ERROR_OCCURED" value="true" />
+    <option name="ERROR_OCCURED" value="false" />
     <option name="ACTIVE_VCS_NAME" value="svn" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
@@ -1728,6 +1572,7 @@
     <MESSAGE value="working update" />
     <MESSAGE value="New tapestry elements" />
     <MESSAGE value="Small update" />
+    <MESSAGE value="Wicket experiments" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1865,13 +1710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/AllowedRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="18" selection-start="146" selection-end="146" vertical-scroll-proportion="0.261343">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/auth/Authority.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="11" selection-start="222" selection-end="222" vertical-scroll-proportion="-0.07803993">
@@ -1886,9 +1724,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/AllowedRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="24" selection-start="318" selection-end="318" vertical-scroll-proportion="0.4246824">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service/java/src/net/paguo/web/wicket/SecuredWebPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="27" selection-start="839" selection-end="839" vertical-scroll-proportion="0.6406534">
+        <state line="9" column="13" selection-start="165" selection-end="165" vertical-scroll-proportion="0.29401088">
           <folding />
         </state>
       </provider>
