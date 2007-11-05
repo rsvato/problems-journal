@@ -1,8 +1,10 @@
 package net.paguo.web.wicket;
 
-import wicket.Application;
+import net.paguo.controller.NetworkFailureController;
 import wicket.extensions.markup.html.repeater.data.IDataProvider;
+import wicket.injection.web.InjectorHolder;
 import wicket.model.IModel;
+import wicket.spring.injection.annot.SpringBean;
 
 import java.util.Iterator;
 
@@ -12,12 +14,27 @@ import java.util.Iterator;
  * Time: 1:06:28
  */
 public class NetworkProblemListProvider implements IDataProvider {
-    public Iterator iterator(int i, int i1) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    @SpringBean
+    private NetworkFailureController controller;
+
+    public NetworkProblemListProvider() {
+        InjectorHolder.getInjector().inject(this);
+    }
+
+    public NetworkFailureController getController() {
+        return controller;
+    }
+
+    public void setController(NetworkFailureController controller) {
+        this.controller = controller;
+    }
+
+    public Iterator iterator(int first, int count) {
+        return getController().getProblems(first, count).iterator();
     }
 
     public int size() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return getController().getProblemsCount();  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public IModel model(Object o) {

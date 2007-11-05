@@ -59,6 +59,7 @@
       <option name="DEFAULT_SCHEMA_NAME" value="public" />
       <option name="TABLE_PATTERN" />
       <option name="NAME" value="traffic-database" />
+      <option name="PROJECT" value="problems-journal" />
       <TABLE_DATA>
         <option name="NAME" value="addresses" />
         <option name="SCHEMA" />

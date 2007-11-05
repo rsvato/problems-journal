@@ -11,4 +11,6 @@ public interface GenericDao<T, ID extends Serializable> {
     List<T> readAll();
     public List<T> readPart(Integer count, Integer from);
     public Integer count();
+
+    Integer maxCount();
 }

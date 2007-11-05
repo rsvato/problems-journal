@@ -312,10 +312,10 @@
           </containerElement>
         </packaging>
       </configuration>
-      <facet type="jsf" name="JSF" implicit="true">
+      <facet type="jsf" name="JSF">
         <configuration />
       </facet>
-      <facet type="struts" name="Struts" implicit="true">
+      <facet type="struts" name="Struts">
         <configuration>
           <option name="myStrutsValidationEnabled" value="true" />
           <option name="myTilesValidationEnabled" value="true" />

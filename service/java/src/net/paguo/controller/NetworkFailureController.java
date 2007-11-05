@@ -18,6 +18,7 @@ import java.util.List;
  *          created 25.08.2006 0:22:19
  */
 public class NetworkFailureController {
+
     /**
      * Creates a new networkProblem
      *
@@ -151,5 +152,9 @@ public class NetworkFailureController {
         } catch (Throwable t) {
             throw new ControllerException(t);
         }
+    }
+
+    public int getProblemsCount() {
+        return getProblemDao().maxCount();
     }
 }
