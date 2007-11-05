@@ -13,7 +13,6 @@ import net.paguo.dao.LocalUserDao;
 import net.paguo.dao.UserPermissionDao;
 import net.paguo.domain.users.LocalUser;
 import net.paguo.domain.users.LocalRole;
-import net.paguo.domain.users.UserPermission;
 
 import java.util.List;
 import java.util.ArrayList;

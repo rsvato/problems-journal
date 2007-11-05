@@ -7,5 +7,6 @@ import wicket.markup.html.WebPage;
  * Date: 30.05.2007
  * Time: 1:21:14
  */
-public class Dashboard extends ApplicationWebPage{
+@AllowedRole("ROLE_VIEW")
+public class Dashboard extends SecuredWebPage{
 }

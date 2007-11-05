@@ -14,7 +14,8 @@ import wicket.spring.injection.annot.SpringBean;
  * Date: 05.06.2007
  * Time: 0:38:23
  */
-public class Users extends ApplicationWebPage {
+@AllowedRole("ROLE_ADMINUSERS")
+public class Users extends SecuredWebPage {
     @SpringBean
     UsersController controller;
 

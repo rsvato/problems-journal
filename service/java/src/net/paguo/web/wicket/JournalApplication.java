@@ -27,7 +27,7 @@ public class JournalApplication extends WebApplication {
         addComponentInstantiationListener(new SpringComponentInjector(this));
         mountBookmarkablePage("/login", Login.class);
         mountBookmarkablePage("/dashboard", Dashboard.class);
-        mountBookmarkablePage("/users", Users.class);
+        mountBookmarkablePage("/admin/users", Users.class);
     }
 
     @Override
