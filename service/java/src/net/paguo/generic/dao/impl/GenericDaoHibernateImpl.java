@@ -85,6 +85,11 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
 
     }
 
+    public Integer maxCount(){
+        return (Integer) getSession().createCriteria(type).
+                setProjection(Projections.rowCount()).uniqueResult();
+    }
+
     public void update(T o) {
         Session session = getSession();
         try{

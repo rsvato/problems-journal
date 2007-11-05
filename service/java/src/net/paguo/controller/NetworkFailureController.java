@@ -79,8 +79,16 @@ public class NetworkFailureController {
         return getProblemDao().readAll();
     }
 
+    public List<NetworkProblem> getProblems(int from, int count){
+        return getProblemDao().readPart(count, from);
+    }
+
     public ClientComplaint getClientComplaint(Integer id) {
         return getComplaintDao().read(id);
+    }
+
+    public List<ClientComplaint> getClientComplaints(int from, int count){
+        return getComplaintDao().readPart(count, from);
     }
 
     public NetworkProblem getNetworkProblem(Integer id) {
