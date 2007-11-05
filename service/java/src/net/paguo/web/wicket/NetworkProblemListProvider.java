@@ -1,5 +1,6 @@
 package net.paguo.web.wicket;
 
+import wicket.Application;
 import wicket.extensions.markup.html.repeater.data.IDataProvider;
 import wicket.model.IModel;
 
