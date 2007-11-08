@@ -1,1 +1,0 @@
-package net.paguo.domain.clients;
