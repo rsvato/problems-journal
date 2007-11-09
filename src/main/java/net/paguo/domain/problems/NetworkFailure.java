@@ -25,6 +25,11 @@ import org.hibernate.validator.NotNull;
 @Table(name = "failures")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQueries({
+        @NamedQuery(name="NetworkFailure.findByDate", query="from NetworkFailure where failureTime = :failureTime"),
+        @NamedQuery(name="NetworkFailure.findOpen",
+                query="from NetworkFailure where restoreAction is null or restoreAction.completed = false")
+        })
 public class NetworkFailure implements Serializable {
     private Integer id;
     private Date failureTime;

@@ -11,7 +11,7 @@ import java.util.List;
  *          created 23.08.2006 0:35:01
  */
 public class ClientItemDAOTest extends AbstractDAOTest {
-    private static final String FIRST_CLIENT = "Charles Dickens";
+    private static final String FIRST_CLIENT = "Charles Dickens" + String.valueOf(System.currentTimeMillis());
 
     public void testCreate(){
         ClientItem item = new ClientItem();

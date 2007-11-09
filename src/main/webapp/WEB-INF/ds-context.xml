@@ -4,15 +4,6 @@
 
 <beans default-lazy-init="true">
 
-    <bean id="problemDataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName"><value>org.postgresql.Driver</value></property>
-        <property name="url"><value>jdbc:postgresql://localhost/traffic</value></property>
-        <property name="username"><value>root</value></property>
-        <property name="password"><value>test12~</value></property>
-        <property name="initialSize"><value>2</value></property>
-        <property name="maxActive"><value>5</value></property>
-    </bean>
-
     <bean id="pds" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass"><value>org.postgresql.Driver</value></property>
         <property name="jdbcUrl"><value>jdbc:postgresql://localhost/traffic</value></property>
@@ -201,18 +192,11 @@
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource">
-            <ref bean="problemDataSource"/>
+            <ref bean="pds"/>
         </property>
         <property name="lazyInit">
             <value>true</value>
         </property>
     </bean>
 
-    <!--menu setup -->
-    <bean id="menu" class="net.sf.navigator.menu.MenuLoader">
-        <property name="menuConfig">
-            <value>/WEB-INF/menu-config.xml</value>
-        </property>
-    </bean>
-    <!--end menu setup -->
 </beans>

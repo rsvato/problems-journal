@@ -22,6 +22,7 @@ import javax.persistence.*;
 @Table(name="complaints")
 @PrimaryKeyJoinColumn(name="c_id")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@NamedQueries({@NamedQuery(name="ClientComplaint.findByClient", query = "from ClientComplaint where client = :client")})
 public class ClientComplaint extends NetworkFailure {
     private ClientItem client;
     private NetworkProblem parent;
