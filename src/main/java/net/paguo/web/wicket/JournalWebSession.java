@@ -2,6 +2,8 @@ package net.paguo.web.wicket;
 
 import net.paguo.web.wicket.auth.Authority;
 import net.paguo.web.wicket.auth.UserView;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import wicket.protocol.http.WebApplication;
 import wicket.protocol.http.WebSession;
 
@@ -11,6 +13,7 @@ import wicket.protocol.http.WebSession;
  * Time: 0:55:45
  */
 public class JournalWebSession extends WebSession {
+    private static final Log log = LogFactory.getLog(JournalWebSession.class);
     private UserView authenticatedUser;
 
     public JournalWebSession(WebApplication webApplication) {
@@ -35,6 +38,20 @@ public class JournalWebSession extends WebSession {
     }
 
     public boolean isHasAuthority(String authority){
-        return isUserHasRoles() && authenticatedUser.getAuthorities().contains(new Authority(authority));
+        log.debug("Searching authority " + authority);
+        boolean result = false;
+        if (isUserHasRoles()){
+            for (Authority o : authenticatedUser.getAuthorities()) {
+                if (authority.equals(o.getAuthority())){
+                   log.debug("Authority found");
+                   result = true;
+                    break;
+                }
+
+            }
+        } else {
+            log.debug("User is not authenticated or does not have any permission");
+        }
+        return result;
     }
 }

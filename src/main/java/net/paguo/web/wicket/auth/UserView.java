@@ -1,5 +1,7 @@
 package net.paguo.web.wicket.auth;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -30,5 +32,9 @@ public class UserView implements Serializable{
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public String toString(){
+        return ToStringBuilder.reflectionToString(this);
     }
 }

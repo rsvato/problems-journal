@@ -20,21 +20,6 @@ import junit.framework.Assert;
 public class TestTimeOperation {
 
     @Test
-    public void testTime(){
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR, 23);
-        cal.set(Calendar.MINUTE, 0);
-        Date result = cal.getTime();
-        
-        cal.setTimeInMillis(result.getTime());
-        Date nDate = cal.getTime();
-        System.out.println(nDate);
-        nDate.setTime(nDate.getTime() + 24 * 60 * 60 * 1000);
-        System.out.println(nDate);
-        assertEquals("Date must be equals", nDate, result);
-    }
-
-    @Test
     public void testTimeInput(){
         String date = "2006-12-23 17:00";
         SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");

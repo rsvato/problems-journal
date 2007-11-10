@@ -1,5 +1,7 @@
 package net.paguo.web.wicket.auth;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.io.Serializable;
 
 /**
@@ -35,5 +37,9 @@ public class Authority implements Serializable {
 
     public int hashCode() {
         return authority.hashCode();
+    }
+
+    public String toString(){
+        return ToStringBuilder.reflectionToString(this);
     }
 }

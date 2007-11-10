@@ -7,6 +7,7 @@ import net.paguo.dao.LocalUserDao;
 import net.paguo.domain.users.LocalRole;
 import net.paguo.domain.users.LocalUser;
 import net.paguo.domain.users.UserPermission;
+import net.paguo.web.wicket.auth.Authority;
 import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.logging.Log;
@@ -115,9 +116,10 @@ public class UsersController implements Controller<LocalUser>{
             throw new JournalAuthenticationException();
         }
         UserView result = new UserView(login);
-        Set<String> roles = new HashSet<String>();
+        Set<Authority> roles = new HashSet<Authority>();
+        result.setAuthorities(roles);
         for (LocalRole role : userFound.getRoles()) {
-            roles.add(role.getRole());
+            roles.add(new Authority(role.getRole()));
         }
         return result;
     }

@@ -64,9 +64,15 @@ public class Login extends ApplicationWebPage{
         @Override
         protected void onSubmit() {
             log.debug("Login attempt: " + getUserId() + " " + getPassword());
+            JournalWebSession session = (JournalWebSession) getSession();
+            if (session.isAuthenticated()){
+                String errorMessage = getLocalizer().getString("error.already.authenticated", Login.this);
+                error(errorMessage);
+                return;
+            }
             try {
+
                 UserView authenticated = getUsersController().authenticate(getUserId(), getPassword());
-                JournalWebSession session = (JournalWebSession) getSession();
                 session.setAuthenticatedUser(authenticated);
                 if (! continueToOriginalDestination()){
                     ApplicationWebPage next = new Dashboard();
