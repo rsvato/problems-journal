@@ -29,7 +29,7 @@ public class TestTimeOperation {
         cal.setTimeInMillis(result.getTime());
         Date nDate = cal.getTime();
         System.out.println(nDate);
-        nDate.setTime(nDate.getTime() + 23 * 60 * 60 * 1000);
+        nDate.setTime(nDate.getTime() + 24 * 60 * 60 * 1000);
         System.out.println(nDate);
         assertEquals("Date must be equals", nDate, result);
     }
