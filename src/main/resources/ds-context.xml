@@ -73,18 +73,7 @@
         </property>
     </bean>
 
-    <bean id="networkFailureDao" parent="abstractDao">
-        <property name="proxyInterfaces">
-            <value>net.paguo.dao.NetworkFailureDao</value>
-        </property>
-        <property name="target">
-            <bean parent="abstractDaoTarget">
-                <constructor-arg>
-                    <value>net.paguo.domain.problems.NetworkFailure</value>
-                </constructor-arg>
-            </bean>
-        </property>
-    </bean>
+    <bean id="networkFailureDao" parent="abstractDaoTarget" class="net.paguo.dao.impl.NetworkFailureDaoImpl"/>
 
     <bean id="clientComplaintDao" parent="abstractDao">
         <property name="proxyInterfaces">

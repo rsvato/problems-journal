@@ -1,8 +1,10 @@
 package net.paguo.generic.dao.finder;
 
+import org.hibernate.ScrollableResults;
+
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 
 public interface FinderExecutor<T>
@@ -14,5 +16,4 @@ public interface FinderExecutor<T>
 
     Iterator<T> iterateFinder(Method method, Object[] queryArgs);
 
-//    ScrollableResults scrollFinder(Method method, Object[] queryArgs);
 }

@@ -125,18 +125,7 @@
         </property>
     </bean>
 
-    <bean id="userDao" parent="abstractDao">
-        <property name="proxyInterfaces">
-            <value>net.paguo.dao.LocalUserDao</value>
-        </property>
-        <property name="target">
-            <bean parent="abstractDaoTarget">
-                <constructor-arg>
-                    <value>net.paguo.domain.users.LocalUser</value>
-                </constructor-arg>
-            </bean>
-        </property>
-    </bean>
+    <bean id="userDao" parent="abstractDaoTarget" class="net.paguo.dao.impl.LocalUserDaoImpl"/>
 
     <bean id="roleDao" parent="abstractDao">
         <property name="proxyInterfaces">

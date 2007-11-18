@@ -1,15 +1,16 @@
 package net.paguo.controller;
 
-import net.paguo.domain.problems.NetworkFailure;
-import net.paguo.domain.problems.ClientComplaint;
-import net.paguo.domain.problems.NetworkProblem;
-import net.paguo.domain.problems.FailureRestore;
-import net.paguo.domain.clients.ClientItem;
-import net.paguo.dao.NetworkFailureDao;
-import net.paguo.dao.ClientComplaintDao;
 import net.paguo.controller.exception.ControllerException;
+import net.paguo.dao.ClientComplaintDao;
+import net.paguo.dao.NetworkFailureDao;
+import net.paguo.domain.clients.ClientItem;
+import net.paguo.domain.problems.ClientComplaint;
+import net.paguo.domain.problems.FailureRestore;
+import net.paguo.domain.problems.NetworkFailure;
+import net.paguo.domain.problems.NetworkProblem;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**

@@ -1,5 +1,7 @@
 package net.paguo.generic.dao;
 
+import org.hibernate.Query;
+
 import java.io.Serializable;
 import java.util.List;
 

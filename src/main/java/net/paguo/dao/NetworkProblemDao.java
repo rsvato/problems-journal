@@ -3,6 +3,7 @@ package net.paguo.dao;
 import net.paguo.domain.problems.NetworkProblem;
 import net.paguo.generic.dao.GenericDao;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
