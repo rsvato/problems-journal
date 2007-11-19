@@ -15,4 +15,7 @@ public interface GenericDao<T, ID extends Serializable> {
     public Integer count();
 
     Integer maxCount();
+
+    @SuppressWarnings("uncheked")
+    List<T> readPart(Integer count, Integer from, String sortBy, boolean ascending);
 }

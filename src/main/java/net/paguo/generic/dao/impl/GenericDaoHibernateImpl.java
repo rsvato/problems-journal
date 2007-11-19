@@ -1,28 +1,28 @@
 package net.paguo.generic.dao.impl;
 
+import net.paguo.generic.dao.GenericDao;
+import net.paguo.generic.dao.finder.FinderArgumentTypeFactory;
+import net.paguo.generic.dao.finder.FinderExecutor;
+import net.paguo.generic.dao.finder.FinderNamingStrategy;
+import net.paguo.generic.dao.finder.impl.SimpleFinderArgumentTypeFactory;
+import net.paguo.generic.dao.finder.impl.SimpleFinderNamingStrategy;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.type.Type;
+import org.springframework.orm.hibernate3.SessionFactoryUtils;
+
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.Projections;
-import org.hibernate.type.Type;
-import org.springframework.orm.hibernate3.SessionFactoryUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import net.paguo.generic.dao.GenericDao;
-import net.paguo.generic.dao.finder.FinderExecutor;
-import net.paguo.generic.dao.finder.FinderNamingStrategy;
-import net.paguo.generic.dao.finder.FinderArgumentTypeFactory;
-import net.paguo.generic.dao.finder.impl.SimpleFinderNamingStrategy;
-import net.paguo.generic.dao.finder.impl.SimpleFinderArgumentTypeFactory;
 
 /**
  * Hibernate implementation of GenericDao
@@ -66,6 +66,16 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
        Criteria c = getSession().createCriteria(type);
         c.setFetchSize(count);
         c.setFirstResult(from);
+        return c.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<T> readPart(Integer count, Integer from, String sortBy, boolean ascending){
+        log.debug(count + " " + from);
+        Criteria c = getSession().createCriteria(type);
+        c.setMaxResults(count);
+        c.setFirstResult(from);
+        c.addOrder(ascending ? Order.asc(sortBy) : Order.desc(sortBy));
         return c.list();
     }
 

@@ -26,13 +26,13 @@ import javax.persistence.*;
 public class ClientComplaint extends NetworkFailure {
     private ClientItem client;
     private NetworkProblem parent;
+    private String enteredClient;
 
     /**
      * @hibernate.many-to-one class="net.paguo.domain.clients.ClientItem" not-null="true"
      * @return client
      */
     @ManyToOne
-    @NotNull
     public ClientItem getClient() {
         return client;
     }
@@ -52,5 +52,14 @@ public class ClientComplaint extends NetworkFailure {
 
     public String toString(){
         return ToStringBuilder.reflectionToString(this);
+    }
+
+    @Column
+    public String getEnteredClient() {
+        return enteredClient;
+    }
+
+    public void setEnteredClient(String enteredClient) {
+        this.enteredClient = enteredClient;
     }
 }

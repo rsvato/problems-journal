@@ -1,0 +1,68 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:wicket="http://wicket.sourceforge.net">
+<head>
+    <title><wicket:message key="problems.title"/></title>
+</head>
+<body>
+<div id="contents">
+    <h1><wicket:message key="problems.title">[users.header]</wicket:message></h1>
+    <span wicket:id="navigator">[data navigator]</span>
+    <table class="dataView">
+        <tr>
+            <th>
+                <wicket:message key="problem.id">[id]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.time">[time]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.description">[dsc]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.cause">[cause]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.action">[action]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.closeTime">[id]</wicket:message>
+            </th>
+        </tr>
+        <tr wicket:id="items">
+            <td>
+                <span wicket:id="id">
+                    [id]
+                </span>
+            </td>
+            <td>
+                <span wicket:id="failureTime">
+                    [failureTime]
+                </span>
+            </td>
+            <td>
+                <span wicket:id="failureDescription">
+                    [failureDescription]
+                </span>
+            </td>
+            <td>
+                <span wicket:id="restoreAction.failureCause">
+                    [failureCause]
+                </span>
+            </td>
+            <td>
+                <span wicket:id="restoreAction.restoreAction">
+                    [restoreAction]
+                </span>
+            </td>
+            <td>
+                <span wicket:id="restoreAction.restoreTime">
+                    [restoreTime]
+                </span>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

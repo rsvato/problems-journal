@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "network_problems")
 @PrimaryKeyJoinColumn(name="p_id")
-@org.hibernate.annotations.NamedQuery(name="NetworkProblem.findOpen",query="from NetworkProblem where restoreAction is null or restoreAction.completed = false order by failureTime")
+@NamedQuery(name="NetworkProblem.findOpen",query="from NetworkProblem where restoreAction is null or restoreAction.completed = false order by failureTime")
 public class NetworkProblem extends NetworkFailure {
     private List<ClientComplaint> dependedComplaints;
 

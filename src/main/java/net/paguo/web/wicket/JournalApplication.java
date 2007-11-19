@@ -27,6 +27,7 @@ public class JournalApplication extends WebApplication {
         addComponentInstantiationListener(new SpringComponentInjector(this));
         mountBookmarkablePage("/login", Login.class);
         mountBookmarkablePage("/dashboard", Dashboard.class);
+        mountBookmarkablePage("/problems", NetworkProblemsPage.class);
         mountBookmarkablePage("/admin/users", Users.class);
     }
 
