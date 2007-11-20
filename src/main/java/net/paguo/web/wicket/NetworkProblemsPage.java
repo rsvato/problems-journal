@@ -58,7 +58,7 @@ public class NetworkProblemsPage extends SecuredWebPage{
         }else{
             items = new NetworkProblemDataView("items", provider);
         }
-        add(HeaderContributor.forCss(NetworkProblemsPage.class, "wstyle.css"));
+        add(HeaderContributor.forCss(NetworkProblemsPage.class, "wstyles.css"));
         add(items);
         add(new PagingNavigator("navigator", items));
     }
