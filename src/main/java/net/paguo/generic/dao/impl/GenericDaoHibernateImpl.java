@@ -6,6 +6,7 @@ import net.paguo.generic.dao.finder.FinderExecutor;
 import net.paguo.generic.dao.finder.FinderNamingStrategy;
 import net.paguo.generic.dao.finder.impl.SimpleFinderArgumentTypeFactory;
 import net.paguo.generic.dao.finder.impl.SimpleFinderNamingStrategy;
+import org.apache.commons.lang.math.IntRange;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
@@ -122,6 +123,16 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
     @SuppressWarnings("unchecked")
     public List<T> executeFinder(Method method, final Object[] queryArgs) {
         final Query namedQuery = prepareQuery(method, queryArgs);
+        return (List<T>) namedQuery.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<T> executeFinder(Method method, final IntRange range, final Object[] queryArgs){
+        final Query namedQuery = prepareQuery(method, queryArgs);
+        int firstResult = range.getMinimumInteger();
+        int count = range.getMinimumInteger() - firstResult;
+        namedQuery.setMaxResults(count);
+        namedQuery.setFirstResult(firstResult);
         return (List<T>) namedQuery.list();
     }
 

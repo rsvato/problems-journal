@@ -8,9 +8,9 @@ import net.paguo.domain.problems.ClientComplaint;
 import net.paguo.domain.problems.FailureRestore;
 import net.paguo.domain.problems.NetworkFailure;
 import net.paguo.domain.problems.NetworkProblem;
+import org.apache.commons.lang.math.IntRange;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -87,6 +87,10 @@ public class NetworkFailureController {
 
     public List<NetworkProblem> getProblems(int from, int count, boolean asc){
         return getProblemDao().readPart(count, from, "failureTime", asc);
+    }
+
+    public List<NetworkProblem> getProblems(IntRange count){
+        return getProblemDao().findAll(count);
     }
 
     public ClientComplaint getClientComplaint(Integer id) {

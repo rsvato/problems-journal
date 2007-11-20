@@ -10,13 +10,20 @@ import java.util.List;
  * @version $Id $
  * @hibernate.joined-subclass table="network_problems"
  * @hibernate.joined-subclass-key column="p_id"
- * @hibernate.query name="NetworkProblem.findByStatus" query="from NetworkProblem where restoreAction.completed = ? order by failureTime"
+ * @hibernate.query name="NetworkProblem.findByStatus" query="from NetworkProblem where restoreAction.completed = ?
+ * order by failureTime"
  * @hibernate.cache usage="read-write"
  */
 @Entity
 @Table(name = "network_problems")
-@PrimaryKeyJoinColumn(name="p_id")
-@NamedQuery(name="NetworkProblem.findOpen",query="from NetworkProblem where restoreAction is null or restoreAction.completed = false order by failureTime")
+@PrimaryKeyJoinColumn(name = "p_id")
+@NamedQueries({
+@NamedQuery(name = "NetworkProblem.findOpen",
+        query = "from NetworkProblem where restoreAction is null or restoreAction.completed = false order by failureTime"),
+@NamedQuery(name = "NetworkProblem.findAll",
+        query = "from NetworkProblem np order by np.failureTime desc")
+        }
+)
 public class NetworkProblem extends NetworkFailure {
     private List<ClientComplaint> dependedComplaints;
 
@@ -29,7 +36,7 @@ public class NetworkProblem extends NetworkFailure {
         this.dependedComplaints = dependedComplaints;
     }
 
-    public String toString(){
+    public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
 }

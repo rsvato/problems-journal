@@ -100,7 +100,19 @@
         </property>
     </bean>
 
-    <bean id="problemDao" parent="abstractDaoTarget" class="net.paguo.dao.impl.NetworkProblemDaoImpl"/>
+    <!--<bean id="problemDao" parent="abstractDaoTarget" class="net.paguo.dao.impl.NetworkProblemDaoImpl"/>-->
+    <bean id="problemDao" parent="abstractDao">
+        <property name="proxyInterfaces">
+            <value>net.paguo.dao.NetworkProblemDao</value>
+        </property>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg>
+                    <value>net.paguo.domain.problems.NetworkProblem</value>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
 
     <bean id="permissionDao" parent="abstractDao">
         <property name="proxyInterfaces">

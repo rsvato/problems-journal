@@ -3,7 +3,7 @@ package net.paguo.dao.impl;
 import net.paguo.dao.NetworkProblemDao;
 import net.paguo.domain.problems.NetworkProblem;
 import net.paguo.generic.dao.impl.GenericDaoHibernateImpl;
-import org.hibernate.Query;
+import org.apache.commons.lang.math.IntRange;
 
 import java.util.List;
 
@@ -26,5 +26,9 @@ public class NetworkProblemDaoImpl extends GenericDaoHibernateImpl<NetworkProble
     @SuppressWarnings("uncheked")
     public List<NetworkProblem> findOpen() {
         return getSession().getNamedQuery("NetworkProblem.findOpen").list();
+    }
+
+    public List<NetworkProblem> findAll(IntRange p0) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

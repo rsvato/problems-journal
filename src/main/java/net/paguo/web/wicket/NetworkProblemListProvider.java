@@ -2,6 +2,7 @@ package net.paguo.web.wicket;
 
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.domain.problems.NetworkProblem;
+import org.apache.commons.lang.math.IntRange;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import wicket.extensions.markup.html.repeater.data.IDataProvider;
@@ -36,7 +37,8 @@ public class NetworkProblemListProvider implements IDataProvider {
 
     public Iterator iterator(int first, int count) {
         log.debug("Getting " + count + " values " + " from " + first);
-        return getController().getProblems(first, count, false).iterator();
+        IntRange range = new IntRange(first, first + count);
+        return getController().getProblems(range).iterator();
     }
 
     public int size() {
