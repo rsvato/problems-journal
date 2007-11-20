@@ -38,6 +38,7 @@ public class NetworkProblemListProvider implements IDataProvider {
     public Iterator iterator(int first, int count) {
         log.debug("Getting " + count + " values " + " from " + first);
         IntRange range = new IntRange(first, first + count);
+        log.debug("Created range " + range);
         return getController().getProblems(range).iterator();
     }
 

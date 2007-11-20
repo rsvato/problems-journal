@@ -128,9 +128,10 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
 
     @SuppressWarnings("unchecked")
     public List<T> executeFinder(Method method, final IntRange range, final Object[] queryArgs){
+        log.debug("Got range " + range);
         final Query namedQuery = prepareQuery(method, queryArgs);
         int firstResult = range.getMinimumInteger();
-        int count = range.getMinimumInteger() - firstResult;
+        int count = range.getMaximumInteger() - firstResult;
         log.debug(firstResult + " " + count);
         namedQuery.setMaxResults(count);
         namedQuery.setFirstResult(firstResult);
