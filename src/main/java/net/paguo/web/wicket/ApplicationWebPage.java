@@ -1,6 +1,7 @@
 package net.paguo.web.wicket;
 
-import wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.WebPage;
+
 
 /**
  * User: sreentenko

@@ -5,11 +5,11 @@ import net.paguo.domain.problems.NetworkProblem;
 import org.apache.commons.lang.math.IntRange;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import wicket.extensions.markup.html.repeater.data.IDataProvider;
-import wicket.injection.web.InjectorHolder;
-import wicket.model.IModel;
-import wicket.model.Model;
-import wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.injection.web.InjectorHolder;
+import org.apache.wicket.markup.repeater.data.IDataProvider;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.Iterator;
 
@@ -48,5 +48,8 @@ public class NetworkProblemListProvider implements IDataProvider {
 
     public IModel model(Object o) {
         return new Model((NetworkProblem) o);
+    }
+
+    public void detach() {
     }
 }

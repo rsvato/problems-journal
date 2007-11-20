@@ -2,12 +2,12 @@ package net.paguo.web.wicket;
 
 import net.paguo.controller.UsersController;
 import net.paguo.domain.users.LocalUser;
-import wicket.extensions.markup.html.repeater.data.DataView;
-import wicket.extensions.markup.html.repeater.data.IDataProvider;
-import wicket.extensions.markup.html.repeater.refreshing.Item;
-import wicket.markup.html.basic.Label;
-import wicket.model.CompoundPropertyModel;
-import wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.markup.repeater.data.DataView;
+import org.apache.wicket.markup.repeater.data.IDataProvider;
+import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * User: sreentenko

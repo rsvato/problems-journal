@@ -1,7 +1,6 @@
 package net.paguo.web.wicket;
 
-import wicket.markup.html.WebPage;
-
+          
 /**
  * User: sreentenko
  * Date: 30.05.2007

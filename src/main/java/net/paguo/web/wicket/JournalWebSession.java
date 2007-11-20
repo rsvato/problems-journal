@@ -4,8 +4,9 @@ import net.paguo.web.wicket.auth.Authority;
 import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import wicket.protocol.http.WebApplication;
-import wicket.protocol.http.WebSession;
+import org.apache.wicket.Request;
+import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.protocol.http.WebSession;
 
 /**
  * User: sreentenko
@@ -16,8 +17,8 @@ public class JournalWebSession extends WebSession {
     private static final Log log = LogFactory.getLog(JournalWebSession.class);
     private UserView authenticatedUser;
 
-    public JournalWebSession(WebApplication webApplication) {
-        super(webApplication);
+    public JournalWebSession(WebApplication webApplication, Request request) {
+        super(webApplication, request);
     }
 
     public UserView getAuthenticatedUser() {

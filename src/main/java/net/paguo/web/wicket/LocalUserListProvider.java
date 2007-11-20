@@ -2,10 +2,10 @@ package net.paguo.web.wicket;
 
 import net.paguo.controller.UsersController;
 import net.paguo.domain.users.LocalUser;
-import wicket.extensions.markup.html.repeater.data.IDataProvider;
-import wicket.injection.web.InjectorHolder;
-import wicket.model.IModel;
-import wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.injection.web.InjectorHolder;
+import org.apache.wicket.markup.repeater.data.IDataProvider;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.Iterator;
 
@@ -39,5 +39,8 @@ public class LocalUserListProvider implements IDataProvider {
 
     public IModel model(Object o) {
         return new LocalUserModel((LocalUser) o, this.controller);
+    }
+
+    public void detach() {
     }
 }

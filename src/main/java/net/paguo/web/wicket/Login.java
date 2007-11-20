@@ -5,12 +5,12 @@ import net.paguo.controller.exception.JournalAuthenticationException;
 import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import wicket.markup.html.form.Form;
-import wicket.markup.html.form.PasswordTextField;
-import wicket.markup.html.form.TextField;
-import wicket.markup.html.panel.FeedbackPanel;
-import wicket.model.PropertyModel;
-import wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.PasswordTextField;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * User: sreentenko

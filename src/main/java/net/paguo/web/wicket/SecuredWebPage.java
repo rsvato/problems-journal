@@ -2,7 +2,7 @@ package net.paguo.web.wicket;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import wicket.RestartResponseAtInterceptPageException;
+import org.apache.wicket.RestartResponseAtInterceptPageException;
 
 /**
  * User: sreentenko

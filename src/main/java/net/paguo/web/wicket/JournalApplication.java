@@ -1,11 +1,12 @@
 package net.paguo.web.wicket;
 
 import net.paguo.controller.UsersController;
-import wicket.ISessionFactory;
-import wicket.Session;
-import wicket.protocol.http.WebApplication;
-import wicket.spring.injection.annot.SpringBean;
-import wicket.spring.injection.annot.SpringComponentInjector;
+import org.apache.wicket.Request;
+import org.apache.wicket.Response;
+import org.apache.wicket.Session;
+import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 /**
  * User: sreentenko
@@ -32,12 +33,8 @@ public class JournalApplication extends WebApplication {
     }
 
     @Override
-    protected ISessionFactory getSessionFactory() {
-        return new ISessionFactory() {
-            public Session newSession() {
-                return new JournalWebSession(JournalApplication.this);
-            }
-        };
+    public Session newSession(Request req, Response res) {
+        return new JournalWebSession(JournalApplication.this, req);
     }
 
     public UsersController getUsersController() {
