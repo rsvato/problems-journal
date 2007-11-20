@@ -1,6 +1,6 @@
 package net.paguo.generic.dao.finder;
 
-import org.hibernate.ScrollableResults;
+import org.apache.commons.lang.math.IntRange;
 
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -16,4 +16,5 @@ public interface FinderExecutor<T>
 
     Iterator<T> iterateFinder(Method method, Object[] queryArgs);
 
+    List<T> executeFinder(Method method, IntRange range, Object[] queryArgs);
 }
