@@ -131,6 +131,7 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
         final Query namedQuery = prepareQuery(method, queryArgs);
         int firstResult = range.getMinimumInteger();
         int count = range.getMinimumInteger() - firstResult;
+        log.debug(firstResult + " " + count);
         namedQuery.setMaxResults(count);
         namedQuery.setFirstResult(firstResult);
         return (List<T>) namedQuery.list();
