@@ -1,0 +1,22 @@
+table.dataView{
+border: gray solid 2px;
+width: 98%;
+font: 11px/1.2em sans-serif;
+color: #444;
+background-color: #ffe;
+border-collapse: collapse;
+margin-top: 2em;
+}
+
+.dataView td{
+vertical-align: top;
+border-bottom: gray dotted 1px;
+border-left: gray dotted 1px;
+padding: .5em;
+}
+
+.dataView th{
+font-weight: bold;
+vertical-align: top;
+border-bottom: gray solid 1px;
+}
