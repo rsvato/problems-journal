@@ -1,12 +1,4 @@
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:wicket="http://wicket.sourceforge.net">
-<head>
-    <title><wicket:message key="problems.title"/></title>
-</head>
-<body>
-<div id="contents">
+<wicket:extend>
     <h1><wicket:message key="problems.title">[users.header]</wicket:message></h1>
     <span wicket:id="navigator">[data navigator]</span>
     <table class="dataView">
@@ -63,6 +55,4 @@
             </td>
         </tr>
     </table>
-</div>
-</body>
-</html>
+</wicket:extend>
