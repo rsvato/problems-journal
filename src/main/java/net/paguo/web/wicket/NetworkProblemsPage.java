@@ -5,6 +5,7 @@ import net.paguo.controller.NetworkFailureController;
 import net.paguo.domain.application.ApplicationSettings;
 import net.paguo.domain.problems.NetworkProblem;
 import org.apache.commons.lang.StringUtils;
+import wicket.behavior.HeaderContributor;
 import wicket.extensions.markup.html.repeater.data.DataView;
 import wicket.extensions.markup.html.repeater.data.IDataProvider;
 import wicket.extensions.markup.html.repeater.refreshing.Item;
@@ -57,6 +58,7 @@ public class NetworkProblemsPage extends SecuredWebPage{
         }else{
             items = new NetworkProblemDataView("items", provider);
         }
+        add(HeaderContributor.forCss(NetworkProblemsPage.class, "wstyle.css"));
         add(items);
         add(new PagingNavigator("navigator", items));
     }
