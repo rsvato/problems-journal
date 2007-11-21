@@ -1,0 +1,18 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:extend>
+    <div id="feedbackPanel">
+        <span wicket:id="feedback"/>
+    </div>
+    <form wicket:id="form">
+        <label><wicket:message key="failureDescription">[description]</wicket:message></label>
+        <textarea wicket:id="failureDescription" class="input area" cols="20" rows="40">
+        </textarea>
+        <br/>
+        <label><wicket:message key="failureTime">[time]</wicket:message></label>
+        <span wicket:id="failureTime">[time]</span>
+
+        <br/>
+        <input type="submit" value=" OK " class="button"/>
+    </form>
+</wicket:extend>
+</html>

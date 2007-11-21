@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.behavior.HeaderContributor;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
@@ -61,6 +62,7 @@ public class NetworkProblemsPage extends SecuredWebPage{
         add(HeaderContributor.forCss(NetworkProblemsPage.class, "wstyles.css"));
         add(items);
         add(new PagingNavigator("navigator", items));
+        add(new FeedbackPanel("feedback"));
     }
 }
 class NetworkProblemDataView extends DataView {
