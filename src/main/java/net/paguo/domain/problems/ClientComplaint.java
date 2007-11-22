@@ -41,7 +41,7 @@ public class ClientComplaint extends NetworkFailure {
         this.client = client;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.REMOVE})
     public NetworkProblem getParent() {
         return parent;
     }

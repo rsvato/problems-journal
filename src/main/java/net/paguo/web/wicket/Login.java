@@ -76,6 +76,7 @@ public class Login extends ApplicationWebPage{
                 session.setAuthenticatedUser(authenticated);
                 if (! continueToOriginalDestination()){
                     ApplicationWebPage next = new Dashboard();
+
                     next.setUserName(getUserId());
                     setResponsePage(next);
                 }

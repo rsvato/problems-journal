@@ -60,13 +60,7 @@ public class PersonalData implements Serializable {
     public String toString(){
         StringBuilder result = new StringBuilder();
         if (familyName != null){
-            result.append(familyName).append(" ");
-        }
-        if (name != null){
-            result.append(name).append(" ");
-        }
-        if (parentName != null){
-            result.append(parentName).append(" ");
+            result.append(familyName);
         }
         return result.toString();
     }

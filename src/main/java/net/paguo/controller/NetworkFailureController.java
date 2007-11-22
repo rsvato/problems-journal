@@ -166,4 +166,12 @@ public class NetworkFailureController {
     public int getProblemsCount() {
         return getProblemDao().maxCount();
     }
+
+    public void deleteProblem(NetworkProblem problem) throws ControllerException {
+        try{
+            getProblemDao().delete(problem);
+        }catch (Throwable t){
+            throw new ControllerException(t);
+        }
+    }
 }

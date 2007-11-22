@@ -1,15 +1,14 @@
 package net.paguo.domain.problems;
 
-import net.paguo.domain.clients.ClientItem;
-
-import javax.persistence.*;
-import java.util.Date;
-import java.io.Serializable;
-
-import org.hibernate.annotations.GenericGenerator;
+import net.paguo.domain.users.LocalUser;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.NotNull;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Svyatoslav Reyentenko mailto:rsvato@gmail.com
@@ -35,6 +34,7 @@ public class NetworkFailure implements Serializable {
     private Date failureTime;
     private String failureDescription;
     private FailureRestore restoreAction;
+    private LocalUser userCreated;
 
     /**
      * @hibernate.id generator-class="increment"
@@ -92,5 +92,14 @@ public class NetworkFailure implements Serializable {
 
     public NetworkFailure(){
         this.restoreAction = new FailureRestore();
+    }
+
+    @ManyToOne
+    public LocalUser getUserCreated() {
+        return userCreated;
+    }
+
+    public void setUserCreated(LocalUser userCreated) {
+        this.userCreated = userCreated;
     }
 }

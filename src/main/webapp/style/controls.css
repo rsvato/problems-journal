@@ -31,6 +31,13 @@ label{
 	background: #fff url(../img/btn.bg.gif) 0 0 repeat-x;
 	border-style: none;
 }
+
+a.button{
+    padding: 10px;
+    color: white;
+    text-decoration:none;
+}
+
 .float-right{
     float: right;
 }
@@ -41,4 +48,19 @@ table.form {
 }
 table.form td{
    vertical-align: top;
+}
+
+div#feedbackPanel ul{
+    list-style:none;
+    margin-left:0;
+    padding:0;
+}
+li.feedbackPanelINFO{
+    color:green;
+}
+li.feedbackPanelERROR{
+    color:red;
+}
+li.feedbackPanelWARN{
+    color:brown;
 }

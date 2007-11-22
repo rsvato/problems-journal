@@ -97,20 +97,24 @@ public class UsersController implements Controller<LocalUser>{
         }
     }
 
+
+    public LocalUser findByPermission(String username) throws JournalAuthenticationException {
+        List<LocalUser> found = getUsersDao().findByPermission(username);
+        if (found == null || found.isEmpty()){
+            log.info("User " + username + " not found");
+            throw new JournalAuthenticationException();
+        }
+        if (found.size() > 1){
+            log.info("Too many users with username " + username);
+            throw new JournalAuthenticationException();
+        }
+        return found.iterator().next();
+    }
+
     public UserView authenticate(String login, String password)
             throws JournalAuthenticationException{
         password = DigestUtils.shaHex(password);
-        List<LocalUser> usersFound = getUsersDao().findByPermission(login);
-        if (usersFound == null || usersFound.size()
-                == 0){
-            log.info("User " + login + " not found");
-            throw new JournalAuthenticationException();
-        }
-        if (usersFound.size() > 1){
-            log.info("Too many users with username " + login);
-            throw new JournalAuthenticationException();
-        }
-        LocalUser userFound = usersFound.iterator().next();
+        LocalUser userFound = findByPermission(login);
         if (! userFound.getPermissionEntry().getDigest().equals(password)){
             log.info("Bad password");
             throw new JournalAuthenticationException();

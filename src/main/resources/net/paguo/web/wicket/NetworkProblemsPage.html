@@ -4,7 +4,7 @@
     <div id="feedbackPanel">
        <span wicket:id="feedback"/> 
     </div>
-
+    <a class="button" href="#" wicket:id="create"><wicket:message key="problem.new">[create]</wicket:message></a>
     <span wicket:id="navigator">[data navigator]</span>
     <table class="dataView">
         <tr>
@@ -13,6 +13,9 @@
             </th>
             <th>
                 <wicket:message key="problem.time">[time]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.author">[author]</wicket:message>
             </th>
             <th>
                 <wicket:message key="problem.description">[dsc]</wicket:message>
@@ -26,6 +29,7 @@
             <th>
                 <wicket:message key="problem.closeTime">[id]</wicket:message>
             </th>
+            <th/>
         </tr>
         <tr wicket:id="items">
             <td>
@@ -33,10 +37,13 @@
                     [id]
                 </span>
             </td>
-            <td>
+            <td style="white-space:nowrap;">
                 <span wicket:id="failureTime">
                     [failureTime]
                 </span>
+            </td>
+            <td>
+                <span wicket:id="userCreated"></span>
             </td>
             <td>
                 <span wicket:id="failureDescription">
@@ -53,10 +60,14 @@
                     [restoreAction]
                 </span>
             </td>
-            <td>
+            <td style="white-space:nowrap;">
                 <span wicket:id="restoreAction.restoreTime">
                     [restoreTime]
                 </span>
+            </td>
+            <td>
+                <a href="#" wicket:id="problemDetails">[<wicket:message key="problem.details">details</wicket:message>]</a>
+                <a href="#" wicket:id="problemDelete">[<wicket:message key="problem.delete">delete</wicket:message>]</a>
             </td>
         </tr>
     </table>
