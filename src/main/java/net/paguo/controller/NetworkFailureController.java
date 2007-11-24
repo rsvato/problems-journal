@@ -9,6 +9,7 @@ import net.paguo.domain.problems.FailureRestore;
 import net.paguo.domain.problems.NetworkFailure;
 import net.paguo.domain.problems.NetworkProblem;
 import org.apache.commons.lang.math.IntRange;
+import org.apache.wicket.util.string.IStringSequence;
 
 import java.util.Date;
 import java.util.List;
@@ -171,6 +172,34 @@ public class NetworkFailureController {
         try{
             getProblemDao().delete(problem);
         }catch (Throwable t){
+            throw new ControllerException(t);
+        }
+    }
+
+    public List<ClientComplaint> getClientComplaints(IntRange range) {
+       return getComplaintDao().findAll(range);
+    }
+
+    public int getComplaintsCount(){
+        return getComplaintDao().maxCount();
+    }
+
+    public void deleteComplaint(ClientComplaint problem) throws ControllerException{
+        try{
+            getComplaintDao().delete(problem);
+        } catch (Throwable t){
+            throw new ControllerException(t);
+        }
+    }
+
+    public void saveComplaint(ClientComplaint problem) throws ControllerException {
+        try {
+            if (problem.getId() == null){
+                getComplaintDao().create(problem);
+            } else {
+                getComplaintDao().update(problem);
+            }
+        } catch (Throwable t) {
             throw new ControllerException(t);
         }
     }

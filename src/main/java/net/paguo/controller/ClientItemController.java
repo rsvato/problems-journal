@@ -39,6 +39,15 @@ public class ClientItemController implements Controller<ClientItem> {
         return lst;
     }
 
+    public ClientItem findByName(String name){
+        final List<ClientItem> list = getClientDao().findByName(name);
+        if (list == null || list.isEmpty()){
+            return null;
+        }
+        return list.iterator().next();
+    }
+
+
     public Collection<ClientItem> getAllClients(){
         return getClientDao().findActive();
     }
