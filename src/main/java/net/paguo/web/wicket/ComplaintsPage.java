@@ -77,7 +77,7 @@ public class ComplaintsPage extends SecuredWebPage{
         //TODO: change target
         add(new Link("create"){
             public void onClick() {
-                setResponsePage(NetworkProblemCreatePage.class);
+                setResponsePage(ComplaintCreatePage.class);
             }
         });
     }
@@ -137,7 +137,7 @@ class ComplaintDataView extends DataView {
             public void onClick() {
                 final PageParameters pageParameters = new PageParameters();
                 pageParameters.add("problemId", String.valueOf(problem.getId()));
-                setResponsePage(NetworkProblemCreatePage.class, pageParameters);
+                setResponsePage(ComplaintCreatePage.class, pageParameters);
             }
         });
         final Link child = new Link("problemDelete") {

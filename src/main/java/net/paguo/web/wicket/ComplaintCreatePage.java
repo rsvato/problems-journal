@@ -87,14 +87,14 @@ public class ComplaintCreatePage extends SecuredWebPage {
                     problem.setClient(item);
                 }else{
                     final String msg = getLocalizer().getString("warning.client.not.found",
-                            this, new Model(clientName));
+                            this, new Model(problem));
                     Session.get().warn(msg);
                 }
 
                 failureController.saveComplaint(problem);
                 final String message = getLocalizer().getString("operation.successful", this);
                 Session.get().info(message);
-                setResponsePage(NetworkProblemsPage.class);
+                setResponsePage(ComplaintsPage.class);
             } catch (ControllerException e) {
                 log.error(e);
                 //TODO: exctract message
@@ -131,7 +131,7 @@ public class ComplaintCreatePage extends SecuredWebPage {
                     for (ClientItem clientItem : clientItems) {
                         final String clientName = clientItem.getClientName();
                         if (!StringUtils.isEmpty(clientName)
-                                && clientName.toLowerCase().startsWith(input)){
+                                && clientName.toLowerCase().startsWith(input.trim().toLowerCase())){
                             result.add(clientName);
                         }
                     }

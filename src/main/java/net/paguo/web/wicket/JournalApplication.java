@@ -31,6 +31,7 @@ public class JournalApplication extends WebApplication {
         mountBookmarkablePage("/problems", NetworkProblemsPage.class);
         mountBookmarkablePage("/complaints", ComplaintsPage.class);
         mountBookmarkablePage("/add-crash", NetworkProblemCreatePage.class);
+        mountBookmarkablePage("/add-complaint", ComplaintCreatePage.class);
         mountBookmarkablePage("/admin/users", Users.class);
     }
 

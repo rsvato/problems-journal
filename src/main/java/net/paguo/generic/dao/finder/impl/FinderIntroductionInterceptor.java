@@ -26,7 +26,7 @@ public class FinderIntroductionInterceptor implements IntroductionInterceptor
             Object[] arguments = methodInvocation.getArguments();
 
             // search for IntRange in arguments
-            if (arguments.length > 0) {
+            if (arguments != null && arguments.length > 0) {
                 IntRange range = null;
                 final List<Object> objects = new ArrayList<Object>();
                 for (Object argument : arguments) {

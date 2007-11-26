@@ -5,6 +5,13 @@
     </div>
     <form wicket:id="form">
         <fieldset>
+            <label>
+                <wicket:message key="complaint.clientLabel">[client]</wicket:message>
+            </label>
+            <input type="text" wicket:id="enteredClient" class="input"/>
+
+            <br/>
+
             <label><wicket:message key="failureDescription">[description]</wicket:message></label>
             <textarea wicket:id="failureDescription" class="input area" cols="20" rows="40">
             </textarea>

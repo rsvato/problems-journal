@@ -1,66 +1,97 @@
-label{
-    width:150px;
-    display:block;
-    float:left;
-}
-.control{
-    float:left;
-    display:block;
-}
-.clear{
-    clear:both;
+label {
+    width: 150px;
+    display: block;
+    float: left;
 }
 
-.input{
-    border: 1px solid  #C3BBB6;
-	padding: 4px;
-	margin: 5px 0;
-	background: #fff url(../img/input.bg.gif) 0 0 repeat-x;
-    width:300px;
-}
-.area{
-    height:400px;
-    width:600px;
+.control {
+    float: left;
+    display: block;
 }
 
-.button{
+.clear {
+    clear: both;
+}
+
+.input {
+    border: 1px solid #C3BBB6;
+    padding: 4px;
+    margin: 5px 0;
+    background: #fff url( ../img/input.bg.gif ) 0 0 repeat-x;
+    width: 300px;
+}
+
+.area {
+    height: 400px;
+    width: 600px;
+}
+
+.button {
     font-weight: bold;
-	color: #fff;
-	border: 1px solid #5D1414;
-	height: 26px;
-	background: #fff url(../img/btn.bg.gif) 0 0 repeat-x;
-	border-style: none;
+    color: #fff;
+    border: 1px solid #5D1414;
+    height: 26px;
+    background: #fff url( ../img/btn.bg.gif ) 0 0 repeat-x;
+    border-style: none;
 }
 
-a.button{
+a.button {
     padding: 10px;
     color: white;
-    text-decoration:none;
+    text-decoration: none;
 }
 
-.float-right{
+.float-right {
     float: right;
 }
 
 table.form {
     border-collapse: collapse;
-    border: 1px solid  #C3BBB6;
-}
-table.form td{
-   vertical-align: top;
+    border: 1px solid #C3BBB6;
 }
 
-div#feedbackPanel ul{
-    list-style:none;
-    margin-left:0;
-    padding:0;
+table.form td {
+    vertical-align: top;
 }
-li.feedbackPanelINFO{
-    color:green;
+
+div#feedbackPanel ul {
+    list-style: none;
+    margin-left: 0;
+    padding: 0;
 }
-li.feedbackPanelERROR{
-    color:red;
+
+li.feedbackPanelINFO {
+    color: green;
 }
-li.feedbackPanelWARN{
-    color:brown;
+
+li.feedbackPanelERROR {
+    color: red;
+}
+
+li.feedbackPanelWARN {
+    color: brown;
+}
+
+div.wicket-aa {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana;
+    font-size: 10px;
+    background-color: white;
+    border-width: 1px;
+    border-color: #cccccc;
+    border-style: solid;
+    padding: 2px;
+    margin: 1px 0 0 0;
+    text-align: left;
+}
+
+div.wicket-aa ul {
+    list-style: none;
+    padding: 2px;
+    margin: 0;
+}
+
+div.wicket-aa ul li.selected {
+    background-color: #FFFF00;
+    padding: 2px;
+    margin: 0;
 }
