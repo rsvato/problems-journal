@@ -19,7 +19,7 @@ import java.util.List;
  * Date: 28.11.2007
  * Time: 0:39:15
  */
-public class ComplaintSearchController implements SearchController{
+public class ComplaintSearchController implements SearchController<ClientComplaint>{
     private SessionFactory sessionFactory;
 
     public SessionFactory getSessionFactory() {
