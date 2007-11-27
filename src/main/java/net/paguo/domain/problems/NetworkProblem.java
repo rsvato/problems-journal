@@ -1,9 +1,9 @@
 package net.paguo.domain.problems;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,6 +14,7 @@ import java.util.List;
  * order by failureTime"
  * @hibernate.cache usage="read-write"
  */
+@Indexed
 @Entity
 @Table(name = "network_problems")
 @PrimaryKeyJoinColumn(name = "p_id")

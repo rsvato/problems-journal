@@ -4,6 +4,7 @@ import net.paguo.domain.users.LocalUser;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.search.annotations.*;
 import org.hibernate.validator.NotNull;
 
 import javax.persistence.*;
@@ -20,6 +21,8 @@ import java.util.Date;
  * @hibernate.query name="NetworkFailure.findOpen" query="from NetworkFailure where restoreAction is null or restoreAction.completed = false"
  * @hibernate.query name="NetworkFailure.findAll" query="from NetworkFailure order by failureTime"
  */
+@Indexed
+@Analyzer(impl = org.apache.lucene.analysis.ru.RussianAnalyzer.class)
 @Entity
 @Table(name = "failures")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -43,6 +46,7 @@ public class NetworkFailure implements Serializable {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name="increment",strategy = "increment")
+    @DocumentId
     public Integer getId() {
         return id;
     }
@@ -69,6 +73,7 @@ public class NetworkFailure implements Serializable {
      * @return
      */
     @Column @NotNull @Lob
+    @Field(index = Index.TOKENIZED, store = Store.YES)
     public String getFailureDescription() {
         return failureDescription;
     }

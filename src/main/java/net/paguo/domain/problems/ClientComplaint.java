@@ -4,7 +4,7 @@ import net.paguo.domain.clients.ClientItem;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.validator.NotNull;
+import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 
@@ -18,6 +18,7 @@ import javax.persistence.*;
  * @hibernate.query name="ClientComplaint.findAll" query="from ClientComplaint order by failureTime"
  * @hibernate.cache usage="read-write"
  */
+@Indexed
 @Entity
 @Table(name="complaints")
 @PrimaryKeyJoinColumn(name="c_id")

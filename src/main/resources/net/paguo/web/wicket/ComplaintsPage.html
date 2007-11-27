@@ -1,6 +1,12 @@
 <wicket:extend>
     <h1><wicket:message key="problems.title">[users.header]</wicket:message></h1>
 
+    <div id="search">
+        <form wicket:id="search">
+            <input class="input" wicket:id="searchCriteria"/> <input type="submit" class="button" value="&gt;"/>
+        </form>
+    </div>
+
     <div id="feedbackPanel">
        <span wicket:id="feedback"/> 
     </div>
@@ -79,4 +85,7 @@
             </td>
         </tr>
     </table>
+    <div id="service">
+        <a href="#" wicket:id="reindex" class="button">Index search</a>
+    </div>
 </wicket:extend>

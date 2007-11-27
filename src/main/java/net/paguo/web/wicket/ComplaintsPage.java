@@ -4,17 +4,23 @@ import net.paguo.controller.ApplicationSettingsController;
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.application.ApplicationSettings;
+import net.paguo.domain.clients.ClientItem;
+import net.paguo.domain.common.PersonalData;
 import net.paguo.domain.problems.ClientComplaint;
 import net.paguo.domain.users.LocalUser;
-import net.paguo.domain.common.PersonalData;
-import net.paguo.domain.clients.ClientItem;
+import net.paguo.search.controller.ComplaintSearchController;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.lucene.queryParser.ParseException;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
 import org.apache.wicket.behavior.HeaderContributor;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.datetime.markup.html.basic.DateLabel;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -22,8 +28,13 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -40,6 +51,9 @@ public class ComplaintsPage extends SecuredWebPage{
     @SpringBean
     ApplicationSettingsController settingsController;
 
+    @SpringBean
+    ComplaintSearchController searchController;
+
     public NetworkFailureController getController() {
         return controller;
     }
@@ -54,6 +68,14 @@ public class ComplaintsPage extends SecuredWebPage{
 
     public void setSettingsController(ApplicationSettingsController settingsController) {
         this.settingsController = settingsController;
+    }
+
+    public ComplaintSearchController getSearchController() {
+        return searchController;
+    }
+
+    public void setSearchController(ComplaintSearchController searchController) {
+        this.searchController = searchController;
     }
 
     public ComplaintsPage() {
@@ -80,6 +102,58 @@ public class ComplaintsPage extends SecuredWebPage{
                 setResponsePage(ComplaintCreatePage.class);
             }
         });
+        add(new SearchForm("search", getSearchController(), new SearchCriteria()));
+        add(new Link("reindex"){
+            public void onClick() {
+                getSearchController().reindex();
+            }
+        });
+    }
+}
+
+class SearchCriteria implements Serializable {
+    private String searchCriteria;
+
+    public String getSearchCriteria() {
+        return searchCriteria;
+    }
+
+    public void setSearchCriteria(String searchCriteria) {
+        this.searchCriteria = searchCriteria;
+    }
+}
+
+final class SearchForm extends Form{
+    private ComplaintSearchController searchController;
+    private static final Log log = LogFactory.getLog(SearchForm.class);
+
+    public ComplaintSearchController getSearchController() {
+        return searchController;
+    }
+
+    public void setSearchController(ComplaintSearchController searchController) {
+        this.searchController = searchController;
+    }
+
+    public SearchForm(String id, ComplaintSearchController search, SearchCriteria criteria) {
+        super(id, new CompoundPropertyModel(criteria));
+        this.searchController = search;
+        add(new TextField("searchCriteria").setRequired(true));
+    }
+
+
+
+    @Override
+    protected void onSubmit() {
+        try {
+            final SearchCriteria criteria = (SearchCriteria) getModelObject();
+            log.debug("Entered criteria: " + criteria.getSearchCriteria());
+            final List<ClientComplaint> list = searchController.search(criteria.getSearchCriteria());
+            log.debug("Find " + list.size() + " results");
+            setResponsePage(ComplaintsPage.class);
+        } catch (ParseException e) {
+            log.error(e);
+        }
     }
 }
 
