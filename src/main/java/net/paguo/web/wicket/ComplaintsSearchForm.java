@@ -47,6 +47,6 @@ final class ComplaintsSearchForm<T> extends Form {
         } catch (EncoderException e) {
             log.error(e);
         }
-        setResponsePage(ComplaintsPage.class, parameters);
+        setResponsePage(new ComplaintsPage(parameters));
     }
 }

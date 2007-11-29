@@ -12,7 +12,9 @@ import org.hibernate.search.FullTextSession;
 import org.hibernate.search.Search;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Comparator;
 
 /**
  * User: sreentenko
@@ -42,6 +44,14 @@ public class ComplaintSearchController implements SearchController<ClientComplai
         final org.hibernate.Query hQuery = session.createFullTextQuery(query, ClientComplaint.class);
         List<ClientComplaint> result = hQuery.list();
         transaction.commit();
+        if (! result.isEmpty()){
+            Collections.sort(result, new Comparator<ClientComplaint>() {
+                public int compare(ClientComplaint clientComplaint, ClientComplaint clientComplaint1) {
+                    return clientComplaint.getFailureTime()
+                            .compareTo(clientComplaint1.getFailureTime());
+                }
+            });
+        }
         return result;
     }
 

@@ -24,6 +24,7 @@ public class SearchListProvider<T extends Serializable> implements IDataProvider
 
     private List<T> results;
     private SearchController<T> controller;
+    private String criteria;
 
     public SearchController<T> getController() {
         return controller;
@@ -36,13 +37,18 @@ public class SearchListProvider<T extends Serializable> implements IDataProvider
     public SearchListProvider() {
     }
 
-    public SearchListProvider(SearchController<T> controller, String criteria){
-       log.debug("Creating with controller");
-       this.controller = controller;
-        try{
-            this.results = controller.search(criteria);
+    public SearchListProvider(SearchController<T> controller, String criteria) {
+        log.debug("Creating with controller");
+        this.controller = controller;
+        this.criteria = criteria;
+        this.results = search();
+    }
+
+    private List<T> search() {
+        try {
+            return this.controller.search(this.criteria);
         } catch (ParseException e) {
-            throw new IllegalArgumentException(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -51,8 +57,10 @@ public class SearchListProvider<T extends Serializable> implements IDataProvider
     }
 
     public List<T> getResults() {
-        if (this.results == null && controller != null){
-           this.results =
+        if (this.results == null && controller != null) {
+            this.results = search();
+        }else{
+            log.debug("Results exists, no need to rerun it");
         }
         return results;
     }
@@ -62,14 +70,14 @@ public class SearchListProvider<T extends Serializable> implements IDataProvider
     }
 
     public Iterator iterator(int first, int count) {
-        if (first > size() || first + count > size()){
+        if (first > size() || first + count > size()) {
             return Collections.EMPTY_LIST.iterator();
         }
-        return results.subList(first, first + count).iterator();
+        return getResults().subList(first, first + count).iterator();
     }
 
     public int size() {
-        return results.size();
+        return getResults().size();
     }
 
     @SuppressWarnings("unchecked")
@@ -78,6 +86,5 @@ public class SearchListProvider<T extends Serializable> implements IDataProvider
     }
 
     public void detach() {
-        results = null;
     }
 }
