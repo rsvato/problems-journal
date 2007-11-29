@@ -10,7 +10,10 @@
     <div id="feedbackPanel">
        <span wicket:id="feedback"/> 
     </div>
-    <a class="button" href="#" wicket:id="create"><wicket:message key="problem.new">[create]</wicket:message></a>
+    <div class="service">
+        <a class="button" href="#" wicket:id="create"><wicket:message key="problem.new">[create]</wicket:message></a>
+    </div>
+    <br/>
     <span wicket:id="navigator">[data navigator]</span>
     <table class="dataView">
         <tr>
@@ -85,7 +88,8 @@
             </td>
         </tr>
     </table>
-    <div id="service">
+    <br/>
+    <div class="service">
         <a href="#" wicket:id="reindex" class="button">Index search</a>
     </div>
 </wicket:extend>

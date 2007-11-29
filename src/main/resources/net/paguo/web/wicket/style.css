@@ -1,3 +1,38 @@
+/* @override http://localhost:4084/network-journal/app/resources/net.paguo.web.wicket.ApplicationWebPage/style_ru.css */
+
 body {
-	
+	margin:0;
+	font: 12px/1.2em Verdana,Arial,Helvetica,sans-serif;
+}
+
+#page {
+	margin: 0;
+}
+
+#navigation{
+    float:left;
+    width:20em;
+}
+
+#contents{
+    margin-left:21em;
+    padding: 0 5px;
+}
+
+#search{
+	float: right;
+}
+
+#search .input{
+	width:  15em;
+}
+
+h1 {
+	color: #666;
+	font-size: 120%;
+	font-variant: small-caps;
+}
+
+div.service{
+    padding:10px 0;
 }
