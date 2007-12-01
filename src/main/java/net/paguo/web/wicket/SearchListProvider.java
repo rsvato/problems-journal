@@ -22,7 +22,6 @@ public class SearchListProvider<T extends Serializable> implements IDataProvider
 
     private static final Log log = LogFactory.getLog(SearchListProvider.class);
 
-    private List<T> results;
     private SearchController<T> controller;
     private String criteria;
 
@@ -41,43 +40,29 @@ public class SearchListProvider<T extends Serializable> implements IDataProvider
         log.debug("Creating with controller");
         this.controller = controller;
         this.criteria = criteria;
-        this.results = search();
-    }
-
-    private List<T> search() {
-        try {
-            return this.controller.search(this.criteria);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public SearchListProvider(List<T> results) {
-        this.results = results;
-    }
-
-    public List<T> getResults() {
-        if (this.results == null && controller != null) {
-            this.results = search();
-        }else{
-            log.debug("Results exists, no need to rerun it");
-        }
-        return results;
-    }
-
-    public void setResults(List<T> results) {
-        this.results = results;
     }
 
     public Iterator iterator(int first, int count) {
+        Iterator result = Collections.EMPTY_LIST.iterator();
         if (first > size() || first + count > size()) {
-            return Collections.EMPTY_LIST.iterator();
+            return result;
         }
-        return getResults().subList(first, first + count).iterator();
+        try {
+            result = getController().search(criteria, first, count).iterator();
+        } catch (ParseException e) {
+            log.error(e);
+        }
+        return result;
     }
 
     public int size() {
-        return getResults().size();
+        int result = 0;
+        try {
+            result = getController().getResultSize(this.criteria);
+        } catch (ParseException e) {
+            log.error(e);
+        }
+        return result;
     }
 
     @SuppressWarnings("unchecked")

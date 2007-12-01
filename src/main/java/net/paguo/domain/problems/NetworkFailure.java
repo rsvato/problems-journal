@@ -60,6 +60,8 @@ public class NetworkFailure implements Serializable {
      * @return
      */
     @Column @NotNull
+    @Field(index = Index.UN_TOKENIZED, store = Store.NO, name = "day")
+    @DateBridge(resolution=Resolution.DAY)
     public Date getFailureTime() {
         return failureTime;
     }

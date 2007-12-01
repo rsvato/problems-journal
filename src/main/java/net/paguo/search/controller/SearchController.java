@@ -17,4 +17,8 @@ public interface SearchController<T> {
     List<T> search(String criteria) throws ParseException;
 
     void reindex();
+
+    List<ClientComplaint> search(String criteria, int from, int count) throws ParseException;
+
+    int getResultSize(String criteria) throws ParseException;
 }
