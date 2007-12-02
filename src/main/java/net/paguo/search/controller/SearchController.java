@@ -1,8 +1,7 @@
 package net.paguo.search.controller;
 
-import org.hibernate.SessionFactory;
 import org.apache.lucene.queryParser.ParseException;
-import net.paguo.domain.problems.ClientComplaint;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
@@ -14,11 +13,9 @@ import java.util.List;
 public interface SearchController<T> {
     SessionFactory getSessionFactory();
 
-    List<T> search(String criteria) throws ParseException;
-
     void reindex();
 
-    List<ClientComplaint> search(String criteria, int from, int count) throws ParseException;
+    List<T> search(String criteria, int from, int count) throws ParseException;
 
     int getResultSize(String criteria) throws ParseException;
 }

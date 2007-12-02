@@ -1,8 +1,13 @@
 package net.paguo.domain.problems;
 
-import javax.persistence.*;
-import java.util.Date;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Lob;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Svyatoslav Reyentenko mailto:rsvato@gmail.com
@@ -21,6 +26,7 @@ public class FailureRestore implements Serializable {
      * @return
      */
     @Column @Lob
+    @Field(index = Index.TOKENIZED, name = "cause")
     public String getFailureCause() {
         return failureCause;
     }
@@ -34,6 +40,7 @@ public class FailureRestore implements Serializable {
      * @return
      */
     @Column @Lob
+    @Field(index = Index.TOKENIZED, name = "action")
     public String getRestoreAction() {
         return restoreAction;
     }

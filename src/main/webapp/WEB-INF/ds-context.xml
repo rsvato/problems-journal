@@ -59,6 +59,11 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean id="problemSearchController"
+          class="net.paguo.search.controller.NetworkProblemSearchController">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
     <bean id="finderIntroductionAdvisor" class="net.paguo.generic.dao.finder.impl.FinderIntroductionAdvisor"/>
 
     <bean id="abstractDaoTarget" class="net.paguo.generic.dao.impl.GenericDaoHibernateImpl" abstract="true">

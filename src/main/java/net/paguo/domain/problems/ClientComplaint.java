@@ -5,6 +5,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 import javax.persistence.*;
 
@@ -36,6 +37,7 @@ public class ClientComplaint extends NetworkFailure {
      * @return client
      */
     @ManyToOne
+    @IndexedEmbedded
     public ClientItem getClient() {
         return client;
     }

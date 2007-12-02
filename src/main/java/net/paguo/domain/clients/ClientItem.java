@@ -1,11 +1,13 @@
 package net.paguo.domain.clients;
 
 
-import org.hibernate.annotations.GenericGenerator;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
 import org.hibernate.validator.NotNull;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -52,6 +54,7 @@ public class ClientItem implements Serializable {
      * @return
      */
     @NotNull  @Column(name="client")
+    @Field(index = Index.TOKENIZED, name = "client")
     public String getClientName() {
         return clientName;
     }

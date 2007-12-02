@@ -1,11 +1,9 @@
 package net.paguo.web.wicket;
 
-import net.paguo.controller.ApplicationSettingsController;
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.controller.exception.ControllerException;
-import net.paguo.domain.application.ApplicationSettings;
 import net.paguo.domain.problems.NetworkProblem;
-import org.apache.commons.lang.StringUtils;
+import net.paguo.search.controller.NetworkProblemSearchController;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
 import org.apache.wicket.behavior.HeaderContributor;
@@ -27,54 +25,68 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Date: 20.11.2007
  * Time: 0:17:11
  */
-public class NetworkProblemsPage extends SecuredWebPage{
-    private static final String ITEMS_PER_PAGE_KEY = "failureController.itemsPerPage";
+public class NetworkProblemsPage extends FailurePage<NetworkProblem>{
 
     @SpringBean
-    NetworkFailureController controller;
+    NetworkProblemSearchController searchController;
 
-    @SpringBean
-    ApplicationSettingsController settingsController;
-
-    public NetworkFailureController getController() {
-        return controller;
+    public NetworkProblemsPage(PageParameters parameters) {
+        super(parameters);
     }
 
-    public void setController(NetworkFailureController controller) {
-        this.controller = controller;
+
+    public NetworkProblemSearchController getSearchController() {
+        return searchController;
     }
 
-    public ApplicationSettingsController getSettingsController() {
-        return settingsController;
+    public void setSearchController(NetworkProblemSearchController searchController) {
+        this.searchController = searchController;
     }
 
-    public void setSettingsController(ApplicationSettingsController settingsController) {
-        this.settingsController = settingsController;
-    }
+
 
     public NetworkProblemsPage() {
-        final NetworkProblemListProvider provider = new NetworkProblemListProvider();
-        ApplicationSettings itemsPerPageSettings = getSettingsController().findByKey(ITEMS_PER_PAGE_KEY);
-        NetworkProblemDataView items;
-        if (itemsPerPageSettings != null
-                && !StringUtils.isEmpty(itemsPerPageSettings.getValue())
-                && StringUtils.isNumeric(itemsPerPageSettings.getValue())){
-            final Integer perPage = Integer.decode(itemsPerPageSettings.getValue());
-            items = new NetworkProblemDataView
-                    ("items", provider, perPage);
-            items.setItemsPerPage(perPage);
-        }else{
-            items = new NetworkProblemDataView("items", provider);
-        }
+        super();
+    }
+
+    protected void initConstantCompoments() {
         add(HeaderContributor.forCss(NetworkProblemsPage.class, "wstyles.css"));
-        add(items);
-        add(new PagingNavigator("navigator", items));
         add(new FeedbackPanel("feedback"));
-        add(new Link("create"){
+        add(new Link("create") {
             public void onClick() {
                 setResponsePage(NetworkProblemCreatePage.class);
             }
         });
+        add(new ProblemSearchForm("search"));
+        add(new Link("reindex") {
+            public void onClick() {
+                getSearchController().reindex();
+            }
+        });
+    }
+
+    protected void initDefault(IDataProvider provider) {
+        DataView items;
+        int perPage = getPerPageSettings();
+
+        String itemsId = "items";
+        if (perPage > 0) {
+            items = new NetworkProblemDataView
+                    (itemsId, provider, perPage);
+            items.setItemsPerPage(perPage);
+        } else {
+            items = new NetworkProblemDataView(itemsId, provider);
+        }
+        add(items);
+        add(new PagingNavigator("navigator", items));
+    }
+
+    protected SearchListProvider<NetworkProblem> getSearchProvider(String s) {
+        return new SearchListProvider<NetworkProblem>(getSearchController(), s);
+    }
+
+    protected IDataProvider getDefaultProvider() {
+        return new NetworkProblemListProvider();  //To change body of implemented methods use File | Settings | File Templates.
     }
 }
 class NetworkProblemDataView extends DataView {

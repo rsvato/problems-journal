@@ -75,7 +75,7 @@ public class NetworkFailure implements Serializable {
      * @return
      */
     @Column @NotNull @Lob
-    @Field(index = Index.TOKENIZED, store = Store.YES)
+    @Field(index = Index.TOKENIZED, store = Store.YES, name="desc")
     public String getFailureDescription() {
         return failureDescription;
     }
@@ -89,6 +89,7 @@ public class NetworkFailure implements Serializable {
      * @return
      */
     @Embedded
+    @IndexedEmbedded
     public FailureRestore getRestoreAction() {
         return restoreAction;
     }

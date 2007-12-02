@@ -1,25 +1,20 @@
 package net.paguo.web.wicket;
 
-import net.paguo.domain.problems.ClientComplaint;
-import net.paguo.search.controller.ComplaintSearchController;
-import org.apache.commons.codec.net.URLCodec;
 import org.apache.commons.codec.EncoderException;
+import org.apache.commons.codec.net.URLCodec;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.lucene.queryParser.ParseException;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
-
-import java.util.List;
 
 /**
  * User: sreentenko
  * Date: 29.11.2007
  * Time: 0:05:36
  */
-final class ComplaintsSearchForm<T> extends Form {
+public class ComplaintsSearchForm extends Form {
     private static final Log log = LogFactory.getLog(ComplaintsSearchForm.class);
 
 
@@ -31,7 +26,7 @@ final class ComplaintsSearchForm<T> extends Form {
 
 
     @Override
-    protected void onSubmit() {
+    protected final void onSubmit() {
 
         final SearchCriteria criteria = (SearchCriteria) getModelObject();
         redirect(criteria);
@@ -47,6 +42,10 @@ final class ComplaintsSearchForm<T> extends Form {
         } catch (EncoderException e) {
             log.error(e);
         }
-        setResponsePage(new ComplaintsPage(parameters));
+        setResponsePage(findResponsePage(parameters));
+    }
+
+    protected FailurePage findResponsePage(PageParameters parameters) {
+        return new ComplaintsPage(parameters);
     }
 }
