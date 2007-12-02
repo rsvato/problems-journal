@@ -40,7 +40,7 @@ public class NetworkProblemSearchController implements SearchController<NetworkP
 
         FullTextQuery ftqQuery = prepareQuery(criteria, session);
 
-        final Sort sort = new Sort("failureTime", true);
+        final Sort sort = new Sort("day", true);
         ftqQuery.setSort(sort);
         ftqQuery.setFirstResult(from);
         ftqQuery.setMaxResults(from + count);
