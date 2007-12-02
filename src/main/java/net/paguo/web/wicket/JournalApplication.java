@@ -20,7 +20,7 @@ public class JournalApplication extends WebApplication {
 
     @Override
     public Class getHomePage() {
-        return Dashboard.class;
+        return ComplaintsPage.class;
     }
 
     @Override

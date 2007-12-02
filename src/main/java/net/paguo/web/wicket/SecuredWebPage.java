@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.Session;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
@@ -49,7 +50,13 @@ public class SecuredWebPage extends ApplicationWebPage {
     public SecuredWebPage(){
         super();
         verifyAccess();
+        addLinks();
 
+    }
+
+    private void addLinks() {
+        add(new BookmarkablePageLink("complaints", ComplaintsPage.class));
+        add(new BookmarkablePageLink("problems", NetworkProblemsPage.class));
     }
 
     protected void verifyAccess(){
