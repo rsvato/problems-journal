@@ -65,7 +65,7 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
     @SuppressWarnings("unchecked")
     public List<T> readPart(Integer count, Integer from) {
        Criteria c = getSession().createCriteria(type);
-        c.setFetchSize(count);
+        c.setMaxResults(count);
         c.setFirstResult(from);
         return c.list();
     }

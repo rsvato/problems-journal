@@ -1,18 +1,16 @@
 package net.paguo.domain.users;
 
-import net.paguo.domain.common.PersonalData;
 import net.paguo.domain.common.ContactData;
+import net.paguo.domain.common.PersonalData;
+import org.apache.commons.lang.StringUtils;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.NotNull;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.StringUtils;
+import java.util.TreeSet;
 
 /**
  * @version $Id $
@@ -30,7 +28,7 @@ public class LocalUser implements Serializable {
     private PersonalData personalData;
     private ContactData contactData;
     private String description;
-    private Set<LocalRole> roles;
+    private Set<LocalGroup> groups;
     private UserPermission permissionEntry;
 
 
@@ -83,19 +81,17 @@ public class LocalUser implements Serializable {
      * @hibernate.set table="roles_users" cascade="save-update"
      * @hibernate.collection-key column="local_user_id"
      * @hibernate.collection-many-to-many class="net.paguo.domain.users.LocalRole" column="local_role_id"
-     * @return roles set
+     * @return groups set
      */
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-        targetEntity = LocalRole.class)
-    @JoinTable(name="roles_users",
-        joinColumns = @JoinColumn(name = "local_user_id"),
-        inverseJoinColumns = @JoinColumn(name = "local_role_id"))
-    public Set<LocalRole> getRoles() {
-        return roles;
+        targetEntity = LocalGroup.class, mappedBy = "users")
+
+    public Set<LocalGroup> getGroups() {
+        return groups;
     }
 
-    public void setRoles(Set<LocalRole> roles) {
-        this.roles = roles;
+    public void setGroups(Set<LocalGroup> groups) {
+        this.groups = groups;
     }
 
     
@@ -121,15 +117,22 @@ public class LocalUser implements Serializable {
         this.contactData = contactData;
     }
 
-    public void addRole(LocalRole role){
-        roles.add(role);
-    }
-
     public String toString(){
         if (personalData != null && StringUtils.isNotEmpty(personalData.toString())){
            return personalData.toString();    
         }else{
             return getPermissionEntry().getUserName();
         }
+    }
+
+    @Transient
+    public Set<String> getAuthorities(){
+        Set<String> roles = new TreeSet<String>();
+        for (LocalGroup group : groups) {
+            for (LocalRole role : group.getRoles()) {
+               roles.add(role.getRole());
+            }
+        }
+        return roles;
     }
 }

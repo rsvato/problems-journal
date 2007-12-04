@@ -25,6 +25,7 @@
                  <value>net.paguo.domain.requests.ChangeStatusRequest</value>
                  <value>net.paguo.domain.requests.ChangeStatusRequestType</value>
                  <value>net.paguo.domain.users.LocalRole</value>
+                 <value>net.paguo.domain.users.LocalGroup</value>
                  <value>net.paguo.domain.users.LocalUser</value>
                  <value>net.paguo.domain.users.UserPermission</value>
                  <value>net.paguo.domain.application.ApplicationSettings</value>
@@ -134,6 +135,19 @@
         </property>
     </bean>
 
+    <bean id="groupDao" parent="abstractDao">
+        <property name="proxyInterfaces">
+            <value>net.paguo.dao.LocalGroupDao</value>
+        </property>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg>
+                    <value>net.paguo.domain.users.LocalGroup</value>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
+
     <bean id="permissionDao" parent="abstractDao">
         <property name="proxyInterfaces">
             <value>net.paguo.dao.UserPermissionDao</value>
@@ -205,6 +219,7 @@
     <bean id="usersController" class="net.paguo.controller.UsersController">
         <property name="rolesDao" ref="roleDao"/>
         <property name="usersDao" ref="userDao"/>
+        <property name="groupDao" ref="groupDao"/>
     </bean>
     
     <bean id="changeStatusRequestController" class="net.paguo.controller.ChangeStatusRequestController">

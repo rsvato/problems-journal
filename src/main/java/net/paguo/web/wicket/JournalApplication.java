@@ -33,6 +33,8 @@ public class JournalApplication extends WebApplication {
         mountBookmarkablePage("/add-crash", NetworkProblemCreatePage.class);
         mountBookmarkablePage("/add-complaint", ComplaintCreatePage.class);
         mountBookmarkablePage("/admin/users", Users.class);
+        mountBookmarkablePage("/admin/groups", GroupPage.class);
+        
     }
 
     @Override

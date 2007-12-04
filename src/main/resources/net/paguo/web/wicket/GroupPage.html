@@ -1,0 +1,20 @@
+<wicket:extend>
+    <form wicket:id="form">
+        <label><wicket:message key="groupName">[group name]</wicket:message></label>
+        <input type="text" class="input" wicket:id="groupName"/>
+        <br class="clear"/>
+        <h2><wicket:message key="rolesLabel">[roles]</wicket:message></h2>
+        <span wicket:id="roles">
+            <input type="checkbox" wicket:id="selector"/><wicket:message key="selectLabel">[select/deselect]</wicket:message>
+            <table style="border: 1px dotted #545458; width: 400px; padding: 5px;">
+                <tr wicket:id="rolesList">
+                    <td><input type="checkbox" wicket:id="check"/></td>
+                    <td><span wicket:id="descr">[description]</span></td>
+                    <td><span wicket:id="role">[role]</span></td>
+                </tr>
+            </table>
+        </span>
+        <br class="clear"/>
+        <input type="submit" class="button" value="  OK   ">
+    </form>
+</wicket:extend>

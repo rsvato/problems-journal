@@ -2,8 +2,10 @@ package net.paguo.controller;
 
 import net.paguo.controller.exception.ControllerException;
 import net.paguo.controller.exception.JournalAuthenticationException;
+import net.paguo.dao.LocalGroupDao;
 import net.paguo.dao.LocalRoleDao;
 import net.paguo.dao.LocalUserDao;
+import net.paguo.domain.users.LocalGroup;
 import net.paguo.domain.users.LocalRole;
 import net.paguo.domain.users.LocalUser;
 import net.paguo.domain.users.UserPermission;
@@ -28,6 +30,7 @@ public class UsersController implements Controller<LocalUser>{
     public static final Log log = LogFactory.getLog(UsersController.class);
     private LocalUserDao usersDao;
     private LocalRoleDao rolesDao;
+    private LocalGroupDao groupDao;
 
     public LocalUserDao getUsersDao() {
         return usersDao;
@@ -43,6 +46,14 @@ public class UsersController implements Controller<LocalUser>{
 
     public void setRolesDao(LocalRoleDao rolesDao) {
         this.rolesDao = rolesDao;
+    }
+
+    public LocalGroupDao getGroupDao() {
+        return groupDao;
+    }
+
+    public void setGroupDao(LocalGroupDao groupDao) {
+        this.groupDao = groupDao;
     }
 
     public Collection<LocalUser> getAll(){
@@ -121,10 +132,34 @@ public class UsersController implements Controller<LocalUser>{
         }
         UserView result = new UserView(login);
         Set<Authority> roles = new HashSet<Authority>();
-        result.setAuthorities(roles);
-        for (LocalRole role : userFound.getRoles()) {
-            roles.add(new Authority(role.getRole()));
+
+        for (String s : userFound.getAuthorities()) {
+            roles.add(new Authority(s));
         }
+
+        result.setAuthorities(roles);
+
         return result;
+    }
+
+
+    public List<LocalGroup> getAllGroups(){
+        return getGroupDao().readAll();
+    }
+
+    public List<LocalGroup> getGroups(int from, int count, boolean asc){
+        return getGroupDao().readPart(count, from, "groupName", asc);
+    }
+
+    public LocalGroup getGroup(int groupId) {
+        return getGroupDao().read((long) groupId);
+    }
+
+    public void createGroup(LocalGroup group) {
+        getGroupDao().create(group);
+    }
+
+    public void updateGroup(LocalGroup group) {
+        getGroupDao().update(group);
     }
 }

@@ -1,14 +1,13 @@
 package net.paguo.domain.users;
 
 
-
-import org.hibernate.annotations.GenericGenerator;
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @version $Id $
@@ -26,16 +25,7 @@ public class LocalRole implements Serializable {
     protected Integer id;
     protected String role;
     protected String roleDescription;
-    private List<LocalUser> localUsers;
 
-    @ManyToMany(mappedBy = "roles")
-    public List<LocalUser> getLocalUsers() {
-        return localUsers;
-    }
-
-    public void setLocalUsers(List<LocalUser> localUsers) {
-        this.localUsers = localUsers;
-    }
 
     /**
      * @hibernate.id generator-class ="increment"
@@ -74,5 +64,9 @@ public class LocalRole implements Serializable {
 
     public void setRoleDescription(String roleDescription) {
         this.roleDescription = roleDescription;
+    }
+
+    public String toString(){
+        return StringUtils.isEmpty(roleDescription) ? role : roleDescription;
     }
 }
