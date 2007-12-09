@@ -2,6 +2,7 @@ package net.paguo.domain.users;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Set;
 public class LocalGroup implements Serializable {
     private Long id;
     private String groupName;
-    private Set<LocalRole> roles;
+    private Collection<LocalRole> roles;
     private Set<LocalUser> users;
 
     @Id @GeneratedValue
@@ -40,11 +41,11 @@ public class LocalGroup implements Serializable {
     @JoinTable(name="groups_roles",
         joinColumns = @JoinColumn(name = "local_group_id"),
         inverseJoinColumns = @JoinColumn(name = "local_role_id"))
-    public Set<LocalRole> getRoles() {
+    public Collection<LocalRole> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<LocalRole> roles) {
+    public void setRoles(Collection<LocalRole> roles) {
         this.roles = roles;
     }
 

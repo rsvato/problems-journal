@@ -14,6 +14,7 @@ import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -155,11 +156,27 @@ public class UsersController implements Controller<LocalUser>{
         return getGroupDao().read((long) groupId);
     }
 
-    public void createGroup(LocalGroup group) {
-        getGroupDao().create(group);
+    public void createGroup(LocalGroup group) throws ControllerException{
+        try {
+            getGroupDao().create(group);
+        } catch (HibernateException e) {
+            throw new ControllerException(e);
+        }
     }
 
-    public void updateGroup(LocalGroup group) {
-        getGroupDao().update(group);
+    public void updateGroup(LocalGroup group) throws ControllerException {
+        try {
+            getGroupDao().update(group);
+        } catch (HibernateException e) {
+            throw new ControllerException(e);
+        }
+    }
+
+    public void deleteGroup(LocalGroup grp) throws ControllerException{
+        try {
+            getGroupDao().delete(grp);
+        } catch (HibernateException e) {
+            throw new ControllerException(e);
+        }
     }
 }

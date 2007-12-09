@@ -1,20 +1,49 @@
 <wicket:extend>
-    <form wicket:id="form">
-        <label><wicket:message key="groupName">[group name]</wicket:message></label>
-        <input type="text" class="input" wicket:id="groupName"/>
-        <br class="clear"/>
-        <h2><wicket:message key="rolesLabel">[roles]</wicket:message></h2>
-        <span wicket:id="roles">
-            <input type="checkbox" wicket:id="selector"/><wicket:message key="selectLabel">[select/deselect]</wicket:message>
-            <table style="border: 1px dotted #545458; width: 400px; padding: 5px;">
-                <tr wicket:id="rolesList">
-                    <td><input type="checkbox" wicket:id="check"/></td>
-                    <td><span wicket:id="descr">[description]</span></td>
-                    <td><span wicket:id="role">[role]</span></td>
-                </tr>
-            </table>
+    <h1><wicket:message key="group.title">[groups]</wicket:message></h1>
+    <div id="feedbackPanel">
+        <span wicket:id="feedback">[feedback]</span>
+    </div>
+
+    <div class="service">
+        <a class="button" href="#" wicket:id="new"><wicket:message key="group.new.link">[create]</wicket:message></a>
+    </div>
+
+    <table class="dataView">
+        <thead>
+            <tr>
+                <th><wicket:message key="groupName">[group name]</wicket:message></th>
+                <th/>
+            </tr>
+            <tr wicket:id="view">
+                <td>
+                    <span wicket:id="gn">
+                        [name]
+                    </span>
+                </td>
+                <td>
+                    <a href="#" wicket:id="edit">[<wicket:message key="group.edit.link">edit</wicket:message>]</a>
+                    <a href="#" wicket:id="delete">[<wicket:message key="group.delete.link">edit</wicket:message>]</a>
+                </td>
+            </tr>
+        </thead>
+    </table>
+
+    <div style="margin-top:6em">
+
+        <form wicket:id="form">
+
+            <label><wicket:message key="groupName">[group name]</wicket:message></label>
+            <input type="text" class="input" wicket:id="groupName"/>
+            <br class="clear"/>
+
+            <h2><wicket:message key="rolesLabel">[roles]</wicket:message></h2>
+            <br class="clear"/>
+        <span wicket:id="rolesChecks">
+            <br/>
+            <input type="checkbox"/> Something <br/>
         </span>
-        <br class="clear"/>
-        <input type="submit" class="button" value="  OK   ">
-    </form>
+            <br class="clear"/>
+            <input type="submit" class="button" value="  OK   ">
+        </form>
+    </div>
 </wicket:extend>
