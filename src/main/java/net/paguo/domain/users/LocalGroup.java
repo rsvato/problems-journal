@@ -3,7 +3,6 @@ package net.paguo.domain.users;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Set;
 
 /**
  * User: sreentenko
@@ -16,7 +15,7 @@ public class LocalGroup implements Serializable {
     private Long id;
     private String groupName;
     private Collection<LocalRole> roles;
-    private Set<LocalUser> users;
+    private Collection<LocalUser> users;
 
     @Id @GeneratedValue
     public Long getId() {
@@ -50,15 +49,12 @@ public class LocalGroup implements Serializable {
     }
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-        targetEntity = LocalUser.class)
-    @JoinTable(name="groups_users",
-        joinColumns = @JoinColumn(name = "local_group_id"),
-        inverseJoinColumns = @JoinColumn(name = "local_user_id"))
-    public Set<LocalUser> getUsers() {
+        targetEntity = LocalUser.class, mappedBy = "groups")
+    public Collection<LocalUser> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<LocalUser> users) {
+    public void setUsers(Collection<LocalUser> users) {
         this.users = users;
     }
 }

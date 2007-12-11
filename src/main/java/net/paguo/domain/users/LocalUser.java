@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -28,7 +29,7 @@ public class LocalUser implements Serializable {
     private PersonalData personalData;
     private ContactData contactData;
     private String description;
-    private Set<LocalGroup> groups;
+    private Collection<LocalGroup> groups;
     private UserPermission permissionEntry;
 
 
@@ -84,13 +85,15 @@ public class LocalUser implements Serializable {
      * @return groups set
      */
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-        targetEntity = LocalGroup.class, mappedBy = "users")
-
-    public Set<LocalGroup> getGroups() {
+        targetEntity = LocalGroup.class)
+    @JoinTable(name="groups_users",
+        joinColumns = @JoinColumn(name = "local_user_id"),
+        inverseJoinColumns = @JoinColumn(name = "local_group_id"))
+    public Collection<LocalGroup> getGroups() {
         return groups;
     }
 
-    public void setGroups(Set<LocalGroup> groups) {
+    public void setGroups(Collection<LocalGroup> groups) {
         this.groups = groups;
     }
 

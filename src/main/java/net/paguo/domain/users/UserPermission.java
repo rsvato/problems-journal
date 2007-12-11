@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class UserPermission implements Serializable {
     private String userName;
     private String digest;
+    private String plainPassword;
 
     /**
      * @hibernate.id generator-class="assigned"
@@ -39,5 +40,14 @@ public class UserPermission implements Serializable {
 
     public void setDigest(String digest) {
         this.digest = digest;
+    }
+
+    @Transient
+    public String getPlainPassword() {
+        return plainPassword;
+    }
+
+    public void setPlainPassword(String plainPassword) {
+        this.plainPassword = plainPassword;
     }
 }

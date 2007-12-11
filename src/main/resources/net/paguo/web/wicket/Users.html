@@ -1,13 +1,8 @@
-<!DOCTYPE html
-PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:wicket="http://wicket.sourceforge.net">
-    <head>
-        <title>Users</title>
-    </head>
-    <body>
-        <div id="contents">
+<wicket:extend>
             <h1><wicket:message key="users.header">[users.header]</wicket:message></h1>
+    <div class="feedbackPanel">
+        <span wicket:id="feedback"/>
+    </div>
            <table class="dataView">
                <tr>
                    <th>
@@ -22,6 +17,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                    <th>
                        <wicket:message key="users.email">[email]</wicket:message>
                    </th>
+                   <th/>
                </tr>
                <tr wicket:id="users">
                    <td>
@@ -36,8 +32,63 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                    <td>
                        <span wicket:id="contactData.email">[email]</span>
                    </td>
+                   <td>
+                    <a href="#" wicket:id="edit">[<wicket:message key="edit.link.label">edit</wicket:message>]</a>
+                    <a href="#" wicket:id="delete">[<wicket:message key="delete.link.label">edit</wicket:message>]</a>
+                </td>
                </tr>
            </table>
-        </div>
-    </body>
-</html>
+
+
+    <div style="margin-top:6em; border-top:double 1px black">
+        <form wicket:id="form">
+            <label><wicket:message key="permissionEntry.userName">[username]</wicket:message> </label>
+            <input wicket:id="permissionEntry.userName" type="text" class="input"/>
+            <br/>
+
+            <label><wicket:message key="permissionEntry.plainPassword">[username]</wicket:message> </label>
+            <input wicket:id="permissionEntry.plainPassword" type="password" class="input"/>
+            <br/>
+
+            <label><wicket:message key="personalData.name">[username]</wicket:message> </label>
+            <input wicket:id="personalData.name" type="text" class="input"/>
+            <br/>
+
+            <label><wicket:message key="personalData.parentName">[username]</wicket:message> </label>
+            <input wicket:id="personalData.parentName" type="text" class="input"/>
+            <br/>
+
+
+            <label><wicket:message key="personalData.familyName">[username]</wicket:message> </label>
+            <input wicket:id="personalData.familyName" type="text" class="input"/>
+            <br/>
+
+            <label><wicket:message key="contactData.email">[username]</wicket:message> </label>
+            <input wicket:id="contactData.email" type="text" class="input"/>
+            <br/>
+
+            <label><wicket:message key="contactData.phone">[username]</wicket:message> </label>
+            <input wicket:id="contactData.phone" type="text" class="input"/>
+            <br/>
+
+            <label><wicket:message key="contactData.mobilePhone">[username]</wicket:message> </label>
+            <input wicket:id="contactData.mobilePhone" type="text" class="input"/>
+            <br/>
+
+            <label><wicket:message key="contactData.workPhone">[username]</wicket:message> </label>
+            <input wicket:id="contactData.workPhone" type="text" class="input"/>
+            <br/>
+
+            <label><wicket:message key="contactData.contactComments">[username]</wicket:message> </label>
+            <textarea wicket:id="contactData.contactComments" class="input area"></textarea>
+            <br/>
+
+            <h2><wicket:message key="groups">[groups]</wicket:message></h2>
+            <span wicket:id="groups">
+                <input type="checkbox">Check me
+            </span>
+
+            <input type="submit" value="  OK  " class="button"/>
+        </form>
+    </div>
+</wicket:extend>

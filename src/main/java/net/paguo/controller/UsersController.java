@@ -179,4 +179,28 @@ public class UsersController implements Controller<LocalUser>{
             throw new ControllerException(e);
         }
     }
+
+    public void saveOrUpdateUser(LocalUser user) throws ControllerException{
+        try{
+            if (user.getId() == null){
+                getUsersDao().create(user);
+            }else{
+                getUsersDao().update(user);
+            }
+        }catch (HibernateException e){
+            throw new ControllerException(e);
+        }
+    }
+
+    public LocalUser findUser(int userId) {
+        return getUsersDao().read(userId);
+    }
+
+    public void deleteUser(LocalUser user) throws ControllerException{
+        try{
+            getUsersDao().delete(user);
+        }catch (HibernateException e){
+            throw  new ControllerException(e);
+        }
+    }
 }
