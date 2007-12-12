@@ -36,3 +36,7 @@ h1 {
 div.service{
     padding:10px 0;
 }
+
+#navigation ul li {
+    list-style: none;
+}

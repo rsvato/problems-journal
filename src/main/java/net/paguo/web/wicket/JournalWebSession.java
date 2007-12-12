@@ -18,7 +18,7 @@ public class JournalWebSession extends WebSession {
     private UserView authenticatedUser;
 
     public JournalWebSession(WebApplication webApplication, Request request) {
-        super(webApplication, request);
+        super(request);
     }
 
     public UserView getAuthenticatedUser() {
@@ -29,23 +29,23 @@ public class JournalWebSession extends WebSession {
         this.authenticatedUser = authenticatedUser;
     }
 
-    public boolean isAuthenticated(){
+    public boolean isAuthenticated() {
         return authenticatedUser != null;
     }
 
-    public boolean isUserHasRoles(){
+    public boolean isUserHasRoles() {
         return isAuthenticated() && authenticatedUser.getAuthorities() != null &&
                 authenticatedUser.getAuthorities().size() > 0;
     }
 
-    public boolean isHasAuthority(String authority){
+    public boolean isHasAuthority(String authority) {
         log.debug("Searching authority " + authority);
         boolean result = false;
-        if (isUserHasRoles()){
+        if (isUserHasRoles()) {
             for (Authority o : authenticatedUser.getAuthorities()) {
-                if (authority.equals(o.getAuthority())){
-                   log.debug("Authority found");
-                   result = true;
+                if (authority.equals(o.getAuthority())) {
+                    log.debug("Authority found");
+                    result = true;
                     break;
                 }
 
@@ -54,5 +54,11 @@ public class JournalWebSession extends WebSession {
             log.debug("User is not authenticated or does not have any permission");
         }
         return result;
+    }
+
+    @Override
+    public void invalidate() {
+        super.invalidate();
+        authenticatedUser = null;
     }
 }

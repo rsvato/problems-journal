@@ -5,6 +5,7 @@ import net.paguo.controller.exception.JournalAuthenticationException;
 import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.wicket.Application;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
@@ -75,9 +76,7 @@ public class Login extends ApplicationWebPage{
                 UserView authenticated = getUsersController().authenticate(getUserId(), getPassword());
                 session.setAuthenticatedUser(authenticated);
                 if (! continueToOriginalDestination()){
-                    ApplicationWebPage next = new Dashboard();
-
-                    next.setUserName(getUserId());
+                    Class next = Application.get().getHomePage();
                     setResponsePage(next);
                 }
             } catch (JournalAuthenticationException e) {

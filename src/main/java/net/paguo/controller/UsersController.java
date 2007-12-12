@@ -203,4 +203,17 @@ public class UsersController implements Controller<LocalUser>{
             throw  new ControllerException(e);
         }
     }
+
+    public void bootstrapApplication() {
+        /*LocalRole advisorRole = new LocalRole();
+        advisorRole.setRole("ROLE_ADVISOR");
+        advisorRole.setRoleDescription("Џраво на администрирование");
+
+        createRole(advisorRole);*/
+
+    }
+
+    private void createRole(LocalRole role) {
+        getRolesDao().create(role);
+    }
 }

@@ -26,7 +26,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Date: 05.06.2007
  * Time: 0:38:23
  */
-public class Users extends ApplicationWebPage {
+@AllowedRole("ROLE_SUPERVISOR")
+public class Users extends SecuredWebPage {
 
     private static final Log log = LogFactory.getLog(Users.class);
 
@@ -58,7 +59,7 @@ public class Users extends ApplicationWebPage {
 
     private void init(LocalUser user) {
         final LocalUserListProvider provider = new LocalUserListProvider(getController());
-        DataView users = new UsersDataView("users", provider);
+        DataView users = new UsersDataView("usersList", provider);
         add(users);
         add(createForm(user));
         add(new FeedbackPanel("feedback"));

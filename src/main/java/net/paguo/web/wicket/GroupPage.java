@@ -29,7 +29,8 @@ import java.util.List;
  * Date: 04.12.2007
  * Time: 23:41:20
  */
-public class GroupPage extends ApplicationWebPage {
+@AllowedRole("ROLE_SUPERVISOR")
+public class GroupPage extends SecuredWebPage {
     private static final Log log = LogFactory.getLog(GroupPage.class);
     @SpringBean
     private UsersController controller;

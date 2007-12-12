@@ -54,9 +54,16 @@ public class SecuredWebPage extends ApplicationWebPage {
 
     }
 
-    private void addLinks() {
+    @Override
+    protected void addLinks() {
+
+        boolean isAdminRole = checkRole("ROLE_SUPERVISOR");
+
+
         add(new BookmarkablePageLink("complaints", ComplaintsPage.class));
         add(new BookmarkablePageLink("problems", NetworkProblemsPage.class));
+        add(new BookmarkablePageLink("users", Users.class).setVisible(isAdminRole));
+        add(new BookmarkablePageLink("groups", GroupPage.class).setVisible(isAdminRole));
     }
 
     protected void verifyAccess(){
@@ -69,6 +76,7 @@ public class SecuredWebPage extends ApplicationWebPage {
             if (! checkRole(declaredRole.value())){
                 log.debug("Required authority not found: "
                         + declaredRole.value() + ". Redirecting to Login page");
+                Session.get().invalidate();
                 throw new RestartResponseAtInterceptPageException(Login.class);
             }
         }

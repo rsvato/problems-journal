@@ -22,8 +22,8 @@ label {
 }
 
 .area {
-    height: 400px;
-    width: 600px;
+    height: 10em;
+    width: 300px;
 }
 
 .button {
@@ -94,4 +94,23 @@ div.wicket-aa ul li.selected {
     background-color: #FFFF00;
     padding: 2px;
     margin: 0;
+}
+
+.two-column br{
+    clear: both;
+}
+
+.two-column input{
+    float:left;
+    display:block;
+    width:10em;
+}
+
+.two-column label {
+    float:left;
+    display: block;
+    width: 10em;
+    text-align:right;
+    font-weight: bold;
+    padding-right: .5em;
 }

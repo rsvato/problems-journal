@@ -167,11 +167,6 @@ table.list th.sorted_asc {
     font-size: 12px;
 }
 
-#username {
-    font-size: 12px;
-    text-align: right;
-}
-
 #content {
     background: #ffffff;
     border: 1px solid #cccccc;

@@ -12,8 +12,13 @@
 </head>
 <body>
 <div id="page">
-    <div id="header">[header]</div>
-    <div id="navigation">[navigation]</div>
+    <div id="header"></div>
+    <div id="navigation">
+        <ul class="menu">
+            <li><a href="#" wicket:id="login"><wicket:message key="login"/></a></li>
+            <li><a href="#" wicket:id="logout"><wicket:message key="logout"/></a></li>
+        </ul>
+    </div>
     <div id="contents">
         <wicket:child/>
     </div>

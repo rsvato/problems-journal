@@ -1,6 +1,8 @@
 package net.paguo.web.wicket;
 
+import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.link.Link;
 
 
 /**
@@ -17,5 +19,58 @@ public class ApplicationWebPage extends WebPage {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public ApplicationWebPage() {
+        final Link logoutLink = new Link("logout") {
+            public void onClick() {
+                final Session session = Session.get();
+                session.invalidate();
+                setResponsePage(Login.class);
+            }
+        };
+
+        final Link loginLink = new Link("login"){
+           public void onClick(){
+               setResponsePage(Login.class);
+           }
+        };
+
+        loginLink.setVisible(false);
+        final JournalWebSession session = (JournalWebSession) Session.get();
+        if (session == null || ! session.isAuthenticated()){
+            logoutLink.setVisible(false);
+            loginLink.setVisible(true);
+        }
+
+        add(loginLink);
+        add(logoutLink);
+    }
+
+    protected void addLinks() {
+        final Link logoutLink = new Link("logout") {
+            public void onClick() {
+                final Session session = Session.get();
+                session.invalidate();
+                setResponsePage(Login.class);
+            }
+        };
+
+        final Link loginLink = new Link("login"){
+           public void onClick(){
+               setResponsePage(Login.class);
+           }
+        };
+
+        loginLink.setVisible(false);
+        final JournalWebSession session = (JournalWebSession) Session.get();
+        if (session == null || ! session.isAuthenticated()){
+            logoutLink.setVisible(false);
+            loginLink.setVisible(true);
+        }
+
+        add(loginLink);
+        add(logoutLink);
+
     }
 }
