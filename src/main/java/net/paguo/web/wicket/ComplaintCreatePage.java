@@ -32,7 +32,7 @@ import java.util.*;
  * Time: 0:55:33
  */
 @AuthorizeInstantiation({"ROLE_CREATE_COMPLAINT", "ROLE_CHANGE_COMPLAINT"})
-public class ComplaintCreatePage extends SecuredWebPage {
+public final class ComplaintCreatePage extends SecuredWebPage {
     private static final Log log = LogFactory.getLog(ComplaintCreatePage.class);
 
     @SpringBean

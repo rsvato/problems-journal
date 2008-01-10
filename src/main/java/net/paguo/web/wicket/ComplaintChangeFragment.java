@@ -8,7 +8,7 @@ import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInst
  * Time: 1:07:34
  */
 @AuthorizeInstantiation({"ROLE_CHANGE_COMPLAINT", "ROLE_OVERRIDE_COMPLAINT"})
-public class ComplaintChangeFragment extends SecuredWebMarkupContainer {
+public final class ComplaintChangeFragment extends SecuredWebMarkupContainer {
 
     public ComplaintChangeFragment(String id) {
         super(id);

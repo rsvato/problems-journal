@@ -3,6 +3,7 @@ package net.paguo.web.wicket;
 import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 
 
 /**
@@ -50,17 +51,12 @@ public class ApplicationWebPage extends WebPage {
     protected void addLinks() {
         final Link logoutLink = new Link("logout") {
             public void onClick() {
-                final Session session = Session.get();
-                session.invalidate();
+                Session.get().invalidate();
                 setResponsePage(Login.class);
             }
         };
 
-        final Link loginLink = new Link("login"){
-           public void onClick(){
-               setResponsePage(Login.class);
-           }
-        };
+        final Link loginLink = new BookmarkablePageLink("login", Login.class);
 
         loginLink.setVisible(false);
         final JournalWebSession session = (JournalWebSession) Session.get();
