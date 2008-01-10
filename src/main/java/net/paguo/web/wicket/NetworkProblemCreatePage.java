@@ -23,6 +23,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Date: 21.11.2007
  * Time: 0:55:33
  */
+@AllowedRole("ROLE_CREATE_PROBLEM")
 public class NetworkProblemCreatePage extends SecuredWebPage {
     private static final Log log = LogFactory.getLog(NetworkProblemCreatePage.class);
 

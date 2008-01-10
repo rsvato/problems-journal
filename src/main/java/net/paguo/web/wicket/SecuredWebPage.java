@@ -82,7 +82,7 @@ public class SecuredWebPage extends ApplicationWebPage {
         }
     }
 
-    private boolean checkRole(String s) {
+    protected boolean checkRole(String s) {
         JournalWebSession session = (JournalWebSession) getSession();
         return session.isHasAuthority(s);
     }

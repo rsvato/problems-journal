@@ -4,6 +4,9 @@ import net.paguo.controller.UsersController;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
+import org.apache.wicket.authorization.strategies.role.IRoleCheckingStrategy;
+import org.apache.wicket.authorization.strategies.role.RoleAuthorizationStrategy;
+import org.apache.wicket.authorization.strategies.role.Roles;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
@@ -13,7 +16,7 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
  * Date: 30.05.2007
  * Time: 0:51:30
  */
-public class JournalApplication extends WebApplication {
+public class JournalApplication extends WebApplication implements IRoleCheckingStrategy {
 
     @SpringBean
     private UsersController usersController;
@@ -26,6 +29,7 @@ public class JournalApplication extends WebApplication {
     @Override
     protected void init() {
         addComponentInstantiationListener(new SpringComponentInjector(this));
+        getSecuritySettings().setAuthorizationStrategy(new RoleAuthorizationStrategy(this));
         mountBookmarkablePage("/login", Login.class);
         mountBookmarkablePage("/dashboard", Dashboard.class);
         mountBookmarkablePage("/problems", NetworkProblemsPage.class);
@@ -48,5 +52,10 @@ public class JournalApplication extends WebApplication {
 
     public void setUsersController(UsersController usersController) {
         this.usersController = usersController;
+    }
+
+    public boolean hasAnyRole(Roles roles) {
+        final Roles savedRoles = JournalWebSession.get().getRoles();
+        return savedRoles != null && savedRoles.hasAnyRole(roles);
     }
 }

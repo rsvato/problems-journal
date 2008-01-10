@@ -5,11 +5,14 @@ import net.paguo.controller.NetworkFailureController;
 import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.domain.problems.ClientComplaint;
+import net.paguo.domain.problems.FailureRestore;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.authorization.strategies.role.metadata.MetaDataRoleAuthorizationStrategy;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -28,8 +31,9 @@ import java.util.*;
  * Date: 21.11.2007
  * Time: 0:55:33
  */
+@AuthorizeInstantiation({"ROLE_CREATE_COMPLAINT", "ROLE_CHANGE_COMPLAINT"})
 public class ComplaintCreatePage extends SecuredWebPage {
-    private static final Log log = LogFactory.getLog(NetworkProblemCreatePage.class);
+    private static final Log log = LogFactory.getLog(ComplaintCreatePage.class);
 
     @SpringBean
     private NetworkFailureController controller;
@@ -153,6 +157,12 @@ public class ComplaintCreatePage extends SecuredWebPage {
 
             add(p);
             p.setVisible(existingProblem());
+            StringBuilder roles = new StringBuilder("ROLE_CHANGE_COMPLAINT");
+            final FailureRestore restore = getNetworkProblem().getRestoreAction();
+            if (restore != null && restore.getCompleted()){
+                roles.append(",").append("ROLE_CHANGE_CLOSED_COMPLAINT");
+            }
+            MetaDataRoleAuthorizationStrategy.authorize(p, RENDER, roles.toString());
         }
 
         private boolean existingProblem() {
