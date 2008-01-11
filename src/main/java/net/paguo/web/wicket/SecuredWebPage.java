@@ -64,6 +64,7 @@ public class SecuredWebPage extends ApplicationWebPage {
         add(new BookmarkablePageLink("problems", NetworkProblemsPage.class));
         add(new BookmarkablePageLink("users", Users.class).setVisible(isAdminRole));
         add(new BookmarkablePageLink("groups", GroupPage.class).setVisible(isAdminRole));
+        add(new BookmarkablePageLink("roles", RolesManagementPage.class).setVisible(isAdminRole));
     }
 
     protected void verifyAccess(){

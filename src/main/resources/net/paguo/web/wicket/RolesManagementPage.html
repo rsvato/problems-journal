@@ -1,0 +1,51 @@
+<wicket:extend>
+   <h1><wicket:message key="roles.title">[groups]</wicket:message></h1>
+    <div id="feedbackPanel">
+        <span wicket:id="feedback">[feedback]</span>
+    </div>
+
+    <div class="service">
+        <a class="button" href="#" wicket:id="new"><wicket:message key="role.new.link">[create]</wicket:message></a>
+    </div>
+
+    <table class="dataView">
+        <thead>
+            <tr>
+                <th><wicket:message key="roleDescription">[group name]</wicket:message></th>
+                <th><wicket:message key="roleDesignation">[group name]</wicket:message></th>
+                <th/>
+            </tr>
+            <tr wicket:id="view">
+                <td>
+                    <span wicket:id="description">
+                        [name]
+                    </span>
+                </td>
+                <td>
+                    <span wicket:id="role">
+                        [name]
+                    </span>
+                </td>
+                <td>
+                    <a href="#" wicket:id="edit">[<wicket:message key="role.edit.link">edit</wicket:message>]</a>
+                </td>
+            </tr>
+        </thead>
+    </table>
+
+    <div style="margin-top:6em">
+
+        <form wicket:id="form">
+
+            <label><wicket:message key="roleDesignation">[description]</wicket:message></label>
+            <input type="text" class="input" wicket:id="roleDescription"/>
+            <br class="clear"/>
+
+            <label><wicket:message key="roleDescription">[description]</wicket:message></label>
+            <input type="text" class="input" wicket:id="role"/>
+            <br class="clear"/>
+            
+            <input type="submit" class="button" value="  OK   ">
+        </form>
+    </div>
+</wicket:extend>
