@@ -64,7 +64,7 @@ public class RolesManagementPage extends SecuredWebPage {
 
     private void createRolesTable(){
         final List<LocalRole> roles = (List<LocalRole>) getUsersController().getAllRoles();
-        ListView view = new ListView("roles", roles){
+        ListView view = new ListView("view", roles){
             private static final long serialVersionUID = 1643044287867141914L;
 
             protected void populateItem(ListItem item) {
