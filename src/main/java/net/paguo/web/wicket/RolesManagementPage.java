@@ -70,7 +70,7 @@ public class RolesManagementPage extends SecuredWebPage {
             protected void populateItem(ListItem item) {
                 final LocalRole role = (LocalRole) item.getModelObject();
                 item.add(new Label("description", role.getRoleDescription()));
-                item.add(new Label("role", role.getRole()));
+                item.add(new Label("designation", role.getRole()));
                 item.add(new Link("edit"){
                     private static final long serialVersionUID = 606621448685484564L;
 
