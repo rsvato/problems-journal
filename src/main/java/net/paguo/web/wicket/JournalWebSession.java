@@ -67,11 +67,14 @@ public class JournalWebSession extends WebSession {
     }
 
     public Roles getRoles(){
-        final Set<Authority> set = authenticatedUser.getAuthorities();
-        String[] rolesList = new String[set.size()];
-        int i = 0;
-        for (Authority authority : set){
-           rolesList[i++] = authority.getAuthority();
+        String[] rolesList = new String[0];
+        if (isAuthenticated()){
+            final Set<Authority> set = authenticatedUser.getAuthorities();
+            rolesList = new String[set.size()];
+            int i = 0;
+            for (Authority authority : set){
+                rolesList[i++] = authority.getAuthority();
+            }
         }
         return new Roles(rolesList);
     }
