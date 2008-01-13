@@ -2,6 +2,7 @@ package net.paguo.web.wicket;
 
 import net.paguo.controller.ApplicationSettingsController;
 import net.paguo.controller.NetworkFailureController;
+import net.paguo.controller.UsersController;
 import net.paguo.domain.application.ApplicationSettings;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
@@ -38,6 +39,10 @@ public abstract class FailurePage<T extends Serializable> extends SecuredWebPage
     NetworkFailureController controller;
     @SpringBean
     ApplicationSettingsController settingsController;
+
+    @SpringBean
+    private UsersController usersController;
+
     private static final String ITEMS_PER_PAGE_KEY = "failureController.itemsPerPage";
 
     public NetworkFailureController getController() {
@@ -50,6 +55,14 @@ public abstract class FailurePage<T extends Serializable> extends SecuredWebPage
 
     public ApplicationSettingsController getSettingsController() {
         return settingsController;
+    }
+
+    public UsersController getUsersController() {
+        return usersController;
+    }
+
+    public void setUsersController(UsersController usersController) {
+        this.usersController = usersController;
     }
 
     protected int getPerPageSettings() {

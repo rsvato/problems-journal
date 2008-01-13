@@ -2,13 +2,11 @@ package net.paguo.controller;
 
 import net.paguo.controller.exception.ControllerException;
 import net.paguo.controller.exception.JournalAuthenticationException;
+import net.paguo.dao.ApplicationRoleDao;
 import net.paguo.dao.LocalGroupDao;
 import net.paguo.dao.LocalRoleDao;
 import net.paguo.dao.LocalUserDao;
-import net.paguo.domain.users.LocalGroup;
-import net.paguo.domain.users.LocalRole;
-import net.paguo.domain.users.LocalUser;
-import net.paguo.domain.users.UserPermission;
+import net.paguo.domain.users.*;
 import net.paguo.web.wicket.auth.Authority;
 import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -32,6 +30,7 @@ public class UsersController implements Controller<LocalUser>{
     private LocalUserDao usersDao;
     private LocalRoleDao rolesDao;
     private LocalGroupDao groupDao;
+    private ApplicationRoleDao applicationRoleDao;
 
     public LocalUserDao getUsersDao() {
         return usersDao;
@@ -55,6 +54,14 @@ public class UsersController implements Controller<LocalUser>{
 
     public void setGroupDao(LocalGroupDao groupDao) {
         this.groupDao = groupDao;
+    }
+
+    public ApplicationRoleDao getApplicationRoleDao() {
+        return applicationRoleDao;
+    }
+
+    public void setApplicationRoleDao(ApplicationRoleDao applicationRoleDao) {
+        this.applicationRoleDao = applicationRoleDao;
     }
 
     public Collection<LocalUser> getAll(){
@@ -204,16 +211,13 @@ public class UsersController implements Controller<LocalUser>{
         }
     }
 
-    public void bootstrapApplication() {
-        /*LocalRole advisorRole = new LocalRole();
-        advisorRole.setRole("ROLE_ADVISOR");
-        advisorRole.setRoleDescription("Џраво на администрирование");
-
-        createRole(advisorRole);*/
-
+    public ApplicationRole findARForClassAndAction(Class klass, ApplicationRole.Action action){
+        final List<ApplicationRole> list = getApplicationRoleDao().findByClassAndAction(klass.getName(), action.name());
+        ApplicationRole result = null;
+        if (! list.isEmpty()){
+            result = list.iterator().next();
+        }
+        return result;
     }
 
-    private void createRole(LocalRole role) {
-        getRolesDao().create(role);
-    }
 }

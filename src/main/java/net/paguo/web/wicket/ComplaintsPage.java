@@ -6,11 +6,14 @@ import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.domain.common.PersonalData;
 import net.paguo.domain.problems.ClientComplaint;
+import net.paguo.domain.users.ApplicationRole;
 import net.paguo.domain.users.LocalUser;
 import net.paguo.search.controller.ComplaintSearchController;
+import net.paguo.web.wicket.auth.JournalRoles;
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
+import org.apache.wicket.authorization.strategies.role.metadata.MetaDataRoleAuthorizationStrategy;
 import org.apache.wicket.behavior.HeaderContributor;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.datetime.markup.html.basic.DateLabel;
@@ -84,88 +87,105 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
     protected void initConstantCompoments() {
         add(HeaderContributor.forCss(ComplaintsPage.class, "wstyles.css"));
         add(new FeedbackPanel("feedback"));
-        add(new Link("create") {
+        final Link create = new Link("create") {
             public void onClick() {
                 setResponsePage(ComplaintCreatePage.class);
             }
-        });
+        };
+        add(create);
         add(new ComplaintsSearchForm("search"));
         add(new Link("reindex") {
             public void onClick() {
                 getSearchController().reindex();
             }
         });
-    }
-}
 
-class ComplaintDataView extends DataView {
-    @SpringBean
-    NetworkFailureController controller;
-
-    public NetworkFailureController getController() {
-        return controller;
+        MetaDataRoleAuthorizationStrategy.authorize(create, RENDER,
+                    JournalRoles.ROLE_CREATE_COMPLAINT.name());
     }
 
-    public void setController(NetworkFailureController controller) {
-        this.controller = controller;
-    }
+    private class ComplaintDataView extends DataView {
+        @SpringBean
+        NetworkFailureController controller;
 
-    ComplaintDataView(String id, IDataProvider dataProvider) {
-        super(id, dataProvider);
-    }
-
-    public ComplaintDataView(String id, IDataProvider dataProvider, int itemsPerPage) {
-        super(id, dataProvider, itemsPerPage);
-    }
-
-
-    protected void populateItem(Item item) {
-        final ClientComplaint problem = (ClientComplaint) item.getModelObject();
-        item.setModel(new CompoundPropertyModel(problem));
-        item.add(new Label("id"));
-        item.add(DateLabel.forDatePattern("failureTime", new Model(problem.getFailureTime()), "dd-MM-yy hh:mm"));
-        String clientName = "";
-        final ClientItem client = problem.getClient();
-        if (client != null) {
-            clientName = client.getClientName();
-        } else if (!StringUtils.isEmpty(problem.getEnteredClient())) {
-            clientName = problem.getEnteredClient();
+        public NetworkFailureController getController() {
+            return controller;
         }
-        item.add(new Label("clientName", new Model(clientName)));
-        item.add(new Label("failureDescription"));
-        item.add(new Label("restoreAction.failureCause"));
-        item.add(new Label("restoreAction.restoreAction"));
-        item.add(DateLabel.forDatePattern("restoreAction.restoreTime", "dd-MM-yy hh:mm"));
-        final LocalUser created = problem.getUserCreated();
-        String labelString = "-";
-        if (created != null) {
-            final PersonalData personalData = created.getPersonalData();
-            if (personalData != null && !StringUtils.isEmpty(personalData.getFamilyName())) {
-                labelString = personalData.getFamilyName();
-            } else {
-                labelString = created.getPermissionEntry().getUserName();
-            }
+
+        public void setController(NetworkFailureController controller) {
+            this.controller = controller;
         }
-        item.add(new Label("userCreated", new Model(labelString)));
-        item.add(new Link("problemDetails") {
-            public void onClick() {
-                final PageParameters pageParameters = new PageParameters();
-                pageParameters.add("problemId", String.valueOf(problem.getId()));
-                setResponsePage(ComplaintCreatePage.class, pageParameters);
+
+        ComplaintDataView(String id, IDataProvider dataProvider) {
+            super(id, dataProvider);
+        }
+
+        public ComplaintDataView(String id, IDataProvider dataProvider, int itemsPerPage) {
+            super(id, dataProvider, itemsPerPage);
+        }
+
+
+        protected void populateItem(Item item) {
+            final ClientComplaint problem = (ClientComplaint) item.getModelObject();
+            item.setModel(new CompoundPropertyModel(problem));
+            item.add(new Label("id"));
+            item.add(DateLabel.forDatePattern("failureTime", new Model(problem.getFailureTime()), "dd-MM-yy hh:mm"));
+            String clientName = "";
+            final ClientItem client = problem.getClient();
+            if (client != null) {
+                clientName = client.getClientName();
+            } else if (!StringUtils.isEmpty(problem.getEnteredClient())) {
+                clientName = problem.getEnteredClient();
             }
-        });
-        final Link child = new Link("problemDelete") {
-            public void onClick() {
-                try {
-                    getController().deleteComplaint(problem);
-                    String message = getLocalizer().getString("complaint.deleted", ComplaintDataView.this);
-                    Session.get().info(message);
-                } catch (ControllerException e) {
-                    Session.get().error("Cannot delete problem. Check for child complaints");
+            item.add(new Label("clientName", new Model(clientName)));
+            item.add(new Label("failureDescription"));
+            item.add(new Label("restoreAction.failureCause"));
+            item.add(new Label("restoreAction.restoreAction"));
+            item.add(DateLabel.forDatePattern("restoreAction.restoreTime", "dd-MM-yy hh:mm"));
+            final LocalUser created = problem.getUserCreated();
+            String labelString = "-";
+            if (created != null) {
+                final PersonalData personalData = created.getPersonalData();
+                if (personalData != null && !StringUtils.isEmpty(personalData.getFamilyName())) {
+                    labelString = personalData.getFamilyName();
+                } else {
+                    labelString = created.getPermissionEntry().getUserName();
                 }
             }
-        };
-        child.add(new SimpleAttributeModifier("onclick", "return confirm('Are you sure?');"));
-        item.add(child);
+            item.add(new Label("userCreated", new Model(labelString)));
+            final Link details = new Link("problemDetails") {
+                public void onClick() {
+                    final PageParameters pageParameters = new PageParameters();
+                    pageParameters.add("problemId", String.valueOf(problem.getId()));
+                    setResponsePage(ComplaintCreatePage.class, pageParameters);
+                }
+            };
+            item.add(details);
+
+            if (problem.getRestoreAction() != null && problem.getRestoreAction().getCompleted()){
+                MetaDataRoleAuthorizationStrategy.authorize(details, RENDER,
+                        JournalRoles.ROLE_OVERRIDE_COMPLAINT.name());
+            }else{
+                MetaDataRoleAuthorizationStrategy.authorize(details, RENDER,
+                        String.format("%s,%s", JournalRoles.ROLE_CHANGE_COMPLAINT.name(),
+                                JournalRoles.ROLE_OVERRIDE_COMPLAINT.name()));
+            }
+
+            final Link child = new Link("problemDelete") {
+                public void onClick() {
+                    try {
+                        getController().deleteComplaint(problem);
+                        String message = getLocalizer().getString("complaint.deleted", ComplaintDataView.this);
+                        Session.get().info(message);
+                    } catch (ControllerException e) {
+                        Session.get().error("Cannot delete problem. Check for child complaints");
+                    }
+                }
+            };
+            child.add(new SimpleAttributeModifier("onclick", "return confirm('Are you sure?');"));
+            item.add(child);
+            secureElement(child, ClientComplaint.class, new ApplicationRole.Action[]{ApplicationRole.Action.DELETE});
+        }
     }
 }
+

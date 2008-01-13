@@ -3,13 +3,20 @@ package net.paguo.web.wicket;
 import net.paguo.controller.UsersController;
 import net.paguo.controller.exception.JournalAuthenticationException;
 import net.paguo.domain.users.LocalUser;
+import net.paguo.domain.users.ApplicationRole;
 import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.Session;
+import org.apache.wicket.Component;
+import org.apache.wicket.authorization.strategies.role.metadata.MetaDataRoleAuthorizationStrategy;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.util.Set;
+import java.util.Collections;
 
 /**
  * User: sreentenko
@@ -91,5 +98,21 @@ public class SecuredWebPage extends ApplicationWebPage {
     protected boolean isUserAuthenticated(){
         JournalWebSession session = (JournalWebSession) getSession();
         return session.isAuthenticated();
+    }
+
+    protected String findRoleForAction(Class klass, ApplicationRole.Action action){
+        final ApplicationRole role = getUsersController().findARForClassAndAction(klass, action);
+        return role != null ? role.getRole() : "NOBODY"; //disallow when no role created for action
+    }
+
+    protected void secureElement(Component cmp, Class klass, ApplicationRole.Action[] actions){
+        Set<String> roles = Collections.emptySet();
+        if (actions != null){
+            for (ApplicationRole.Action action : actions) {
+               roles.add(findRoleForAction(klass, action));
+            }
+        }
+        String allowed = StringUtils.join(roles.iterator(), ",");
+        MetaDataRoleAuthorizationStrategy.authorize(cmp, ENABLE, allowed);
     }
 }

@@ -6,6 +6,7 @@ import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.domain.problems.ClientComplaint;
 import net.paguo.domain.problems.FailureRestore;
+import net.paguo.web.wicket.auth.JournalRoles;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -31,7 +32,9 @@ import java.util.*;
  * Date: 21.11.2007
  * Time: 0:55:33
  */
-@AuthorizeInstantiation({"ROLE_CREATE_COMPLAINT", "ROLE_CHANGE_COMPLAINT"})
+@AuthorizeInstantiation({JournalRoles.ROLE_CHANGE_COMPLAINT.name(),
+        JournalRoles.ROLE_OVERRIDE_COMPLAINT.name(),
+        JournalRoles.ROLE_CREATE_COMPLAINT.name()})
 public final class ComplaintCreatePage extends SecuredWebPage {
     private static final Log log = LogFactory.getLog(ComplaintCreatePage.class);
 
@@ -118,12 +121,13 @@ public final class ComplaintCreatePage extends SecuredWebPage {
         }
 
         private void initForm() {
+            WebMarkupContainer main = new WebMarkupContainer("main");
             clientItems = getClientItemController().getAllClients();
-            add(new TextArea("failureDescription").setRequired(true));
-            add(new DateTimeField("failureTime")
+            main.add(new TextArea("failureDescription").setRequired(true));
+            main.add(new DateTimeField("failureTime")
                     .setRequired(true));
 
-            add(new AutoCompleteTextField("enteredClient") {
+            main.add(new AutoCompleteTextField("enteredClient") {
                 protected Iterator getChoices(String input) {
                     if (StringUtils.isEmpty(input)){
                         return Collections.EMPTY_LIST.iterator();
@@ -142,6 +146,9 @@ public final class ComplaintCreatePage extends SecuredWebPage {
                     return result.iterator();
                 }
             });
+
+            add(main);
+
             WebMarkupContainer p = new WebMarkupContainer("additional");
 
             final TextArea area = new TextArea("restoreAction.failureCause");
@@ -157,12 +164,15 @@ public final class ComplaintCreatePage extends SecuredWebPage {
 
             add(p);
             p.setVisible(existingProblem());
-            StringBuilder roles = new StringBuilder("ROLE_CHANGE_COMPLAINT");
+            
+            StringBuilder roles = new StringBuilder(JournalRoles.ROLE_CHANGE_COMPLAINT.name());
             final FailureRestore restore = getNetworkProblem().getRestoreAction();
             if (restore != null && restore.getCompleted()){
-                roles.append(",").append("ROLE_CHANGE_CLOSED_COMPLAINT");
+                roles.append(",").append(JournalRoles.ROLE_OVERRIDE_COMPLAINT.name());
             }
             MetaDataRoleAuthorizationStrategy.authorize(p, RENDER, roles.toString());
+            MetaDataRoleAuthorizationStrategy.authorize(main, RENDER,
+                    JournalRoles.ROLE_CREATE_COMPLAINT.name());
         }
 
         private boolean existingProblem() {

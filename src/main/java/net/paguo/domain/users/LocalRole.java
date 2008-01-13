@@ -1,12 +1,11 @@
 package net.paguo.domain.users;
 
 
-import org.apache.commons.lang.StringUtils;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
@@ -17,56 +16,8 @@ import java.io.Serializable;
  * @hibernate.query name="LocalRole.findByName" query="from LocalRole where role = ?"
  */
 @Entity
-@Table(name = "local_role", uniqueConstraints= {@UniqueConstraint(columnNames = {"role"}),
-        @UniqueConstraint(columnNames = {"roleDescription"})} )
+@DiscriminatorValue("service")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.hibernate.annotations.NamedQuery(name="LocalRole.findByName",query="from LocalRole where name = ?")
-public class LocalRole implements Serializable {
-    protected Integer id;
-    protected String role;
-    protected String roleDescription;
-
-
-    /**
-     * @hibernate.id generator-class ="increment"
-@     */
-    @Id @GeneratedValue(generator = "increment")
-    @GenericGenerator(name="increment",strategy = "increment")
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @hibernate.property
-     * @return
-     */
-    @Column(nullable = false, unique = true)
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    /**
-     * @hibernate.property 
-     * @return
-     */
-    @Column (nullable = false, unique = true)
-    public String getRoleDescription() {
-        return roleDescription;
-    }
-
-    public void setRoleDescription(String roleDescription) {
-        this.roleDescription = roleDescription;
-    }
-
-    public String toString(){
-        return StringUtils.isEmpty(roleDescription) ? role : roleDescription;
-    }
+public class LocalRole extends AbstractRole implements Serializable {
 }
