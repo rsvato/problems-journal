@@ -11,6 +11,6 @@ import java.util.List;
  * Time: 2:52:10
  */
 public interface ApplicationRoleDao extends GenericDao<ApplicationRole, Integer>{
-    List<ApplicationRole> findByClassAndAction(String className, String action);
+    List<ApplicationRole> findByClassAndAction(String className, ApplicationRole.Action action);
     List<ApplicationRole> findByClass(String className);
 }

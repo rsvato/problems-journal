@@ -211,8 +211,10 @@ public class UsersController implements Controller<LocalUser>{
         }
     }
 
-    public ApplicationRole findARForClassAndAction(Class klass, ApplicationRole.Action action){
-        final List<ApplicationRole> list = getApplicationRoleDao().findByClassAndAction(klass.getName(), action.name());
+    public ApplicationRole findARForClassAndAction(Class klass,
+                                                   ApplicationRole.Action action){
+        final List<ApplicationRole> list = getApplicationRoleDao().
+                findByClassAndAction(klass.getName(), action);
         ApplicationRole result = null;
         if (! list.isEmpty()){
             result = list.iterator().next();
@@ -220,4 +222,31 @@ public class UsersController implements Controller<LocalUser>{
         return result;
     }
 
+    public ApplicationRole getRole(Integer id){
+        return getApplicationRoleDao().read(id);
+    }
+
+    public void saveRole(ApplicationRole role) throws ControllerException {
+        try {
+            if (role.getId() == null){
+                getApplicationRoleDao().create(role);
+            }else{
+                getApplicationRoleDao().update(role);
+            }
+        } catch (Throwable e) {
+            throw new ControllerException(e);
+        }
+    }
+
+    public List<ApplicationRole> getApplicationRoles() {
+        return getApplicationRoleDao().readAll();
+    }
+
+    public void deleteApplicationRole(ApplicationRole role) throws ControllerException{
+        try {
+            getApplicationRoleDao().delete(role);
+        } catch (Throwable e) {
+            throw new ControllerException(e);
+        }
+    }
 }

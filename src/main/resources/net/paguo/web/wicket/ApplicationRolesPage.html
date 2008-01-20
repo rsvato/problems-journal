@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:wicket="http://wicket.apache.org/"
+        xml:lang="en"
+        lang="en">
+<body>
+<wicket:extend>
+    <div id="feedbackPanel">
+        <span wicket:id="feedback">[info]</span>
+    </div>
+    <table class="dataView">
+        <tr>
+            <th>role</th>
+            <th>description</th>
+            <th>class name</th>
+            <th>operation</th>
+            <th></th>
+        </tr>
+        <tr wicket:id="table">
+            <td><span wicket:id="role"/></td>
+            <td><span wicket:id="roleDescription"/></td>
+            <td><span wicket:id="className"/></td>
+            <td><span wicket:id="action"/></td>
+            <td><a href="#" wicket:id="edit">[edit]</a>|<a href="#" wicket:id="delete">[delete]</a></td>
+        </tr>
+    </table>
+    <form action="" wicket:id="form">
+        <div>
+            <label>role name</label>
+            <input type="text" wicket:id="role" class="input"/>
+        </div>
+        <br class="clear"/>
+
+        <div>
+            <label>role description</label>
+            <input type="text" wicket:id="roleDescription" class="input"/>
+        </div>
+        <br class="clear"/>
+
+        <div>
+            <label>class name</label>
+            <select type="text" wicket:id="className"></select>
+        </div>
+        <br class="clear"/>
+
+        <div>
+            <label>action</label>
+            <select type="text" wicket:id="action"></select>
+        </div>
+        <br class="clear"/>
+
+        <input type="submit" class="button" value="save"/>
+    </form>
+</wicket:extend>
+</body>
+</html>

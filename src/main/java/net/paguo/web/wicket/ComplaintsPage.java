@@ -124,7 +124,6 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
             super(id, dataProvider, itemsPerPage);
         }
 
-
         protected void populateItem(Item item) {
             final ClientComplaint problem = (ClientComplaint) item.getModelObject();
             item.setModel(new CompoundPropertyModel(problem));

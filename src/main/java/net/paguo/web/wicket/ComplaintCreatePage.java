@@ -32,9 +32,6 @@ import java.util.*;
  * Date: 21.11.2007
  * Time: 0:55:33
  */
-@AuthorizeInstantiation({JournalRoles.ROLE_CHANGE_COMPLAINT.name(),
-        JournalRoles.ROLE_OVERRIDE_COMPLAINT.name(),
-        JournalRoles.ROLE_CREATE_COMPLAINT.name()})
 public final class ComplaintCreatePage extends SecuredWebPage {
     private static final Log log = LogFactory.getLog(ComplaintCreatePage.class);
 

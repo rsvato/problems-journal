@@ -17,6 +17,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.Set;
 import java.util.Collections;
+import java.util.HashSet;
 
 /**
  * User: sreentenko
@@ -106,7 +107,7 @@ public class SecuredWebPage extends ApplicationWebPage {
     }
 
     protected void secureElement(Component cmp, Class klass, ApplicationRole.Action[] actions){
-        Set<String> roles = Collections.emptySet();
+        Set<String> roles = new HashSet<String>();
         if (actions != null){
             for (ApplicationRole.Action action : actions) {
                roles.add(findRoleForAction(klass, action));
