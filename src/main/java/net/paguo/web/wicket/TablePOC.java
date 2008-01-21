@@ -2,6 +2,8 @@ package net.paguo.web.wicket;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.Session;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigator;
@@ -10,7 +12,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
@@ -35,6 +37,9 @@ public class TablePOC extends WebPage {
     private static final Log log = LogFactory.getLog(TablePOC.class);
 
     public TablePOC() {
+        final FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
+        feedbackPanel.setOutputMarkupId(true);
+        add(feedbackPanel);
         final WebMarkupContainer tbl = new WebMarkupContainer("tbl");
         tbl.setOutputMarkupId(true);
         view = new DataView("table", new TablePOCProvider(new SearchCriteria()), 20) {
@@ -51,7 +56,18 @@ public class TablePOC extends WebPage {
         searchForm.add(new AjaxButton("submitSearch", searchForm) {
             protected void onSubmit(AjaxRequestTarget target, Form form) {
                 search((SearchCriteria) form.getModelObject());
+                final int resultCount = view.getDataProvider().size();
+                if (resultCount > 0){
+                    tbl.add(new AttributeModifier("style", true, new Model("display:block;")));
+                    if (resultCount > 3000){
+                       Session.get().warn("Too many results. Try to refine search");
+                    }
+                }else{
+                    tbl.add(new AttributeModifier("style", true, new Model("display:none;")));
+                    Session.get().info("No results");
+                }
                 target.addComponent(tbl);
+                target.addComponent(feedbackPanel);
             }
 
             @Override
@@ -68,12 +84,14 @@ public class TablePOC extends WebPage {
         };
         tbl.add(navigator);
         add(tbl);
+
     }
 
     public void search(SearchCriteria criteria){
         log.debug(criteria);
         view.setCurrentPage(0);
         ((TablePOCProvider) view.getDataProvider()).setCriteria(criteria);
+
     }
 
     private class TableItem implements Serializable {
