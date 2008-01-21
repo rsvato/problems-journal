@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:wicket="http://wicket.apache.org/"
+        xml:lang="en"
+        lang="en">
+<body>
+<form wicket:id="search">
+    <input type="text" wicket:id="searchField">
+    <button wicket:id="submitSearch">Search</button>
+</form>
+<div wicket:id="tbl">
+    <span wicket:id="navigator">[navigation]</span>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>description</th>
+        </tr>
+        <tr wicket:id="table">
+            <td><span wicket:id="id">[id]</span></td>
+            <td><span wicket:id="description">[description]</span></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

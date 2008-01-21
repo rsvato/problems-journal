@@ -114,6 +114,6 @@ public class SecuredWebPage extends ApplicationWebPage {
             }
         }
         String allowed = StringUtils.join(roles.iterator(), ",");
-        MetaDataRoleAuthorizationStrategy.authorize(cmp, ENABLE, allowed);
+        MetaDataRoleAuthorizationStrategy.authorize(cmp, RENDER, allowed);
     }
 }

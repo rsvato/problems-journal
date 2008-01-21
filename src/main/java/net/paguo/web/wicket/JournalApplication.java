@@ -40,6 +40,7 @@ public class JournalApplication extends WebApplication implements IRoleCheckingS
         mountBookmarkablePage("/admin/groups", GroupPage.class);
         mountBookmarkablePage("/admin/roles", RolesManagementPage.class);
         mountBookmarkablePage("/admin/appRoles", ApplicationRolesPage.class);
+        mountBookmarkablePage("/test.html", TablePOC.class);
 
     }
 
