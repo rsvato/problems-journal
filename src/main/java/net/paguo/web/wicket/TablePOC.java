@@ -5,13 +5,18 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Session;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.IAjaxCallDecorator;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigator;
+import org.apache.wicket.ajax.markup.html.navigation.paging.*;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.navigation.paging.IPageable;
+import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
@@ -35,6 +40,19 @@ public class TablePOC extends WebPage {
     final DataView view;
 
     private static final Log log = LogFactory.getLog(TablePOC.class);
+    private final IAjaxCallDecorator decorator = new IAjaxCallDecorator() {
+        public CharSequence decorateScript(CharSequence script) {
+            return "alert('Before!'); " + script;
+        }
+
+        public CharSequence decorateOnSuccessScript(CharSequence script) {
+            return "alert('Success!'); " + script;
+        }
+
+        public CharSequence decorateOnFailureScript(CharSequence script) {
+            return "aler('Failure!'); " + script;
+        }
+    };
 
     public TablePOC() {
         final FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
@@ -57,12 +75,12 @@ public class TablePOC extends WebPage {
             protected void onSubmit(AjaxRequestTarget target, Form form) {
                 search((SearchCriteria) form.getModelObject());
                 final int resultCount = view.getDataProvider().size();
-                if (resultCount > 0){
+                if (resultCount > 0) {
                     tbl.add(new AttributeModifier("style", true, new Model("display:block;")));
-                    if (resultCount > 3000){
-                       Session.get().warn("Too many results. Try to refine search");
+                    if (resultCount > 3000) {
+                        Session.get().warn("Too many results. Try to refine search");
                     }
-                }else{
+                } else {
                     tbl.add(new AttributeModifier("style", true, new Model("display:none;")));
                     Session.get().info("No results");
                 }
@@ -76,18 +94,13 @@ public class TablePOC extends WebPage {
             }
         });
         add(searchForm);
-        final AjaxPagingNavigator navigator = new AjaxPagingNavigator("navigator", view){
-            @Override
-            protected void onAjaxEvent(AjaxRequestTarget target) {
-                target.addComponent(tbl);
-            }
-        };
+        final AjaxPagingNavigator navigator = new NotificationAjaxPagingNavigator(tbl);
         tbl.add(navigator);
         add(tbl);
 
     }
 
-    public void search(SearchCriteria criteria){
+    public void search(SearchCriteria criteria) {
         log.debug(criteria);
         view.setCurrentPage(0);
         ((TablePOCProvider) view.getDataProvider()).setCriteria(criteria);
@@ -145,7 +158,7 @@ public class TablePOC extends WebPage {
         }
 
         public int size() {
-            if (criteria != null && criteria.getSearchField() != null){
+            if (criteria != null && criteria.getSearchField() != null) {
                 return criteria.getSearchField().equals("FOO") ? 4000 : 200;
             }
             return 0;
@@ -176,6 +189,61 @@ public class TablePOC extends WebPage {
             super(s, new CompoundPropertyModel(criteria));
             add(new TextField("searchField"));
 
+        }
+    }
+
+    private class NotificationAjaxPagingNavigator extends AjaxPagingNavigator {
+        private final WebMarkupContainer tbl;
+
+        public NotificationAjaxPagingNavigator(WebMarkupContainer tbl) {
+            super("navigator", TablePOC.this.view);
+            this.tbl = tbl;
+        }
+
+        @Override
+        protected void onAjaxEvent(AjaxRequestTarget target) {
+            target.addComponent(tbl);
+        }
+
+        @Override
+        protected Link newPagingNavigationIncrementLink(String id, IPageable pageable, int increment) {
+            final Link link = super.newPagingNavigationIncrementLink(id, pageable, increment);
+            link.add(new AjaxPagingNavigationBehavior((AjaxPagingNavigationIncrementLink) link, pageable, "onclick") {
+                @Override
+                protected IAjaxCallDecorator getAjaxCallDecorator() {
+                    return decorator;
+                }
+            });
+            return link;
+        }
+
+        @Override
+        protected PagingNavigation newNavigation(IPageable pageable, IPagingLabelProvider labelProvider) {
+            return new AjaxPagingNavigation("navigation", pageable, labelProvider) {
+                @Override
+                protected Link newPagingNavigationLink(String id, IPageable pageable, int pageIndex) {
+                    Link link = super.newPagingNavigationLink(id, pageable, pageIndex);
+                    link.add(new AjaxPagingNavigationBehavior((AjaxPagingNavigationLink) link, pageable, "onclick") {
+                        @Override
+                        protected IAjaxCallDecorator getAjaxCallDecorator() {
+                            return decorator;
+                        }
+                    });
+                    return link;
+                }
+            };
+        }
+
+        @Override
+        protected Link newPagingNavigationLink(String id, IPageable pageable, int pageNumber) {
+            final Link link = super.newPagingNavigationLink(id, pageable, pageNumber);
+            link.add(new AjaxPagingNavigationBehavior((AjaxPagingNavigationLink) link, pageable, "onclick") {
+                @Override
+                protected IAjaxCallDecorator getAjaxCallDecorator() {
+                    return decorator;
+                }
+            });
+            return link;
         }
     }
 }
