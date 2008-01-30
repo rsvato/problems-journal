@@ -16,6 +16,7 @@ public class LocalGroup implements Serializable {
     private String groupName;
     private Collection<LocalRole> roles;
     private Collection<LocalUser> users;
+    private Collection<ApplicationRole> applicationRoles;
 
     @Id @GeneratedValue
     public Long getId() {
@@ -46,6 +47,19 @@ public class LocalGroup implements Serializable {
 
     public void setRoles(Collection<LocalRole> roles) {
         this.roles = roles;
+    }
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+        targetEntity = ApplicationRole.class)
+    @JoinTable(name="groups_aproles",
+        joinColumns = @JoinColumn(name = "local_group_id"),
+        inverseJoinColumns = @JoinColumn(name = "local_role_id"))
+    public Collection<ApplicationRole> getApplicationRoles() {
+        return applicationRoles;
+    }
+
+    public void setApplicationRoles(Collection<ApplicationRole> applicationRoles) {
+        this.applicationRoles = applicationRoles;
     }
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},

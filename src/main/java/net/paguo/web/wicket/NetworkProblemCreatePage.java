@@ -3,10 +3,13 @@ package net.paguo.web.wicket;
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.problems.NetworkProblem;
+import static net.paguo.domain.users.ApplicationRole.Action.*;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
+import org.apache.wicket.util.string.StringValueConversionException;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.CheckBox;
@@ -21,7 +24,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Date: 21.11.2007
  * Time: 0:55:33
  */
-@AllowedRole("ROLE_CREATE_PROBLEM")
 public class NetworkProblemCreatePage extends SecuredWebPage {
     private static final Log log = LogFactory.getLog(NetworkProblemCreatePage.class);
 
@@ -35,21 +37,26 @@ public class NetworkProblemCreatePage extends SecuredWebPage {
     public void setController(NetworkFailureController controller) {
         this.controller = controller;
     }
-
-    public NetworkProblemCreatePage() {
-        add(new NetworkProblemCreateForm("form"));
-        add(new FeedbackPanel("feedback"));
-    }
-
+    
     public NetworkProblemCreatePage(PageParameters parameters){
-        int problemId = parameters.getInt("problemId");
-        NetworkProblem problem = getController().getNetworkProblem(problemId);
-        if (problem == null){
-            info("Non-existent problem");
-            problem = new NetworkProblem();
+        NetworkProblem problem = new NetworkProblem();
+        try {
+            int problemId = parameters.getInt("problemId");
+            problem = getController().getNetworkProblem(problemId);
+            if (problem == null){
+                info("Non-existent problem");
+            }
+        } catch (StringValueConversionException e) {
+            log.debug("No parameters or bad parameters");
         }
         add(new FeedbackPanel("feedback"));
-        add(new NetworkProblemCreateForm("form", problem));
+        final NetworkProblemCreateForm form = new NetworkProblemCreateForm("form", problem);
+        if (problem.getId() != null){
+            secureElement(form, NetworkProblem.class, CHANGE, OVERRIDE);
+        }else{
+            secureElement(form, NetworkProblem.class, CREATE);
+        }
+        add(form);
     }
 
     void saveProblem(NetworkProblem problem){
@@ -76,12 +83,6 @@ public class NetworkProblemCreatePage extends SecuredWebPage {
 
     public final class NetworkProblemCreateForm extends Form {
 
-        public NetworkProblemCreateForm(String id) {
-            super(id, new CompoundPropertyModel(new NetworkProblem()));
-            getNetworkProblem().setFailureTime(new java.util.Date());
-            initForm();
-        }
-
         private void initForm() {
             add(new TextArea("failureDescription").setRequired(true));
             add(new DateTimeField("failureTime")
@@ -99,6 +100,13 @@ public class NetworkProblemCreatePage extends SecuredWebPage {
                     setEnabled(existingProblem()));
             p.add(new CheckBox("restoreAction.completed")
                     .setEnabled(existingProblem()));
+
+            if (existingProblem() && getNetworkProblem().getRestoreAction() != null &&
+                    getNetworkProblem().getRestoreAction().getCompleted()){
+                secureElement(p, NetworkProblem.class, OVERRIDE);
+            }else{
+                secureElement(p, NetworkProblem.class, CHANGE, OVERRIDE);
+            }
 
             add(p);
             p.setVisible(existingProblem());

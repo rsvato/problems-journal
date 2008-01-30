@@ -11,6 +11,7 @@ import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.datetime.markup.html.basic.DateLabel;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.Item;
@@ -19,6 +20,7 @@ import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import static net.paguo.domain.users.ApplicationRole.Action.*;
 
 /**
  * User: sreentenko
@@ -52,11 +54,9 @@ public class NetworkProblemsPage extends FailurePage<NetworkProblem>{
     protected void initConstantCompoments() {
         add(HeaderContributor.forCss(NetworkProblemsPage.class, "wstyles.css"));
         add(new FeedbackPanel("feedback"));
-        add(new Link("create") {
-            public void onClick() {
-                setResponsePage(NetworkProblemCreatePage.class);
-            }
-        });
+        final BookmarkablePageLink createLink = new BookmarkablePageLink("create", NetworkProblemCreatePage.class);
+        secureElement(createLink, NetworkProblem.class, CREATE);
+        add(createLink);
         add(new ProblemSearchForm("search"));
         add(new Link("reindex") {
             public void onClick() {
@@ -88,57 +88,60 @@ public class NetworkProblemsPage extends FailurePage<NetworkProblem>{
     protected IDataProvider getDefaultProvider() {
         return new NetworkProblemListProvider();  //To change body of implemented methods use File | Settings | File Templates.
     }
-}
-class NetworkProblemDataView extends DataView {
-    @SpringBean
-    NetworkFailureController controller;
 
-    public NetworkFailureController getController() {
-        return controller;
-    }
+    private class NetworkProblemDataView extends DataView {
+        @SpringBean
+        NetworkFailureController controller;
 
-    public void setController(NetworkFailureController controller) {
-        this.controller = controller;
-    }
+        public NetworkFailureController getController() {
+            return controller;
+        }
 
-    NetworkProblemDataView(String id, IDataProvider dataProvider) {
-        super(id, dataProvider);
-    }
+        public void setController(NetworkFailureController controller) {
+            this.controller = controller;
+        }
 
-    public NetworkProblemDataView(String id, IDataProvider dataProvider, int itemsPerPage) {
-        super(id, dataProvider, itemsPerPage);
-    }
+        NetworkProblemDataView(String id, IDataProvider dataProvider) {
+            super(id, dataProvider);
+        }
+
+        public NetworkProblemDataView(String id, IDataProvider dataProvider, int itemsPerPage) {
+            super(id, dataProvider, itemsPerPage);
+        }
 
 
-    protected void populateItem(Item item) {
-        final NetworkProblem problem = (NetworkProblem) item.getModelObject();
-        item.setModel(new CompoundPropertyModel(problem));
-        item.add(new Label("id"));
-        item.add(DateLabel.forDatePattern("failureTime", new Model(problem.getFailureTime()), "dd-MM-yy hh:mm"));
-        item.add(new Label("failureDescription"));
-        item.add(new Label("restoreAction.failureCause"));
-        item.add(new Label("restoreAction.restoreAction"));
-        item.add(DateLabel.forDatePattern("restoreAction.restoreTime", "dd-MM-yy hh:mm"));
-        item.add(new Label("userCreated"));
-        item.add(new Link("problemDetails"){
-            public void onClick() {
-                final PageParameters pageParameters = new PageParameters();
-                pageParameters.add("problemId", String.valueOf(problem.getId()));
-                setResponsePage(NetworkProblemCreatePage.class, pageParameters);
-            }
-        });
-        final Link child = new Link("problemDelete") {
-            public void onClick() {
-                try {
-                    getController().deleteProblem(problem);
-                    String message = getLocalizer().getString("problem.deleted", NetworkProblemDataView.this);
-                    Session.get().info(message);
-                } catch (ControllerException e) {
-                    Session.get().error("Cannot delete problem. Check for child complaints");
+        protected void populateItem(Item item) {
+            final NetworkProblem problem = (NetworkProblem) item.getModelObject();
+            item.setModel(new CompoundPropertyModel(problem));
+            item.add(new Label("id"));
+            item.add(DateLabel.forDatePattern("failureTime",
+                    new Model(problem.getFailureTime()), "dd-MM-yy hh:mm"));
+            item.add(new Label("failureDescription"));
+            item.add(new Label("restoreAction.failureCause"));
+            item.add(new Label("restoreAction.restoreAction"));
+            item.add(DateLabel.forDatePattern("restoreAction.restoreTime", "dd-MM-yy hh:mm"));
+            item.add(new Label("userCreated"));
+            final Link pageLink
+                    = new BookmarkablePageLink("problemDetails", NetworkProblemCreatePage.class)
+                    .setParameter("problemId", problem.getId());
+
+            item.add(pageLink);
+            secureElement(pageLink, NetworkProblem.class, CREATE, OVERRIDE);
+            final Link child = new Link("problemDelete") {
+                public void onClick() {
+                    try {
+                        getController().deleteProblem(problem);
+                        String message = getLocalizer().getString("problem.deleted",
+                                NetworkProblemDataView.this);
+                        Session.get().info(message);
+                    } catch (ControllerException e) {
+                        Session.get().error("Cannot delete problem. Check for child complaints");
+                    }
                 }
-            }
-        };
-        child.add(new SimpleAttributeModifier("onclick", "return confirm('Are you sure?');"));
-        item.add(child);
+            };
+            secureElement(child, NetworkProblem.class, DELETE);
+            child.add(new SimpleAttributeModifier("onclick", "return confirm('Are you sure?');"));
+            item.add(child);
+        }
     }
 }

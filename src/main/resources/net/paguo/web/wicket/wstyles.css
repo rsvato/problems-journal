@@ -20,3 +20,20 @@ font-weight: bold;
 vertical-align: top;
 border-bottom: gray solid 1px;
 }
+
+.checkList{
+    width: 100%;
+}
+
+.checkList label{
+    width: 80%;
+    float: left;
+}
+
+.checkList br {
+    clear: both;
+}
+
+.checkList input{
+    float: left;
+}

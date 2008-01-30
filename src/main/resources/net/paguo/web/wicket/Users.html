@@ -84,10 +84,12 @@
             <br/>
 
             <h2><wicket:message key="groupsAdd">[groups]</wicket:message></h2>
-            <span wicket:id="groups">
-                <input type="checkbox">Check me<br clear="all"/>
-            </span>
-
+            <div wicket:id="groups" class="checkList">
+                <div>
+                    <input type="checkbox"><label>Check me</label>
+                </div><br clear="all"/>
+            </div>
+            <br clear="all">
             <input type="submit" value="  OK  " class="button"/>
         </form>
     </div>

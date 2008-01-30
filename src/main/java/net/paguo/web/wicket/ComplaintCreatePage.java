@@ -5,15 +5,16 @@ import net.paguo.controller.NetworkFailureController;
 import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.domain.problems.ClientComplaint;
-import net.paguo.domain.problems.FailureRestore;
-import net.paguo.web.wicket.auth.JournalRoles;
+import static net.paguo.domain.users.ApplicationRole.Action.CREATE;
+import static net.paguo.domain.users.ApplicationRole.Action.CHANGE;
+import static net.paguo.domain.users.ApplicationRole.Action.OVERRIDE;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
-import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
-import org.apache.wicket.authorization.strategies.role.metadata.MetaDataRoleAuthorizationStrategy;
+import org.apache.wicket.Component;
+import org.apache.wicket.util.string.StringValueConversionException;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -57,20 +58,24 @@ public final class ComplaintCreatePage extends SecuredWebPage {
         this.controller = controller;
     }
 
-    public ComplaintCreatePage() {
-        add(new ComplaintCreateForm("form"));
-        add(new FeedbackPanel("feedback"));
-    }
+
 
     public ComplaintCreatePage(PageParameters parameters){
-        int problemId = parameters.getInt("problemId");
-        ClientComplaint problem = getController().getClientComplaint(problemId);
-        if (problem == null){
-            info("Non-existent problem");
-            problem = new ClientComplaint();
+        ClientComplaint complaint = new ClientComplaint();
+        try {
+            int problemId = parameters.getInt("problemId");
+            complaint = getController().getClientComplaint(problemId);
+            if (complaint == null){
+                info("Non-existent complaint");
+                complaint = new ClientComplaint();
+            }
+        } catch (StringValueConversionException e) {
+            log.debug("Bad parameters or no parameters");
         }
         add(new FeedbackPanel("feedback"));
-        add(new ComplaintCreateForm("form", problem));
+        final ComplaintCreateForm form = new ComplaintCreateForm("form", complaint);
+        secureElement(form, ClientComplaint.class, Arrays.asList(CREATE, CHANGE, OVERRIDE));
+        add(form);
     }
 
     void saveComplaint(ClientComplaint problem){
@@ -113,7 +118,7 @@ public final class ComplaintCreatePage extends SecuredWebPage {
 
         public ComplaintCreateForm(String id) {
             super(id, new CompoundPropertyModel(new ClientComplaint()));
-            getNetworkProblem().setFailureTime(new java.util.Date());
+            getComplaint().setFailureTime(new java.util.Date());
             initForm();
         }
 
@@ -144,55 +149,53 @@ public final class ComplaintCreatePage extends SecuredWebPage {
                 }
             });
 
+            secureElement(main, ClientComplaint.class, CREATE, CHANGE, OVERRIDE);
             add(main);
 
             WebMarkupContainer p = new WebMarkupContainer("additional");
 
             final TextArea area = new TextArea("restoreAction.failureCause");
-            area.setRequired(existingProblem());
+            area.setRequired(existingComplaint());
             p.add(area.
-                    setEnabled(existingProblem()));
+                    setEnabled(existingComplaint()));
             p.add(new DateTimeField("restoreAction.restoreTime").
-                    setEnabled(existingProblem()));
+                    setEnabled(existingComplaint()));
             p.add(new TextArea("restoreAction.restoreAction").
-                    setEnabled(existingProblem()));
-            p.add(new CheckBox("restoreAction.completed")
-                    .setEnabled(existingProblem()));
-
-            add(p);
-            p.setVisible(existingProblem());
-            
-            StringBuilder roles = new StringBuilder(JournalRoles.ROLE_CHANGE_COMPLAINT.name());
-            final FailureRestore restore = getNetworkProblem().getRestoreAction();
-            if (restore != null && restore.getCompleted()){
-                roles.append(",").append(JournalRoles.ROLE_OVERRIDE_COMPLAINT.name());
+                    setEnabled(existingComplaint()));
+            final Component box = new CheckBox("restoreAction.completed")
+                    .setEnabled(existingComplaint());
+            p.add(box);
+            p.setVisible(existingComplaint());
+            if (existingComplaint() && getComplaint().getRestoreAction() != null &&
+                    getComplaint().getRestoreAction().getCompleted()){
+                secureElement(p, ClientComplaint.class, OVERRIDE);
+            }else{
+                secureElement(p, ClientComplaint.class, CHANGE, OVERRIDE);
             }
-            MetaDataRoleAuthorizationStrategy.authorize(p, RENDER, roles.toString());
-            MetaDataRoleAuthorizationStrategy.authorize(main, RENDER,
-                    JournalRoles.ROLE_CREATE_COMPLAINT.name());
+            add(p);
         }
 
-        private boolean existingProblem() {
-            return getNetworkProblem().getId() != null;
+        private boolean existingComplaint() {
+            return getComplaint().getId() != null;
         }
 
-        public ComplaintCreateForm(String id, ClientComplaint problem){
-            super(id, new CompoundPropertyModel(problem));
-            if (problem.getClient() != null){
-                problem.setEnteredClient(problem.getClient().getClientName());
+        public ComplaintCreateForm(String id, ClientComplaint complaint){
+            super(id, new CompoundPropertyModel(complaint));
+            if (complaint.getClient() != null){
+                complaint.setEnteredClient(complaint.getClient().getClientName());
             }
             initForm();
         }
 
         @Override
         protected void onSubmit() {
-            ClientComplaint enteredProblem = getNetworkProblem();
+            ClientComplaint enteredProblem = getComplaint();
             saveComplaint(enteredProblem);
             enteredProblem.setFailureDescription("");
             enteredProblem.setFailureTime(new java.util.Date());
         }
 
-        private ClientComplaint getNetworkProblem() {
+        private ClientComplaint getComplaint() {
             return (ClientComplaint) getModelObject();
         }
     }

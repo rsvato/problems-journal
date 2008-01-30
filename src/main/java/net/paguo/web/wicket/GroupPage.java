@@ -122,6 +122,8 @@ public class GroupPage extends SecuredWebPage {
             final List<LocalRole> list = (List<LocalRole>) getController().getAllRoles();
             add(new CheckBoxMultipleChoice("rolesChecks", new PropertyModel(group, "roles"),
                     list));
+            add(new CheckBoxMultipleChoice("aprolesChecks", new PropertyModel(group, "applicationRoles"),
+                    getController().getApplicationRoles()));
         }
 
         @Override

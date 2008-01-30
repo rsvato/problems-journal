@@ -4,26 +4,24 @@
         <span wicket:id="feedback"/>
     </div>
     <form wicket:id="form">
-        <span wicket:id="main">
-            <fieldset>
-                <label>
-                    <wicket:message key="complaint.clientLabel">[client]</wicket:message>
-                </label>
-                <input type="text" wicket:id="enteredClient" class="input"/>
+        <fieldset wicket:id="main">
+            <label>
+                <wicket:message key="complaint.clientLabel">[client]</wicket:message>
+            </label>
+            <input type="text" wicket:id="enteredClient" class="input"/>
 
-                <br/>
+            <br/>
 
-                <label><wicket:message key="failureDescription">[description]</wicket:message></label>
-                <textarea wicket:id="failureDescription" class="input area" cols="20" rows="40">
-                </textarea>
-                <br/>
-                <label><wicket:message key="failureTime">[time]</wicket:message></label>
-                <span wicket:id="failureTime">[time]</span>
+            <label><wicket:message key="failureDescription">[description]</wicket:message></label>
+            <textarea wicket:id="failureDescription" class="input area" cols="20" rows="40">
+            </textarea>
+            <br/>
+            <label><wicket:message key="failureTime">[time]</wicket:message></label>
+            <span wicket:id="failureTime">[time]</span>
 
-                <br/>
-            </fieldset>
-        </span>
-        <span wicket:id="additional"><fieldset>
+            <br/>
+        </fieldset>
+        <fieldset wicket:id="additional">
             <label><wicket:message key="problem.cause">[cause]</wicket:message></label>
             <textarea wicket:id="restoreAction.failureCause" class="input area" cols="20" rows="40">
             </textarea>
@@ -45,7 +43,7 @@
             <label><wicket:message key="problem.isCompleted">[completed]</wicket:message></label>
 
             <br/>
-        </fieldset></span>
+        </fieldset>
         <input type="submit" value=" OK " class="button"/>
     </form>
 </wicket:extend>

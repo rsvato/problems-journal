@@ -132,10 +132,15 @@ public class LocalUser implements Serializable {
     public Set<String> getAuthorities(){
         Set<String> roles = new TreeSet<String>();
         for (LocalGroup group : groups) {
-            for (LocalRole role : group.getRoles()) {
+            for (AbstractRole role : group.getRoles()) {
                roles.add(role.getRole());
             }
+
+            for (AbstractRole role : group.getApplicationRoles()){
+                roles.add(role.getRole());
+            }
         }
+
         return roles;
     }
 }

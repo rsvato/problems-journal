@@ -38,11 +38,20 @@
 
             <h2><wicket:message key="rolesLabel">[roles]</wicket:message></h2>
             <br class="clear"/>
-        <span wicket:id="rolesChecks">
+        <div wicket:id="rolesChecks" class="checkList">
+
             <br/>
-            <input type="checkbox"/> Something <br clear="all"/>
-        </span>
+            <div>
+            <input type="checkbox"/> Something
+            </div>
+            <br clear="all"/>
+        </div>
             <br class="clear"/>
+            <div wicket:id="aprolesChecks" class="checkList">
+                <br/>
+                <div><input type="checkbox"/><label>Label</label></div>
+                <br clear="all"/>
+            </div>
             <input type="submit" class="button" value="  OK   ">
         </form>
     </div>

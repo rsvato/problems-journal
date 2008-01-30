@@ -6,14 +6,12 @@ import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.domain.common.PersonalData;
 import net.paguo.domain.problems.ClientComplaint;
-import net.paguo.domain.users.ApplicationRole;
+import static net.paguo.domain.users.ApplicationRole.Action.*;
 import net.paguo.domain.users.LocalUser;
 import net.paguo.search.controller.ComplaintSearchController;
-import net.paguo.web.wicket.auth.JournalRoles;
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
-import org.apache.wicket.authorization.strategies.role.metadata.MetaDataRoleAuthorizationStrategy;
 import org.apache.wicket.behavior.HeaderContributor;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.datetime.markup.html.basic.DateLabel;
@@ -27,6 +25,8 @@ import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.util.Arrays;
 
 
 /**
@@ -100,8 +100,7 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
             }
         });
 
-        MetaDataRoleAuthorizationStrategy.authorize(create, RENDER,
-                    JournalRoles.ROLE_CREATE_COMPLAINT.name());
+        secureElement(create, ClientComplaint.class, Arrays.asList(CREATE));
     }
 
     private class ComplaintDataView extends DataView {
@@ -162,12 +161,11 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
             item.add(details);
 
             if (problem.getRestoreAction() != null && problem.getRestoreAction().getCompleted()){
-                MetaDataRoleAuthorizationStrategy.authorize(details, RENDER,
-                        JournalRoles.ROLE_OVERRIDE_COMPLAINT.name());
+                secureElement(details, ClientComplaint.class,
+                        Arrays.asList(OVERRIDE));
             }else{
-                MetaDataRoleAuthorizationStrategy.authorize(details, RENDER,
-                        String.format("%s,%s", JournalRoles.ROLE_CHANGE_COMPLAINT.name(),
-                                JournalRoles.ROLE_OVERRIDE_COMPLAINT.name()));
+                secureElement(details, ClientComplaint.class,
+                        Arrays.asList(CHANGE, OVERRIDE));
             }
 
             final Link child = new Link("problemDelete") {
@@ -183,7 +181,7 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
             };
             child.add(new SimpleAttributeModifier("onclick", "return confirm('Are you sure?');"));
             item.add(child);
-            secureElement(child, ClientComplaint.class, new ApplicationRole.Action[]{ApplicationRole.Action.DELETE});
+            secureElement(child, ClientComplaint.class, Arrays.asList(DELETE));
         }
     }
 }

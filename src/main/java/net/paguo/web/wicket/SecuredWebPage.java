@@ -4,6 +4,9 @@ import net.paguo.controller.UsersController;
 import net.paguo.controller.exception.JournalAuthenticationException;
 import net.paguo.domain.users.LocalUser;
 import net.paguo.domain.users.ApplicationRole;
+import static net.paguo.domain.users.ApplicationRole.Action.VIEW;
+import net.paguo.domain.problems.ClientComplaint;
+import net.paguo.domain.problems.NetworkProblem;
 import net.paguo.web.wicket.auth.UserView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,6 +21,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import java.util.Set;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * User: sreentenko
@@ -68,8 +72,13 @@ public class SecuredWebPage extends ApplicationWebPage {
         boolean isAdminRole = checkRole("ROLE_SUPERVISOR");
 
 
-        add(new BookmarkablePageLink("complaints", ComplaintsPage.class));
-        add(new BookmarkablePageLink("problems", NetworkProblemsPage.class));
+        final BookmarkablePageLink complaintLink = new BookmarkablePageLink("complaints", ComplaintsPage.class);
+        secureElement(complaintLink, ClientComplaint.class,
+                VIEW);
+        add(complaintLink);
+        final BookmarkablePageLink problemLink = new BookmarkablePageLink("problems", NetworkProblemsPage.class);
+        secureElement(problemLink, NetworkProblem.class, VIEW);
+        add(problemLink);
         add(new BookmarkablePageLink("users", Users.class).setVisible(isAdminRole));
         add(new BookmarkablePageLink("groups", GroupPage.class).setVisible(isAdminRole));
         add(new BookmarkablePageLink("roles", RolesManagementPage.class).setVisible(isAdminRole));
@@ -106,7 +115,18 @@ public class SecuredWebPage extends ApplicationWebPage {
         return role != null ? role.getRole() : "NOBODY"; //disallow when no role created for action
     }
 
-    protected void secureElement(Component cmp, Class klass, ApplicationRole.Action[] actions){
+    protected void secureElement(Component cmp, Class klass, List<ApplicationRole.Action> actions){
+        Set<String> roles = new HashSet<String>();
+        if (actions != null){
+            for (ApplicationRole.Action action : actions) {
+               roles.add(findRoleForAction(klass, action));
+            }
+        }
+        String allowed = StringUtils.join(roles.iterator(), ",");
+        MetaDataRoleAuthorizationStrategy.authorize(cmp, RENDER, allowed);
+    }
+
+    protected void secureElement(Component cmp, Class klass, ApplicationRole.Action... actions){
         Set<String> roles = new HashSet<String>();
         if (actions != null){
             for (ApplicationRole.Action action : actions) {
