@@ -1,0 +1,20 @@
+<wicket:extend>
+<span wicket:id="feedback">
+
+</span>
+<form wicket:id="loginForm">
+    <div class="row two-column">
+        <label for="username"><wicket:message key="username"/></label>
+        <input type="text" id="username" wicket:id="userId"/>
+        <br/>
+    </div>
+    <div class="row two-column">
+        <label for="password"><wicket:message key="password"/></label>
+        <input type="password" id="password" wicket:id="password"/>
+        <br/>
+    </div>
+    <div class="row one-column">
+        <input type="submit" value="  OK  " class="button">
+    </div>
+</form>
+</wicket:extend>

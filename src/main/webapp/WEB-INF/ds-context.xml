@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="true">
+
+    <bean id="pds" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="org.postgresql.Driver"/>
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost/traffic"/>
+        <property name="user" value="root"/>
+        <property name="password" value="test12~"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="annotatedClasses">
+             <list>
+                 <value>net.paguo.domain.clients.ClientItem</value>
+                 <value>net.paguo.domain.common.ContactData</value>
+                 <value>net.paguo.domain.common.PersonalData</value>
+                 <value>net.paguo.domain.events.ScheduleEvent</value>
+                 <value>net.paguo.domain.problems.ClientComplaint</value>
+                 <value>net.paguo.domain.problems.FailureRestore</value>
+                 <value>net.paguo.domain.problems.NetworkFailure</value>
+                 <value>net.paguo.domain.problems.NetworkProblem</value>
+                 <value>net.paguo.domain.requests.ChangeStatusRequest</value>
+                 <value>net.paguo.domain.requests.ChangeStatusRequestType</value>
+                 <value>net.paguo.domain.users.AbstractRole</value>
+                 <value>net.paguo.domain.users.ApplicationRole</value>
+                 <value>net.paguo.domain.users.LocalRole</value>
+                 <value>net.paguo.domain.users.LocalGroup</value>
+                 <value>net.paguo.domain.users.LocalUser</value>
+                 <value>net.paguo.domain.users.UserPermission</value>
+                 <value>net.paguo.domain.application.ApplicationSettings</value>
+             </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider</prop>
+                <prop key="hibernate.search.default.indexBase">/var/lucene</prop>
+            </props>
+        </property>
+        <property name="dataSource" ref="pds"/>
+        <property name="eventListeners">
+            <map>
+                <entry key="post-update"><ref local="fullTextIndexEventListener"/></entry>
+                <entry key="post-insert"><ref local="fullTextIndexEventListener"/></entry>
+                <entry key="post-delete"><ref local="fullTextIndexEventListener"/></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fullTextIndexEventListener" class="org.hibernate.search.event.FullTextIndexEventListener"/>
+
+    <bean id="complaintSearchController" class="net.paguo.search.controller.ComplaintSearchController">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="problemSearchController"
+          class="net.paguo.search.controller.NetworkProblemSearchController">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="finderIntroductionAdvisor" class="net.paguo.generic.dao.finder.impl.FinderIntroductionAdvisor"/>
+
+    <bean id="abstractDaoTarget" class="net.paguo.generic.dao.impl.GenericDaoHibernateImpl" abstract="true">
+       <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="abstractDao"
+          class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
+        <property name="interceptorNames">
+            <list>
+                <value>finderIntroductionAdvisor</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="clientItemDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.ClientItemDAO"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.clients.ClientItem"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="networkFailureDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.NetworkFailureDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.problems.NetworkFailure"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="clientComplaintDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.ClientComplaintDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.problems.ClientComplaint"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--<bean id="problemDao" parent="abstractDaoTarget" class="net.paguo.dao.impl.NetworkProblemDaoImpl"/>-->
+    <bean id="problemDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.NetworkProblemDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.problems.NetworkProblem"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="groupDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.LocalGroupDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.users.LocalGroup"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="permissionDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.UserPermissionDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.users.UserPermission"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="userDao" parent="abstractDaoTarget" class="net.paguo.dao.impl.LocalUserDaoImpl"/>
+
+    <bean id="roleDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.LocalRoleDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.users.LocalRole"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="changeStatusRequestDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.ChangeStatusRequestDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.requests.ChangeStatusRequest"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="settingsDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.ApplicationSettingsDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.application.ApplicationSettings"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="applicationRoleDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.ApplicationRoleDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.users.ApplicationRole"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="settingsController" class="net.paguo.controller.ApplicationSettingsController">
+        <property name="dao" ref="settingsDao"/>
+    </bean>
+
+    <bean id="failureController" class="net.paguo.controller.NetworkFailureController">
+        <property name="failureDao" ref="networkFailureDao"/>
+        <property name="complaintDao" ref="clientComplaintDao"/>
+        <property name="problemDao" ref="problemDao"/>
+    </bean>
+
+    <bean id="clientController" class="net.paguo.controller.ClientItemController">
+        <property name="clientDao" ref="clientItemDao"/>
+    </bean>
+
+    <bean id="usersController" class="net.paguo.controller.UsersController">
+        <property name="rolesDao" ref="roleDao"/>
+        <property name="usersDao" ref="userDao"/>
+        <property name="groupDao" ref="groupDao"/>
+        <property name="applicationRoleDao" ref="applicationRoleDao"/>
+    </bean>
+    
+    <bean id="changeStatusRequestController" class="net.paguo.controller.ChangeStatusRequestController">
+        <property name="requestDao" ref="changeStatusRequestDao"/>
+    </bean>
+
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="pds"/>
+        <property name="lazyInit" value="true"/>
+    </bean>
+
+</beans>

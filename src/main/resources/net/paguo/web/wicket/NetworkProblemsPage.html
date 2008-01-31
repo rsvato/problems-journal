@@ -1,0 +1,90 @@
+<wicket:extend>
+    <h1><wicket:message key="problems.title">[users.header]</wicket:message></h1>
+
+    <div id="search">
+        <form wicket:id="search" method="post">
+            <input class="input" wicket:id="searchCriteria"/> <input type="submit" class="button" value="&gt;"/>
+        </form>
+    </div>
+
+    <div id="feedbackPanel">
+       <span wicket:id="feedback"/> 
+    </div>
+
+    <div class="service">
+        <a class="button" href="#" wicket:id="create"><wicket:message key="problem.new">[create]</wicket:message></a>
+    </div>
+
+    <span wicket:id="navigator">[data navigator]</span>
+
+    <table class="dataView">
+        <tr>
+            <th>
+                <wicket:message key="problem.id">[id]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.time">[time]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.author">[author]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.description">[dsc]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.cause">[cause]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.action">[action]</wicket:message>
+            </th>
+            <th>
+                <wicket:message key="problem.closeTime">[id]</wicket:message>
+            </th>
+            <th/>
+        </tr>
+        <tr wicket:id="items">
+            <td>
+                <span wicket:id="id">
+                    [id]
+                </span>
+            </td>
+            <td style="white-space:nowrap;">
+                <span wicket:id="failureTime">
+                    [failureTime]
+                </span>
+            </td>
+            <td>
+                <span wicket:id="userCreated"></span>
+            </td>
+            <td>
+                <span wicket:id="failureDescription">
+                    [failureDescription]
+                </span>
+            </td>
+            <td>
+                <span wicket:id="restoreAction.failureCause">
+                    [failureCause]
+                </span>
+            </td>
+            <td>
+                <span wicket:id="restoreAction.restoreAction">
+                    [restoreAction]
+                </span>
+            </td>
+            <td style="white-space:nowrap;">
+                <span wicket:id="restoreAction.restoreTime">
+                    [restoreTime]
+                </span>
+            </td>
+            <td>
+                <a href="#" wicket:id="problemDetails">[<wicket:message key="problem.details">details</wicket:message>]</a>
+                <a href="#" wicket:id="problemDelete">[<wicket:message key="problem.delete">delete</wicket:message>]</a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="service">
+        <a href="#" wicket:id="reindex" class="button">Index search</a>
+    </div>
+
+</wicket:extend>

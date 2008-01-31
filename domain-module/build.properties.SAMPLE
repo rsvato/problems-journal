@@ -1,9 +1,0 @@
-basedir=.
-project.dir=/home/ubuntu/wrk/problems-journal
-src.dir=${basedir}/java/src
-meta.dir=${basedir}/java/META-INF
-build.topdir=/tmp/build
-compile.dir=${build.topdir}/classes
-dist.dir=${project.dir}/war/WEB-INF/lib
-app.name=domain
-lib.dir=${project.dir}/lib
