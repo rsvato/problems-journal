@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE web-app PUBLIC
-	"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-	"http://java.sun.com/dtd/web-app_2_3.dtd">
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -30,8 +30,11 @@
             <param-name>applicationClassName</param-name>
             <param-value>net.paguo.web.wicket.JournalApplication</param-value>
         </init-param>
+        <init-param>
+            <param-name>configuration</param-name>
+            <param-value>deployment</param-value>
+        </init-param>
     </filter>
-
 
     <filter-mapping>
         <filter-name>hibernateFilter</filter-name>
@@ -39,10 +42,10 @@
     </filter-mapping>
 
 
-    <filter-mapping>
+    <!--<filter-mapping>
         <filter-name>LocaleFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
 
     <filter-mapping>
         <filter-name>JournalApplication</filter-name>
@@ -58,7 +61,7 @@
     </listener>
 
 
-  <!--<error-page>
+    <!--<error-page>
         <error-code>500</error-code>
         <location>/error.jsp</location>
     </error-page>

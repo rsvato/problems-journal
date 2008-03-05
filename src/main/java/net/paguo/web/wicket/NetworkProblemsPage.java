@@ -115,11 +115,11 @@ public class NetworkProblemsPage extends FailurePage<NetworkProblem>{
             item.setModel(new CompoundPropertyModel(problem));
             item.add(new Label("id"));
             item.add(DateLabel.forDatePattern("failureTime",
-                    new Model(problem.getFailureTime()), "dd-MM-yy hh:mm"));
+                    new Model(problem.getFailureTime()), "dd-MM-yy HH:mm"));
             item.add(new Label("failureDescription"));
             item.add(new Label("restoreAction.failureCause"));
             item.add(new Label("restoreAction.restoreAction"));
-            item.add(DateLabel.forDatePattern("restoreAction.restoreTime", "dd-MM-yy hh:mm"));
+            item.add(DateLabel.forDatePattern("restoreAction.restoreTime", "dd-MM-yy HH:mm"));
             item.add(new Label("userCreated"));
             final Link pageLink
                     = new BookmarkablePageLink("problemDetails", NetworkProblemCreatePage.class)

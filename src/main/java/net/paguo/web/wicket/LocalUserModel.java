@@ -37,6 +37,6 @@ public class LocalUserModel extends AbstractReadOnlyModel {
     }
 
     public Object getObject() {
-        return this.user;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.user; 
     }
 }

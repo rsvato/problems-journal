@@ -127,7 +127,7 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
             final ClientComplaint problem = (ClientComplaint) item.getModelObject();
             item.setModel(new CompoundPropertyModel(problem));
             item.add(new Label("id"));
-            item.add(DateLabel.forDatePattern("failureTime", new Model(problem.getFailureTime()), "dd-MM-yy hh:mm"));
+            item.add(DateLabel.forDatePattern("failureTime", new Model(problem.getFailureTime()), "dd-MM-yy HH:mm"));
             String clientName = "";
             final ClientItem client = problem.getClient();
             if (client != null) {
@@ -139,7 +139,7 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
             item.add(new Label("failureDescription"));
             item.add(new Label("restoreAction.failureCause"));
             item.add(new Label("restoreAction.restoreAction"));
-            item.add(DateLabel.forDatePattern("restoreAction.restoreTime", "dd-MM-yy hh:mm"));
+            item.add(DateLabel.forDatePattern("restoreAction.restoreTime", "dd-MM-yy HH:mm"));
             final LocalUser created = problem.getUserCreated();
             String labelString = "-";
             if (created != null) {

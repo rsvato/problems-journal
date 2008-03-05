@@ -1,6 +1,7 @@
 package net.paguo.generic.dao.impl;
 
 import net.paguo.generic.dao.GenericDao;
+import net.paguo.generic.dao.SortParameters;
 import net.paguo.generic.dao.finder.FinderArgumentTypeFactory;
 import net.paguo.generic.dao.finder.FinderExecutor;
 import net.paguo.generic.dao.finder.FinderNamingStrategy;
@@ -45,33 +46,34 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
     @SuppressWarnings("unchecked")
     public PK create(T o) {
         Session session = getSession();
-        try{
+        try {
             return (PK) session.save(o);
-        }finally{
+        } finally {
             releaseSession(session);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     public T read(PK id) {
         return (T) getSession().get(type, id);
     }
 
     @SuppressWarnings("unchecked")
-    public List<T> readAll(){
-       Criteria c = getSession().createCriteria(type);
-       return c.list();
+    public List<T> readAll() {
+        Criteria c = getSession().createCriteria(type);
+        return c.list();
     }
+
     @SuppressWarnings("unchecked")
     public List<T> readPart(Integer count, Integer from) {
-       Criteria c = getSession().createCriteria(type);
+        Criteria c = getSession().createCriteria(type);
         c.setMaxResults(count);
         c.setFirstResult(from);
         return c.list();
     }
 
     @SuppressWarnings("unchecked")
-    public List<T> readPart(Integer count, Integer from, String sortBy, boolean ascending){
+    public List<T> readPart(Integer count, Integer from, String sortBy, boolean ascending) {
         log.debug(count + " " + from);
         Criteria c = getSession().createCriteria(type);
         c.setMaxResults(count);
@@ -80,7 +82,7 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
         return c.list();
     }
 
-    public Integer count(){
+    public Integer count() {
         String name = type.getName();
         StringTokenizer st = new StringTokenizer(name, ".");
         String n = null;
@@ -96,25 +98,29 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
 
     }
 
-    public Integer maxCount(){
+    public void refresh(T persistentObject) {
+        getSession().refresh(persistentObject);
+    }
+
+    public Integer maxCount() {
         return (Integer) getSession().createCriteria(type).
                 setProjection(Projections.rowCount()).uniqueResult();
     }
 
     public void update(T o) {
         Session session = getSession();
-        try{
-            session.update(o);
-        }finally{
+        try {
+            session.merge(o);
+        } finally {
             releaseSession(session);
         }
     }
 
     public void delete(T o) {
         Session session = getSession();
-        try{
+        try {
             session.delete(o);
-        }finally{
+        } finally {
             releaseSession(session);
         }
 
@@ -127,7 +133,7 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
     }
 
     @SuppressWarnings("unchecked")
-    public List<T> executeFinder(Method method, final IntRange range, final Object[] queryArgs){
+    public List<T> executeFinder(Method method, final IntRange range, SortParameters parameters, final Object[] queryArgs) {
         log.debug("Got range " + range);
         final Query namedQuery = prepareQuery(method, queryArgs);
         int firstResult = range.getMinimumInteger();

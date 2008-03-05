@@ -4,6 +4,7 @@ import net.paguo.controller.UsersController;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
+import org.apache.wicket.settings.IExceptionSettings;
 import org.apache.wicket.authorization.strategies.role.IRoleCheckingStrategy;
 import org.apache.wicket.authorization.strategies.role.RoleAuthorizationStrategy;
 import org.apache.wicket.authorization.strategies.role.Roles;
@@ -27,6 +28,11 @@ public class JournalApplication extends WebApplication implements IRoleCheckingS
     }
 
     @Override
+    public IExceptionSettings getExceptionSettings() {
+        return super.getExceptionSettings();
+    }
+
+    @Override
     protected void init() {
         addComponentInstantiationListener(new SpringComponentInjector(this));
         getSecuritySettings().setAuthorizationStrategy(new RoleAuthorizationStrategy(this));
@@ -41,6 +47,8 @@ public class JournalApplication extends WebApplication implements IRoleCheckingS
         mountBookmarkablePage("/admin/roles", RolesManagementPage.class);
         mountBookmarkablePage("/admin/appRoles", ApplicationRolesPage.class);
         mountBookmarkablePage("/test.html", TablePOC.class);
+        mountBookmarkablePage("/create-request", ChangeStatusRequestCreatePage.class);
+        mountBookmarkablePage("/requests", ChangeStatusRequestListPage.class);
 
     }
 

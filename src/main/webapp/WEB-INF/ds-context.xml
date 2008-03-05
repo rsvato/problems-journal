@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-"http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans default-lazy-init="true">
 
@@ -13,43 +13,52 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="annotatedClasses">
-             <list>
-                 <value>net.paguo.domain.clients.ClientItem</value>
-                 <value>net.paguo.domain.common.ContactData</value>
-                 <value>net.paguo.domain.common.PersonalData</value>
-                 <value>net.paguo.domain.events.ScheduleEvent</value>
-                 <value>net.paguo.domain.problems.ClientComplaint</value>
-                 <value>net.paguo.domain.problems.FailureRestore</value>
-                 <value>net.paguo.domain.problems.NetworkFailure</value>
-                 <value>net.paguo.domain.problems.NetworkProblem</value>
-                 <value>net.paguo.domain.requests.ChangeStatusRequest</value>
-                 <value>net.paguo.domain.requests.ChangeStatusRequestType</value>
-                 <value>net.paguo.domain.users.AbstractRole</value>
-                 <value>net.paguo.domain.users.ApplicationRole</value>
-                 <value>net.paguo.domain.users.LocalRole</value>
-                 <value>net.paguo.domain.users.LocalGroup</value>
-                 <value>net.paguo.domain.users.LocalUser</value>
-                 <value>net.paguo.domain.users.UserPermission</value>
-                 <value>net.paguo.domain.application.ApplicationSettings</value>
-             </list>
+            <list>
+                <value>net.paguo.domain.clients.ClientItem</value>
+                <value>net.paguo.domain.clients.PostalAddress</value>
+                <value>net.paguo.domain.common.ContactData</value>
+                <value>net.paguo.domain.common.PersonalData</value>
+                <value>net.paguo.domain.events.ScheduleEvent</value>
+                <value>net.paguo.domain.problems.ClientComplaint</value>
+                <value>net.paguo.domain.problems.FailureRestore</value>
+                <value>net.paguo.domain.problems.NetworkFailure</value>
+                <value>net.paguo.domain.problems.NetworkProblem</value>
+                <value>net.paguo.domain.requests.ChangeStatusRequest</value>
+                <value>net.paguo.domain.requests.RequestInformation</value>
+                <value>net.paguo.domain.users.AbstractRole</value>
+                <value>net.paguo.domain.users.ApplicationRole</value>
+                <value>net.paguo.domain.users.LocalRole</value>
+                <value>net.paguo.domain.users.LocalGroup</value>
+                <value>net.paguo.domain.users.LocalUser</value>
+                <value>net.paguo.domain.users.UserPermission</value>
+                <value>net.paguo.domain.application.ApplicationSettings</value>
+                <value>net.paguo.domain.equipment.ClientEndpoint</value>
+            </list>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
                 <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.cache.use_query_cache">true</prop>
-                <prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider</prop>
+                <prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider
+                </prop>
                 <prop key="hibernate.search.default.indexBase">/var/lucene</prop>
             </props>
         </property>
         <property name="dataSource" ref="pds"/>
         <property name="eventListeners">
             <map>
-                <entry key="post-update"><ref local="fullTextIndexEventListener"/></entry>
-                <entry key="post-insert"><ref local="fullTextIndexEventListener"/></entry>
-                <entry key="post-delete"><ref local="fullTextIndexEventListener"/></entry>
+                <entry key="post-update">
+                    <ref local="fullTextIndexEventListener"/>
+                </entry>
+                <entry key="post-insert">
+                    <ref local="fullTextIndexEventListener"/>
+                </entry>
+                <entry key="post-delete">
+                    <ref local="fullTextIndexEventListener"/>
+                </entry>
             </map>
         </property>
     </bean>
@@ -68,7 +77,7 @@
     <bean id="finderIntroductionAdvisor" class="net.paguo.generic.dao.finder.impl.FinderIntroductionAdvisor"/>
 
     <bean id="abstractDaoTarget" class="net.paguo.generic.dao.impl.GenericDaoHibernateImpl" abstract="true">
-       <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="abstractDao"
@@ -155,6 +164,9 @@
         </property>
     </bean>
 
+    <bean id="changeStatusRequestDaoNG" parent="abstractDaoTarget"
+          class="net.paguo.dao.impl.ChangeStatusRequestDaoImpl"/>
+
     <bean id="settingsDao" parent="abstractDao">
         <property name="proxyInterfaces" value="net.paguo.dao.ApplicationSettingsDao"/>
         <property name="target">
@@ -169,6 +181,15 @@
         <property name="target">
             <bean parent="abstractDaoTarget">
                 <constructor-arg value="net.paguo.domain.users.ApplicationRole"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="endpointDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.ClientEndpointDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.equipment.ClientEndpoint"/>
             </bean>
         </property>
     </bean>
@@ -193,9 +214,10 @@
         <property name="groupDao" ref="groupDao"/>
         <property name="applicationRoleDao" ref="applicationRoleDao"/>
     </bean>
-    
+
     <bean id="changeStatusRequestController" class="net.paguo.controller.ChangeStatusRequestController">
-        <property name="requestDao" ref="changeStatusRequestDao"/>
+        <property name="requestDao" ref="changeStatusRequestDaoNG"/>
+        <property name="endpointDao" ref="endpointDao"/>
     </bean>
 
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
@@ -206,6 +228,16 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="pds"/>
         <property name="lazyInit" value="true"/>
+    </bean>
+
+    <bean id="complaintsSearch" class="net.paguo.search.controller.GenericSearchController">
+        <constructor-arg value="net.paguo.domain.problems.ClientComplaint"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="problemsSearch" class="net.paguo.search.controller.GenericSearchController">
+        <constructor-arg value="net.paguo.domain.problems.NetworkProblem"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
 </beans>

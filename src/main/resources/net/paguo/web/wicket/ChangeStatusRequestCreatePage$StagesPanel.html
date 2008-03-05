@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:wicket="http://wicket.apache.org/"
+        xml:lang="en"
+        lang="en">
+<body>
+<wicket:panel>
+
+    <table style="width:100%">
+        <tr wicket:id="stages">
+            <td wicket:id="info"/>
+        </tr>
+    </table>
+
+    <wicket:fragment wicket:id="riedit">
+        <fieldset>
+            <legend><span wicket:id="legend">[label]</span></legend>
+            <label><wicket:message key="author">[author]</wicket:message></label> <select wicket:id="author"/>
+            <br clear="all"/>
+            <label><wicket:message key="dateEntered">[author]</wicket:message></label> <span wicket:id="dateEntered"/>
+            <br clear="all"/>
+        </fieldset>
+
+    </wicket:fragment>
+</wicket:panel>
+</body>
+</html>

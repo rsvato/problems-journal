@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:wicket="http://wicket.apache.org/"
+        xml:lang="en"
+        lang="en">
+<head>
+    <wicket:head>
+        <title><wicket:message key="request.list">[request list]</wicket:message></title>
+    </wicket:head>
+</head>
+<body>
+    <wicket:extend>
+        <h1><wicket:message key="request.list">[request list]</wicket:message></h1>
+
+        <a href="#" wicket:id="createNew" class="button">
+            <wicket:message key="new.label">[new]</wicket:message>
+        </a>
+
+        <table wicket:id="table" class="dataView"/>
+    </wicket:extend>
+</body>
+</html>

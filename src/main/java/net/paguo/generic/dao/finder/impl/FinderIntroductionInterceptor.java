@@ -1,6 +1,7 @@
 package net.paguo.generic.dao.finder.impl;
 
 import net.paguo.generic.dao.finder.FinderExecutor;
+import net.paguo.generic.dao.SortParameters;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.lang.math.IntRange;
 import org.springframework.aop.IntroductionInterceptor;
@@ -25,21 +26,24 @@ public class FinderIntroductionInterceptor implements IntroductionInterceptor
         {
             Object[] arguments = methodInvocation.getArguments();
 
-            // search for IntRange in arguments
+            // search for IntRange and SortParameters in arguments
             if (arguments != null && arguments.length > 0) {
                 IntRange range = null;
+                SortParameters parameters = null;
                 final List<Object> objects = new ArrayList<Object>();
                 for (Object argument : arguments) {
-                    if (! (argument instanceof IntRange)){
-                       objects.add(argument);
-                    }else{
+                    if (argument instanceof IntRange) {
                         range = (IntRange) argument;
+                    } else if (argument instanceof SortParameters) {
+                        parameters = (SortParameters) argument;
+                    } else {
+                       objects.add(argument);
                     }
                 }
 
                 if (range != null){
                     return executor.executeFinder(methodInvocation.getMethod(),
-                            range, objects.toArray());
+                            range, parameters, objects.toArray());
                 }
             }
 

@@ -5,6 +5,8 @@ import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.problems.ClientComplaint;
 import net.paguo.domain.problems.NetworkProblem;
 import net.paguo.domain.users.ApplicationRole;
+import net.paguo.domain.requests.ChangeStatusRequest;
+import net.paguo.domain.requests.RequestInformation;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
 import org.apache.wicket.behavior.HeaderContributor;
@@ -112,8 +114,13 @@ public class ApplicationRolesPage extends SecuredWebPage{
             super(s);
             setModel(new CompoundPropertyModel(local));
             final boolean newRole = local.getId() == null;
-            add(new DropDownChoice("className", Arrays.asList(ClientComplaint.class.getName(),
-                    NetworkProblem.class.getName())).setRequired(newRole).setEnabled(newRole));
+            add(new DropDownChoice("className", Arrays.asList(
+                    ClientComplaint.class.getName(),
+                    NetworkProblem.class.getName(),
+                    ChangeStatusRequest.class.getName(),
+                    RequestInformation.class.getName()
+            ))
+                    .setRequired(newRole).setEnabled(newRole));
             add(new DropDownChoice("action", Arrays.asList(ApplicationRole.Action.values())).
                     setRequired(newRole).setEnabled(newRole));
             add(new TextField("role").setRequired(true));

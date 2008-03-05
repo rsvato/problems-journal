@@ -21,7 +21,7 @@ import java.io.Serializable;
  * Date: 03.12.2007
  * Time: 0:26:56
  */
-public abstract class FailurePage<T extends Serializable> extends SecuredWebPage {
+public abstract class FailurePage<T extends Serializable> extends SettingsAwarePage {
     private static final Log log = LogFactory.getLog(FailurePage.class);
 
     public FailurePage(PageParameters parameters){
@@ -37,13 +37,9 @@ public abstract class FailurePage<T extends Serializable> extends SecuredWebPage
 
     @SpringBean
     NetworkFailureController controller;
-    @SpringBean
-    ApplicationSettingsController settingsController;
 
     @SpringBean
     private UsersController usersController;
-
-    private static final String ITEMS_PER_PAGE_KEY = "failureController.itemsPerPage";
 
     public NetworkFailureController getController() {
         return controller;
@@ -53,27 +49,12 @@ public abstract class FailurePage<T extends Serializable> extends SecuredWebPage
         this.controller = controller;
     }
 
-    public ApplicationSettingsController getSettingsController() {
-        return settingsController;
-    }
-
     public UsersController getUsersController() {
         return usersController;
     }
 
     public void setUsersController(UsersController usersController) {
         this.usersController = usersController;
-    }
-
-    protected int getPerPageSettings() {
-        int perPage = 0;
-        ApplicationSettings itemsPerPageSettings = getSettingsController().findByKey(ITEMS_PER_PAGE_KEY);
-        if (itemsPerPageSettings != null
-                && !StringUtils.isEmpty(itemsPerPageSettings.getValue())
-                && StringUtils.isNumeric(itemsPerPageSettings.getValue())){
-            perPage = Integer.decode(itemsPerPageSettings.getValue());
-        }
-        return perPage;
     }
 
     protected abstract void initConstantCompoments();

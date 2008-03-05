@@ -1,31 +1,45 @@
 package net.paguo.domain.requests;
 
 import net.paguo.domain.clients.ClientItem;
-import net.paguo.domain.users.LocalUser;
+import net.paguo.domain.clients.PostalAddress;
+import net.paguo.domain.equipment.ClientEndpoint;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * @version $Id $
  */
 @Entity(name = "ChangeStatusRequest")
-@Table(name="change_status")
-public class ChangeStatusRequest {
+@Table(name = "change_status")
+@NamedQueries({
+@NamedQuery(name = "ChangeStatusRequest.findOrderedByClientDesc",
+        query = "select cs from ChangeStatusRequest cs order by cs.enteredClient desc"),
+@NamedQuery(name = "ChangeStatusRequest.findOrderedByClient",
+        query = "select cs from ChangeStatusRequest cs order by cs.enteredClient")
+        })
+public class ChangeStatusRequest implements Serializable {
     private Integer id;
     private ClientItem client;
-    private LocalUser author;
-    private Date date;
-    private Date execDate;
-    private LocalUser executor;
-    private ChangeStatusRequestType type;
+    private String enteredClient;
     private String description;
+    private boolean permanent;
+
+    private RequestInformation cancelRequest;
+    private RequestInformation restoreRequest;
+    private RequestInformation cancelExec;
+    private RequestInformation restoreExec;
+
+    private RequestNextStage nextStage;
+
+    private ClientEndpoint endpoint;
+    private PostalAddress discAddress;
 
     /**
-     * 
-     * @return
+     * @return id
      */
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     public Integer getId() {
         return id;
     }
@@ -43,57 +57,124 @@ public class ChangeStatusRequest {
         this.client = client;
     }
 
-    @ManyToOne
-    public LocalUser getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(LocalUser author) {
-        this.author = author;
-    }
-
-    @Temporal(value = TemporalType.TIMESTAMP)
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    @Temporal(value = TemporalType.TIMESTAMP)
-    public Date getExecDate() {
-        return execDate;
-    }
-
-
-    public void setExecDate(Date execDate) {
-        this.execDate = execDate;
-    }
-
-    @ManyToOne
-    public LocalUser getExecutor() {
-        return executor;
-    }
-
-    public void setExecutor(LocalUser executor) {
-        this.executor = executor;
-    }
-
-    @ManyToOne
-    public ChangeStatusRequestType getType() {
-        return type;
-    }
-
-    public void setType(ChangeStatusRequestType type) {
-        this.type = type;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getEnteredClient() {
+        return enteredClient;
+    }
+
+    public void setEnteredClient(String enteredClient) {
+        this.enteredClient = enteredClient;
+    }
+
+    public boolean isPermanent() {
+        return permanent;
+    }
+
+    public void setPermanent(boolean permanent) {
+        this.permanent = permanent;
+    }
+
+
+    @Transient
+    public String getShowClient() {
+        return client != null ? client.getClientName() : enteredClient;
+    }
+
+    @Embedded
+    @AttributeOverrides({
+    @AttributeOverride(name = "dateEntered", column = @Column(name = "cr_date", nullable = false))
+            })
+    @AssociationOverrides({@AssociationOverride(
+            name = "author",
+            joinColumns = {@JoinColumn(name = "cr_auth_id",
+                    nullable = false)})})
+    public RequestInformation getCancelRequest() {
+        return cancelRequest;
+    }
+
+
+    public void setCancelRequest(RequestInformation cancelRequest) {
+        this.cancelRequest = cancelRequest;
+    }
+
+    @Embedded
+    @AttributeOverrides({
+    @AttributeOverride(name = "dateEntered", column = @Column(name = "rr_date"))
+            })
+    @AssociationOverrides({@AssociationOverride(
+            name = "author",
+            joinColumns = {@JoinColumn(name = "rr_auth_id")})})
+    public RequestInformation getRestoreRequest() {
+        return restoreRequest;
+    }
+
+    public void setRestoreRequest(RequestInformation restoreRequest) {
+        this.restoreRequest = restoreRequest;
+    }
+
+    @Embedded
+    @AttributeOverrides({
+    @AttributeOverride(name = "dateEntered", column = @Column(name = "ce_date"))
+            })
+    @AssociationOverrides({@AssociationOverride(
+            name = "author",
+            joinColumns = {@JoinColumn(name = "ce_auth_id")})})
+    public RequestInformation getCancelExec() {
+        return cancelExec;
+    }
+
+    public void setCancelExec(RequestInformation cancelExec) {
+        this.cancelExec = cancelExec;
+    }
+
+    @Embedded
+    @AttributeOverrides({
+    @AttributeOverride(name = "dateEntered", column = @Column(name = "re_date"))
+            })
+    @AssociationOverrides({@AssociationOverride(
+            name = "author",
+            joinColumns = {@JoinColumn(name = "re_auth_id")})})
+    public RequestInformation getRestoreExec() {
+        return restoreExec;
+    }
+
+    public void setRestoreExec(RequestInformation restoreExec) {
+        this.restoreExec = restoreExec;
+    }
+
+    @Column(name = "next_stage")
+    public RequestNextStage getNextStage() {
+        return nextStage;
+    }
+
+    public void setNextStage(RequestNextStage nextStage) {
+        this.nextStage = nextStage;
+    }
+
+    @OneToOne
+    @JoinColumns({@JoinColumn(name = "endpoint_id")})
+    public ClientEndpoint getEndpoint() {
+        return endpoint;
+    }
+
+    public void setEndpoint(ClientEndpoint endpoint) {
+        this.endpoint = endpoint;
+    }
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "address_id")
+    public PostalAddress getDiscAddress() {
+        return discAddress;
+    }
+
+    public void setDiscAddress(PostalAddress discAddress) {
+        this.discAddress = discAddress;
     }
 }

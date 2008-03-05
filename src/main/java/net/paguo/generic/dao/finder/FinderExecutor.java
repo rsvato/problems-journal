@@ -6,6 +6,8 @@ import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 
+import net.paguo.generic.dao.SortParameters;
+
 
 public interface FinderExecutor<T>
 {
@@ -16,5 +18,5 @@ public interface FinderExecutor<T>
 
     Iterator<T> iterateFinder(Method method, Object[] queryArgs);
 
-    List<T> executeFinder(Method method, IntRange range, Object[] queryArgs);
+    List<T> executeFinder(Method method, IntRange range, SortParameters parameters, Object[] queryArgs);
 }

@@ -37,3 +37,11 @@ border-bottom: gray solid 1px;
 .checkList input{
     float: left;
 }
+
+a.button{
+    margin: 15px 0;
+}
+
+tr.marked td{
+    background-color: coral;
+}

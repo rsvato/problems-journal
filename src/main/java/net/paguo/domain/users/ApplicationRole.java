@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Entity
 @DiscriminatorValue("application")
-@UniqueConstraint(columnNames = {"className", "action"})
+@Table(name = "local_role", uniqueConstraints = {@UniqueConstraint(columnNames = {"className", "action"})})
 @NamedQueries({@NamedQuery(name = "ApplicationRole.findByClassAndAction", query = "select ar from ApplicationRole ar where ar.action = :action and ar.className = :className"),
         @NamedQuery(name = "ApplicationRole.findByClass", query = "from ApplicationRole ar where ar.className = :className")})
 public class ApplicationRole extends AbstractRole implements Serializable {

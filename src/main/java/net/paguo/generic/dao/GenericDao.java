@@ -13,6 +13,7 @@ public interface GenericDao<T, ID extends Serializable> {
     List<T> readAll();
     public List<T> readPart(Integer count, Integer from);
     public Integer count();
+    void refresh(T persistentObject);
 
     Integer maxCount();
 

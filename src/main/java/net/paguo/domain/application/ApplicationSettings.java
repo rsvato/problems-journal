@@ -11,8 +11,7 @@ import java.io.Serializable;
  * Time: 23:54:50
  */
 @Entity
-@Table(name="application_settings")
-@UniqueConstraint(columnNames = {"key"})
+@Table(name="application_settings", uniqueConstraints = @UniqueConstraint(columnNames = {"key"}))
 @NamedQueries(
         {
                 @NamedQuery(name = "ApplicationSettings.findByKey", query = "from ApplicationSettings ast where ast.key = :key") 

@@ -23,7 +23,6 @@
                  <value>net.paguo.domain.problems.NetworkFailure</value>
                  <value>net.paguo.domain.problems.NetworkProblem</value>
                  <value>net.paguo.domain.requests.ChangeStatusRequest</value>
-                 <value>net.paguo.domain.requests.ChangeStatusRequestType</value>
                  <value>net.paguo.domain.users.LocalRole</value>
                  <value>net.paguo.domain.users.LocalUser</value>
                  <value>net.paguo.domain.users.UserPermission</value>

@@ -83,4 +83,6 @@ public class JournalWebSession extends WebSession {
         return (JournalWebSession) Session.get();
     }
 
+
+
 }

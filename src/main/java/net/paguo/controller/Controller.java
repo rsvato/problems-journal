@@ -1,5 +1,6 @@
 package net.paguo.controller;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -8,6 +9,6 @@ import java.util.Collection;
  * Time: 1:34:39
  * Version: $Id$
  */
-public interface Controller<E> {
+public interface Controller<E> extends Serializable {
     Collection<E> getAll();
 }

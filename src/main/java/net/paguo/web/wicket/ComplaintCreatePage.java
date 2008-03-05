@@ -130,7 +130,12 @@ public final class ComplaintCreatePage extends SecuredWebPage {
                     .setRequired(true));
 
             main.add(new AutoCompleteTextField("enteredClient") {
+                private static final long serialVersionUID = 6823717701933257458L;
+
                 protected Iterator getChoices(String input) {
+                    log.error(input);
+
+
                     if (StringUtils.isEmpty(input)){
                         return Collections.EMPTY_LIST.iterator();
                     }

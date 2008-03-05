@@ -195,4 +195,19 @@ table.list th.sorted_asc {
 	font-size: 80%;
 }
 
+.wicket_orderNone a{
+   background: url(../img/arrow_off.png) no-repeat right center;
+   padding-right: 10px;
+}
+
+.wicket_orderUp a{
+   background: url(../img/arrow_up.png) no-repeat right center;
+   padding-right: 10px;
+}
+
+.wicket_orderDown a{
+   background: url(../img/arrow_down.png) no-repeat right center;
+   padding-right: 10px;
+}
+
 
