@@ -5,7 +5,7 @@
     <artifactId>network-journal</artifactId>
     <packaging>war</packaging>
     <name>Network Journal</name>
-    <version>2.1</version>
+    <version>2.2-SNAPSHOT</version>
     <url>http://www.rdnet.ru</url>
     <build>
         <plugins>

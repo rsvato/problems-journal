@@ -14,7 +14,9 @@
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="annotatedClasses">
             <list>
+                <value>net.paguo.domain.clients.AbstractItem</value>
                 <value>net.paguo.domain.clients.ClientItem</value>
+                <value>net.paguo.domain.clients.EquipmentItem</value>
                 <value>net.paguo.domain.clients.PostalAddress</value>
                 <value>net.paguo.domain.common.ContactData</value>
                 <value>net.paguo.domain.common.PersonalData</value>
