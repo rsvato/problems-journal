@@ -1,15 +1,10 @@
 package net.paguo.dao.impl;
 
 import net.paguo.dao.ChangeStatusRequestDao;
+import net.paguo.domain.requests.ChangeRequestType;
 import net.paguo.domain.requests.ChangeStatusRequest;
 import net.paguo.domain.requests.RequestInformationType;
-import net.paguo.domain.requests.ChangeRequestType;
 import net.paguo.generic.dao.impl.GenericDaoHibernateImpl;
-
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-
 import org.apache.commons.lang.math.IntRange;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,12 +12,18 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Order;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * User: sreentenko
  * Date: 18.02.2008
  * Time: 1:47:02
  */
-public class ChangeStatusRequestDaoImpl extends GenericDaoHibernateImpl<ChangeStatusRequest, Integer> implements ChangeStatusRequestDao {
+public class ChangeStatusRequestDaoImpl extends GenericDaoHibernateImpl<ChangeStatusRequest, Integer>
+        implements ChangeStatusRequestDao {
     private static final Log log = LogFactory.getLog(ChangeStatusRequestDaoImpl.class);
 
     //awful
@@ -50,10 +51,10 @@ public class ChangeStatusRequestDaoImpl extends GenericDaoHibernateImpl<ChangeSt
     }
 
     @SuppressWarnings("unchecked")
-    private List<ChangeStatusRequest> generalFileOrderedByDate(IntRange range,
-                                                       RequestInformationType infoType,
-                                                       ChangeRequestType requestType,
-                                                       boolean asc) {
+    private List<ChangeStatusRequest> generalFindOrderedByDate(IntRange range,
+                                                               RequestInformationType infoType,
+                                                               ChangeRequestType requestType,
+                                                               boolean asc) {
         final Criteria criteria = getSession().createCriteria(ChangeStatusRequest.class);
 
         String propertyName = findProperty(infoType, requestType) + ".dateEntered";
@@ -81,13 +82,13 @@ public class ChangeStatusRequestDaoImpl extends GenericDaoHibernateImpl<ChangeSt
     }
 
     public List<ChangeStatusRequest> findOrderedByDateDesc(IntRange range, RequestInformationType infoType, ChangeRequestType requestType) {
-        return generalFileOrderedByDate(range, infoType, requestType, false);
+        return generalFindOrderedByDate(range, infoType, requestType, false);
     }
 
     public List<ChangeStatusRequest> findOrderedByDate(IntRange range,
                                                        RequestInformationType infoType,
                                                        ChangeRequestType requestType) {
-        return generalFileOrderedByDate(range, infoType, requestType, true);
+        return generalFindOrderedByDate(range, infoType, requestType, true);
 
     }
 
@@ -116,4 +117,13 @@ public class ChangeStatusRequestDaoImpl extends GenericDaoHibernateImpl<ChangeSt
         rangeQuery(range, query);
         return query.list();
     }
+
+    @SuppressWarnings("unchecked")
+    public List<ChangeStatusRequest> findByDates(Date start, Date end) {
+        final Query query = getSession().getNamedQuery("ChangeStatusRequest.findByDates");
+        query.setParameter("start", start);
+        query.setParameter("end", end);
+        return query.list();
+    }
+
 }

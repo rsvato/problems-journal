@@ -236,4 +236,6 @@ public class GenericDaoHibernateImpl<T, PK extends Serializable> implements Gene
     public void setArgumentTypeFactory(FinderArgumentTypeFactory argumentTypeFactory) {
         this.argumentTypeFactory = argumentTypeFactory;
     }
+
+
 }

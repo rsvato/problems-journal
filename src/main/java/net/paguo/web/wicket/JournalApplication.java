@@ -1,14 +1,15 @@
 package net.paguo.web.wicket;
 
 import net.paguo.controller.UsersController;
+import net.paguo.web.wicket.hardcopy.RequestsReportDownloadPage;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
-import org.apache.wicket.settings.IExceptionSettings;
 import org.apache.wicket.authorization.strategies.role.IRoleCheckingStrategy;
 import org.apache.wicket.authorization.strategies.role.RoleAuthorizationStrategy;
 import org.apache.wicket.authorization.strategies.role.Roles;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.settings.IExceptionSettings;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
@@ -49,6 +50,7 @@ public class JournalApplication extends WebApplication implements IRoleCheckingS
         mountBookmarkablePage("/test.html", TablePOC.class);
         mountBookmarkablePage("/create-request", ChangeStatusRequestCreatePage.class);
         mountBookmarkablePage("/requests", ChangeStatusRequestListPage.class);
+        mountBookmarkablePage("/requests-reports", RequestsReportDownloadPage.class);
 
     }
 

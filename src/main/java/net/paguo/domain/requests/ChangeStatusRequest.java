@@ -16,7 +16,9 @@ import java.io.Serializable;
 @NamedQuery(name = "ChangeStatusRequest.findOrderedByClientDesc",
         query = "select cs from ChangeStatusRequest cs order by cs.enteredClient desc"),
 @NamedQuery(name = "ChangeStatusRequest.findOrderedByClient",
-        query = "select cs from ChangeStatusRequest cs order by cs.enteredClient")
+        query = "select cs from ChangeStatusRequest cs order by cs.enteredClient"),
+@NamedQuery(name = "ChangeStatusRequest.findByDates",
+        query = "select cs from ChangeStatusRequest cs where cs.cancelRequest.dateEntered between :start and :end order by cs.cancelRequest.dateEntered")
         })
 public class ChangeStatusRequest implements Serializable {
     private Integer id;

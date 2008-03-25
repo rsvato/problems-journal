@@ -1,6 +1,6 @@
 package net.paguo.domain.workflow;
 
-import org.hibernate.annotations.Table;
+import net.paguo.domain.users.LocalUser;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -8,13 +8,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-import net.paguo.domain.users.LocalUser;
-
 /**
  * @author Reyentenko
  */
 @Entity
-@Table("workflow_requests")
+@Table(name = "workflow_requests")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class GenericRequest implements Serializable {
     private Integer id;
@@ -22,7 +20,8 @@ public abstract class GenericRequest implements Serializable {
     private LocalUser creator;
     private static final long serialVersionUID = 8112058002896819489L;
 
-    @Id @GeneratedValue(generator = "seq")
+    @Id
+    @GeneratedValue(generator = "seq")
     @GenericGenerator(name = "seq", strategy = "sequence",
             parameters = {@Parameter(name = "sequence",
                     value = "wrq_seq")})
