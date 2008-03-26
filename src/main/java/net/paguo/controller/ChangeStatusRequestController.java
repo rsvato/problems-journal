@@ -328,6 +328,10 @@ public class ChangeStatusRequestController implements Controller<ChangeStatusReq
         }
     }
 
+    public Collection<ChangeStatusRequest> getByDates(Date start, Date end){
+        return getRequestDao().findByDates(start, end);
+    }
+
     public enum SortProperties {
         CLIENT("client"),
         DISC_REQ_DATE("disc_req_date"),

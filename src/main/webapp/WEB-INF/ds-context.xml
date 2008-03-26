@@ -242,4 +242,8 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean id="requestReportExport" class="net.paguo.exports.RequestReportExport">
+        <property name="controller" ref="changeStatusRequestController"/>
+    </bean>
+
 </beans>
