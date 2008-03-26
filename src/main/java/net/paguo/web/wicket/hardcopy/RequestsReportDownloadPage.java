@@ -35,9 +35,8 @@ public class RequestsReportDownloadPage extends SecuredWebPage {
 
     public RequestsReportDownloadPage() {
         final RequestReportForm child = new RequestReportForm("form");
-        child.add(new DateTimeField("startDate").setRequired(true));
-        child.add(new DateTimeField("endDate").setRequired(true));
-       
+        child.add(new DateTimeField("startDate"));
+        child.add(new DateTimeField("endDate"));
         add(child);
     }
 

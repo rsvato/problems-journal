@@ -26,20 +26,17 @@ public class RequestReportExport {
 
     public final HSSFWorkbook exportReport(Date start, Date end) {
         final Collection<ChangeStatusRequest> requests = getController().getByDates(start, end);
-        return createWorkbook(requests);
-    }
-
-    protected HSSFWorkbook createWorkbook(Collection<ChangeStatusRequest> requests){
+        log.debug("Collection size: " + requests.size());
         HSSFWorkbook wb = new HSSFWorkbook();
 
         final HSSFSheet hssfSheet = wb.createSheet("Main");
-        int i = 1;
+        int i = 0;
         for (ChangeStatusRequest request : requests) {
             final HSSFRow hssfRow = hssfSheet.createRow(i++);
             final HSSFCell cell = hssfRow.createCell((short) 0);
             cell.setCellValue(new HSSFRichTextString(request.getEnteredClient()));
         }
-
+        log.debug("Workbook successfully created");
         return wb;
     }
 }

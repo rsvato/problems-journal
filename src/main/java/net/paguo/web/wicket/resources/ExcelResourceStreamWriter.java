@@ -42,6 +42,7 @@ public class ExcelResourceStreamWriter extends AbstractResourceStreamWriter {
 
     public final void write(OutputStream output) {
         try {
+            log.debug("About to write workbook: " + getWorkbook());
             getWorkbook().write(output);
         } catch (IOException e) {
             log.error(e);
