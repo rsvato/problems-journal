@@ -6,7 +6,7 @@ import net.paguo.web.wicket.resources.ExcelResourceStreamWriter;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.wicket.IRequestTarget;
 import org.apache.wicket.RequestCycle;
-import org.apache.wicket.extensions.yui.calendar.DateTimeField;
+import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.target.resource.ResourceStreamRequestTarget;
@@ -35,8 +35,8 @@ public class RequestsReportDownloadPage extends SecuredWebPage {
 
     public RequestsReportDownloadPage() {
         final RequestReportForm child = new RequestReportForm("form");
-        child.add(new DateTimeField("startDate"));
-        child.add(new DateTimeField("endDate"));
+        child.add(new DateField("startDate"));
+        child.add(new DateField("endDate"));
         add(child);
     }
 
@@ -49,7 +49,7 @@ public class RequestsReportDownloadPage extends SecuredWebPage {
 
         protected void onSubmit() {
             final RequestReportFormParameters parameters
-                        = (RequestReportFormParameters) getModelObject();
+                    = (RequestReportFormParameters) getModelObject();
             final HSSFWorkbook workbook = getExporter().
                     exportReport(parameters.getStartDate(), parameters.getEndDate());
             ExcelResourceStreamWriter writer = new ExcelResourceStreamWriter(null, workbook);
