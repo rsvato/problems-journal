@@ -61,6 +61,10 @@ public class RequestReportExport {
         final HSSFRow row = sheet.createRow(0);
         final HSSFCell cell = row.createCell((short) 0);
         cell.setCellStyle(style);
-        cell.setCellValue(new HSSFRichTextString(getMessageSource().getMessage("excel.client.header", null, null)));
+        cell.setCellValue(new HSSFRichTextString(getMessage("excel.client.header")));
+    }
+
+    private String getMessage(final String code) {
+        return getMessageSource().getMessage(code, null, null);
     }
 }
