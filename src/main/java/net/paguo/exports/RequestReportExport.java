@@ -61,16 +61,17 @@ public class RequestReportExport {
         log.debug("Collection size: " + requests.size());
         HSSFWorkbook wb = new HSSFWorkbook();
         final HSSFCellStyle style = createHeaderStyle(wb);
-
+        final HSSFCellStyle dateStyle = createDateStyle(wb)
         final HSSFSheet hssfSheet = wb.createSheet("Main");
+
         addHeader(hssfSheet, style);
         int i = 1;
         for (ChangeStatusRequest request : requests) {
             final HSSFRow row = hssfSheet.createRow(i++);
             short j = 0;
             for (String property : getProperties()) {
-               HSSFCell cell = row.createCell(j++);
-               setCellProperty(cell, getObjectValue(request, property));
+                HSSFCell cell = row.createCell(j++);
+                setCellProperty(cell, getObjectValue(request, property), dateStyle);
             }
         }
         log.debug("Workbook successfully created");
@@ -87,7 +88,14 @@ public class RequestReportExport {
         return style;
     }
 
-    private Object getObjectValue(Object o, String path){
+    private HSSFCellStyle createDateStyle(HSSFWorkbook wb) {
+        final HSSFCellStyle style = wb.createCellStyle();
+        HSSFDataFormat format = wb.createDataFormat();
+        style.setDataFormat(format.getFormat("d/m/yy hh:mm:ss"););
+        return style;
+    }
+
+    private Object getObjectValue(Object o, String path) {
         Object property = null;
         try {
             property = PropertyUtils.getProperty(o, path);
@@ -97,13 +105,14 @@ public class RequestReportExport {
         return property;
     }
 
-    private void setCellProperty(HSSFCell cell, Object value){
-        if (value == null){
+    private void setCellProperty(HSSFCell cell, Object value, HSSFCellStyle dateStyle) {
+        if (value == null) {
             cell.setCellValue(new HSSFRichTextString(""));
-        }else{
-            if (value instanceof Date){
+        } else {
+            if (value instanceof Date) {
                 cell.setCellValue((Date) value);
-            }else{
+                cell.setCellStyle(dateStyle);
+            } else {
                 cell.setCellValue(
                         new HSSFRichTextString(String.valueOf(value)));
             }
@@ -114,7 +123,7 @@ public class RequestReportExport {
         final HSSFRow row = sheet.createRow(0);
         int i = 0;
         for (String header : getHeaders()) {
-           final HSSFCell cell = row.createCell((short) i++);
+            final HSSFCell cell = row.createCell((short) i++);
             cell.setCellStyle(style);
             cell.setCellValue(new HSSFRichTextString(getMessage(header)));
         }
