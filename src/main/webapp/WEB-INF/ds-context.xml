@@ -247,34 +247,34 @@
         <property name="messageSource" ref="messageSource"/>
         <property name="headers">
             <list>
-                <value>excel.client.header</value>
-                <value>excel.recipe.header</value>
-                <value>excel.address.header</value>
-                <value>excel.creation.date.header</value>
-                <value>excel.creation.author.header</value>
-                <value>excel.execution.date.header</value>
-                <value>excel.execution.author.header</value>
-                <value>excel.execution.endpoint.header</value>
-                <value>excel.recreation.date.header</value>
-                <value>excel.recreation.author.header</value>
-                <value>excel.reexec.date.header</value>
-                <value>excel.reexec.author.header</value>
+                <value type="java.lang.String">excel.client.header</value>
+                <value type="java.lang.String">excel.recipe.header</value>
+                <value type="java.lang.String">excel.address.header</value>
+                <value type="java.lang.String">excel.creation.date.header</value>
+                <value type="java.lang.String">excel.creation.author.header</value>
+                <value type="java.lang.String">excel.execution.date.header</value>
+                <value type="java.lang.String">excel.execution.author.header</value>
+                <value type="java.lang.String">excel.execution.endpoint.header</value>
+                <value type="java.lang.String">excel.recreation.date.header</value>
+                <value type="java.lang.String">excel.recreation.author.header</value>
+                <value type="java.lang.String">excel.reexec.date.header</value>
+                <value type="java.lang.String">excel.reexec.author.header</value>
             </list>
         </property>
         <property name="properties">
             <list>
-                <value>showClient</value>
-                <value>description</value>
-                <value>discAddress</value>
-                <value>cancelRequest.dateEntered</value>
-                <value>cancelRequest.author</value>
-                <value>cancelExec.dateEntered</value>
-                <value>cancelExec.author</value>
-                <value>endpoint</value>
-                <value>restoreRequest.dateEntered</value>
-                <value>restoreRequest.author</value>
-                <value>restoreExec.dateEntered</value>
-                <value>restoreExec.author</value>
+                <value type="java.lang.String">showClient</value>
+                <value type="java.lang.String">description</value>
+                <value type="java.lang.String">discAddress</value>
+                <value type="java.lang.String">cancelRequest.dateEntered</value>
+                <value type="java.lang.String">cancelRequest.author</value>
+                <value type="java.lang.String">cancelExec.dateEntered</value>
+                <value type="java.lang.String">cancelExec.author</value>
+                <value type="java.lang.String">endpoint</value>
+                <value type="java.lang.String">restoreRequest.dateEntered</value>
+                <value type="java.lang.String">restoreRequest.author</value>
+                <value type="java.lang.String">restoreExec.dateEntered</value>
+                <value type="java.lang.String">restoreExec.author</value>
             </list>
         </property>
     </bean>
