@@ -6,6 +6,7 @@ import net.paguo.domain.equipment.ClientEndpoint;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * @version $Id $
@@ -36,6 +37,8 @@ public class ChangeStatusRequest implements Serializable {
 
     private ClientEndpoint endpoint;
     private PostalAddress discAddress;
+
+    private Set<Notice> notices;
 
     /**
      * @return id
@@ -178,5 +181,13 @@ public class ChangeStatusRequest implements Serializable {
 
     public void setDiscAddress(PostalAddress discAddress) {
         this.discAddress = discAddress;
+    }
+
+    public Set<Notice> getNotices() {
+        return notices;
+    }
+
+    public void setNotices(Set<Notice> notices) {
+        this.notices = notices;
     }
 }

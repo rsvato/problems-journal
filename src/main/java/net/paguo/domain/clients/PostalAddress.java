@@ -6,7 +6,7 @@ import java.text.MessageFormat;
 
 /**
  * $Author slava
- *
+ * Copied from trafshow
  * @version $Id $
  * @hibernate.class table="addresses"
  * dynamic-insert = "true"
