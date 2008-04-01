@@ -67,7 +67,7 @@ public class RequestReportExport {
         for (ChangeStatusRequest request : requests) {
             final HSSFRow row = hssfSheet.createRow(i++);
             short j = 0;
-            for (String property : properties) {
+            for (String property : getProperties()) {
                HSSFCell cell = row.createCell(j++);
                setCellProperty(cell, getObjectValue(request, property));
             }
@@ -112,7 +112,7 @@ public class RequestReportExport {
     private void addHeader(HSSFSheet sheet, HSSFCellStyle style) {
         final HSSFRow row = sheet.createRow(0);
         int i = 0;
-        for (String header : headers) {
+        for (String header : getHeaders()) {
            final HSSFCell cell = row.createCell((short) i++);
             cell.setCellStyle(style);
             cell.setCellValue(new HSSFRichTextString(getMessage(header)));
