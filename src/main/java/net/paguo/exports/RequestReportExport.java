@@ -61,7 +61,7 @@ public class RequestReportExport {
         log.debug("Collection size: " + requests.size());
         HSSFWorkbook wb = new HSSFWorkbook();
         final HSSFCellStyle style = createHeaderStyle(wb);
-        final HSSFCellStyle dateStyle = createDateStyle(wb)
+        final HSSFCellStyle dateStyle = createDateStyle(wb);
         final HSSFSheet hssfSheet = wb.createSheet("Main");
 
         addHeader(hssfSheet, style);
@@ -91,7 +91,7 @@ public class RequestReportExport {
     private HSSFCellStyle createDateStyle(HSSFWorkbook wb) {
         final HSSFCellStyle style = wb.createCellStyle();
         HSSFDataFormat format = wb.createDataFormat();
-        style.setDataFormat(format.getFormat("d/m/yy hh:mm:ss"););
+        style.setDataFormat(format.getFormat("d/m/yy hh:mm:ss"));
         return style;
     }
 
