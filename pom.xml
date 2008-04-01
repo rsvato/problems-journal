@@ -115,6 +115,11 @@
             <version>2.3</version>
         </dependency>
         <dependency>
+            <groupId>commons-beanutis</groupId>
+            <artifactId>commons-beanutis</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.3</version>

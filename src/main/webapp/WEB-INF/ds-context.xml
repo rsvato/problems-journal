@@ -245,6 +245,38 @@
     <bean id="requestReportExport" class="net.paguo.exports.RequestReportExport">
         <property name="controller" ref="changeStatusRequestController"/>
         <property name="messageSource" ref="messageSource"/>
+        <property name="headers">
+            <list>
+                <value>excel.client.header</value>
+                <value>excel.recipe.header</value>
+                <value>excel.address.header</value>
+                <value>excel.creation.date.header</value>
+                <value>excel.creation.author.header</value>
+                <value>excel.execution.date.header</value>
+                <value>excel.execution.author.header</value>
+                <value>excel.execution.endpoint.header</value>
+                <value>excel.recreation.date.header</value>
+                <value>excel.recreation.author.header</value>
+                <value>excel.reexec.date.header</value>
+                <value>excel.reexec.author.header</value>
+            </list>
+        </property>
+        <property name="properties">
+            <list>
+                <value>showClient</value>
+                <value>description</value>
+                <value>discAddress</value>
+                <value>cancelRequest.dateEntered</value>
+                <value>cancelRequest.author</value>
+                <value>cancelExec.dateEntered</value>
+                <value>cancelExec.author</value>
+                <value>endpoint</value>
+                <value>restoreRequest.dateEntered</value>
+                <value>restoreRequest.author</value>
+                <value>restoreExec.dateEntered</value>
+                <value>restoreExec.author</value>
+            </list>
+        </property>
     </bean>
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
