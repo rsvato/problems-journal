@@ -76,7 +76,7 @@ public class RequestReportExport {
         return wb;
     }
 
-    protected HSSFCellStyle createHeaderStyle(HSSFWorkbook wb) {
+    private HSSFCellStyle createHeaderStyle(HSSFWorkbook wb) {
         final HSSFFont font = wb.createFont();
         font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
         font.setFontName(HSSFFont.FONT_ARIAL);
@@ -86,7 +86,7 @@ public class RequestReportExport {
         return style;
     }
 
-    protected final Object getObjectValue(Object o, String path){
+    private Object getObjectValue(Object o, String path){
         Object property = null;
         try {
             property = PropertyUtils.getProperty(o, path);
@@ -96,7 +96,7 @@ public class RequestReportExport {
         return property;
     }
 
-    protected final void setCellProperty(HSSFCell cell, Object value){
+    private void setCellProperty(HSSFCell cell, Object value){
         if (value == null){
             cell.setCellValue(new HSSFRichTextString(""));
         }else{
