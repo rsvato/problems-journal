@@ -11,6 +11,7 @@ import org.springframework.context.MessageSource;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -120,6 +121,6 @@ public class RequestReportExport {
     }
 
     private String getMessage(final String code) {
-        return getMessageSource().getMessage(code, null, null);
+        return getMessageSource().getMessage(code, null, new Locale("ru", "RU"));
     }
 }
