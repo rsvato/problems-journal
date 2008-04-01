@@ -115,8 +115,8 @@
             <version>2.3</version>
         </dependency>
         <dependency>
-            <groupId>commons-beanutis</groupId>
-            <artifactId>commons-beanutis</artifactId>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
             <version>1.7.0</version>
         </dependency>
         <dependency>
