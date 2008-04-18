@@ -27,6 +27,9 @@
                 <value>net.paguo.domain.problems.NetworkProblem</value>
                 <value>net.paguo.domain.requests.ChangeStatusRequest</value>
                 <value>net.paguo.domain.requests.RequestInformation</value>
+                <value>net.paguo.domain.requests.Notice</value>
+                <value>net.paguo.domain.requests.EmailNotice</value>
+                <value>net.paguo.domain.requests.PhoneNotice</value>
                 <value>net.paguo.domain.users.AbstractRole</value>
                 <value>net.paguo.domain.users.ApplicationRole</value>
                 <value>net.paguo.domain.users.LocalRole</value>

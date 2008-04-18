@@ -27,6 +27,7 @@ import java.util.List;
 )
 public class NetworkProblem extends NetworkFailure {
     private List<ClientComplaint> dependedComplaints;
+    private static final long serialVersionUID = 1409402437022237225L;
 
     @OneToMany(mappedBy = "parent")
     public List<ClientComplaint> getDependedComplaints() {

@@ -6,8 +6,7 @@ import net.paguo.controller.UsersController;
 import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.clients.ClientItem;
 import net.paguo.domain.clients.PostalAddress;
-import net.paguo.domain.requests.ChangeStatusRequest;
-import net.paguo.domain.requests.RequestInformation;
+import net.paguo.domain.requests.*;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
 import net.paguo.domain.users.LocalUser;
 import org.apache.commons.lang.StringUtils;
@@ -23,15 +22,15 @@ import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.*;
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.model.*;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValueConversionException;
 import org.apache.wicket.validation.IValidatable;
@@ -166,8 +165,21 @@ public class ChangeStatusRequestCreatePage extends SecuredWebPage {
             }).setRequired(true)
                     .setEnabled(request.getId() == null)
                     .add(new ClientChangeEventBehavior(child, feedbackPanel)));
-            add(new TextArea("description"));
+            //add(new TextArea("description"));
             add(new CheckBox("permanent"));
+
+            final Set<Notice> notices = request.getNotices();
+            if (notices == null){
+                request.getNotices().add(new EmailNotice());
+                request.getNotices().add(new PhoneNotice());
+            }
+
+            final RepeatingView noticesView = new RepeatingView("notices");
+            for (Notice notice : notices) {
+                noticesView.add(new NoticePanel(noticesView.newChildId(), notice));
+            }
+            add(noticesView);
+
             add(feedbackPanel);
             final StagesPanel panel = new StagesPanel("panel", (CompoundPropertyModel) getModel());
 
@@ -190,6 +202,8 @@ public class ChangeStatusRequestCreatePage extends SecuredWebPage {
 
 
         private class ClientRequiredValidator extends AbstractValidator {
+            private static final long serialVersionUID = -1124154415951075627L;
+
             @Override
             protected void onValidate(IValidatable validatable) {
                 String input = (String) validatable.getValue();

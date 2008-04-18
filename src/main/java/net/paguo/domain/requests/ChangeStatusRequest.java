@@ -39,6 +39,7 @@ public class ChangeStatusRequest implements Serializable {
     private PostalAddress discAddress;
 
     private Set<Notice> notices;
+    private static final long serialVersionUID = 6332831689619653572L;
 
     /**
      * @return id
@@ -183,6 +184,9 @@ public class ChangeStatusRequest implements Serializable {
         this.discAddress = discAddress;
     }
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "req_notices", joinColumns = {@JoinColumn(name = "req_id")},
+    inverseJoinColumns = {@JoinColumn(name = "notice_id")})
     public Set<Notice> getNotices() {
         return notices;
     }
