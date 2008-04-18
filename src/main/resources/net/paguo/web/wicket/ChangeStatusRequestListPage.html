@@ -11,14 +11,18 @@
     </wicket:head>
 </head>
 <body>
-    <wicket:extend>
-        <h1><wicket:message key="request.list">[request list]</wicket:message></h1>
+<wicket:extend>
+    <h1><wicket:message key="request.list">[request list]</wicket:message></h1>
 
-        <a href="#" wicket:id="createNew" class="button">
-            <wicket:message key="new.label">[new]</wicket:message>
-        </a>
+    <a href="#" wicket:id="createNew" class="button">
+        <wicket:message key="new.label">[new]</wicket:message>
+    </a>
 
-        <table wicket:id="table" class="dataView"/>
-    </wicket:extend>
+
+    <div style="padding-top:15px">
+        <span wicket:id="download">[download panel]</span>
+    </div>
+    <table wicket:id="table" class="dataView"/>
+</wicket:extend>
 </body>
 </html>

@@ -8,6 +8,7 @@ import net.paguo.domain.requests.ChangeStatusRequest;
 import net.paguo.domain.requests.RequestInformation;
 import net.paguo.domain.requests.RequestNextStage;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
+import net.paguo.web.wicket.hardcopy.RequestsReportPanel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.PageParameters;
@@ -83,13 +84,13 @@ public class ChangeStatusRequestListPage extends SettingsAwarePage {
         add(HeaderContributor.forCss(ChangeStatusRequestListPage.class, "wstyles.css"));
         final BookmarkablePageLink child = new BookmarkablePageLink("createNew", ChangeStatusRequestCreatePage.class);
         secureElement(child, ChangeStatusRequest.class, CREATE);
+        add(new RequestsReportPanel("download"));
         add(child);
     }
 
     private IColumn[] getColumns() {
         return new IColumn[]{
                 new TextFilteredPropertyColumn(new ResourceModel("client"), CLIENT.getLabel(), "showClient"),
-                new PropertyColumn(new ResourceModel("description"), "description"),
                 new PropertyColumn(new ResourceModel("address"), "discAddress"),
                 new DatetimePropertyColumn(new ResourceModel("request.cancel.date"), DISC_REQ_DATE.getLabel(),
                         "cancelRequest.dateEntered"),

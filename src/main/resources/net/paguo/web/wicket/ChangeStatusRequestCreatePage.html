@@ -11,22 +11,28 @@
         <span wicket:id="feedback">[Feedback]</span>
     </div>
     <form wicket:id="form">
+
         <div class="feedback">
             <span wicket:id="formFeedback">[Feedback]</span>
         </div>
+
         <label><wicket:message key="client">[client]</wicket:message></label>
         <select wicket:id="client" class="input"/>
         <span id="progress" style="display:none"><img src="img/loading.gif" alt="loading"></span>
         <br/>
 
-        <ul>
-            <li wicket:id="notices">[notice view]</li>
-        </ul>
-        <br/>
-
         <label><wicket:message key="discAddress">[address]</wicket:message></label>
         <select wicket:id="discAddress" class="input"/>
         <br/>
+
+        <fieldset>
+            <legend><wicket:message key="notices">[notices]</wicket:message></legend>
+            <ul style="padding:0; margin:0; list-style:none">
+                <li wicket:id="notices">[notice view]</li>
+            </ul>
+            <br/>
+        </fieldset>
+
 
         <input type="checkbox" wicket:id="permanent"/><label><wicket:message
             key="permanent">[permanent?]</wicket:message></label>

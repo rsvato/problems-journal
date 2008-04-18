@@ -1,7 +1,6 @@
 package net.paguo.web.wicket;
 
 import net.paguo.controller.UsersController;
-import net.paguo.web.wicket.hardcopy.RequestsReportDownloadPage;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
@@ -50,7 +49,6 @@ public class JournalApplication extends WebApplication implements IRoleCheckingS
         mountBookmarkablePage("/test.html", TablePOC.class);
         mountBookmarkablePage("/create-request", ChangeStatusRequestCreatePage.class);
         mountBookmarkablePage("/requests", ChangeStatusRequestListPage.class);
-        mountBookmarkablePage("/requests-reports", RequestsReportDownloadPage.class);
 
     }
 

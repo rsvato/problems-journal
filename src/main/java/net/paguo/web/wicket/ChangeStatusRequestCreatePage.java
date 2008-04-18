@@ -30,7 +30,10 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.*;
+import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValueConversionException;
 import org.apache.wicket.validation.IValidatable;
@@ -169,13 +172,14 @@ public class ChangeStatusRequestCreatePage extends SecuredWebPage {
             add(new CheckBox("permanent"));
 
             final Set<Notice> notices = request.getNotices();
-            if (notices == null){
+            if (notices == null) {
+                request.setNotices(new HashSet<Notice>());
                 request.getNotices().add(new EmailNotice());
                 request.getNotices().add(new PhoneNotice());
             }
 
             final RepeatingView noticesView = new RepeatingView("notices");
-            for (Notice notice : notices) {
+            for (Notice notice : request.getNotices()) {
                 noticesView.add(new NoticePanel(noticesView.newChildId(), notice));
             }
             add(noticesView);

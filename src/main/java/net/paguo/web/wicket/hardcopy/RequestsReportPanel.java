@@ -1,13 +1,13 @@
 package net.paguo.web.wicket.hardcopy;
 
 import net.paguo.exports.RequestReportExport;
-import net.paguo.web.wicket.SecuredWebPage;
 import net.paguo.web.wicket.resources.ExcelResourceStreamWriter;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.wicket.IRequestTarget;
 import org.apache.wicket.RequestCycle;
 import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.target.resource.ResourceStreamRequestTarget;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -20,7 +20,7 @@ import java.util.Date;
  * Date: 26.03.2008
  * Time: 0:39:24
  */
-public class RequestsReportDownloadPage extends SecuredWebPage {
+public class RequestsReportPanel extends Panel {
     @SpringBean
     private RequestReportExport exporter;
     private static final long serialVersionUID = -4707990886745138286L;
@@ -33,10 +33,9 @@ public class RequestsReportDownloadPage extends SecuredWebPage {
         this.exporter = exporter;
     }
 
-    public RequestsReportDownloadPage() {
+    public RequestsReportPanel(String id) {
+        super(id);
         final RequestReportForm child = new RequestReportForm("form");
-        child.add(new DateField("startDate"));
-        child.add(new DateField("endDate"));
         add(child);
     }
 
@@ -45,6 +44,8 @@ public class RequestsReportDownloadPage extends SecuredWebPage {
 
         public RequestReportForm(String s) {
             super(s, new CompoundPropertyModel(new RequestReportFormParameters()));
+            add(new DateField("startDate"));
+            add(new DateField("endDate"));
         }
 
         protected void onSubmit() {

@@ -3,7 +3,7 @@ package net.paguo.web.wicket.resources;
 
 import net.paguo.dao.ChangeStatusRequestDao;
 import net.paguo.domain.requests.ChangeStatusRequest;
-import net.paguo.web.wicket.hardcopy.RequestsReportDownloadPage;
+import net.paguo.web.wicket.hardcopy.RequestsReportPanel;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class ExcelResourceImpl extends BinaryResource {
     private static final long serialVersionUID = -3106910267810512508L;
-    private RequestsReportDownloadPage.RequestReportFormParameters params;
+    private RequestsReportPanel.RequestReportFormParameters params;
 
     @SpringBean(name = "changeStatusRequestDao")
     private ChangeStatusRequestDao requestDao;
@@ -62,7 +62,7 @@ public class ExcelResourceImpl extends BinaryResource {
     }
 
 
-    public void setParams(RequestsReportDownloadPage.RequestReportFormParameters parameters) {
+    public void setParams(RequestsReportPanel.RequestReportFormParameters parameters) {
         this.params = parameters;
     }
 }

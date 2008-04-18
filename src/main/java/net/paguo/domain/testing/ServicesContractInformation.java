@@ -11,7 +11,6 @@ import java.util.Set;
  * Time: 0:50:02
  */
 public class ServicesContractInformation {
-
     private Integer id;
     private Set<ServiceInContract> services;
     private String contractNumber;
