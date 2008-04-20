@@ -1,19 +1,26 @@
 package net.paguo.domain.testing;
 
+import net.paguo.domain.users.LocalUser;
+import org.hibernate.validator.NotNull;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  * User: sreentenko
  * Date: 30.03.2008
  * Time: 0:47:28
  */
-public class Request {
+@Entity
+@Table(name = "wf_requests")
+public class Request implements Serializable {
     private ProcessStage currentStage = ProcessStage.OPENED;
 
+    private Date creationDate;
     private ClientInformation clientInformation;
-    private TestingPlan testingPlan;
-    private TestingResults testingResults;
-    private ServicesContractInformation servicesContractInformation;
-    private EnablingPlan enablingPlan;
-    private EnablingResults enablingResults;
+    private LocalUser author;
+    private RequiredService service;
 
     public Request() {
     }
@@ -30,6 +37,16 @@ public class Request {
         this.currentStage = currentStage;
     }
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    @OneToOne(optional = false)
+    @PrimaryKeyJoinColumn
     public ClientInformation getClientInformation() {
         return clientInformation;
     }
@@ -38,43 +55,23 @@ public class Request {
         this.clientInformation = clientInformation;
     }
 
-    public TestingPlan getTestingPlan() {
-        return testingPlan;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "author_id", nullable = false)
+    public LocalUser getAuthor() {
+        return author;
     }
 
-    public void setTestingPlan(TestingPlan testingPlan) {
-        this.testingPlan = testingPlan;
+    public void setAuthor(LocalUser author) {
+        this.author = author;
     }
 
-    public TestingResults getTestingResults() {
-        return testingResults;
+    @Embedded
+    @NotNull
+    public RequiredService getService() {
+        return service;
     }
 
-    public void setTestingResults(TestingResults testingResults) {
-        this.testingResults = testingResults;
-    }
-
-    public ServicesContractInformation getServicesContractInformation() {
-        return servicesContractInformation;
-    }
-
-    public void setServicesContractInformation(ServicesContractInformation servicesContractInformation) {
-        this.servicesContractInformation = servicesContractInformation;
-    }
-
-    public EnablingPlan getEnablingPlan() {
-        return enablingPlan;
-    }
-
-    public void setEnablingPlan(EnablingPlan enablingPlan) {
-        this.enablingPlan = enablingPlan;
-    }
-
-    public EnablingResults getEnablingResults() {
-        return enablingResults;
-    }
-
-    public void setEnablingResults(EnablingResults enablingResults) {
-        this.enablingResults = enablingResults;
+    public void setService(RequiredService service) {
+        this.service = service;
     }
 }
