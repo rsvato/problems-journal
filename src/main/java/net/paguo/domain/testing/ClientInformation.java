@@ -20,6 +20,7 @@ public class ClientInformation implements Serializable {
     private ClientTypeEnum clientType;
     private AddressInformation address;
     private ClientContactInformation contact;
+    private static final long serialVersionUID = -3901014933364138921L;
 
     @Id
     public Integer getId() {

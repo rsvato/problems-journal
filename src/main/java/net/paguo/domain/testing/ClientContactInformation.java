@@ -1,5 +1,7 @@
 package net.paguo.domain.testing;
 
+import net.paguo.visual.InterfaceField;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
@@ -11,9 +13,15 @@ import java.io.Serializable;
  */
 @Embeddable
 public class ClientContactInformation implements Serializable {
+    @InterfaceField
     private String fullName;
+
+    @InterfaceField
     private String phone;
+
+    @InterfaceField
     private String email;
+    private static final long serialVersionUID = 983061495991431305L;
 
     @Column(name = "full_name", nullable = false)
     public String getFullName() {

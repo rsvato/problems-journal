@@ -171,6 +171,9 @@
 
     <bean id="changeStatusRequestDaoNG" parent="abstractDaoTarget"
           class="net.paguo.dao.impl.ChangeStatusRequestDaoImpl"/>
+    
+    <bean id="requestDao" parent="abstractDaoTarget"
+        class="net.paguo.dao.impl.RequestDaoImpl"/>
 
     <bean id="settingsDao" parent="abstractDao">
         <property name="proxyInterfaces" value="net.paguo.dao.ApplicationSettingsDao"/>
@@ -223,6 +226,10 @@
     <bean id="changeStatusRequestController" class="net.paguo.controller.ChangeStatusRequestController">
         <property name="requestDao" ref="changeStatusRequestDaoNG"/>
         <property name="endpointDao" ref="endpointDao"/>
+    </bean>
+
+    <bean id="requestController" class="net.paguo.controller.request.RequestController">
+        <property name="requestDao" ref="requestDao"/>
     </bean>
 
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">

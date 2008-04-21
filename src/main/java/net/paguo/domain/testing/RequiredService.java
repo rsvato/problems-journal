@@ -1,5 +1,6 @@
 package net.paguo.domain.testing;
 
+import net.paguo.visual.InterfaceField;
 import org.hibernate.validator.NotNull;
 
 import javax.persistence.Column;
@@ -13,8 +14,12 @@ import java.io.Serializable;
  */
 @Embeddable
 public class RequiredService implements Serializable {
+    @InterfaceField(order = 0)
     private Integer addressCount;
+
+    @InterfaceField(order = 1)
     private String trafficTypes; //to be clarified
+    private static final long serialVersionUID = -3256240782732181192L;
 
     @Column(name = "ad_count")
     @NotNull

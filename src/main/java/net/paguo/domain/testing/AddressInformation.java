@@ -24,6 +24,7 @@ public class AddressInformation implements Serializable {
     private String houseNo;
     private String corp;
     private String apt;
+    private static final long serialVersionUID = 1644003841491916264L;
 
     public String getCity() {
         return city;
