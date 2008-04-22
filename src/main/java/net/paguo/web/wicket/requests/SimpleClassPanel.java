@@ -22,6 +22,10 @@ import org.hibernate.validator.NotNull;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * User: sreentenko
@@ -34,7 +38,21 @@ public class SimpleClassPanel extends Panel {
     public SimpleClassPanel(String id, Serializable object) {
         super(id, new CompoundPropertyModel(object));
         RepeatingView fields = new RepeatingView("fields");
-        for (Field field : object.getClass().getDeclaredFields()) {
+        final List<Field> declaredFields = Arrays.asList(object.getClass().getDeclaredFields());
+
+        Collections.sort(declaredFields, new Comparator<Field>(){
+            public int compare(Field o1, Field o2) {
+                InterfaceField desc = o1.getAnnotation(InterfaceField.class);
+                InterfaceField otherDesc = o2.getAnnotation(InterfaceField.class);
+                if (desc != null && otherDesc != null){
+                    return Integer.valueOf(desc.order()).
+                            compareTo(otherDesc.order());
+                }
+                return 0;
+            }
+        });
+
+        for (Field field : declaredFields) {
             final InterfaceField fieldDescription = field.getAnnotation(InterfaceField.class);
             boolean create = field.getAnnotation(Id.class) == null
                     && fieldDescription != null;

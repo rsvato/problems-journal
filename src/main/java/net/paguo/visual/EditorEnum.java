@@ -5,5 +5,6 @@ package net.paguo.visual;
  */
 public enum EditorEnum {
     STRING, STREET, LOCALUSER,
-    DATE, DATETIME, LONGTEXT
+    DATE, DATETIME, LONGTEXT,
+    ENUM
 }

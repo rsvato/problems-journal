@@ -1,7 +1,8 @@
-package net.paguo.web.wicket;
+package net.paguo.web.wicket.providers;
 
 import net.paguo.controller.UsersController;
 import net.paguo.domain.users.LocalUser;
+import net.paguo.web.wicket.LocalUserModel;
 import org.apache.wicket.injection.web.InjectorHolder;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.IModel;

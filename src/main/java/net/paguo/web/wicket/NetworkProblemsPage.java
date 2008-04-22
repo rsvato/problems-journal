@@ -21,6 +21,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
+import net.paguo.web.wicket.providers.NetworkProblemListProvider;
+import net.paguo.web.wicket.providers.SearchListProvider;
 
 /**
  * User: sreentenko

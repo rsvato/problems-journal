@@ -24,6 +24,7 @@ public class Request implements Serializable {
     private ClientInformation clientInformation;
     private LocalUser author;
     private RequiredService service;
+    private BuildingInformation buildingInformation;
     private static final long serialVersionUID = -5455347232298219310L;
 
     public Request() {
@@ -91,5 +92,14 @@ public class Request implements Serializable {
 
     public void setService(RequiredService s) {
         this.service = s;
+    }
+
+    @Embedded
+    public BuildingInformation getBuildingInformation() {
+        return buildingInformation;
+    }
+
+    public void setBuildingInformation(BuildingInformation bi) {
+        this.buildingInformation = bi;
     }
 }

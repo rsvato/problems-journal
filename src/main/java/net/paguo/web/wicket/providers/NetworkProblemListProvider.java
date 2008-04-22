@@ -1,4 +1,4 @@
-package net.paguo.web.wicket;
+package net.paguo.web.wicket.providers;
 
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.domain.problems.NetworkProblem;

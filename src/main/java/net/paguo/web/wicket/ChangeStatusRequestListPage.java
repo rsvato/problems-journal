@@ -9,6 +9,7 @@ import net.paguo.domain.requests.RequestInformation;
 import net.paguo.domain.requests.RequestNextStage;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
 import net.paguo.web.wicket.hardcopy.RequestsReportPanel;
+import net.paguo.web.wicket.components.ConfirmationLink;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.PageParameters;

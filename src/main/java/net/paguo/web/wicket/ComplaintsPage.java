@@ -9,6 +9,8 @@ import net.paguo.domain.problems.ClientComplaint;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
 import net.paguo.domain.users.LocalUser;
 import net.paguo.search.controller.ComplaintSearchController;
+import net.paguo.web.wicket.providers.SearchListProvider;
+import net.paguo.web.wicket.providers.ComplaintListProvider;
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;

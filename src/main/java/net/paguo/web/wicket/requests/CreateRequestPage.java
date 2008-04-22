@@ -42,6 +42,7 @@ public class CreateRequestPage extends SecuredWebPage {
         Form reqForm = new Form("form");
         reqForm.add(new SimpleClassPanel("contactInfo", req.getClientInformation().getContact()));
         reqForm.add(new SimpleClassPanel("service", req.getService()));
+        reqForm.add(new SimpleClassPanel("buildingInfo", req.getBuildingInformation()));
         add(reqForm);
     }
 

@@ -1,4 +1,4 @@
-package net.paguo.web.wicket;
+package net.paguo.web.wicket.providers;
 
 import net.paguo.search.controller.SearchController;
 import org.apache.commons.logging.Log;
@@ -11,7 +11,6 @@ import org.apache.wicket.model.Model;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * User: sreentenko

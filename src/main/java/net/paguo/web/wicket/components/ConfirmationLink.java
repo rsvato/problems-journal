@@ -1,4 +1,4 @@
-package net.paguo.web.wicket;
+package net.paguo.web.wicket.components;
 
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.behavior.SimpleAttributeModifier;

@@ -15,8 +15,18 @@
     <h1><wicket:message key="request.change">[new testing request]</wicket:message></h1>
 
     <form wicket:id="form">
-        <span wicket:id="contactInfo">[required service]</span>
-        <span wicket:id="service">[required service]</span>
+        <fieldset>
+            <legend></legend>
+            <span wicket:id="contactInfo">[contact information]</span>
+        </fieldset>
+        <fieldset>
+            <legend></legend>
+            <span wicket:id="service">[required service]</span>
+        </fieldset>
+        <fieldset>
+            <legend></legend>
+            <span wicket:id="buildingInfo">[building info]</span>
+        </fieldset>
     </form>
 
 </wicket:extend>

@@ -1,11 +1,10 @@
 package net.paguo.domain.testing;
 
+import net.paguo.visual.EditorEnum;
+import net.paguo.visual.InterfaceField;
 import org.hibernate.validator.NotNull;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -17,7 +16,12 @@ import java.io.Serializable;
 @Table(name = "wf_ccinfo")
 public class ClientInformation implements Serializable {
     private Integer id;
+
+    @InterfaceField(order = 1, editor = EditorEnum.ENUM)
     private ClientTypeEnum clientType;
+
+    @InterfaceField(order = 0, editor = EditorEnum.STRING)
+    private String clientDesignation;
     private AddressInformation address;
     private ClientContactInformation contact;
     private static final long serialVersionUID = -3901014933364138921L;
@@ -32,6 +36,7 @@ public class ClientInformation implements Serializable {
     }
 
     @NotNull
+    @Column(name="client_type")
     public ClientTypeEnum getClientType() {
         return clientType;
     }
@@ -58,5 +63,15 @@ public class ClientInformation implements Serializable {
 
     public void setContact(ClientContactInformation contact) {
         this.contact = contact;
+    }
+
+    @Column(name="designation")
+    @NotNull
+    public String getClientDesignation() {
+        return clientDesignation;
+    }
+
+    public void setClientDesignation(String clientDesignation) {
+        this.clientDesignation = clientDesignation;
     }
 }

@@ -3,6 +3,7 @@ package net.paguo.web.wicket;
 import net.paguo.controller.UsersController;
 import net.paguo.controller.exception.ControllerException;
 import net.paguo.domain.users.LocalUser;
+import net.paguo.web.wicket.providers.LocalUserListProvider;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;

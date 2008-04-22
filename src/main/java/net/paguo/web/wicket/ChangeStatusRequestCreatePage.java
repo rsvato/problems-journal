@@ -9,6 +9,7 @@ import net.paguo.domain.clients.PostalAddress;
 import net.paguo.domain.requests.*;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
 import net.paguo.domain.users.LocalUser;
+import net.paguo.web.wicket.components.ProgressCallDecorator;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

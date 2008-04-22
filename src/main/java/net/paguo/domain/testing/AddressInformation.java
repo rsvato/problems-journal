@@ -1,5 +1,7 @@
 package net.paguo.domain.testing;
 
+import net.paguo.visual.InterfaceField;
+import net.paguo.visual.EditorEnum;
 import org.hibernate.validator.NotNull;
 
 import javax.persistence.Embeddable;
@@ -19,10 +21,20 @@ import java.io.Serializable;
  */
 @Embeddable
 public class AddressInformation implements Serializable {
+
+    @InterfaceField
     private String city;
+
+    @InterfaceField(editor = EditorEnum.STREET)
     private String street;
+
+    @InterfaceField
     private String houseNo;
+
+    @InterfaceField
     private String corp;
+
+    @InterfaceField
     private String apt;
     private static final long serialVersionUID = 1644003841491916264L;
 

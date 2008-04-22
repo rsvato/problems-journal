@@ -38,6 +38,7 @@
                 <value>net.paguo.domain.users.UserPermission</value>
                 <value>net.paguo.domain.application.ApplicationSettings</value>
                 <value>net.paguo.domain.equipment.ClientEndpoint</value>
+                <value>net.paguo.domain.auxilliary.StreetDictionary</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -108,6 +109,15 @@
         <property name="target">
             <bean parent="abstractDaoTarget">
                 <constructor-arg value="net.paguo.domain.problems.NetworkFailure"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="streetsDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.StreetsDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.auxilliary.StreetDictionary"/>
             </bean>
         </property>
     </bean>
@@ -230,6 +240,10 @@
 
     <bean id="requestController" class="net.paguo.controller.request.RequestController">
         <property name="requestDao" ref="requestDao"/>
+    </bean>
+
+    <bean id="streetsController" class="net.paguo.controller.auxilliary.StreetsController">
+        <property name="streetsDao" ref="streetsDao"/>
     </bean>
 
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">

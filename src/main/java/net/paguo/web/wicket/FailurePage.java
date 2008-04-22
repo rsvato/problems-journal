@@ -1,9 +1,8 @@
 package net.paguo.web.wicket;
 
-import net.paguo.controller.ApplicationSettingsController;
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.controller.UsersController;
-import net.paguo.domain.application.ApplicationSettings;
+import net.paguo.web.wicket.providers.SearchListProvider;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
 import org.apache.commons.lang.StringUtils;
