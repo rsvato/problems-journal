@@ -1,5 +1,6 @@
 package net.paguo.domain.testing;
 
+import net.paguo.visual.EditorEnum;
 import net.paguo.visual.InterfaceField;
 import org.hibernate.validator.NotNull;
 
@@ -17,7 +18,7 @@ public class RequiredService implements Serializable {
     @InterfaceField(order = 0)
     private Integer addressCount;
 
-    @InterfaceField(order = 1)
+    @InterfaceField(order = 1, editor = EditorEnum.LONGTEXT)
     private String trafficTypes; //to be clarified
     private static final long serialVersionUID = -3256240782732181192L;
 

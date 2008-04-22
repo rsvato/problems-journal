@@ -14,7 +14,7 @@
         </tr>
     </table>
     <wicket:fragment wicket:id="stringEditor">
-        <input type="text" wicket:id="edit"/>
+        <input type="text" wicket:id="edit" class="input"/>
     </wicket:fragment>
 
     <wicket:fragment wicket:id="longtextEditor">
@@ -25,8 +25,16 @@
         <span wicket:id="edit">[date input]</span>
     </wicket:fragment>
 
-     <wicket:fragment wicket:id="datetimeEditor">
+    <wicket:fragment wicket:id="datetimeEditor">
         <span wicket:id="edit">[date input]</span>
+    </wicket:fragment>
+
+    <wicket:fragment wicket:id="enumEditor">
+        <select wicket:id="edit"></select>
+    </wicket:fragment>
+
+    <wicket:fragment wicket:id="streetEditor">
+        <input type="text" wicket:id="edit" class="input"/>
     </wicket:fragment>
 </wicket:panel>
 </body>

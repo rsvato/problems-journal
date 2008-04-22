@@ -1,0 +1,43 @@
+/* @override http://localhost:4084/network-journal/app/resources/net.paguo.web.wicket.requests.CreateRequestPage/forms.css */
+
+th {
+    text-align: right;
+    width: 200px;
+    font-weight: normal;
+}
+
+th, td {
+    vertical-align: top;
+}
+
+legend {
+    font-size: small;
+    background: white;
+    border: rgb( 92, 128, 128 ) solid 1px;
+    padding: 2px;
+    font-weight: bold;
+    width: 100%;
+}
+
+fieldset {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: rgb( 92, 128, 128 ) solid 1px;
+    background-color: rgb( 220, 220, 220 );
+}
+
+fieldset table {
+    border: none;
+    width: 60%;
+}
+
+.input {
+    float: none;
+    display: inline;
+    width: 100%;
+}
+
+.area {
+    width: 100%;
+    font-size: small;
+}

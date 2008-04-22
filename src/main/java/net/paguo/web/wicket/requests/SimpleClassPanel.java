@@ -2,6 +2,7 @@ package net.paguo.web.wicket.requests;
 
 import net.paguo.visual.EditorEnum;
 import net.paguo.visual.InterfaceField;
+import net.paguo.web.wicket.components.StreetAutoCompleteTextField;
 import net.paguo.web.wicket.editors.Editor;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
@@ -9,14 +10,12 @@ import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.model.*;
 import org.hibernate.validator.NotNull;
 
 import javax.persistence.Id;
@@ -40,11 +39,11 @@ public class SimpleClassPanel extends Panel {
         RepeatingView fields = new RepeatingView("fields");
         final List<Field> declaredFields = Arrays.asList(object.getClass().getDeclaredFields());
 
-        Collections.sort(declaredFields, new Comparator<Field>(){
+        Collections.sort(declaredFields, new Comparator<Field>() {
             public int compare(Field o1, Field o2) {
                 InterfaceField desc = o1.getAnnotation(InterfaceField.class);
                 InterfaceField otherDesc = o2.getAnnotation(InterfaceField.class);
-                if (desc != null && otherDesc != null){
+                if (desc != null && otherDesc != null) {
                     return Integer.valueOf(desc.order()).
                             compareTo(otherDesc.order());
                 }
@@ -59,24 +58,34 @@ public class SimpleClassPanel extends Panel {
             if (create) {
                 WebMarkupContainer row = new WebMarkupContainer(fields.newChildId());
                 IModel model = new PropertyModel(object, field.getName());
-                Component editor = null;
+                Component editor;
 
                 IModel labelModel = new StringResourceModel(field.getName(), this, null);
                 boolean required = field.getAnnotation(NotNull.class) != null;
 
                 final EditorEnum editorEnum = fieldDescription.editor();
-                switch(editorEnum){
+                switch (editorEnum) {
                     case STRING:
                         editor = new StringEditor("editor", model, labelModel, required, row);
                         break;
                     case DATE:
                         editor = new DateEditor("editor", model, labelModel, required, row);
+                        break;
                     case DATETIME:
                         editor = new DatetimeEditor("editor", model, labelModel, required, row);
+                        break;
                     case LONGTEXT:
                         editor = new LongtextEditor("editor", model, labelModel, required, row);
+                        break;
+                    case ENUM:
+                        editor = new EnumEditor("editor", model, labelModel, required, row, (Class<Enum>) field.getType());
+                        break;
+                    case STREET:
+                        editor = new StreetEditor("editor", model, labelModel, required, row);
+                        break;
+                    case LOCALUSER:
                     default:
-                        throw new IllegalArgumentException("Not implemented yet");
+                        throw new IllegalArgumentException("Not implemented yet: " + editorEnum);
                 }
 
                 if (editor != null) {
@@ -105,7 +114,7 @@ public class SimpleClassPanel extends Panel {
         private static final long serialVersionUID = -5231036062874028859L;
 
         public DateEditor(String id, IModel model, IModel labelModel, boolean required,
-                            MarkupContainer container) {
+                          MarkupContainer container) {
             super(id, "dateEditor", container);
             add(new DateField(EDIT, model).setLabel(labelModel).setRequired(required));
         }
@@ -115,7 +124,7 @@ public class SimpleClassPanel extends Panel {
         private static final long serialVersionUID = 5419926906291245030L;
 
         public DatetimeEditor(String id, IModel model, IModel labelModel, boolean required,
-                            MarkupContainer container) {
+                              MarkupContainer container) {
             super(id, "datetimeEditor", container);
             add(new DateTimeField(EDIT, model).setLabel(labelModel).setRequired(required));
         }
@@ -125,10 +134,41 @@ public class SimpleClassPanel extends Panel {
         private static final long serialVersionUID = -7922996235055367153L;
 
         public LongtextEditor(String id, IModel model, IModel labelModel, boolean required,
-                            MarkupContainer container) {
+                              MarkupContainer container) {
             super(id, "longtextEditor", container);
             add(new TextArea(EDIT, model).setLabel(labelModel).setRequired(required));
         }
     }
 
+    private static class StreetEditor extends Editor {
+        private static final long serialVersionUID = -458236221242803913L;
+
+        public StreetEditor(String id, IModel model, IModel labelModel, boolean required,
+                            MarkupContainer container) {
+            super(id, "streetEditor", container);
+            add(new StreetAutoCompleteTextField(EDIT, model)
+                    .setLabel(labelModel).setRequired(required));
+        }
+    }
+
+    private class EnumEditor<T> extends Editor {
+        private static final long serialVersionUID = 1415079006228084713L;
+
+        public EnumEditor(String id, IModel model, IModel labelModel, boolean required, WebMarkupContainer row, final Class<Enum> enumKlass) {
+            super(id, "enumEditor", row);
+            IModel enumChoices = new AbstractReadOnlyModel() {
+                private static final long serialVersionUID = 2290774896713500536L;
+
+                @Override
+                public Object getObject() {
+                    return Arrays.asList(enumKlass.getEnumConstants());
+                }
+
+            };
+
+            DropDownChoice ddc = new DropDownChoice("edit", model, enumChoices);
+            ddc.setLabel(labelModel).setRequired(required);
+            add(ddc);
+        }
+    }
 }

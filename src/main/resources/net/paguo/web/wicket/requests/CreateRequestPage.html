@@ -16,15 +16,27 @@
 
     <form wicket:id="form">
         <fieldset>
-            <legend></legend>
+            <legend><wicket:message key="request.clientInfo"/></legend>
+            <span wicket:id="clientInfo">[client Info]</span>
+        </fieldset>
+        <fieldset>
+            <legend><wicket:message key="request.addressInfo"/></legend>
+            <span wicket:id="addressInformation">[address Information]</span>
+        </fieldset>
+        <fieldset>
+            <legend><wicket:message key="request.contactInfo"/></legend>
             <span wicket:id="contactInfo">[contact information]</span>
         </fieldset>
         <fieldset>
-            <legend></legend>
+            <legend><wicket:message key="request.requiredService"/></legend>
+            TO BE MOVED
             <span wicket:id="service">[required service]</span>
         </fieldset>
         <fieldset>
-            <legend></legend>
+            <legend><wicket:message key="request.buildingInfo"/></legend>
+            <p>
+                <small><wicket:message key="request.buildingHint"/></small>
+            </p>
             <span wicket:id="buildingInfo">[building info]</span>
         </fieldset>
     </form>

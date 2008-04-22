@@ -8,9 +8,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "streets")
-@NamedQueries({@NamedQuery(name = "StreetsDisctionary.findOrdered",
+@NamedQueries({@NamedQuery(name = "StreetDictionary.findOrdered",
         query = "select st from StreetDictionary st order by name"),
-        @NamedQuery(name = "StreetsDisctionary.findByName",
+@NamedQuery(name = "StreetDictionary.findByName",
         query = "select st from StreetDictionary st where upper(name) like upper(:name) order by name")})
 public class StreetDictionary implements Serializable {
     private Integer id;
@@ -26,7 +26,7 @@ public class StreetDictionary implements Serializable {
         this.id = v;
     }
 
-    @Column(name = "street_name",unique = true)
+    @Column(name = "street_name", unique = true)
     public String getName() {
         return name;
     }
