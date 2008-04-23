@@ -64,10 +64,6 @@ public class CreateRequestPage extends SecuredWebPage {
                 getController().saveRequest(rqe);
             }
 
-            @Override
-            protected void validate() {
-                super.validate();
-            }
         };
 
         

@@ -27,4 +27,8 @@ public class StreetsController {
         name = name.trim() + "%";
         return getStreetsDao().findByName(name);
     }
+
+    public List<StreetDictionary> findByNameStrict(String name){
+        return getStreetsDao().findByName(name);
+    }
 }

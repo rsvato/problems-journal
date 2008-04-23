@@ -6,6 +6,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.IValidator;
+import org.apache.wicket.validation.IValidatable;
+import org.apache.wicket.validation.ValidationError;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +24,22 @@ public class StreetAutoCompleteTextField extends AutoCompleteTextField {
 
     public StreetAutoCompleteTextField(String id, IModel model) {
         super(id, model);
+        add(new IValidator(){
+            public void validate(IValidatable validatable) {
+                final String value = (String) validatable.getValue();
+                final List<StreetDictionary> dictionaries = getController().findByNameStrict(value);
+                if (dictionaries == null || dictionaries.isEmpty()){
+                    validatable.error(newError(value));
+                }
+            }
+
+            private ValidationError newError(String value){
+                ValidationError result = new ValidationError();
+                result.addMessageKey("missingStreet");
+                result.setVariable("street", value);
+                return result;
+            }
+        });
     }
 
     protected Iterator getChoices(String input) {
@@ -42,4 +61,5 @@ public class StreetAutoCompleteTextField extends AutoCompleteTextField {
     public void setController(StreetsController controller) {
         this.controller = controller;
     }
+
 }
