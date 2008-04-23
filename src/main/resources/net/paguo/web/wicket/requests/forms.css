@@ -16,7 +16,6 @@ legend {
     border: rgb( 92, 128, 128 ) solid 1px;
     padding: 2px;
     font-weight: bold;
-    width: 100%;
 }
 
 fieldset {
@@ -43,5 +42,5 @@ fieldset table {
 }
 
 .required {
-    background-color:tomato;
+    background-color: tomato;
 }

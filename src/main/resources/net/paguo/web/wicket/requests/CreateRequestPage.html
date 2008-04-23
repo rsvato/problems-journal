@@ -9,9 +9,11 @@
 <wicket:head>
     <title><wicket:message key="request.change">[new testing request]</wicket:message></title>
 </wicket:head>
+
 <body>
 <wicket:extend>
     <h1><wicket:message key="request.change">[new testing request]</wicket:message></h1>
+
     <div id="feedback">
         <span wicket:id="panel"/>
     </div>
@@ -39,7 +41,7 @@
             <legend><wicket:message key="request.requiredService"/></legend>
             <span wicket:id="service">[required service]</span>
         </fieldset>
-        <input type="submit" class="button" value=" save "/>
+        <input type="submit" class="button" wicket:message="value:save"/>
     </form>
 
 </wicket:extend>

@@ -41,12 +41,15 @@ public class CreateRequestPage extends SecuredWebPage {
         try {
             Integer requestId = parameters.getInt("request");
             req = getController().get(requestId);
+            if (req.getBuildingInformation() == null) {
+                req.setBuildingInformation(new BuildingInformation());
+            }
         } catch (StringValueConversionException e) {
             log.debug("Missing or invalid parameter request");
         }
 
         final Request request = req;
-        Form reqForm = new Form("form", new CompoundPropertyModel(request)){
+        Form reqForm = new Form("form", new CompoundPropertyModel(request)) {
             private static final long serialVersionUID = 7215839440637336957L;
 
             @Override
@@ -54,10 +57,10 @@ public class CreateRequestPage extends SecuredWebPage {
                 Request rqe = request;
                 rqe.setCreationDate(new Date());
                 rqe.setAuthor(findSessionUser());
-                if (rqe.getId() == null){
+                if (rqe.getId() == null) {
                     rqe.setCurrentStage(ProcessStage.OPENED);
-                }else{
-                    if (rqe.getService() != null){
+                } else {
+                    if (rqe.getService() != null) {
                         rqe.setCurrentStage(ProcessStage.BEFORE_TESTING);
                     }
                 }
@@ -66,7 +69,6 @@ public class CreateRequestPage extends SecuredWebPage {
 
         };
 
-        
 
         reqForm.add(new SimpleClassPanel("clientInfo", request.getClientInformation()));
         reqForm.add(new SimpleClassPanel("contactInfo", request.getClientInformation().getContact()));
@@ -74,7 +76,7 @@ public class CreateRequestPage extends SecuredWebPage {
         reqForm.add(new SimpleClassPanel("addressInformation", request.getClientInformation().getAddress()));
         WebMarkupContainer container = new WebMarkupContainer("serviceHolder");
         final boolean visible = ProcessStage.OPENED == req.getCurrentStage();
-        if (visible){
+        if (visible) {
             container.add(new SimpleClassPanel("service", request.getService()));
         }
         container.setVisible(visible);
