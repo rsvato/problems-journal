@@ -1,6 +1,8 @@
 package net.paguo.domain.testing;
 
 import net.paguo.visual.InterfaceField;
+import org.hibernate.validator.Email;
+import org.hibernate.validator.NotNull;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -13,13 +15,13 @@ import java.io.Serializable;
  */
 @Embeddable
 public class ClientContactInformation implements Serializable {
-    @InterfaceField
+    @InterfaceField @NotNull
     private String fullName;
 
-    @InterfaceField
+    @InterfaceField @NotNull
     private String phone;
 
-    @InterfaceField
+    @InterfaceField @NotNull @Email
     private String email;
     private static final long serialVersionUID = 983061495991431305L;
 

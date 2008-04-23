@@ -5,15 +5,16 @@
         xmlns:wicket="http://wicket.apache.org/"
         xml:lang="en"
         lang="en">
-<head>
-    <wicket:head>
-        <title><wicket:message key="request.change">[new testing request]</wicket:message></title>
-    </wicket:head>
-</head>
+
+<wicket:head>
+    <title><wicket:message key="request.change">[new testing request]</wicket:message></title>
+</wicket:head>
 <body>
 <wicket:extend>
     <h1><wicket:message key="request.change">[new testing request]</wicket:message></h1>
-
+    <div id="feedback">
+        <span wicket:id="panel"/>
+    </div>
     <form wicket:id="form">
         <fieldset>
             <legend><wicket:message key="request.clientInfo"/></legend>
@@ -28,17 +29,17 @@
             <span wicket:id="contactInfo">[contact information]</span>
         </fieldset>
         <fieldset>
-            <legend><wicket:message key="request.requiredService"/></legend>
-            TO BE MOVED
-            <span wicket:id="service">[required service]</span>
-        </fieldset>
-        <fieldset>
             <legend><wicket:message key="request.buildingInfo"/></legend>
             <p>
                 <small><wicket:message key="request.buildingHint"/></small>
             </p>
             <span wicket:id="buildingInfo">[building info]</span>
         </fieldset>
+        <fieldset wicket:id="serviceHolder">
+            <legend><wicket:message key="request.requiredService"/></legend>
+            <span wicket:id="service">[required service]</span>
+        </fieldset>
+        <input type="submit" class="button" value=" save "/>
     </form>
 
 </wicket:extend>

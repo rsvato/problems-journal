@@ -1,9 +1,9 @@
 package net.paguo.domain.testing;
 
 import net.paguo.domain.users.LocalUser;
-import org.hibernate.validator.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.hibernate.validator.Valid;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,10 +17,11 @@ import java.util.Date;
 @Entity
 @Table(name = "wf_requests")
 public class Request implements Serializable {
-    private ProcessStage currentStage = ProcessStage.OPENED;
+    private ProcessStage currentStage;
 
     private Integer id;
     private Date creationDate;
+    @Valid
     private ClientInformation clientInformation;
     private LocalUser author;
     private RequiredService service;
@@ -46,7 +47,7 @@ public class Request implements Serializable {
         this.id = v;
     }
 
-    @Column(name="stage")
+    @Column(name="stage", nullable = false)
     public ProcessStage getCurrentStage() {
         return currentStage;
     }
@@ -64,8 +65,7 @@ public class Request implements Serializable {
         this.creationDate = date;
     }
 
-    @OneToOne(optional = false)
-    @PrimaryKeyJoinColumn
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     public ClientInformation getClientInformation() {
         return clientInformation;
     }
@@ -85,7 +85,6 @@ public class Request implements Serializable {
     }
 
     @Embedded
-    @NotNull
     public RequiredService getService() {
         return service;
     }

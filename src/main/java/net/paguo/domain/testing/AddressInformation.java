@@ -25,10 +25,10 @@ public class AddressInformation implements Serializable {
     @InterfaceField
     private String city;
 
-    @InterfaceField(editor = EditorEnum.STREET)
+    @InterfaceField(editor = EditorEnum.STREET) @NotNull
     private String street;
 
-    @InterfaceField
+    @InterfaceField @NotNull
     private String houseNo;
 
     @InterfaceField

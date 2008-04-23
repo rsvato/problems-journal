@@ -2,7 +2,9 @@ package net.paguo.domain.testing;
 
 import net.paguo.visual.EditorEnum;
 import net.paguo.visual.InterfaceField;
+import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Valid;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,61 +19,59 @@ import java.io.Serializable;
 public class ClientInformation implements Serializable {
     private Integer id;
 
-    @InterfaceField(order = 1, editor = EditorEnum.ENUM)
+    @InterfaceField(order = 1, editor = EditorEnum.ENUM) @NotNull
     private ClientTypeEnum clientType;
 
-    @InterfaceField(order = 0, editor = EditorEnum.STRING)
+    @InterfaceField(order = 0, editor = EditorEnum.STRING) @NotNull @Length(min=6, max=30)
     private String clientDesignation;
+    @Valid
     private AddressInformation address;
+    @Valid
     private ClientContactInformation contact;
     private static final long serialVersionUID = -3901014933364138921L;
 
-    @Id
+    @Id @GeneratedValue
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer vinteger) {
+        this.id = vinteger;
     }
 
-    @NotNull
     @Column(name="client_type")
     public ClientTypeEnum getClientType() {
         return clientType;
     }
 
-    public void setClientType(ClientTypeEnum clientType) {
-        this.clientType = clientType;
+    public void setClientType(ClientTypeEnum type) {
+        this.clientType = type;
     }
 
     @Embedded
-    @NotNull
     public AddressInformation getAddress() {
         return address;
     }
 
-    public void setAddress(AddressInformation address) {
-        this.address = address;
+    public void setAddress(AddressInformation information) {
+        this.address = information;
     }
 
     @Embedded
-    @NotNull
     public ClientContactInformation getContact() {
         return contact;
     }
 
-    public void setContact(ClientContactInformation contact) {
-        this.contact = contact;
+    public void setContact(ClientContactInformation contactInformation) {
+        this.contact = contactInformation;
     }
 
     @Column(name="designation")
-    @NotNull
     public String getClientDesignation() {
         return clientDesignation;
     }
 
-    public void setClientDesignation(String clientDesignation) {
-        this.clientDesignation = clientDesignation;
+    public void setClientDesignation(String s) {
+        this.clientDesignation = s;
     }
 }

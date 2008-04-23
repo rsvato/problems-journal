@@ -41,3 +41,7 @@ fieldset table {
     width: 100%;
     font-size: small;
 }
+
+.required {
+    background-color:tomato;
+}

@@ -31,6 +31,7 @@ public class LocalUser implements Serializable {
     private String description;
     private Collection<LocalGroup> groups;
     private UserPermission permissionEntry;
+    private static final long serialVersionUID = 6815284993616376539L;
 
 
     public LocalUser(){

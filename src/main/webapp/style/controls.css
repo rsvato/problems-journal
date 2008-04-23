@@ -15,9 +15,6 @@ label {
 
 .input {
     border: 1px solid #C3BBB6;
-    padding: 4px;
-    margin: 5px 0;
-    background: #fff url( ../img/input.bg.gif ) 0 0 repeat-x;
     width: 300px;
 }
 
@@ -73,7 +70,7 @@ li.feedbackPanelWARN {
 }
 
 div.wicket-aa {
-    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
     font-size: 10px;
     background-color: white;
     border-width: 1px;

@@ -15,30 +15,28 @@ import java.io.Serializable;
  */
 @Embeddable
 public class RequiredService implements Serializable {
-    @InterfaceField(order = 0)
+    @InterfaceField(order = 0) @NotNull
     private Integer addressCount;
 
-    @InterfaceField(order = 1, editor = EditorEnum.LONGTEXT)
+    @InterfaceField(order = 1, editor = EditorEnum.LONGTEXT) @NotNull
     private String trafficTypes; //to be clarified
     private static final long serialVersionUID = -3256240782732181192L;
 
     @Column(name = "ad_count")
-    @NotNull
     public Integer getAddressCount() {
         return addressCount;
     }
 
-    public void setAddressCount(Integer addressCount) {
-        this.addressCount = addressCount;
+    public void setAddressCount(Integer count) {
+        this.addressCount = count;
     }
 
     @Column(name = "traffic_types")
-    @NotNull
     public String getTrafficTypes() {
         return trafficTypes;
     }
 
-    public void setTrafficTypes(String trafficTypes) {
-        this.trafficTypes = trafficTypes;
+    public void setTrafficTypes(String types) {
+        this.trafficTypes = types;
     }
 }

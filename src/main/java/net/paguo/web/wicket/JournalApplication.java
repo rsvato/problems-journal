@@ -1,6 +1,7 @@
 package net.paguo.web.wicket;
 
 import net.paguo.controller.UsersController;
+import net.paguo.web.wicket.configuration.HibernateAnnotationComponentConfigurator;
 import net.paguo.web.wicket.requests.CreateRequestPage;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
@@ -36,6 +37,7 @@ public class JournalApplication extends WebApplication implements IRoleCheckingS
     @Override
     protected void init() {
         addComponentInstantiationListener(new SpringComponentInjector(this));
+        addComponentOnBeforeRenderListener(new HibernateAnnotationComponentConfigurator());
         getSecuritySettings().setAuthorizationStrategy(new RoleAuthorizationStrategy(this));
         mountBookmarkablePage("/login", Login.class);
         mountBookmarkablePage("/dashboard", Dashboard.class);
