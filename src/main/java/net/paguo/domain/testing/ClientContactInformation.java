@@ -51,4 +51,12 @@ public class ClientContactInformation implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        result.append(fullName).append(", ").
+                append(phone).append(", ").
+                append(email);
+        return result.toString();
+    }
 }

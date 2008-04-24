@@ -22,6 +22,7 @@ public class ComplaintListProvider implements IDataProvider {
     @SpringBean
     private NetworkFailureController controller;
     private static final Log log = LogFactory.getLog(ComplaintListProvider.class);
+    private static final long serialVersionUID = -9199348328962950987L;
 
     public ComplaintListProvider() {
         InjectorHolder.getInjector().inject(this);

@@ -3,6 +3,7 @@ package net.paguo.domain.testing;
 import net.paguo.visual.InterfaceField;
 import net.paguo.visual.EditorEnum;
 import org.hibernate.validator.NotNull;
+import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
@@ -78,5 +79,21 @@ public class AddressInformation implements Serializable {
 
     public void setApt(String apt) {
         this.apt = apt;
+    }
+
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        if (StringUtils.isNotEmpty(city)){
+            result.append(city).append(", ");
+        }
+        result.append(street).append(", ").
+                append(houseNo);
+        if (StringUtils.isNotEmpty(corp)){
+            result.append("/").append(corp);
+        }
+        if (StringUtils.isNotEmpty(apt)){
+            result.append("-").append(apt);
+        }
+        return result.toString();
     }
 }

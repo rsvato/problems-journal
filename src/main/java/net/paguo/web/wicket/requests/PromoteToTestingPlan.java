@@ -32,8 +32,8 @@ public class PromoteToTestingPlan extends SecuredWebPage {
         return requestController;
     }
 
-    public void setRequestController(RequestController requestController) {
-        this.requestController = requestController;
+    public void setRequestController(RequestController controller) {
+        this.requestController = controller;
     }
 
     public PromoteToTestingPlan(PageParameters parameters) {

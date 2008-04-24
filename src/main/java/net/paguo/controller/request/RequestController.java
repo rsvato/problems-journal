@@ -5,6 +5,9 @@ import net.paguo.domain.testing.ProcessStage;
 import net.paguo.domain.testing.Request;
 
 import java.io.Serializable;
+import java.util.List;
+
+import org.apache.commons.lang.math.IntRange;
 
 /**
  * @author Reyentenko
@@ -46,5 +49,18 @@ public class RequestController implements Serializable {
                     ;
             }
         }
+    }
+
+    public List<Request> findByStatus(ProcessStage status, String orderBy,
+                                      boolean asc, IntRange range) {
+        if (status != null){
+            return requestDao.findByStatus(status, orderBy, asc, range);
+        }else{
+            return requestDao.findAll(orderBy, asc, range);
+        }
+    }
+
+    public Integer count(ProcessStage stage){
+        return requestDao.countWithStage(stage);
     }
 }
