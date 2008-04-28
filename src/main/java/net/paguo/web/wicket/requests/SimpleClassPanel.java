@@ -11,6 +11,7 @@ import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -166,7 +167,21 @@ public class SimpleClassPanel extends Panel {
 
             };
 
-            DropDownChoice ddc = new DropDownChoice("edit", model, enumChoices);
+            DropDownChoice ddc = new DropDownChoice("edit", model, enumChoices, new IChoiceRenderer() {
+                private static final long serialVersionUID = -7479554544309772575L;
+
+                public Object getDisplayValue(Object object) {
+                    Enum o = (Enum) object;
+                    StringResourceModel m = new StringResourceModel(o.name().toLowerCase(),
+                            SimpleClassPanel.this, null);
+                    return m.getString();
+                }
+
+                public String getIdValue(Object object, int index) {
+                    Enum o = (Enum) object;
+                    return String.valueOf(o.ordinal());
+                }
+            });
             ddc.setLabel(labelModel).setRequired(required);
             add(ddc);
         }

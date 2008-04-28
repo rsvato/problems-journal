@@ -1,19 +1,17 @@
 package net.paguo.web.wicket.providers;
 
-import org.apache.wicket.extensions.markup.html.repeater.data.table.ISortableDataProvider;
-import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState;
-import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.injection.web.InjectorHolder;
-import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.commons.lang.math.IntRange;
-
-import java.util.Iterator;
-
 import net.paguo.controller.request.RequestController;
 import net.paguo.domain.testing.ProcessStage;
 import net.paguo.domain.testing.Request;
+import org.apache.commons.lang.math.IntRange;
+import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
+import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
+import org.apache.wicket.injection.web.InjectorHolder;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.util.Iterator;
 
 /**
  * @author Reyentenko
@@ -24,15 +22,16 @@ public class RequestListProvider extends SortableDataProvider {
     @SpringBean
     private RequestController controller;
 
-    public RequestListProvider(){
+    public RequestListProvider() {
         InjectorHolder.getInjector().inject(this);
         setSort("creationDate", false);
     }
 
     public Iterator iterator(int first, int count) {
         IntRange range = new IntRange(first, first + count);
-        return getController().findByStatus(stage, getSort().getProperty(), getSort().isAscending(), range)
-        return null;
+        final SortParam sort = getSort();
+        return getController().findByStatus(stage, sort.getProperty(),
+                sort.isAscending(), range).iterator();
     }
 
     public int size() {

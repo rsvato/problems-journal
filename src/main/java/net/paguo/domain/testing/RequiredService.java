@@ -15,11 +15,18 @@ import java.io.Serializable;
  */
 @Embeddable
 public class RequiredService implements Serializable {
-    @InterfaceField(order = 0) @NotNull
+    @InterfaceField(order = 1)
+    @NotNull
     private Integer addressCount;
 
-    @InterfaceField(order = 1, editor = EditorEnum.LONGTEXT) @NotNull
+    @InterfaceField(order = 2, editor = EditorEnum.LONGTEXT)
+    @NotNull
     private String trafficTypes; //to be clarified
+
+    @InterfaceField(order = 0)
+    @NotNull
+    private Integer requiredSpeed;
+
     private static final long serialVersionUID = -3256240782732181192L;
 
     @Column(name = "ad_count")
@@ -38,5 +45,23 @@ public class RequiredService implements Serializable {
 
     public void setTrafficTypes(String types) {
         this.trafficTypes = types;
+    }
+
+    @Column(name = "speed")
+    public Integer getRequiredSpeed() {
+        return requiredSpeed;
+    }
+
+    public void setRequiredSpeed(Integer requiredSpeed) {
+        this.requiredSpeed = requiredSpeed;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append(String.valueOf(requiredSpeed)).
+                append(", ").append(String.valueOf(addressCount)).
+                append(", ").append(trafficTypes);
+        return result.toString();
     }
 }

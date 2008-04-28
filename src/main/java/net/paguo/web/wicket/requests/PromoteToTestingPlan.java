@@ -57,7 +57,7 @@ public class PromoteToTestingPlan extends SecuredWebPage {
 
             @Override
             protected void onSubmit() {
-                request.setCurrentStage(ProcessStage.BEFORE_TESTING);
+                request.setCurrentStage(ProcessStage.BEFORETESTING);
                 getRequestController().saveRequest(request);
             }
         };

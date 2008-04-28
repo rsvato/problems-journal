@@ -1,26 +1,26 @@
 package net.paguo.web.wicket.requests;
 
-import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.repeater.data.DataView;
-import org.apache.wicket.markup.repeater.Item;
-import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder;
-import org.apache.wicket.extensions.markup.html.repeater.data.table.NavigatorLabel;
-import org.apache.wicket.datetime.markup.html.basic.DateLabel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.StringResourceModel;
-import org.apache.wicket.model.ResourceModel;
-import org.apache.commons.lang.StringUtils;
+import net.paguo.controller.ApplicationSettingsController;
+import net.paguo.domain.application.ApplicationSettings;
+import net.paguo.domain.common.PersonalData;
+import net.paguo.domain.testing.ClientInformation;
 import net.paguo.domain.testing.ProcessStage;
 import net.paguo.domain.testing.Request;
-import net.paguo.domain.testing.ClientInformation;
-import net.paguo.domain.application.ApplicationSettings;
+import net.paguo.domain.testing.RequiredService;
 import net.paguo.domain.users.LocalUser;
-import net.paguo.domain.common.PersonalData;
 import net.paguo.web.wicket.providers.RequestListProvider;
-import net.paguo.controller.ApplicationSettingsController;
+import org.apache.commons.lang.StringUtils;
+import org.apache.wicket.datetime.markup.html.basic.DateLabel;
+import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder;
+import org.apache.wicket.extensions.markup.html.repeater.data.table.NavigatorLabel;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.markup.repeater.data.DataView;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * @author Reyentenko
@@ -75,17 +75,21 @@ public class RequestListPanel extends Panel {
                 item.add(new Label("clientDesignation", clientInformation.getClientDesignation()));
                 item.add(new Label("clientType",
                         new StringResourceModel(clientInformation.getClientType().name().toLowerCase(),
-                        this, null)));
+                                this, null)));
                 item.add(new Label("stage",
                         new StringResourceModel(request.getCurrentStage().name().toLowerCase(), this, null)));
                 item.add(new Label("address", String.valueOf(clientInformation.getAddress())));
                 item.add(new Label("contactInfo", String.valueOf(clientInformation.getContact())));
+                final RequiredService service = request.getService();
+                Label serviceLabel = new Label("service", service == null ? "" : service.toString());
+                item.add(serviceLabel);
             }
         };
 
         add(new OrderByBorder("orderByDate", "creationDate", provider) {
             private static final long serialVersionUID = 7506509423384662455L;
 
+            @Override
             protected void onSortChanged() {
                 view.setCurrentPage(0);
             }

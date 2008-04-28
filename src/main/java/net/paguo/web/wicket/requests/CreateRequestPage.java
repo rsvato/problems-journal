@@ -61,7 +61,7 @@ public class CreateRequestPage extends SecuredWebPage {
                     rqe.setCurrentStage(ProcessStage.OPENED);
                 } else {
                     if (rqe.getService() != null) {
-                        rqe.setCurrentStage(ProcessStage.BEFORE_TESTING);
+                        rqe.setCurrentStage(ProcessStage.BEFORETESTING);
                     }
                 }
                 getController().saveRequest(rqe);
@@ -77,6 +77,9 @@ public class CreateRequestPage extends SecuredWebPage {
         WebMarkupContainer container = new WebMarkupContainer("serviceHolder");
         final boolean visible = ProcessStage.OPENED == req.getCurrentStage();
         if (visible) {
+            if (request.getService() == null) {
+                request.setService(new RequiredService());
+            }
             container.add(new SimpleClassPanel("service", request.getService()));
         }
         container.setVisible(visible);

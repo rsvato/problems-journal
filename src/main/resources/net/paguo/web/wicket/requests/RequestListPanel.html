@@ -7,6 +7,43 @@
         lang="en">
 <body>
 <wicket:panel>
+    <table class="dataView">
+        <tr>
+            <!-- TODO: filtering panel (stages at least) -->
+            <td colspan="9">
+                <div style="float:left">
+                    <span wicket:id="navigator">[navigator]</span>
+                </div>
+                <div style="text-align:right;">
+                    <span wicket:id="navlabel"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th><wicket:message key="id"/></th>
+            <th><wicket:message key="stage"/></th>
+            <th wicket:id="orderByDate"><wicket:message key="creationDate"/></th>
+            <th><wicket:message key="author"/></th>
+            <th><wicket:message key="clientDesignation"/></th>
+            <th><wicket:message key="clientType"/></th>
+            <th><wicket:message key="address"/></th>
+            <th><wicket:message key="contactInfo"/></th>
+            <th><wicket:message key="serviceRequired"/></th>
+        </tr>
+        <span wicket:id="table">
+            <tr>
+                <td><span wicket:id="id"/></td>
+                <td><span wicket:id="stage"/></td>
+                <td><span wicket:id="creationDate"/></td>
+                <td><span wicket:id="author"/></td>
+                <td><span wicket:id="clientDesignation"/></td>
+                <td><span wicket:id="clientType"/></td>
+                <td><span wicket:id="address"/></td>
+                <td><span wicket:id="contactInfo"/></td>
+                <td><span wicket:id="service"/></td>
+            </tr>
+        </span>
+    </table>
 </wicket:panel>
 </body>
 </html>
