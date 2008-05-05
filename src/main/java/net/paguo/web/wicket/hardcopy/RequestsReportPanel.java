@@ -28,12 +28,12 @@ public class RequestsReportPanel extends Panel {
     }
 
     public void setExporter(AbstractExcelExporter excelExporter) {
-        this.exporter = exporter;
+        this.exporter = excelExporter;
     }
 
     public RequestsReportPanel(String id, AbstractExcelExporter excelExporter) {
         super(id);
-        this.exporter = exporter;
+        this.exporter = excelExporter;
         final RequestReportForm child = new RequestReportForm("form");
         add(child);
     }
