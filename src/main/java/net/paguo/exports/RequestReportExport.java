@@ -6,13 +6,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.springframework.context.MessageSource;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author Reyentenko
@@ -71,7 +71,17 @@ public class RequestReportExport {
             short j = 0;
             for (String property : getProperties()) {
                 HSSFCell cell = row.createCell(j++);
+
                 setCellProperty(cell, getObjectValue(request, property), dateStyle);
+
+                if (request.isPermanent()){
+                    HSSFCellStyle hssfCellStyle = cell.getCellStyle();
+                    if (hssfCellStyle == null){
+                       hssfCellStyle = wb.createCellStyle();
+                    }
+                    hssfCellStyle.setFillBackgroundColor(new HSSFColor.GREY_25_PERCENT().getIndex());
+                    cell.setCellStyle(hssfCellStyle);
+                }
             }
         }
         log.debug("Workbook successfully created");
