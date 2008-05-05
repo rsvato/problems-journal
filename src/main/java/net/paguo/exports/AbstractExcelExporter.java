@@ -101,7 +101,7 @@ public abstract class AbstractExcelExporter {
         } catch (Throwable t) {
             property = "";
         }
-        final String formatterId = formatters.get(path);
+        final String formatterId = getFormatters().get(path);
         if (StringUtils.isNotEmpty(formatterId)){
             property = getMessage(formatterId, property);
         }
