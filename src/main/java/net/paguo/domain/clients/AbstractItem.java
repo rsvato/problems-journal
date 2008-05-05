@@ -1,14 +1,15 @@
 package net.paguo.domain.clients;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.NotNull;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.validator.NotNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -19,11 +20,12 @@ import java.util.Set;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "record_type", discriminatorType = DiscriminatorType.STRING)
-public abstract class AbstractItem {
+public abstract class AbstractItem implements Serializable {
     private Integer id;
     private String clientName;
     private Boolean deleted;
     private Set<PostalAddress> addresses;
+    private static final long serialVersionUID = 521272128938766437L;
 
     @Id
     @GeneratedValue(generator = "increment")

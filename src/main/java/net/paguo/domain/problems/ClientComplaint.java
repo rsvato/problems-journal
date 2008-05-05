@@ -1,6 +1,6 @@
 package net.paguo.domain.problems;
 
-import net.paguo.domain.clients.ClientItem;
+import net.paguo.domain.clients.AbstractItem;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -28,7 +28,7 @@ import javax.persistence.*;
     @NamedQuery(name="ClientComplaint.findByClient", query = "from ClientComplaint where client = :client"),
     @NamedQuery(name="ClientComplaint.findAll", query = "from ClientComplaint order by failureTime desc")})
 public class ClientComplaint extends NetworkFailure {
-    private ClientItem client;
+    private AbstractItem client;
     private NetworkProblem parent;
     private String enteredClient;
 
@@ -38,11 +38,11 @@ public class ClientComplaint extends NetworkFailure {
      */
     @ManyToOne
     @IndexedEmbedded
-    public ClientItem getClient() {
+    public AbstractItem getClient() {
         return client;
     }
 
-    public void setClient(ClientItem client) {
+    public void setClient(AbstractItem client) {
         this.client = client;
     }
 
