@@ -10,6 +10,7 @@ import net.paguo.domain.requests.RequestNextStage;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
 import net.paguo.web.wicket.hardcopy.RequestsReportPanel;
 import net.paguo.web.wicket.components.ConfirmationLink;
+import net.paguo.exports.RequestReportExport;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.PageParameters;
@@ -42,6 +43,10 @@ public class ChangeStatusRequestListPage extends SettingsAwarePage {
 
     @SpringBean
     private ChangeStatusRequestController controller;
+
+    @SpringBean
+    private RequestReportExport exporter;
+
     private static final long serialVersionUID = -7948688911485787483L;
     private static final Log log = LogFactory.getLog(ChangeStatusRequestListPage.class);
     private ChangeStatusRequestProvider provider;
@@ -56,6 +61,14 @@ public class ChangeStatusRequestListPage extends SettingsAwarePage {
 
     public void setSettingsController(ApplicationSettingsController settingsController) {
         this.settingsController = settingsController;
+    }
+
+    public RequestReportExport getExporter() {
+        return exporter;
+    }
+
+    public void setExporter(RequestReportExport exporter) {
+        this.exporter = exporter;
     }
 
     public ChangeStatusRequestProvider getProvider() {
@@ -85,7 +98,7 @@ public class ChangeStatusRequestListPage extends SettingsAwarePage {
         add(HeaderContributor.forCss(ChangeStatusRequestListPage.class, "wstyles.css"));
         final BookmarkablePageLink child = new BookmarkablePageLink("createNew", ChangeStatusRequestCreatePage.class);
         secureElement(child, ChangeStatusRequest.class, CREATE);
-        add(new RequestsReportPanel("download"));
+        add(new RequestsReportPanel("download", getExporter()));
         add(child);
     }
 

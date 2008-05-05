@@ -1,7 +1,6 @@
 package net.paguo.web.wicket.hardcopy;
 
 import net.paguo.exports.AbstractExcelExporter;
-import net.paguo.exports.RequestReportExport;
 import net.paguo.web.wicket.resources.ExcelResourceStreamWriter;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.wicket.IRequestTarget;
@@ -11,7 +10,6 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.target.resource.ResourceStreamRequestTarget;
-import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,20 +20,20 @@ import java.util.Date;
  * Time: 0:39:24
  */
 public class RequestsReportPanel extends Panel {
-    @SpringBean
-    private RequestReportExport exporter;
+    private AbstractExcelExporter exporter;
     private static final long serialVersionUID = -4707990886745138286L;
 
-    public RequestReportExport getExporter() {
+    public AbstractExcelExporter getExporter() {
         return exporter;
     }
 
-    public void setExporter(RequestReportExport exporter) {
+    public void setExporter(AbstractExcelExporter excelExporter) {
         this.exporter = exporter;
     }
 
-    public RequestsReportPanel(String id) {
+    public RequestsReportPanel(String id, AbstractExcelExporter excelExporter) {
         super(id);
+        this.exporter = exporter;
         final RequestReportForm child = new RequestReportForm("form");
         add(child);
     }
