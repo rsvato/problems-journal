@@ -99,7 +99,7 @@ public abstract class AbstractItem implements Serializable {
         return result;
     }
 
-    public int compareTo(ClientItem clientItem) {
+    public int compareTo(AbstractItem clientItem) {
         return clientName.compareTo(clientItem.getClientName());
     }
 }

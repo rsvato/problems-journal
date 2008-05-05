@@ -3,14 +3,14 @@ package net.paguo.web.wicket;
 import net.paguo.controller.ApplicationSettingsController;
 import net.paguo.controller.NetworkFailureController;
 import net.paguo.controller.exception.ControllerException;
-import net.paguo.domain.clients.ClientItem;
+import net.paguo.domain.clients.AbstractItem;
 import net.paguo.domain.common.PersonalData;
 import net.paguo.domain.problems.ClientComplaint;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
 import net.paguo.domain.users.LocalUser;
 import net.paguo.search.controller.ComplaintSearchController;
-import net.paguo.web.wicket.providers.SearchListProvider;
 import net.paguo.web.wicket.providers.ComplaintListProvider;
+import net.paguo.web.wicket.providers.SearchListProvider;
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
@@ -131,7 +131,7 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
             item.add(new Label("id"));
             item.add(DateLabel.forDatePattern("failureTime", new Model(problem.getFailureTime()), "dd-MM-yy HH:mm"));
             String clientName = "";
-            final ClientItem client = problem.getClient();
+            final AbstractItem client = problem.getClient();
             if (client != null) {
                 clientName = client.getClientName();
             } else if (!StringUtils.isEmpty(problem.getEnteredClient())) {
