@@ -1,6 +1,7 @@
 package net.paguo.web.wicket.hardcopy;
 
 import net.paguo.exports.AbstractExcelExporter;
+import net.paguo.exports.RequestReportExport;
 import net.paguo.web.wicket.resources.ExcelResourceStreamWriter;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.wicket.IRequestTarget;
@@ -22,14 +23,14 @@ import java.util.Date;
  */
 public class RequestsReportPanel extends Panel {
     @SpringBean
-    private AbstractExcelExporter exporter;
+    private RequestReportExport exporter;
     private static final long serialVersionUID = -4707990886745138286L;
 
-    public AbstractExcelExporter getExporter() {
+    public RequestReportExport getExporter() {
         return exporter;
     }
 
-    public void setExporter(AbstractExcelExporter exporter) {
+    public void setExporter(RequestReportExport exporter) {
         this.exporter = exporter;
     }
 
