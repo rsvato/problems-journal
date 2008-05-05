@@ -26,7 +26,7 @@ public class RequestReportExport extends AbstractExcelExporter {
         this.controller = controller;
     }
 
-    protected Collection<ChangeStatusRequest> getData(Date start, Date end) {
+    public Collection<ChangeStatusRequest> getData(Date start, Date end) {
         final Collection<ChangeStatusRequest> requests = getController().getByDates(start, end);
         return requests;
     }

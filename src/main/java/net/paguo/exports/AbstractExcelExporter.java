@@ -75,7 +75,7 @@ public abstract class AbstractExcelExporter {
         return wb;
     }
 
-    protected abstract Collection<ChangeStatusRequest> getData(Date start, Date end);
+    public abstract Collection<ChangeStatusRequest> getData(Date start, Date end);
 
     private HSSFCellStyle createHeaderStyle(HSSFWorkbook wb) {
         final HSSFFont font = wb.createFont();
