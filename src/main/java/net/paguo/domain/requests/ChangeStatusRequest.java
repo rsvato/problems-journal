@@ -194,4 +194,9 @@ public class ChangeStatusRequest implements Serializable {
     public void setNotices(Set<Notice> notices) {
         this.notices = notices;
     }
+
+    @Transient
+    public Integer getNumericalType(){
+       return isPermanent() ? 0 : 1; 
+    }
 }

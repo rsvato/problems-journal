@@ -278,6 +278,7 @@
         <property name="headers">
             <list>
                 <value type="java.lang.String">excel.client.header</value>
+                <value type="java.lang.String">excel.disconnection.type</value>
                 <value type="java.lang.String">excel.recipe.header</value>
                 <value type="java.lang.String">excel.address.header</value>
                 <value type="java.lang.String">excel.creation.date.header</value>
@@ -294,6 +295,7 @@
         <property name="properties">
             <list>
                 <value type="java.lang.String">showClient</value>
+                <value type="java.lang.String">numericalType</value>
                 <value type="java.lang.String">description</value>
                 <value type="java.lang.String">discAddress</value>
                 <value type="java.lang.String">cancelRequest.dateEntered</value>
@@ -306,6 +308,11 @@
                 <value type="java.lang.String">restoreExec.dateEntered</value>
                 <value type="java.lang.String">restoreExec.author</value>
             </list>
+        </property>
+        <property name="formatters">
+            <map>
+                <entry key="numericalType" value="permanentChoice"/>
+            </map>
         </property>
     </bean>
 

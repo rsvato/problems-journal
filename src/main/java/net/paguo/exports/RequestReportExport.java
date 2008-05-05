@@ -5,14 +5,12 @@ import net.paguo.domain.requests.ChangeStatusRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.springframework.context.MessageSource;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * @author Reyentenko
@@ -23,6 +21,15 @@ public class RequestReportExport {
     private MessageSource messageSource;
     private List<String> headers;
     private List<String> properties;
+    private Map<String, String> formatters;
+
+    public Map<String, String> getFormatters() {
+        return formatters;
+    }
+
+    public void setFormatters(Map<String, String> formatters) {
+        this.formatters = formatters;
+    }
 
     public List<String> getHeaders() {
         return headers;
@@ -112,6 +119,10 @@ public class RequestReportExport {
         } catch (Throwable t) {
             property = "";
         }
+        final String formatterId = formatters.get(path);
+        if (StringUtils.isNotEmpty(formatterId)){
+            property = getMessage(formatterId, property);
+        }
         return property;
     }
 
@@ -141,5 +152,9 @@ public class RequestReportExport {
 
     private String getMessage(final String code) {
         return getMessageSource().getMessage(code, null, new Locale("ru", "RU"));
+    }
+
+    private String getMessage(final String code, final Object... args) {
+        return getMessageSource().getMessage(code, args, new Locale("ru", "RU"));
     }
 }
