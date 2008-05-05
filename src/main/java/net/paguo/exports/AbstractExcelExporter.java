@@ -1,15 +1,14 @@
 package net.paguo.exports;
 
-import org.springframework.context.MessageSource;
-import org.apache.poi.hssf.usermodel.*;
+import net.paguo.domain.requests.ChangeStatusRequest;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.poi.hssf.usermodel.*;
+import org.springframework.context.MessageSource;
 
 import java.util.*;
-
-import net.paguo.domain.requests.ChangeStatusRequest;
 
 /**
  * @author Reyentenko
@@ -137,6 +136,7 @@ public abstract class AbstractExcelExporter {
     }
 
     private String getMessage(final String code, final Object... args) {
-        return getMessageSource().getMessage(code, args, new Locale("ru", "RU"));
+        final String message = getMessageSource().getMessage(code, args, new Locale("ru", "RU"));
+        return message;
     }
 }
