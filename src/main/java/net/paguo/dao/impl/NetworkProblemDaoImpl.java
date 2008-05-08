@@ -6,6 +6,8 @@ import net.paguo.generic.dao.impl.GenericDaoHibernateImpl;
 import org.apache.commons.lang.math.IntRange;
 
 import java.util.List;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * User: sreentenko
@@ -29,6 +31,10 @@ public class NetworkProblemDaoImpl extends GenericDaoHibernateImpl<NetworkProble
     }
 
     public List<NetworkProblem> findAll(IntRange p0) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public Collection<NetworkProblem> findByDateRange(Date start, Date end) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }
