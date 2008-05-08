@@ -21,6 +21,6 @@ public class ProblemsExcelExporterImpl extends AbstractExcelExporter<NetworkProb
     }
 
     public Collection<NetworkProblem> getData(Date start, Date end) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return getController().getProblems(start, end);
     }
 }
