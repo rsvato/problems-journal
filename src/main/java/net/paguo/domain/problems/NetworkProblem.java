@@ -22,7 +22,8 @@ import java.util.List;
 @NamedQuery(name = "NetworkProblem.findOpen",
         query = "from NetworkProblem where restoreAction is null or restoreAction.completed = false order by failureTime"),
 @NamedQuery(name = "NetworkProblem.findAll",
-        query = "from NetworkProblem np order by np.failureTime desc")
+        query = "from NetworkProblem np order by np.failureTime desc"),
+@NamedQuery(name = "NetworkProblem.findByDateRange", query = "from NetworkProblem where failureTime between :start and :end order by failureTime desc")
         }
 )
 public class NetworkProblem extends NetworkFailure {

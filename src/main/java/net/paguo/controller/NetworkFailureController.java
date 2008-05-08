@@ -208,4 +208,8 @@ public class NetworkFailureController {
     public Collection<ClientComplaint> getComplaints(Date start, Date end) {
         return getComplaintDao().findByDateRange(start, end);
     }
+
+    public Collection<NetworkProblem> getProblems(Date start, Date end) {
+        return getProblemDao().findByDateRange(start, end);
+    }
 }

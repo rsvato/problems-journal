@@ -23,6 +23,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import static net.paguo.domain.users.ApplicationRole.Action.*;
 import net.paguo.web.wicket.providers.NetworkProblemListProvider;
 import net.paguo.web.wicket.providers.SearchListProvider;
+import net.paguo.web.wicket.hardcopy.RequestsReportPanel;
+import net.paguo.exports.ProblemsExcelExporterImpl;
 
 /**
  * User: sreentenko
@@ -33,6 +35,9 @@ public class NetworkProblemsPage extends FailurePage<NetworkProblem>{
 
     @SpringBean
     NetworkProblemSearchController searchController;
+
+    @SpringBean
+    ProblemsExcelExporterImpl exporter;
 
     public NetworkProblemsPage(PageParameters parameters) {
         super(parameters);
@@ -47,7 +52,13 @@ public class NetworkProblemsPage extends FailurePage<NetworkProblem>{
         this.searchController = searchController;
     }
 
+    public ProblemsExcelExporterImpl getExporter() {
+        return exporter;
+    }
 
+    public void setExporter(ProblemsExcelExporterImpl exporter) {
+        this.exporter = exporter;
+    }
 
     public NetworkProblemsPage() {
         super();
@@ -65,6 +76,7 @@ public class NetworkProblemsPage extends FailurePage<NetworkProblem>{
                 getSearchController().reindex();
             }
         });
+        add(new RequestsReportPanel("export", getExporter()));
     }
 
     protected void initDefault(IDataProvider provider) {

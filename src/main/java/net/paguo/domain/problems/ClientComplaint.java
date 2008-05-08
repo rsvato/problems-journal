@@ -72,6 +72,6 @@ public class ClientComplaint extends NetworkFailure {
 
     @Transient
     public String getReportedClient(){
-       return StringUtils.isNotEmpty(enteredClient) ? enteredClient : String.valueOf(client); 
+       return StringUtils.isNotEmpty(enteredClient) ? enteredClient : client.getClientName(); 
     }
 }
