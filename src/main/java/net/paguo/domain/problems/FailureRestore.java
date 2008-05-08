@@ -6,6 +6,7 @@ import org.hibernate.search.annotations.Index;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Lob;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -73,5 +74,10 @@ public class FailureRestore implements Serializable {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    @Transient
+    public int getNumericalClose(){
+       return completed ? 1 : 0; 
     }
 }

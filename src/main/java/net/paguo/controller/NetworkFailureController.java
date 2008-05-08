@@ -13,6 +13,7 @@ import org.apache.wicket.util.string.IStringSequence;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Collection;
 
 /**
  * @author Svyatoslav Reyentenko mailto:rsvato@gmail.com
@@ -202,5 +203,9 @@ public class NetworkFailureController {
         } catch (Throwable t) {
             throw new ControllerException(t);
         }
+    }
+
+    public Collection<ClientComplaint> getComplaints(Date start, Date end) {
+        return getComplaintDao().findByDateRange(start, end);
     }
 }

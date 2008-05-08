@@ -8,6 +8,8 @@
 <body>
 <wicket:panel>
     <form wicket:id="form">
+        <fieldset>
+            <legend><wicket:message key="reportLabel">[download report]</wicket:message></legend>
         <table>
             <tr>
                 <td>
@@ -23,9 +25,10 @@
                     <span wicket:id="endDate"/>
                 </td>
 
-                <td><input type="submit" value="download excel"/></td>
+                <td><input type="submit"  class="button" wicket:message="value:download"/></td>
             </tr>
         </table>
+        </fieldset>
     </form>
 </wicket:panel>
 </body>

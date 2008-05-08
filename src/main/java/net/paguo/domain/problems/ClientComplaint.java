@@ -26,7 +26,8 @@ import javax.persistence.*;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @NamedQueries({
     @NamedQuery(name="ClientComplaint.findByClient", query = "from ClientComplaint where client = :client"),
-    @NamedQuery(name="ClientComplaint.findAll", query = "from ClientComplaint order by failureTime desc")})
+    @NamedQuery(name="ClientComplaint.findAll", query = "from ClientComplaint order by failureTime desc"),
+    @NamedQuery(name = "ClientComplaint.findByDateRange", query = "from ClientComplaint where failureTime between :start and :end order by failureTime desc")})
 public class ClientComplaint extends NetworkFailure {
     private AbstractItem client;
     private NetworkProblem parent;

@@ -316,6 +316,42 @@
         </property>
     </bean>
 
+    <bean id="complaintsExporter" class="net.paguo.exports.ComplaintsExcelExporter">
+        <property name="controller" ref="failureController"/>
+        <property name="messageSource" ref="messageSource"/>
+        <property name="headers">
+            <list>
+               <value type="java.lang.String">problem.id</value>
+               <value type="java.lang.String">problem.time</value>
+               <value type="java.lang.String">complaint.clientName</value>
+               <value type="java.lang.String">problem.author</value>
+               <value type="java.lang.String">complaint.description</value>
+               <value type="java.lang.String">problem.cause</value>
+               <value type="java.lang.String">problem.action</value>
+               <value type="java.lang.String">problem.closeTime</value>
+               <value type="java.lang.String">problem.closed</value> 
+            </list>
+        </property>
+        <property name="properties">
+            <list>
+                <value type="java.lang.String">id</value>
+                <value type="java.lang.String">client.failureTime</value>
+                <value type="java.lang.String">client.clientName</value>
+                <value type="java.lang.String">userCreated</value>
+                <value type="java.lang.String">failureDescription</value>
+                <value type="java.lang.String">restoreAction.failureCause</value> 
+                <value type="java.lang.String">restoreAction.restoreAction</value>
+                <value type="java.lang.String">restoreAction.restoreTime</value>
+                <value type="java.lang.String">restoreAction.numericalClose</value> 
+            </list>
+        </property>
+        <property name="formatters">
+            <map>
+                <entry key="numericalClose" value="numericalChoice"/>
+            </map>
+        </property>
+    </bean>
+
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages"/>
     </bean>

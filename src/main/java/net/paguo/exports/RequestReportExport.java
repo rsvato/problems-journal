@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * @author Reyentenko
  */
-public class RequestReportExport extends AbstractExcelExporter {
+public class RequestReportExport extends AbstractExcelExporter<ChangeStatusRequest> {
     private ChangeStatusRequestController controller;
 
     public ChangeStatusRequestController getController() {

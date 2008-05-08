@@ -11,6 +11,8 @@ import net.paguo.domain.users.LocalUser;
 import net.paguo.search.controller.ComplaintSearchController;
 import net.paguo.web.wicket.providers.ComplaintListProvider;
 import net.paguo.web.wicket.providers.SearchListProvider;
+import net.paguo.web.wicket.hardcopy.RequestsReportPanel;
+import net.paguo.exports.ComplaintsExcelExporter;
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.Session;
@@ -41,6 +43,9 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
     @SpringBean
     ComplaintSearchController searchController;
 
+    @SpringBean
+    private ComplaintsExcelExporter excelExporter;
+
     public void setSettingsController(ApplicationSettingsController settingsController) {
         this.settingsController = settingsController;
     }
@@ -53,6 +58,13 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
         this.searchController = searchController;
     }
 
+    public ComplaintsExcelExporter getExcelExporter() {
+        return excelExporter;
+    }
+
+    public void setExcelExporter(ComplaintsExcelExporter excelExporter) {
+        this.excelExporter = excelExporter;
+    }
 
     public ComplaintsPage(PageParameters parameters) {
         super(parameters);
@@ -84,6 +96,7 @@ public class ComplaintsPage extends FailurePage<ClientComplaint> {
         }
         add(items);
         add(new PagingNavigator("navigator", items));
+        add(new RequestsReportPanel("reports", excelExporter));
     }
 
     protected void initConstantCompoments() {

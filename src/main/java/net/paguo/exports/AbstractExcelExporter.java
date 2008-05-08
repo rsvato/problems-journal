@@ -9,16 +9,18 @@ import org.apache.poi.hssf.usermodel.*;
 import org.springframework.context.MessageSource;
 
 import java.util.*;
+import java.io.Serializable;
 
 /**
  * @author Reyentenko
  */
-public abstract class AbstractExcelExporter {
+public abstract class AbstractExcelExporter<T> implements Serializable {
     private static final Log log = LogFactory.getLog(AbstractExcelExporter.class);
     private MessageSource messageSource;
     private List<String> headers;
     private List<String> properties;
     private Map<String, String> formatters;
+    private static final long serialVersionUID = -4429761117392202499L;
 
     public Map<String, String> getFormatters() {
         return formatters;
@@ -74,7 +76,7 @@ public abstract class AbstractExcelExporter {
         return wb;
     }
 
-    public abstract Collection<ChangeStatusRequest> getData(Date start, Date end);
+    public abstract Collection<T> getData(Date start, Date end);
 
     private HSSFCellStyle createHeaderStyle(HSSFWorkbook wb) {
         final HSSFFont font = wb.createFont();

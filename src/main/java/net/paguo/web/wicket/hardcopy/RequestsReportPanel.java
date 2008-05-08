@@ -2,9 +2,11 @@ package net.paguo.web.wicket.hardcopy;
 
 import net.paguo.exports.AbstractExcelExporter;
 import net.paguo.web.wicket.resources.ExcelResourceStreamWriter;
+import net.paguo.web.wicket.requests.CreateRequestPage;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.wicket.IRequestTarget;
 import org.apache.wicket.RequestCycle;
+import org.apache.wicket.behavior.HeaderContributor;
 import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -36,6 +38,7 @@ public class RequestsReportPanel extends Panel {
         this.exporter = excelExporter;
         final RequestReportForm child = new RequestReportForm("form");
         add(child);
+        add(new HeaderContributor.forCss(CreateRequestPage.class, "forms.css"));
     }
 
     private class RequestReportForm extends Form {
