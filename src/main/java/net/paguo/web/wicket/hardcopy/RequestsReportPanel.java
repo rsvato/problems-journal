@@ -38,7 +38,7 @@ public class RequestsReportPanel extends Panel {
         this.exporter = excelExporter;
         final RequestReportForm child = new RequestReportForm("form");
         add(child);
-        add(new HeaderContributor.forCss(CreateRequestPage.class, "forms.css"));
+        add(HeaderContributor.forCss(CreateRequestPage.class, "forms.css"));
     }
 
     private class RequestReportForm extends Form {
