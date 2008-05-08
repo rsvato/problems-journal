@@ -335,8 +335,8 @@
         <property name="properties">
             <list>
                 <value type="java.lang.String">id</value>
-                <value type="java.lang.String">client.failureTime</value>
-                <value type="java.lang.String">client.clientName</value>
+                <value type="java.lang.String">failureTime</value>
+                <value type="java.lang.String">reportedClient</value>
                 <value type="java.lang.String">userCreated</value>
                 <value type="java.lang.String">failureDescription</value>
                 <value type="java.lang.String">restoreAction.failureCause</value> 
@@ -347,7 +347,7 @@
         </property>
         <property name="formatters">
             <map>
-                <entry key="numericalClose" value="numericalChoice"/>
+                <entry key="restoreAction.numericalClose" value="numericalChoice"/>
             </map>
         </property>
     </bean>

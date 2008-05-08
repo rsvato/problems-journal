@@ -2,6 +2,7 @@ package net.paguo.domain.problems;
 
 import net.paguo.domain.clients.AbstractItem;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.search.annotations.Indexed;
@@ -67,5 +68,10 @@ public class ClientComplaint extends NetworkFailure {
 
     public void setEnteredClient(String enteredClient) {
         this.enteredClient = enteredClient;
+    }
+
+    @Transient
+    public String getReportedClient(){
+       return StringUtils.isNotEmpty(enteredClient) ? enteredClient : String.valueOf(client); 
     }
 }
