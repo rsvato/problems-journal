@@ -347,7 +347,7 @@
         </property>
         <property name="formatters">
             <map>
-                <entry key="restoreAction.numericalClose" value="numericalChoice"/>
+                <entry key="restoreAction.numericalClose" value="completedChoice"/>
             </map>
         </property>
     </bean>
