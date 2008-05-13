@@ -23,7 +23,7 @@ public class RequiredService implements Serializable {
     @NotNull
     private String trafficTypes; //to be clarified
 
-    @InterfaceField(order = 0)
+    @InterfaceField(order = 0, length = 4)
     @NotNull
     private Integer requiredSpeed;
 

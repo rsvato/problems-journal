@@ -83,6 +83,7 @@ public class RequestListPanel extends Panel {
                 final RequiredService service = request.getService();
                 Label serviceLabel = new Label("service", service == null ? "" : service.toString());
                 item.add(serviceLabel);
+                item.add(new RequestCommandPanel("commands", request));
             }
         };
 

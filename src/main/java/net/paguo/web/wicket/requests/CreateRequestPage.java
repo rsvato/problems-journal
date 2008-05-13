@@ -55,7 +55,9 @@ public class CreateRequestPage extends SecuredWebPage {
             @Override
             protected void onSubmit() {
                 Request rqe = request;
-                rqe.setCreationDate(new Date());
+                if (rqe.getId() == null) {
+                    rqe.setCreationDate(new Date());
+                }
                 rqe.setAuthor(findSessionUser());
                 if (rqe.getId() == null) {
                     rqe.setCurrentStage(ProcessStage.OPENED);
@@ -65,6 +67,8 @@ public class CreateRequestPage extends SecuredWebPage {
                     }
                 }
                 getController().saveRequest(rqe);
+                setRedirect(true);
+                setResponsePage(ListRequestPage.class);
             }
 
         };

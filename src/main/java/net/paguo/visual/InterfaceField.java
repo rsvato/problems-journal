@@ -12,5 +12,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface InterfaceField {
     EditorEnum editor() default EditorEnum.STRING;
+
     int order() default 0;
+
+    int length() default 0;
 }

@@ -12,6 +12,7 @@ import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValueConversionException;
 
@@ -59,6 +60,8 @@ public class PromoteToTestingPlan extends SecuredWebPage {
             protected void onSubmit() {
                 request.setCurrentStage(ProcessStage.BEFORETESTING);
                 getRequestController().saveRequest(request);
+                setRedirect(true);
+                setResponsePage(ListRequestPage.class);
             }
         };
         if (request.getService() == null) {
@@ -68,6 +71,7 @@ public class PromoteToTestingPlan extends SecuredWebPage {
         child.setEnabled(ProcessStage.OPENED == request.getCurrentStage());
         promoteForm.add(child);
         add(promoteForm);
+        add(new FeedbackPanel("panel"));
     }
 
 }

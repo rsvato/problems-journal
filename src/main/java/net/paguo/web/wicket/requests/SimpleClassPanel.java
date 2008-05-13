@@ -8,6 +8,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -65,9 +66,10 @@ public class SimpleClassPanel extends Panel {
                 boolean required = field.getAnnotation(NotNull.class) != null;
 
                 final EditorEnum editorEnum = fieldDescription.editor();
+                final int length = fieldDescription.length();
                 switch (editorEnum) {
                     case STRING:
-                        editor = new StringEditor("editor", model, labelModel, required, row);
+                        editor = new StringEditor("editor", model, labelModel, required, row, length);
                         break;
                     case DATE:
                         editor = new DateEditor("editor", model, labelModel, required, row);
@@ -91,7 +93,6 @@ public class SimpleClassPanel extends Panel {
 
                 if (editor != null) {
                     row.add(editor);
-                    // Use Wicket's i18n to name the field.
                     row.add(new Label("name", labelModel));
                     fields.add(row);
                 }
@@ -104,9 +105,17 @@ public class SimpleClassPanel extends Panel {
         private static final long serialVersionUID = 2258161700743436468L;
 
         public StringEditor(String id, IModel model, IModel labelModel, boolean required,
-                            MarkupContainer container) {
+                            MarkupContainer container, final int lentgh) {
             super(id, "stringEditor", container);
-            add(new TextField(EDIT, model).setLabel(labelModel).setRequired(required));
+            add(new TextField(EDIT, model) {
+                @Override
+                protected void onComponentTag(ComponentTag tag) {
+                    super.onComponentTag(tag);
+                    if (lentgh > 0) {
+                        tag.put("maxlength", lentgh);
+                    }
+                }
+            }.setLabel(labelModel).setRequired(required));
         }
     }
 
