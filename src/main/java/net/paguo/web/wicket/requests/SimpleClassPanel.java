@@ -19,6 +19,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.*;
 import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Length;
 
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -66,7 +67,13 @@ public class SimpleClassPanel extends Panel {
                 boolean required = field.getAnnotation(NotNull.class) != null;
 
                 final EditorEnum editorEnum = fieldDescription.editor();
-                final int length = fieldDescription.length();
+                int length = fieldDescription.length();
+                if (length == 0){
+                    final Length annotation = field.getAnnotation(Length.class);
+                    if (annotation != null){
+                        length = annotation.max();
+                    }
+                }
                 switch (editorEnum) {
                     case STRING:
                         editor = new StringEditor("editor", model, labelModel, required, row, length);

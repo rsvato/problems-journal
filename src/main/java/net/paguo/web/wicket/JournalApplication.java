@@ -53,7 +53,7 @@ public class JournalApplication extends WebApplication implements IRoleCheckingS
         mountBookmarkablePage("/test.html", TablePOC.class);
         mountBookmarkablePage("/create-request", ChangeStatusRequestCreatePage.class);
         mountBookmarkablePage("/requests", ChangeStatusRequestListPage.class);
-        mountBookmarkablePage("/testing/editBasic", CreateRequestPage.class);
+        mountBookmarkablePage("/testing/create", CreateRequestPage.class);
         mountBookmarkablePage("/testing/list", ListRequestPage.class);
 
     }

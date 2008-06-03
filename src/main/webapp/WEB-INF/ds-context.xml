@@ -45,6 +45,9 @@
                 <value>net.paguo.domain.testing.ClientContactInformation</value>
                 <value>net.paguo.domain.testing.BuildingInformation</value>
                 <value>net.paguo.domain.testing.AddressInformation</value>
+                <value>net.paguo.domain.testing.Testing</value>
+                <value>net.paguo.domain.testing.TestingPlan</value>
+                <value>net.paguo.domain.testing.TestingResults</value>
             </list>
         </property>
         <property name="hibernateProperties">

@@ -8,6 +8,7 @@ import org.hibernate.validator.Valid;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * User: sreentenko
@@ -27,6 +28,8 @@ public class Request implements Serializable {
     private RequiredService service;
     private BuildingInformation buildingInformation;
     private static final long serialVersionUID = -5455347232298219310L;
+
+    private Set<Testing> testings;
 
     public Request() {
     }
@@ -100,5 +103,14 @@ public class Request implements Serializable {
 
     public void setBuildingInformation(BuildingInformation bi) {
         this.buildingInformation = bi;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "request")
+    public Set<Testing> getTestings() {
+        return testings;
+    }
+
+    public void setTestings(Set<Testing> testings) {
+        this.testings = testings;
     }
 }
