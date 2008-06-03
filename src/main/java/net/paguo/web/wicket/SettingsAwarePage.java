@@ -14,6 +14,7 @@ public class SettingsAwarePage extends SecuredWebPage {
     @SpringBean
     ApplicationSettingsController settingsController;
     private static final String ITEMS_PER_PAGE_KEY = "failureController.itemsPerPage";
+    private static final String MAX_TESTING_COUNT = "requestController.maxTestingCount";
     private static final long serialVersionUID = 4105583608381816997L;
 
     public ApplicationSettingsController getSettingsController() {
@@ -29,5 +30,16 @@ public class SettingsAwarePage extends SecuredWebPage {
             perPage = Integer.decode(itemsPerPageSettings.getValue());
         }
         return perPage;
+    }
+
+    protected int getMaxTestingCount(){
+        int maxRetries = 3;
+        ApplicationSettings itemsPerPageSettings = getSettingsController().findByKey(MAX_TESTING_COUNT);
+        if (itemsPerPageSettings != null
+                && !StringUtils.isEmpty(itemsPerPageSettings.getValue())
+                && StringUtils.isNumeric(itemsPerPageSettings.getValue())){
+            maxRetries = Integer.decode(itemsPerPageSettings.getValue());
+        }
+        return maxRetries;
     }
 }
