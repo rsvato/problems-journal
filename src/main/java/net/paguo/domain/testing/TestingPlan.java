@@ -19,7 +19,7 @@ import org.hibernate.validator.Length;
 @Entity
 @Table(name = "wf_testing_plan")
 public class TestingPlan implements Serializable {
-    @Id @GeneratedValue
+
     private Integer id;
     private static final long serialVersionUID = 1988468348137000821L;
 
@@ -35,6 +35,7 @@ public class TestingPlan implements Serializable {
     @InterfaceField(order = 2, editor = EditorEnum.LONGTEXT)
     private String requiredStuff;
 
+    @Id @GeneratedValue
     public Integer getId() {
         return id;
     }

@@ -15,6 +15,9 @@ public class Testing  implements Serializable {
     @Id @GeneratedValue
     private Integer id;
 
+    @ManyToOne(optional = false, targetEntity = Request.class)
+    @JoinTable(name = "wf_rq_tst", inverseJoinColumns = @JoinColumn(name = "request_id"),
+    joinColumns = @JoinColumn(name = "testing_id"))
     private Request request;
 
     @Column
@@ -61,9 +64,7 @@ public class Testing  implements Serializable {
         this.creationDate = creationDate;
     }
 
-    @ManyToOne(optional = false, targetEntity = Request.class)
-    @JoinTable(name = "wf_rq_tst", inverseJoinColumns = @JoinColumn(name = "request_id"),
-    joinColumns = @JoinColumn(name = "testing_id"))
+
     public Request getRequest() {
         return request;
     }
