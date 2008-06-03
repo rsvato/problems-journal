@@ -54,5 +54,11 @@ public class RequestCommandPanel extends Panel {
 
         cancelByUser.setVisible(requestOpened);
         add(cancelByUser);
+
+        Link scheduleLink = new BookmarkablePageLink("scheduleLink", ScheduleTestingPage.class,
+                parameters);
+        final boolean readyToScheduleTest = ProcessStage.BEFORETESTING == request.getCurrentStage();
+        scheduleLink.setVisible(readyToScheduleTest);
+        add(scheduleLink);
     }
 }
