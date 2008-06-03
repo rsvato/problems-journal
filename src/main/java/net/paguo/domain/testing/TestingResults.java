@@ -1,15 +1,14 @@
 package net.paguo.domain.testing;
 
 import net.paguo.domain.users.LocalUser;
-import net.paguo.visual.InterfaceField;
 import net.paguo.visual.EditorEnum;
+import net.paguo.visual.InterfaceField;
+import org.hibernate.validator.Length;
+import org.hibernate.validator.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
-import org.hibernate.validator.NotNull;
-import org.hibernate.validator.Length;
 
 /**
  * User: sreentenko
@@ -22,28 +21,39 @@ public class TestingResults implements Serializable {
     private Integer id;
 
     private static final long serialVersionUID = -5520581889467004201L;
-    
+
     private Date creationDate;
     private LocalUser creator;
-    
-    @InterfaceField(order = 0) @NotNull @Length(max = 15)
+
+    @InterfaceField(order = 0)
+    @NotNull
+    @Length(max = 15)
     private String staffLead;
 
-    @InterfaceField(order = 1) @NotNull @Length(min = 2, max = 4)
+    @InterfaceField(order = 1)
+    @NotNull
+    @Length(min = 2, max = 4)
     private String baseStation;
-    @InterfaceField(order = 2) @NotNull @Length(min = 1, max = 2)
+    @InterfaceField(order = 2)
+    @NotNull
+    @Length(min = 1, max = 2)
     private String sector;
 
-    @InterfaceField(order = 3) @NotNull @Length(min = 1, max = 6)
+    @InterfaceField(order = 3)
+    @NotNull
+    @Length(min = 1, max = 6)
     private String signalStrength;
 
-    @InterfaceField(order = 4) @NotNull @Length(min = 1, max = 4)
+    @InterfaceField(order = 4)
+    @NotNull
+    @Length(min = 1, max = 4)
     private String connectionSpeed;
 
-    @InterfaceField(order = 5, editor = EditorEnum.ENUM) @NotNull @Length(min = 2, max = 4)
+    @InterfaceField(order = 5, editor = EditorEnum.ENUM)
+    @NotNull
     private TestingResultsEnum result;
 
-    @InterfaceField(order = 1, editor = EditorEnum.LONGTEXT)
+    @InterfaceField(order = 6, editor = EditorEnum.LONGTEXT)
     private String recommendations;
 
     public TestingResultsEnum getResult() {
@@ -53,8 +63,9 @@ public class TestingResults implements Serializable {
     public void setResult(TestingResultsEnum result) {
         this.result = result;
     }
-    
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue
     public Integer getId() {
         return id;
     }

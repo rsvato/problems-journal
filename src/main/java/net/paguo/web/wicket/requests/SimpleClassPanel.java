@@ -6,6 +6,7 @@ import net.paguo.web.wicket.components.StreetAutoCompleteTextField;
 import net.paguo.web.wicket.editors.Editor;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.behavior.HeaderContributor;
 import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.ComponentTag;
@@ -18,8 +19,8 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.*;
-import org.hibernate.validator.NotNull;
 import org.hibernate.validator.Length;
+import org.hibernate.validator.NotNull;
 
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -41,6 +42,7 @@ public class SimpleClassPanel extends Panel {
         super(id, new CompoundPropertyModel(object));
         RepeatingView fields = new RepeatingView("fields");
         final List<Field> declaredFields = Arrays.asList(object.getClass().getDeclaredFields());
+        add(HeaderContributor.forCss(SimpleClassPanel.class, "forms.css"));
 
         Collections.sort(declaredFields, new Comparator<Field>() {
             public int compare(Field o1, Field o2) {
@@ -68,9 +70,9 @@ public class SimpleClassPanel extends Panel {
 
                 final EditorEnum editorEnum = fieldDescription.editor();
                 int length = fieldDescription.length();
-                if (length == 0){
+                if (length == 0) {
                     final Length annotation = field.getAnnotation(Length.class);
-                    if (annotation != null){
+                    if (annotation != null) {
                         length = annotation.max();
                     }
                 }

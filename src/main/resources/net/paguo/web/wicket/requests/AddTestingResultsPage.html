@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:wicket="http://wicket.apache.org/"
+        xml:lang="en"
+        lang="en">
+<wicket:head>
+    <title><wicket:message key="testing.results">[new testing request]</wicket:message></title>
+</wicket:head>
+
+<body>
+<wicket:extend>
+    <h1><wicket:message key="testing.results">[new testing request]</wicket:message></h1>
+
+    <div id="feedback">
+        <span wicket:id="feedback"/>
+    </div>
+    <form wicket:id="testingResultsForm">
+
+        <fieldset>
+            <legend><wicket:message key="testing.results"/></legend>
+            <span wicket:id="resultsPanel">[required service]</span>
+        </fieldset>
+        <input type="submit" class="button" wicket:message="value:save"/>
+    </form>
+
+</wicket:extend>
+</body>
+</html>

@@ -60,5 +60,10 @@ public class RequestCommandPanel extends Panel {
         final boolean readyToScheduleTest = ProcessStage.BEFORETESTING == request.getCurrentStage();
         scheduleLink.setVisible(readyToScheduleTest);
         add(scheduleLink);
+
+        Link testResultsLink = new BookmarkablePageLink("testResultLink", AddTestingResultsPage.class, parameters);
+        final boolean canGetResults = ProcessStage.SCHEDULETESTING == request.getCurrentStage();
+        testResultsLink.setVisible(canGetResults);
+        add(testResultsLink);
     }
 }

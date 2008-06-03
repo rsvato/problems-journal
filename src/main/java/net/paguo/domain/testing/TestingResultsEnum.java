@@ -6,7 +6,7 @@ package net.paguo.domain.testing;
  * Time: 1:05:14
  */
 public enum TestingResultsEnum {
-    SUCCESS,
-    FAILURE,
-    RETRY
+    TRSUCCESS,
+    TRFAILURE,
+    TRRETRY
 }

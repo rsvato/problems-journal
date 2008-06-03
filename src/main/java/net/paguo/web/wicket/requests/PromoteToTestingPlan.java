@@ -11,6 +11,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.Session;
+import org.apache.wicket.behavior.HeaderContributor;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -72,6 +73,8 @@ public class PromoteToTestingPlan extends SecuredWebPage {
         promoteForm.add(child);
         add(promoteForm);
         add(new FeedbackPanel("panel"));
+        add(HeaderContributor.forCss(PromoteToTestingPlan.class, "forms.css"));
+
     }
 
 }
