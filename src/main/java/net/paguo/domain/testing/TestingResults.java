@@ -54,7 +54,7 @@ public class TestingResults implements Serializable {
         this.result = result;
     }
     
-    @Id
+    @Id @GeneratedValue
     public Integer getId() {
         return id;
     }

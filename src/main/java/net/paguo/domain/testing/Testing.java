@@ -21,10 +21,12 @@ public class Testing  implements Serializable {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date creationDate;
 
-    @OneToOne(optional = false) @PrimaryKeyJoinColumn(name = "all_id")
+    @OneToOne(optional = false)
+    @JoinColumn(name = "plan_id")
     private TestingPlan plan;
 
-    @OneToOne @PrimaryKeyJoinColumn(name = "all_id")
+    @OneToOne
+    @JoinColumn(name = "result_id")
     private TestingResults result;
 
     public Integer getId() {
