@@ -15,6 +15,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.Session;
+import org.apache.wicket.Page;
 import org.apache.wicket.authorization.strategies.role.metadata.MetaDataRoleAuthorizationStrategy;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -141,4 +142,6 @@ public class SecuredWebPage extends ApplicationWebPage {
         String allowed = StringUtils.join(roles.iterator(), ",");
         MetaDataRoleAuthorizationStrategy.authorize(cmp, RENDER, allowed);
     }
+
+    
 }
