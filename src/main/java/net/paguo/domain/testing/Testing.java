@@ -21,11 +21,11 @@ public class Testing  implements Serializable {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date creationDate;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "plan_id")
     private TestingPlan plan;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "result_id")
     private TestingResults result;
 
@@ -61,8 +61,9 @@ public class Testing  implements Serializable {
         this.creationDate = creationDate;
     }
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "request_id", nullable = false)
+    @ManyToOne(optional = false, targetEntity = Request.class)
+    @JoinTable(name = "wf_rq_tst", inverseJoinColumns = @JoinColumn(name = "request_id"),
+    joinColumns = @JoinColumn(name = "testing_id"))
     public Request getRequest() {
         return request;
     }
