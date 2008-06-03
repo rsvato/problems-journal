@@ -80,7 +80,6 @@ public class ScheduleTestingPage extends SettingsAwarePage {
         };
         add(form);
         SimpleClassPanel panel = new SimpleClassPanel("planPanel", plan);
-        form.setModelObject(plan);
         form.add(panel);
         add(new FeedbackPanel("feedback"));
     }

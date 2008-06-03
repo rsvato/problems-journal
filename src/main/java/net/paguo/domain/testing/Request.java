@@ -29,7 +29,7 @@ public class Request implements Serializable {
     private BuildingInformation buildingInformation;
     private static final long serialVersionUID = -5455347232298219310L;
 
-    private Set<Testing> testings;
+    private Set<Testing> testings = new HashSet<Testing>();
 
     public Request() {
     }
