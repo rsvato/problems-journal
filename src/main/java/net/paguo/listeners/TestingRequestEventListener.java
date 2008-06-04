@@ -11,7 +11,7 @@ import net.paguo.domain.testing.Request;
  * @author Reyentenko
  */
 public class TestingRequestEventListener implements
-    org.hibernate.event.PostDeleteEventListener, org.hibernate.event.PostInsertEventListener, SaveOrUpdateEventListener{
+    org.hibernate.event.PostDeleteEventListener, org.hibernate.event.PostInsertEventListener, PostUpdateEventListener{
 
     private static final Log log = LogFactory.getLog(TestingRequestEventListener.class);
     private static final long serialVersionUID = -2144161022858355466L;
@@ -39,11 +39,4 @@ public class TestingRequestEventListener implements
         }
     }
 
-    public void onSaveOrUpdate(SaveOrUpdateEvent event) throws HibernateException {
-        final Object o = event.getObject();
-        log.debug(o.getClass());
-        if (o instanceof Request){
-           log.debug("Item is request");
-        }
-    }
 }
