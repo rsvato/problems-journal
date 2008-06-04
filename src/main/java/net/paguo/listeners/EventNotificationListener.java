@@ -28,7 +28,7 @@ public class EventNotificationListener implements
         final Object o = event.getEntity();
         final Class message = o.getClass();
         log.debug(message);
-        final INotifier notifier = getRegistry().get(message);
+        final INotifier notifier = getRegistry().get(message.getName());
         if (notifier != null){
             notifier.doNotify(o);
         }
@@ -38,19 +38,19 @@ public class EventNotificationListener implements
         final Object o = event.getEntity();
         final Class message = o.getClass();
         log.debug(message);
-        final INotifier notifier = getRegistry().get(message);
+        final INotifier notifier = getRegistry().get(message.getName());
         if (notifier != null){
             notifier.doNotify(o);
         }
     }
 
-    private Map<Class, INotifier> registry;
+    private Map<String, INotifier> registry;
 
-    public Map<Class, INotifier> getRegistry() {
+    public Map<String, INotifier> getRegistry() {
         return registry;
     }
 
-    public void setRegistry(Map<Class, INotifier> registry) {
+    public void setRegistry(Map<String, INotifier> registry) {
         this.registry = registry;
     }
 }
