@@ -304,7 +304,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="testingRequestNotifierImpl" class="net.paguo.messaging.impl.TestingRequestNotifierImpl">
+    <bean id="testingRequestNotifierImpl" class="net.paguo.messaging.impl.TestingRequestNotifierImpl" lazy-init="true">
         <property name="controller" ref="subscriptionsController"/>
     </bean>
 
