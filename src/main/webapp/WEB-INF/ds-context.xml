@@ -12,6 +12,7 @@
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="typeDefinitions"/>
         <property name="annotatedClasses">
             <list>
                 <value>net.paguo.domain.clients.AbstractItem</value>
@@ -66,10 +67,16 @@
         <property name="eventListeners">
             <map>
                 <entry key="post-update">
+                    <list>
                         <ref local="fullTextIndexEventListener"/>
+                        <ref local="testingRequestEventListener"/>
+                    </list>
                 </entry>
                 <entry key="post-insert">
+                    <list>
                         <ref local="fullTextIndexEventListener"/>
+                        <ref local="testingRequestEventListener"/>
+                    </list>
                 </entry>
                 <entry key="post-delete">
                     <ref local="fullTextIndexEventListener"/>
