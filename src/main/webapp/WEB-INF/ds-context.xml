@@ -48,6 +48,7 @@
                 <value>net.paguo.domain.testing.Testing</value>
                 <value>net.paguo.domain.testing.TestingPlan</value>
                 <value>net.paguo.domain.testing.TestingResults</value>
+                <value>net.paguo.domain.messaging.RequestSubscription</value>
             </list>
         </property>
         <property name="hibernateProperties">
