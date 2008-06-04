@@ -1,9 +1,8 @@
 package net.paguo.listeners;
 
-import org.hibernate.event.PostDeleteEvent;
-import org.hibernate.event.PostInsertEvent;
-import org.hibernate.event.PostUpdateEvent;
+import org.hibernate.event.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.HibernateException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import net.paguo.domain.testing.Request;
@@ -12,7 +11,7 @@ import net.paguo.domain.testing.Request;
  * @author Reyentenko
  */
 public class TestingRequestEventListener implements
-    org.hibernate.event.PostDeleteEventListener, org.hibernate.event.PostInsertEventListener, org.hibernate.event.PostUpdateEventListener{
+    org.hibernate.event.PostDeleteEventListener, org.hibernate.event.PostInsertEventListener, SaveOrUpdateEventListener{
 
     private static final Log log = LogFactory.getLog(TestingRequestEventListener.class);
     private static final long serialVersionUID = -2144161022858355466L;
@@ -40,4 +39,11 @@ public class TestingRequestEventListener implements
         }
     }
 
+    public void onSaveOrUpdate(SaveOrUpdateEvent event) throws HibernateException {
+        final Object o = event.getEntity();
+        log.debug(o.getClass());
+        if (o instanceof Request){
+           log.debug("Item is request");
+        }
+    }
 }

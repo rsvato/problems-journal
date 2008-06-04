@@ -66,19 +66,16 @@
         <property name="eventListeners">
             <map>
                 <entry key="post-update">
-                    <list>
                         <ref local="fullTextIndexEventListener"/>
-                        <ref local="testingRequestEventListener"/>
-                    </list>
                 </entry>
                 <entry key="post-insert">
-                    <list>
                         <ref local="fullTextIndexEventListener"/>
-                        <ref local="testingRequestEventListener"/>
-                    </list>
                 </entry>
                 <entry key="post-delete">
                     <ref local="fullTextIndexEventListener"/>
+                </entry>
+                <entry key="save-update">
+                    <ref local="testingRequestEventListener"/>
                 </entry>
             </map>
         </property>
