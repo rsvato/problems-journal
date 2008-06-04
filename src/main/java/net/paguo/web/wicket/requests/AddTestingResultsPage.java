@@ -81,6 +81,7 @@ public class AddTestingResultsPage extends SecuredWebPage {
                     Session.get().error("No acceptable testing plan found");
                     throw new RestartResponseException(Application.get().getHomePage());
                 }
+                
                 results.setCreator(findSessionUser());
                 results.setCreationDate(new Date());
                 r.getTestings().remove(toSet);
