@@ -250,7 +250,7 @@
         <property name="dao" ref="settingsDao"/>
     </bean>
 
-    <bean id="subscriptionsController" class="net.paguo.controller.RequestSubscriptionController">
+    <bean id="subscriptionsController" class="net.paguo.controller.RequestSubscriptionController" lazy-init="true">
         <property name="subscriptionDao" ref="requestSubscriptionDao"/>
     </bean>
 
