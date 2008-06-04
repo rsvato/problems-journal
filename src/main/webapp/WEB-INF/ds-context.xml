@@ -66,10 +66,16 @@
         <property name="eventListeners">
             <map>
                 <entry key="post-update">
-                    <ref local="fullTextIndexEventListener"/>
+                    <list>
+                        <ref local="fullTextIndexEventListener"/>
+                        <ref local="testingRequestEventListener"/>
+                    </list>
                 </entry>
                 <entry key="post-insert">
-                    <ref local="fullTextIndexEventListener"/>
+                    <list>
+                        <ref local="fullTextIndexEventListener"/>
+                        <ref local="testingRequestEventListener"/>
+                    </list>
                 </entry>
                 <entry key="post-delete">
                     <ref local="fullTextIndexEventListener"/>
@@ -79,6 +85,7 @@
     </bean>
 
     <bean id="fullTextIndexEventListener" class="org.hibernate.search.event.FullTextIndexEventListener"/>
+    <bean id="testingRequestEventListener" class="net.paguo.listeners.TestingRequestEventListener"/>
 
     <bean id="complaintSearchController" class="net.paguo.search.controller.ComplaintSearchController">
         <property name="sessionFactory" ref="sessionFactory"/>
