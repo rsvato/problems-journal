@@ -68,13 +68,13 @@
                 <entry key="post-update">
                     <list>
                         <ref local="fullTextIndexEventListener"/>
-                        <ref local="testingRequestEventListener"/>
+                        <ref local="eventNotificationListener"/>
                     </list>
                 </entry>
                 <entry key="post-insert">
                     <list>
                         <ref local="fullTextIndexEventListener"/>
-                        <ref local="testingRequestEventListener"/>
+                        <ref local="eventNotificationListener"/>
                     </list>
                 </entry>
                 <entry key="post-delete">
@@ -85,7 +85,17 @@
     </bean>
 
     <bean id="fullTextIndexEventListener" class="org.hibernate.search.event.FullTextIndexEventListener"/>
-    <bean id="testingRequestEventListener" class="net.paguo.listeners.TestingRequestEventListener"/>
+    <bean id="eventNotificationListener" class="net.paguo.listeners.EventNotificationListener">
+        <property name="registry">
+            <map>
+                <entry key="net.paguo.domain.testing.Request">
+                    <bean id="testtingRequestNotifierImpl" class="net.paguo.messaging.impl.TestingRequestNotifierImpl">
+                        <property name="controller" ref="subscriptionsController"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
 
     <bean id="complaintSearchController" class="net.paguo.search.controller.ComplaintSearchController">
         <property name="sessionFactory" ref="sessionFactory"/>
@@ -228,8 +238,21 @@
         </property>
     </bean>
 
+    <bean id="requestSubscriptionDao" parent="abstractDao">
+        <property name="proxyInterfaces" value="net.paguo.dao.RequestSubscriptionDao"/>
+        <property name="target">
+            <bean parent="abstractDaoTarget">
+                <constructor-arg value="net.paguo.domain.messaging.RequestSubscription"/>
+            </bean>
+        </property>
+    </bean>
+
     <bean id="settingsController" class="net.paguo.controller.ApplicationSettingsController">
         <property name="dao" ref="settingsDao"/>
+    </bean>
+
+    <bean id="subscriptionsController" class="net.paguo.controller.RequestSubscriptionController">
+        <property name="subscriptionDao" ref="requestSubscriptionDao"/>
     </bean>
 
     <bean id="failureController" class="net.paguo.controller.NetworkFailureController">

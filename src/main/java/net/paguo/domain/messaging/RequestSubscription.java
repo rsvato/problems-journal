@@ -11,7 +11,8 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "wf_req_subscription")
-public class RequestSubscription {
+@NamedQueries(@NamedQuery(name = "RequestSubscription.findByStage", query = "from RequestSubscription rs where rs.stage = :stage"))
+public class RequestSubscription implements ISubscribers {
 
     private Integer id;
     private ProcessStage stage;
