@@ -12,7 +12,6 @@
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-        <property name="typeDefinitions"/>
         <property name="annotatedClasses">
             <list>
                 <value>net.paguo.domain.clients.AbstractItem</value>
