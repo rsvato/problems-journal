@@ -74,9 +74,6 @@
                 <entry key="post-delete">
                     <ref local="fullTextIndexEventListener"/>
                 </entry>
-                <entry key="save-update">
-                    <ref local="testingRequestEventListener"/>
-                </entry>
             </map>
         </property>
     </bean>
