@@ -40,7 +40,7 @@ public class TestingRequestEventListener implements
     }
 
     public void onSaveOrUpdate(SaveOrUpdateEvent event) throws HibernateException {
-        final Object o = event.getEntity();
+        final Object o = event.getObject();
         log.debug(o.getClass());
         if (o instanceof Request){
            log.debug("Item is request");
