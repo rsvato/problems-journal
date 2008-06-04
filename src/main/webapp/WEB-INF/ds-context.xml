@@ -90,9 +90,7 @@
         <property name="registry">
             <map>
                 <entry key="net.paguo.domain.testing.Request">
-                    <bean id="testtingRequestNotifierImpl" class="net.paguo.messaging.impl.TestingRequestNotifierImpl">
-                        <property name="controller" ref="subscriptionsController"/>
-                    </bean>
+                    <ref local="testingRequestNotifierImpl"/>
                 </entry>
             </map>
         </property>
@@ -208,9 +206,9 @@
 
     <bean id="changeStatusRequestDaoNG" parent="abstractDaoTarget"
           class="net.paguo.dao.impl.ChangeStatusRequestDaoImpl"/>
-    
+
     <bean id="requestDao" parent="abstractDaoTarget"
-        class="net.paguo.dao.impl.RequestDaoImpl"/>
+          class="net.paguo.dao.impl.RequestDaoImpl"/>
 
     <bean id="settingsDao" parent="abstractDao">
         <property name="proxyInterfaces" value="net.paguo.dao.ApplicationSettingsDao"/>
@@ -306,6 +304,10 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean id="testingRequestNotifierImpl" class="net.paguo.messaging.impl.TestingRequestNotifierImpl">
+        <property name="controller" ref="subscriptionsController"/>
+    </bean>
+
     <bean id="requestReportExport" class="net.paguo.exports.RequestReportExport">
         <property name="controller" ref="changeStatusRequestController"/>
         <property name="messageSource" ref="messageSource"/>
@@ -355,15 +357,15 @@
         <property name="messageSource" ref="messageSource"/>
         <property name="headers">
             <list>
-               <value type="java.lang.String">problem.id</value>
-               <value type="java.lang.String">problem.time</value>
-               <value type="java.lang.String">complaint.clientName</value>
-               <value type="java.lang.String">problem.author</value>
-               <value type="java.lang.String">complaint.description</value>
-               <value type="java.lang.String">problem.cause</value>
-               <value type="java.lang.String">problem.action</value>
-               <value type="java.lang.String">problem.closeTime</value>
-               <value type="java.lang.String">problem.closed</value> 
+                <value type="java.lang.String">problem.id</value>
+                <value type="java.lang.String">problem.time</value>
+                <value type="java.lang.String">complaint.clientName</value>
+                <value type="java.lang.String">problem.author</value>
+                <value type="java.lang.String">complaint.description</value>
+                <value type="java.lang.String">problem.cause</value>
+                <value type="java.lang.String">problem.action</value>
+                <value type="java.lang.String">problem.closeTime</value>
+                <value type="java.lang.String">problem.closed</value>
             </list>
         </property>
         <property name="properties">
@@ -373,10 +375,10 @@
                 <value type="java.lang.String">reportedClient</value>
                 <value type="java.lang.String">userCreated</value>
                 <value type="java.lang.String">failureDescription</value>
-                <value type="java.lang.String">restoreAction.failureCause</value> 
+                <value type="java.lang.String">restoreAction.failureCause</value>
                 <value type="java.lang.String">restoreAction.restoreAction</value>
                 <value type="java.lang.String">restoreAction.restoreTime</value>
-                <value type="java.lang.String">restoreAction.numericalClose</value> 
+                <value type="java.lang.String">restoreAction.numericalClose</value>
             </list>
         </property>
         <property name="formatters">
@@ -391,14 +393,14 @@
         <property name="messageSource" ref="messageSource"/>
         <property name="headers">
             <list>
-               <value type="java.lang.String">problem.id</value>
-               <value type="java.lang.String">problem.time</value>
-               <value type="java.lang.String">problem.author</value>
-               <value type="java.lang.String">complaint.description</value>
-               <value type="java.lang.String">problem.cause</value>
-               <value type="java.lang.String">problem.action</value>
-               <value type="java.lang.String">problem.closeTime</value>
-               <value type="java.lang.String">problem.closed</value>
+                <value type="java.lang.String">problem.id</value>
+                <value type="java.lang.String">problem.time</value>
+                <value type="java.lang.String">problem.author</value>
+                <value type="java.lang.String">complaint.description</value>
+                <value type="java.lang.String">problem.cause</value>
+                <value type="java.lang.String">problem.action</value>
+                <value type="java.lang.String">problem.closeTime</value>
+                <value type="java.lang.String">problem.closed</value>
             </list>
         </property>
         <property name="properties">
