@@ -18,12 +18,13 @@ public class RequestSubscription implements ISubscribers {
     private ProcessStage stage;
     private Set<LocalUser> subscribers;
 
+    @Id
+    @GeneratedValue
     public Integer getId() {
         return id;
     }
 
-    @Id
-    @GeneratedValue
+
     public void setId(Integer id) {
         this.id = id;
     }
