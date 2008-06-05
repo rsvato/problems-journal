@@ -69,13 +69,11 @@
                 <entry key="post-update">
                     <list>
                         <ref local="fullTextIndexEventListener"/>
-                        <ref local="eventNotificationListener"/>
                     </list>
                 </entry>
                 <entry key="post-insert">
                     <list>
                         <ref local="fullTextIndexEventListener"/>
-                        <ref local="eventNotificationListener"/>
                     </list>
                 </entry>
                 <entry key="post-delete">
