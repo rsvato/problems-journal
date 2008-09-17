@@ -22,6 +22,8 @@ import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import sun.management.BooleanFlag;
+
 /**
  * User: sreentenko
  * Date: 05.06.2007
@@ -87,6 +89,8 @@ public class Users extends SecuredWebPage {
             add(new TextField("contactData.mobilePhone"));
             add(new TextField("contactData.workPhone"));
             add(new TextArea("contactData.contactComments"));
+            
+            add(new CheckBox("disabled"));
 
             final CheckBoxMultipleChoice choice = new CheckBoxMultipleChoice("groups", getController().getAllGroups());
             choice.setChoiceRenderer(new ChoiceRenderer("groupName", "id"));

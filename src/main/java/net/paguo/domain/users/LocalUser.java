@@ -29,6 +29,7 @@ public class LocalUser implements Serializable {
     private PersonalData personalData;
     private ContactData contactData;
     private String description;
+    private boolean disabled;
     private Collection<LocalGroup> groups;
     private UserPermission permissionEntry;
     private static final long serialVersionUID = 6815284993616376539L;
@@ -144,4 +145,13 @@ public class LocalUser implements Serializable {
 
         return roles;
     }
+    @Column
+	public boolean isDisabled() {
+		return disabled;
+	}
+	public void setDisabled(boolean active) {
+		this.disabled = active;
+	}
+    
+    
 }
