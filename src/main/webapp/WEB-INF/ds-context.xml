@@ -424,4 +424,9 @@
         <property name="basename" value="messages"/>
     </bean>
 
+
+    <bean id="jbpmConfiguration" class="org.springmodules.workflow.jbpm31.LocalJbpmConfigurationFactoryBean">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
 </beans>
