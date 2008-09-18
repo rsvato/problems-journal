@@ -25,7 +25,16 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-			<plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <additionalClasspathElements>
+                        <additionalClasspathElement>src/main/webapp</additionalClasspathElement>
+                    </additionalClasspathElements>
+                </configuration>
+            </plugin>
+            <plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.1.7</version>
@@ -40,7 +49,18 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>
+        <testResources>
+            <testResource>
+                <directory>src/main/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>src/main/webapp</directory>
+            </testResource>
+        </testResources>
+    </build>
 	<dependencies>
 		<dependency>
 			<groupId>c3p0</groupId>
@@ -303,7 +323,8 @@
 		</dependency>
 
 	</dependencies>
-	<reporting>
+
+    <reporting>
 		<plugins>
 			<plugin>
 				<artifactId>maven-pmd-plugin</artifactId>

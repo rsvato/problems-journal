@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition
+        xmlns="http://jbpm.org/3/jpdl"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd"
+        name="test task">
+    <start-state name="start">
+        <transition name="begin" to="task"></transition>
+    </start-state>
+    <task-node name="task">
+        <task name="test">
+            <assignment
+                    class="net.paguo.bpm.SimpleProcessAssignementHandler"/>
+        </task>
+        <transition name="task" to="end"/>
+    </task-node>
+    <end-state name="end"></end-state>
+</process-definition>
