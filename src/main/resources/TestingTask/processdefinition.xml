@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns="urn:jbpm.org:jpdl-3.2"  name="TestingTask">
+    <swimlane name="ROLE_CREATE_TESTING_REQUEST"/>
+    <swimlane name="ROLE_CREATE_SCHEDULE_TESTING"/>
+
+    <start-state name="CreateRequest">
+		<task swimlane="ROLE_CREATE_TESTING_REQUEST"/>
+		<transition to="EnterDetails" name="initiate"></transition>
+	</start-state>
+
+    <task-node name="EnterDetails">
+        <task name="FillUserDetails" swimlane="ROLE_CREATE_TESTING_REQUEST">
+           <description>
+				Fill initial details
+			</description>
+			<controller>
+				<variable access="read,write,required" name="net.paguo.domain.testing.Request"></variable>
+			</controller>
+        </task>
+        <transition to="FillRequiredServices" name="fillservice"/>
+    </task-node>
+
+    <task-node name="FillRequiredServices">
+		<task name="AddServicesDefinition" swimlane="ROLE_CREATE_TESTING_REQUEST">
+			<controller>
+				<variable access="read,write" name="net.paguo.domain.testing.Request"></variable>
+				<variable access="read,write,required" name="net.paguo.domain.testing.RequredService"></variable>
+			</controller>
+		</task>
+		<transition to="ScheduleTesting" name="addschedule"></transition>
+        <transition to="CancelledByUser" name="usercancel"></transition>
+    </task-node>
+
+	<task-node name="ScheduleTesting">
+
+        <task name="AddScheduling" swimlane="ROLE_CREATE_SCHEDULE_TESTING">
+            <controller>
+                <variable access="read" name="net.paguo.domain.testing.Request"/>
+                <variable access="read" name="net.paguo.domain.testing.RequiredService"/>
+                <variable access="read,write,required"
+                    name="net.paguo.domain.testing.TestingPlan"/>
+            </controller>
+        </task>
+
+        <transition to="ReportTestingResult" name="reportResults"></transition>
+        <transition to="CancelledByExecutor" name="executorcancel"></transition>
+    </task-node>
+
+    <task-node name="ReportTestingResult">
+        <task name="AddTestingResult" swimlane="ROLE_CREATE_SCHEDULE_TESTING">
+            <controller>
+                <variable access="read"
+                    name="net.paguo.domain.testing.TestingPlan"/>
+                <variable access="read,write,required" name="net.paguo.domain.testing.TestingResults"/>
+            </controller>
+        </task>
+        <transition to="CancelledByExecutor" name="executorcancel"/>
+        <transition to="EOP" name="end"/>
+    </task-node>
+
+
+    <end-state name="CancelledByUser"></end-state>
+
+	<end-state name="CancelledByExecutor"></end-state>
+
+	<end-state name="EOP"></end-state>
+
+
+</process-definition>

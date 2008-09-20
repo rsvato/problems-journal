@@ -179,6 +179,10 @@
         </property>
     </bean>
 
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
     <bean id="fullTextIndexEventListener" class="org.hibernate.search.event.FullTextIndexEventListener"/>
     <bean id="eventNotificationListener" class="net.paguo.listeners.EventNotificationListener">
         <property name="registry">
@@ -524,12 +528,17 @@
         <property name="definitionLocation" value="classpath:simpleprocess.jpdl.xml"/>
     </bean>
 
+    <bean id="clientWorkflow" class="org.springmodules.workflow.jbpm31.definition.ProcessDefinitionFactoryBean">
+        <property name="definitionLocation" value="classpath:TestingTask/processdefinition.xml"/>
+    </bean>
+
     <bean id="jbpmConfiguration" class="org.springmodules.workflow.jbpm31.LocalJbpmConfigurationFactoryBean">
         <property name="sessionFactory" ref="sessionFactory"/>
         <property name="configuration" value="classpath:jbpm.cfg.xml"/>
         <property name="processDefinitions">
             <list>
                 <ref local="simpleWorkflow"/>
+                <ref local="clientWorkflow"/>
             </list>
         </property>
         <property name="createSchema" value="false"/>
@@ -538,9 +547,20 @@
     <bean id="jbpmTemplate" class="org.springmodules.workflow.jbpm31.JbpmTemplate">
         <constructor-arg index="0" ref="jbpmConfiguration"/>
         <constructor-arg index="1" ref="simpleWorkflow"/>
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <bean id="clientJbpmTemplate" class="org.springmodules.workflow.jbpm31.JbpmTemplate">
+        <constructor-arg index="0" ref="jbpmConfiguration"/>
+        <constructor-arg index="1" ref="clientWorkflow"/>
+        <property name="hibernateTemplate"  ref="hibernateTemplate"/>
     </bean>
 
     <bean id="testWorkflowController" class="net.paguo.controller.bpm.SimpleWorkflowController">
         <property name="template" ref="jbpmTemplate"/>
+    </bean>
+
+    <bean id="clientWorkflowController" class="net.paguo.controller.bpm.ClientWorkflowController">
+        <property name="template" ref="clientJbpmTemplate"/>
     </bean>
 </beans>
