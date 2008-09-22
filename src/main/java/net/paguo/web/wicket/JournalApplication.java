@@ -4,6 +4,7 @@ import net.paguo.controller.UsersController;
 import net.paguo.web.wicket.configuration.HibernateAnnotationComponentConfigurator;
 import net.paguo.web.wicket.requests.CreateRequestPage;
 import net.paguo.web.wicket.requests.ListRequestPage;
+import net.paguo.web.wicket.bpm.TestBpmPage;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
@@ -55,6 +56,7 @@ public class JournalApplication extends WebApplication implements IRoleCheckingS
         mountBookmarkablePage("/requests", ChangeStatusRequestListPage.class);
         mountBookmarkablePage("/testing/create", CreateRequestPage.class);
         mountBookmarkablePage("/testing/list", ListRequestPage.class);
+        mountBookmarkablePage("/bpm/test", TestBpmPage.class);
 
     }
 
