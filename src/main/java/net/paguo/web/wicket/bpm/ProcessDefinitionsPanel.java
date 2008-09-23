@@ -5,10 +5,15 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.behavior.HeaderContributor;
 import org.jbpm.JbpmContext;
 import org.jbpm.graph.def.ProcessDefinition;
 
 import java.util.List;
+
+import net.paguo.web.wicket.bpm.components.UndeployProcessDefinitionLink;
+import net.paguo.web.wicket.bpm.components.StartProcessLink;
+import net.paguo.web.wicket.JournalApplication;
 
 /**
  * User: sreentenko
@@ -25,14 +30,10 @@ public class ProcessDefinitionsPanel extends Panel {
                 final ProcessDefinition def = (ProcessDefinition) item.getModelObject();
                 item.add(new Label("defLabel", def.getName()));
                 item.add(new Label("version", String.valueOf(def.getVersion())));
-                item.add(new Link("undeploy"){
-                    private static final long serialVersionUID = 2920540899613040013L;
-
-                    public void onClick() {
-                        context.getGraphSession().deleteProcessDefinition(def.getId());
-                    }
-                });
+                item.add(new UndeployProcessDefinitionLink("undeploy", def.getId()));
+                item.add(new StartProcessLink("start", def.getId()));
             }
         });
+        add(HeaderContributor.forCss(JournalApplication.class, "wstyles.css"));
     }
 }

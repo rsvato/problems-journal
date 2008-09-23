@@ -4,7 +4,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springmodules.workflow.jbpm31.JbpmTemplate;
 import org.jbpm.JbpmContext;
-import org.jbpm.JbpmConfiguration;
+import net.paguo.web.wicket.bpm.utils.ProcessUtils;
 
 
 /**
@@ -38,16 +38,10 @@ public class UndeployProcessDefinitionLink extends Link {
     }
 
     public void onClick() {
-        getContext(getTemplate()).getGraphSession().deleteProcessDefinition(getProcessDefId());
-        setResponsePage(getPage());
+        final JbpmContext jbpmContext = ProcessUtils.getContext(getTemplate());
+        jbpmContext.getGraphSession().deleteProcessDefinition(getProcessDefId());
+        jbpmContext.close();
+        setResponsePage(getPage().getClass());
     }
 
-    protected JbpmContext getContext(JbpmTemplate template) {
-        final JbpmConfiguration jbpmConfiguration = template.getJbpmConfiguration();
-        JbpmContext jbpmContext = jbpmConfiguration.getCurrentJbpmContext();
-        if (jbpmContext == null){
-            jbpmContext = jbpmConfiguration.createJbpmContext();
-        }
-        return jbpmContext;
-    }
 }
