@@ -22,7 +22,6 @@ import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import sun.management.BooleanFlag;
 
 /**
  * User: sreentenko

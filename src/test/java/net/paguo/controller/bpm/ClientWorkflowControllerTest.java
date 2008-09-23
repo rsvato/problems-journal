@@ -44,6 +44,10 @@ public class ClientWorkflowControllerTest extends AbstractTransactionalSpringCon
         getController().advanceProcessIntance(pid);
 
     }
+    
+    public void testAnotherCreate(){
+    	Long newId = getController().startProcessInstance("TestingTask", "test");
+    }
 
     public void testFindInstances(){
         final List<ProcessInstance> list = getController().findProcessInstances();

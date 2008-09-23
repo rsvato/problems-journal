@@ -5,7 +5,9 @@ import org.springmodules.workflow.jbpm31.JbpmCallback;
 import org.jbpm.JbpmContext;
 import org.jbpm.JbpmException;
 import org.jbpm.context.exe.ContextInstance;
+import org.jbpm.taskmgmt.exe.TaskInstance;
 import org.jbpm.taskmgmt.exe.TaskMgmtInstance;
+import org.jbpm.graph.def.ProcessDefinition;
 import org.jbpm.graph.exe.ProcessInstance;
 import org.jbpm.graph.exe.Token;
 
@@ -27,8 +29,28 @@ public class ClientWorkflowController {
         this.template = template;
     }
 
-    public List<ProcessInstance> findProcessInstances(){
+    @SuppressWarnings("unchecked")
+	public List<ProcessInstance> findProcessInstances(){
         return getTemplate().findProcessInstances();
+    }
+    
+    public Long startProcessInstance(final String name, final String actorId){
+    	return (Long) getTemplate().execute(new JbpmCallback(){
+
+			public Object doInJbpm(JbpmContext context) throws JbpmException {
+				ProcessDefinition pd = context.getGraphSession().findLatestProcessDefinition(name);
+				ProcessInstance pi = pd.createProcessInstance();
+				
+				TaskInstance ti = pi.getTaskMgmtInstance().createStartTaskInstance();
+				if (ti == null){
+					
+				}else{
+					ti.setActorId(actorId);
+					ti.start();
+				}
+				Long id = template.saveProcessInstance(pi);
+				return id;
+			}});
     }
 
     public ProcessInstance getNewProcessInstance() {
@@ -47,6 +69,11 @@ public class ClientWorkflowController {
         ProcessInstance pi = template.findProcessInstance(instanceId);
         return pi;
 
+    }
+    
+    public void openTask(final Long instanceId){
+    	final ProcessInstance pi = template.findProcessInstance(instanceId);
+    	pi.getTaskMgmtInstance().createTaskInstance();
     }
 
     public void advanceProcessIntance(final Long instanceId) {
@@ -84,7 +111,7 @@ public class ClientWorkflowController {
 
     public Object fetchVariableByKey(Long instanceId,String key) {
         ProcessInstance pi = template.findProcessInstance(instanceId);
-        ContextInstance ctxI = pi.getContextInstance();
-        return ctxI.getVariable(key);
+        ContextInstance ctx = pi.getContextInstance();
+        return ctx.getVariable(key);
     }
 }

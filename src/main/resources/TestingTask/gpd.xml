@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<root-container name="TestingTask" width="656" height="368">
+<root-container name="TestingTask" width="584" height="495">
   <node name="CreateRequest" x="19" y="16" width="132" height="36">
+    <edge>
+      <label x="5" y="-13"/>
+    </edge>
+  </node>
+  <node name="EnterDetails" x="21" y="66" width="132" height="36">
     <edge>
       <label x="5" y="-10"/>
     </edge>
   </node>
-  <node name="FillRequiredServices" x="20" y="104" width="132" height="36">
+  <node name="FillRequiredServices" x="18" y="144" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="ScheduleTesting" x="21" y="269" width="132" height="36">
+    <edge>
+      <label x="-37" y="-31"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="ReportTestingResult" x="310" y="259" width="132" height="36">
     <edge>
       <label x="5" y="-10"/>
     </edge>
@@ -16,13 +37,5 @@
   </node>
   <node name="CancelledByUser" x="196" y="13" width="132" height="36"/>
   <node name="CancelledByExecutor" x="354" y="13" width="132" height="36"/>
-  <node name="ScheduleTesting" x="14" y="192" width="132" height="36">
-    <edge>
-      <label x="5" y="-10"/>
-    </edge>
-    <edge>
-      <label x="5" y="-10"/>
-    </edge>
-  </node>
-  <node name="EOP" x="16" y="304" width="132" height="36"/>
+  <node name="EOP" x="22" y="417" width="132" height="36"/>
 </root-container>
