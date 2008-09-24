@@ -75,7 +75,7 @@ public class NetworkProblemCreatePage extends SecuredWebPage {
                 setResponsePage(NetworkProblemsPage.class);
             } catch (ControllerException e) {
                 log.error(e);
-                //TODO: exctract message
+                //TODO: extract message
                 error("Unexpected error communicated with DB.");
             }
         }

@@ -5,6 +5,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springmodules.workflow.jbpm31.JbpmTemplate;
 import org.jbpm.JbpmContext;
 import org.jbpm.taskmgmt.exe.TaskInstance;
+import org.jbpm.taskmgmt.exe.SwimlaneInstance;
 import org.jbpm.graph.def.ProcessDefinition;
 import org.jbpm.graph.exe.ProcessInstance;
 import net.paguo.web.wicket.bpm.utils.ProcessUtils;
@@ -54,7 +55,11 @@ public class StartProcessLink extends Link {
         final TaskInstance taskInstance = pi.getTaskMgmtInstance().createStartTaskInstance();
 
         if (taskInstance != null){
-            taskInstance.start(authenticatedUser.getUsername());
+            taskInstance.start();
+            final SwimlaneInstance swimlaneInstance = taskInstance.getSwimlaneInstance();
+            final String name = swimlaneInstance.getName();
+            //TODO: find pooled actors by swimlane name (should correspond to a LocalRole)
+            taskInstance.setPooledActors(new String[]{"slava"});
             jbpmContext.save(taskInstance);
         }else{
             pi.getRootToken().signal();

@@ -12,6 +12,7 @@ public class TestBpmPage extends BpmPage{
 
     public TestBpmPage(PageParameters parameters) {
         super(parameters);
-        add(new ProcessDefinitionsPanel("defs", getContext()));        
+        add(new ProcessDefinitionsPanel("defs", getContext()));
+        add(new MyTasksPanel("tasks"));
     }
 }

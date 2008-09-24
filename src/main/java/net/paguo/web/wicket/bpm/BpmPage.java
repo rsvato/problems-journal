@@ -1,8 +1,10 @@
 package net.paguo.web.wicket.bpm;
 
 import net.paguo.web.wicket.SecuredWebPage;
+import net.paguo.web.wicket.JournalApplication;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.behavior.HeaderContributor;
 import org.springmodules.workflow.jbpm31.JbpmTemplate;
 import org.jbpm.JbpmContext;
 import org.jbpm.JbpmConfiguration;
@@ -29,6 +31,7 @@ public abstract class BpmPage extends SecuredWebPage {
     public BpmPage(PageParameters parameters){
         super();
         getContext().setActorId(findSessionUser().getPermissionEntry().getUserName());
+        add(HeaderContributor.forCss(JournalApplication.class, "wstyles.css"));
     }
 
     protected JbpmContext getContext() {

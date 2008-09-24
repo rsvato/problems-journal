@@ -34,6 +34,5 @@ public class ProcessDefinitionsPanel extends Panel {
                 item.add(new StartProcessLink("start", def.getId()));
             }
         });
-        add(HeaderContributor.forCss(JournalApplication.class, "wstyles.css"));
     }
 }
